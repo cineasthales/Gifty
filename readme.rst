@@ -23,9 +23,9 @@ Tecnologias utilizadas
 * FontAwesome - http://fontawesome.io/
 * Android - https://developer.android.com/
 
-************************************
-Processos executados por cada membro
-************************************
+********************************
+Processos executados pelo membro
+********************************
 
 * Thales Castro: Full-Stack Development - https://github.com/cineasthales
 
