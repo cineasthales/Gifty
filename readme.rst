@@ -18,16 +18,16 @@ Tecnologias utilizadas
 * SGBD mySQL - https://www.mysql.com/
 * Javascript - https://www.javascript.com/
 * HTML e CSS - https://www.w3.org/standards/webdesign/htmlcss
-* CodeIgniter 3.1.7 - https://codeigniter.com/
-* jQuery 3.2.1 - https://jquery.com/
+* CodeIgniter - https://codeigniter.com/
+* jQuery - https://jquery.com/
 * FontAwesome - http://fontawesome.io/
 * Android - https://developer.android.com/
 
-********************************
-Processos executados pelo membro
-********************************
+******************************
+Processo executado pelo membro
+******************************
 
-* Thales Castro: Full-Stack Development - https://github.com/cineasthales
+Thales Castro: Full-Stack Development - https://github.com/cineasthales
 
 ********
 Tutorial
@@ -46,7 +46,7 @@ a URL do GitHub (https://github.com/cineasthales/Gifty.git) e clicar em "Clone r
 Como instalar a base de dados
 *****************************
 
-Utilizando o phpMyAdmin do localhost, basta importar o arquivo banco.sql na pasta raiz 
+Utilizando o phpMyAdmin do localhost, basta importar o arquivo gifty.sql na pasta raiz 
 do projeto e clicar em "Executar".
 
 ***********************************************
