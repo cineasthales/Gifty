@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`eventos` (
   `titulo` VARCHAR(100) NOT NULL,
   `descricao` MEDIUMTEXT NOT NULL,
   `data` DATE NOT NULL,
-  `hora` VARCHAR(5) NOT NULL,
+  `hora` TIME NOT NULL,
   `local` VARCHAR(100) NOT NULL,
   `ativo` TINYINT NOT NULL,
   `dataCriacao` DATE NOT NULL,
@@ -308,29 +308,48 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gifty`.`cliquesItens`
+-- Table `gifty`.`cliquesEmpresas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gifty`.`cliquesItens` (
+CREATE TABLE IF NOT EXISTS `gifty`.`cliquesEmpresas` (
   `id` INT NOT NULL,
   `data` DATE NOT NULL,
-  `idItem` INT NOT NULL,
   `idEmpresa` INT NOT NULL,
   `idUsuario` INT NOT NULL,
-  PRIMARY KEY (`id`, `idItem`, `idEmpresa`, `idUsuario`),
+  PRIMARY KEY (`id`, `idEmpresa`, `idUsuario`),
   INDEX `fk_cliquesEmpresas_empresas1_idx` (`idEmpresa` ASC),
-  INDEX `fk_cliquesEmpresas_itens1_idx` (`idItem` ASC),
   INDEX `fk_cliquesItens_usuarios1_idx` (`idUsuario` ASC),
   CONSTRAINT `fk_cliquesEmpresas_empresas1`
     FOREIGN KEY (`idEmpresa`)
     REFERENCES `gifty`.`empresas` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cliquesEmpresas_itens1`
-    FOREIGN KEY (`idItem`)
-    REFERENCES `gifty`.`itens` (`id`)
+  CONSTRAINT `fk_cliquesItens_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gifty`.`notificacoes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gifty`.`notificacoes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `lida` TINYINT NOT NULL,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  `idEvento` INT NOT NULL,
+  `idUsuario` INT NOT NULL,
+  PRIMARY KEY (`id`, `idEvento`, `idUsuario`),
+  INDEX `fk_notificacoes_eventos1_idx` (`idEvento` ASC),
+  INDEX `fk_notificacoes_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_notificacoes_eventos1`
+    FOREIGN KEY (`idEvento`)
+    REFERENCES `gifty`.`eventos` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cliquesItens_usuarios1`
+  CONSTRAINT `fk_notificacoes_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
     ON DELETE NO ACTION
