@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`usuarios` (
   `nome` VARCHAR(50) NOT NULL,
   `sobrenome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
+  `notificaEmail` TINYINT NOT NULL,
   `cpf` VARCHAR(11) NOT NULL,
   `dataNasc` DATE NOT NULL,
   `sexo` VARCHAR(15) NOT NULL,
@@ -63,8 +64,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`telefones` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `ddi` VARCHAR(5) NOT NULL,
-  `ddd` VARCHAR(5) NOT NULL,
+  `ddd` VARCHAR(3) NOT NULL,
   `numero` VARCHAR(20) NOT NULL,
   `idUsuario` INT NOT NULL,
   PRIMARY KEY (`id`, `idUsuario`),
@@ -98,10 +98,8 @@ CREATE TABLE IF NOT EXISTS `gifty`.`eventos` (
   `hora` TIME NOT NULL,
   `local` VARCHAR(100) NOT NULL,
   `ativo` TINYINT NOT NULL,
-  `dataCriacao` DATE NOT NULL,
   `maxItens` INT(2) NOT NULL,
   `dataLimite` DATE NOT NULL,
-  `nivelVisao` INT(1) NOT NULL,
   `idUsuario` INT NOT NULL,
   `idEndereco` INT NOT NULL,
   `idTipoEvento` INT NOT NULL,
@@ -135,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`itens` (
   `nome` VARCHAR(240) NOT NULL,
   `descricao` MEDIUMTEXT NOT NULL,
   `categoria` VARCHAR(255) NOT NULL,
-  `menorPreco` DOUBLE NOT NULL,
+  `preco` DOUBLE NOT NULL,
   `imagem` VARCHAR(4094) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
@@ -143,13 +141,14 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gifty`.`amigos`
+-- Table `gifty`.`amizades`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gifty`.`amigos` (
+CREATE TABLE IF NOT EXISTS `gifty`.`amizades` (
   `idUsuario1` INT NOT NULL,
   `idUsuario2` INT NOT NULL,
-  `ativo` TINYINT NOT NULL,
-  `bloqueado` TINYINT NOT NULL,
+  `ativa` TINYINT NOT NULL,
+  `bloqueado1` TINYINT NOT NULL,
+  `bloqueado2` TINYINT NOT NULL,
   `dataAmizade` DATE NOT NULL,
   PRIMARY KEY (`idUsuario1`, `idUsuario2`),
   INDEX `fk_usuarios_has_usuarios_usuarios1_idx` (`idUsuario1` ASC),
@@ -174,6 +173,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`convidados` (
   `idUsuario` INT NOT NULL,
   `idEvento` INT NOT NULL,
   `comparecera` TINYINT NOT NULL,
+  `compareceu` TINYINT NOT NULL,
   `bloqueado` TINYINT NOT NULL,
   PRIMARY KEY (`idUsuario`, `idEvento`),
   INDEX `fk_usuarios_has_eventos_eventos1_idx` (`idEvento` ASC),
@@ -199,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`listas` (
   `idItem` INT NOT NULL,
   `prioridade` INT(3) NOT NULL,
   `dataAdicao` DATE NOT NULL,
-  `comprador` INT NULL,
+  `idComprador` INT NULL,
   PRIMARY KEY (`idEvento`, `idItem`),
   INDEX `fk_eventos_has_itens_itens1_idx` (`idItem` ASC),
   INDEX `fk_eventos_has_itens_eventos1_idx` (`idEvento` ASC),
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`empresas` (
   `email` VARCHAR(100) NOT NULL,
   `logomarca` VARCHAR(100) NOT NULL,
   `site` VARCHAR(100) NOT NULL,
-  `ativo` TINYINT NOT NULL,
+  `ativa` TINYINT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -252,9 +252,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gifty`.`interesses`
+-- Table `gifty`.`tiposInteresses`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gifty`.`interesses` (
+CREATE TABLE IF NOT EXISTS `gifty`.`tiposInteresses` (
   `id` INT NOT NULL,
   `descricao` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -262,13 +262,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gifty`.`usuariosInteresses`
+-- Table `gifty`.`interesses`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gifty`.`usuariosInteresses` (
+CREATE TABLE IF NOT EXISTS `gifty`.`interesses` (
   `idUsuario` INT NOT NULL,
-  `idInteresse` INT NOT NULL,
-  PRIMARY KEY (`idUsuario`, `idInteresse`),
-  INDEX `fk_usuarios_has_interesses_interesses1_idx` (`idInteresse` ASC),
+  `idTipoInteresse` INT NOT NULL,
+  PRIMARY KEY (`idUsuario`, `idTipoInteresse`),
+  INDEX `fk_usuarios_has_interesses_interesses1_idx` (`idTipoInteresse` ASC),
   INDEX `fk_usuarios_has_interesses_usuarios1_idx` (`idUsuario` ASC),
   CONSTRAINT `fk_usuarios_has_interesses_usuarios1`
     FOREIGN KEY (`idUsuario`)
@@ -276,8 +276,8 @@ CREATE TABLE IF NOT EXISTS `gifty`.`usuariosInteresses` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_usuarios_has_interesses_interesses1`
-    FOREIGN KEY (`idInteresse`)
-    REFERENCES `gifty`.`interesses` (`id`)
+    FOREIGN KEY (`idTipoInteresse`)
+    REFERENCES `gifty`.`tiposInteresses` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -289,6 +289,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gifty`.`cliquesAnuncios` (
   `id` INT NOT NULL,
   `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
   `idAnuncio` INT NOT NULL,
   `idUsuario` INT NOT NULL,
   PRIMARY KEY (`id`, `idAnuncio`, `idUsuario`),
@@ -313,6 +314,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gifty`.`cliquesEmpresas` (
   `id` INT NOT NULL,
   `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
   `idEmpresa` INT NOT NULL,
   `idUsuario` INT NOT NULL,
   PRIMARY KEY (`id`, `idEmpresa`, `idUsuario`),
@@ -332,26 +334,71 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gifty`.`notificacoes`
+-- Table `gifty`.`acoesUsuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gifty`.`notificacoes` (
+CREATE TABLE IF NOT EXISTS `gifty`.`acoesUsuarios` (
+  `id` INT NOT NULL,
+  `descricao` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gifty`.`logUsuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gifty`.`logUsuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `lida` TINYINT NOT NULL,
+  `idUsuario` INT NOT NULL,
+  `idAcaoUsuario` INT NOT NULL,
   `data` DATE NOT NULL,
   `hora` TIME NOT NULL,
-  `idEvento` INT NOT NULL,
-  `idUsuario` INT NOT NULL,
-  PRIMARY KEY (`id`, `idEvento`, `idUsuario`),
-  INDEX `fk_notificacoes_eventos1_idx` (`idEvento` ASC),
-  INDEX `fk_notificacoes_usuarios1_idx` (`idUsuario` ASC),
-  CONSTRAINT `fk_notificacoes_eventos1`
-    FOREIGN KEY (`idEvento`)
-    REFERENCES `gifty`.`eventos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_notificacoes_usuarios1`
+  PRIMARY KEY (`id`, `idUsuario`, `idAcaoUsuario`),
+  INDEX `fk_usuarios_has_acoes_acoes1_idx` (`idAcaoUsuario` ASC),
+  INDEX `fk_usuarios_has_acoes_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_usuarios_has_acoes_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_has_acoes_acoes1`
+    FOREIGN KEY (`idAcaoUsuario`)
+    REFERENCES `gifty`.`acoesUsuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gifty`.`acoesEventos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gifty`.`acoesEventos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gifty`.`logEventos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gifty`.`logEventos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `idEvento` INT NOT NULL,
+  `idUsuario` INT NOT NULL,
+  `idAcaoEvento` INT NOT NULL,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  PRIMARY KEY (`id`, `idEvento`, `idUsuario`, `idAcaoEvento`),
+  INDEX `fk_eventos_has_acoesEventos_acoesEventos1_idx` (`idAcaoEvento` ASC),
+  INDEX `fk_eventos_has_acoesEventos_eventos1_idx` (`idEvento` ASC, `idUsuario` ASC),
+  CONSTRAINT `fk_eventos_has_acoesEventos_eventos1`
+    FOREIGN KEY (`idEvento` , `idUsuario`)
+    REFERENCES `gifty`.`eventos` (`id` , `idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_eventos_has_acoesEventos_acoesEventos1`
+    FOREIGN KEY (`idAcaoEvento`)
+    REFERENCES `gifty`.`acoesEventos` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
