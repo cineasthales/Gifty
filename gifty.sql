@@ -236,7 +236,7 @@ ENGINE = InnoDB;
 -- Table `gifty`.`anuncios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`anuncios` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `imagem` VARCHAR(100) NOT NULL,
   `url` VARCHAR(100) NOT NULL,
   `ativo` TINYINT NOT NULL,
@@ -255,7 +255,7 @@ ENGINE = InnoDB;
 -- Table `gifty`.`tiposInteresses`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`tiposInteresses` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -287,7 +287,7 @@ ENGINE = InnoDB;
 -- Table `gifty`.`cliquesAnuncios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`cliquesAnuncios` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `data` DATE NOT NULL,
   `hora` TIME NOT NULL,
   `idAnuncio` INT NOT NULL,
@@ -312,7 +312,7 @@ ENGINE = InnoDB;
 -- Table `gifty`.`cliquesEmpresas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`cliquesEmpresas` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `data` DATE NOT NULL,
   `hora` TIME NOT NULL,
   `idEmpresa` INT NOT NULL,
@@ -337,7 +337,7 @@ ENGINE = InnoDB;
 -- Table `gifty`.`acoesUsuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`acoesUsuarios` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
