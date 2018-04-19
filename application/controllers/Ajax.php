@@ -11,7 +11,7 @@ class Ajax extends CI_Controller {
             echo 'e-mail já cadastrado';
         }
     }
-    
+
     public function validaNomeUsuario() {
         $nomeUsuario = htmlspecialchars(trim($_GET["nomeUsuario"]));
         $this->load->model('Usuario_Model', 'usuarios');
@@ -19,7 +19,7 @@ class Ajax extends CI_Controller {
             echo 'nome de usuário já cadastrado';
         }
     }
-    
+
     public function validaCpf() {
         $cpf = htmlspecialchars(trim($_GET["cpf"]));
         $this->load->model('Usuario_Model', 'usuarios');
@@ -27,5 +27,5 @@ class Ajax extends CI_Controller {
             echo 'cpf já cadastrado';
         }
     }
-    
+
 }

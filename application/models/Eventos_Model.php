@@ -3,15 +3,13 @@
 class Eventos_Model extends CI_Model {
 
     public function select() {
-        $sql = "SELECT * FROM eventos ORDER BY id";
-        $query = $this->db->query($sql);
-        return $query->result(); // retorna vetor
+        $this->db->order_by('id');
+        return $this->db->get('eventos')->result(); // retorna vetor
     }
 
     public function find($id) {
-        $sql = "SELECT * FROM eventos WHERE id = $id";
-        $query = $this->db->query($sql);
-        return $query->row(); // retoreventosna registro obtido
+        $this->db->where('id', $id);
+        return $this->db->get('eventos')->row(); // retorna registro obtido
     }
 
     public function insert($registro) {

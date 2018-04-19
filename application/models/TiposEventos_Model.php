@@ -3,15 +3,13 @@
 class TiposEventos_Model extends CI_Model {
 
     public function select() {
-        $sql = "SELECT * FROM tiposEventos ORDER BY id";
-        $query = $this->db->query($sql);
-        return $query->result(); // retorna vetor
+        $this->db->order_by('id');
+        return $this->db->get('tiposEventos')->result(); // retorna vetor
     }
 
     public function find($id) {
-        $sql = "SELECT * FROM tiposEventos WHERE id = $id";
-        $query = $this->db->query($sql);
-        return $query->row(); // retoreventosna registro obtido
+        $this->db->where('id', $id);
+        return $this->db->get('tiposEventos')->row(); // retorna registro obtido
     }
 
     public function insert($registro) {

@@ -3,15 +3,13 @@
 class LogEventos_Model extends CI_Model {
 
     public function select() {
-        $sql = "SELECT * FROM logEventos ORDER BY id";
-        $query = $this->db->query($sql);
-        return $query->result(); // retorna vetor
+        $this->db->order_by('id');
+        return $this->db->get('logEventos')->result(); // retorna vetor
     }
 
     public function find($id) {
-        $sql = "SELECT * FROM logEventos WHERE id = $id";
-        $query = $this->db->query($sql);
-        return $query->row(); // retorna registro obtido
+        $this->db->where('id', $id);
+        return $this->db->get('logEventos')->row(); // retorna registro obtido
     }
 
     public function insert($registro) {

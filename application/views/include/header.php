@@ -7,17 +7,17 @@
         <link rel="stylesheet" href="<?= base_url('assets/css/normalize.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/reset.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/grid.css') ?>">
-        <link rel="stylesheet" href="<?= base_url('assets/css/mobile.css') ?>">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?= base_url('assets/css/desktop.css') ?>">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>    
         <header>
             <div class="container">
-                <div class="grid-10">
+                <div class="grid-4">
                     <h1>Gifty <span id="gift">d</span></h1>
                 </div>
-                <div class="grid-6">
+                <div class="grid-12">
                     <p><a href="<?= base_url('home/sair') ?>">Sair</a></p>
                 </div>
             </div>

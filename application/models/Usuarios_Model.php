@@ -3,43 +3,38 @@
 class Usuarios_Model extends CI_Model {
 
     public function select() {
-        $sql = "SELECT * FROM usuarios ORDER BY id";
-        $query = $this->db->query($sql);
-        return $query->result(); // retorna vetor
+        $this->db->order_by('id');
+        return $this->db->get('usuarios')->result(); // retorna vetor
     }
 
     public function find($id) {
-        $sql = "SELECT * FROM usuarios WHERE id = $id";
-        $query = $this->db->query($sql);
-        return $query->row(); // retorna registro obtido
+        $this->db->where('id', $id);
+        return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
 
     public function findEmail($email) {
-        $sql = "SELECT * FROM usuarios WHERE email = '$email'";
-        $query = $this->db->query($sql);
-        $row = $query->row();
-        return isset($row); // retorna true ou false
+        $this->db->where('nomeUsuario', $email);
+        return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
 
     public function findNomeUsuario($nomeUsuario) {
-        $sql = "SELECT * FROM usuarios WHERE nomeUsuario = '$nomeUsuario'";
-        $query = $this->db->query($sql);
-        $row = $query->row();
-        return isset($row); // retorna true ou false
+        $this->db->where('nomeUsuario', $nomeUsuario);
+        return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
-    
+
     public function findCpf($cpf) {
-        $sql = "SELECT * FROM usuarios WHERE cpf = '$cpf'";
-        $query = $this->db->query($sql);
-        $row = $query->row();
-        return isset($row); // retorna true ou false
+        $this->db->where('nomeUsuario', $cpf);
+        return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
-    
+
     public function check($user, $senha) {
-        $sql = "SELECT * FROM usuarios WHERE (email=? AND senha=? AND ativo=1) ";
-        $sql .= "OR (nomeUsuario=? AND senha=? AND ativo=1)";
-        $query = $this->db->query($sql, array($user, $senha, $user, $senha));
-        return $query->row(); // retorna registro obtido
+        $this->db->where('nomeUsuario', $user);
+        $this->db->where('senha', $senha);
+        $this->db->where('ativo', 1);
+        $this->db->or_where('email', $user);
+        $this->db->where('senha', $senha);
+        $this->db->where('ativo', 1);
+        return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
 
     public function insert($registro) {

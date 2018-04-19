@@ -3,15 +3,13 @@
 class Telefones_Model extends CI_Model {
 
     public function select() {
-        $sql = "SELECT * FROM telefones ORDER BY id";
-        $query = $this->db->query($sql);
-        return $query->result(); // retorna vetor
+        $this->db->order_by('id');
+        return $this->db->get('telefones')->result(); // retorna vetor
     }
 
     public function find($id) {
-        $sql = "SELECT * FROM telefones WHERE id = $id";
-        $query = $this->db->query($sql);
-        return $query->row(); // retorna registro obtido
+        $this->db->where('id', $id);
+        return $this->db->get('telefones')->row(); // retorna registro obtido
     }
 
     public function insert($registro) {

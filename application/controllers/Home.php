@@ -18,7 +18,7 @@ class Home extends CI_Controller {
         $this->load->model('usuarios_model', 'usuarios');
         $user = $this->input->post('user');
         $senha = $this->input->post('senha');
-        $verifica = $this->usuarios->check($user, md5($senha), $user, md5($senha));
+        $verifica = $this->usuarios->check($user, md5($senha));
         if (isset($verifica)) {
             $sessao['id'] = $verifica->id;
             $sessao['nome'] = $verifica->nome;
@@ -31,12 +31,12 @@ class Home extends CI_Controller {
             $this->session->set_flashdata('mensagem', $mensagem);
             $this->session->set_flashdata('tipo', $tipo);
         }
-        redirect('home');
+        redirect();
     }
 
     public function sair() {
         $this->session->sess_destroy();
-        redirect('home');
+        redirect();
     }
 
     public function cadastrar() {

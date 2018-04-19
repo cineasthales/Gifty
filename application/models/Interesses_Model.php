@@ -2,16 +2,15 @@
 
 class Interesses_Model extends CI_Model {
 
-    public function select() {
-        $sql = "SELECT * FROM interesses ORDER BY id";
-        $query = $this->db->query($sql);
-        return $query->result(); // retorna vetor
+    public function select() {        
+        $this->db->order_by('idUsuario');
+        return $this->db->get('interesses')->result(); // retorna vetor
     }
 
-    public function find($id) {
-        $sql = "SELECT * FROM interesses WHERE id = $id";
-        $query = $this->db->query($sql);
-        return $query->row(); // retorna registro obtido
+    public function find($idUsuario, $idTipoInteresse) {
+        $this->db->where('idUsuario', $idUsuario);
+        $this->db->where('idTipoInteresse', $idTipoInteresse);        
+        return $this->db->get('interesses')->row(); // retorna registro obtido
     }
 
     public function insert($registro) {
