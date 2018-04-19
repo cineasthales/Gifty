@@ -39,8 +39,7 @@ class Usuarios_Model extends CI_Model {
         $sql = "SELECT * FROM usuarios WHERE (email=? AND senha=? AND ativo=1) ";
         $sql .= "OR (nomeUsuario=? AND senha=? AND ativo=1)";
         $query = $this->db->query($sql, array($user, $senha, $user, $senha));
-        $row = $query->row();
-        return isset($row); // retorna true ou false
+        return $query->row(); // retorna registro obtido
     }
 
     public function insert($registro) {
