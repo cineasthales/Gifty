@@ -1,10 +1,10 @@
-</main>
-
 <footer>
-    <p>por Thales Castro, 2018</p>
+    <div class="container">
+        <div class="grid-16">
+            <p>Desenvolvido por Thales Castro © 2018</p>
+        </div>
+    </div>
 </footer>
 
-</div>
 </body>
 </html>
-

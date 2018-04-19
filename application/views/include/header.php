@@ -14,8 +14,11 @@
     <body>    
         <header>
             <div class="container">
-                <div class="grid-16">
+                <div class="grid-10">
                     <h1>Gifty <span id="gift">d</span></h1>
+                </div>
+                <div class="grid-6">
+                    <p><a href="<?= base_url('home/sair') ?>">Sair</a></p>
                 </div>
             </div>
         </header>

@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`usuarios` (
   `notificaEmail` TINYINT NOT NULL,
   `cpf` VARCHAR(11) NOT NULL,
   `dataNasc` DATE NOT NULL,
-  `sexo` VARCHAR(15) NOT NULL,
+  `genero` VARCHAR(30) NOT NULL,
   `imagem` VARCHAR(100) NOT NULL,
   `nivel` INT(1) NOT NULL,
   `ativo` TINYINT NOT NULL,
