@@ -1,15 +1,15 @@
 @font-face {
     font-family: 'logo';
     src: 
-	url('fonts/MEllis-Regular.otf') 
-	format('opentype');
+        url('fonts/MEllis-Regular.otf') 
+        format('opentype');
 }
 
 @font-face {
     font-family: 'gift';
     src: 
-	url('fonts/Gifts-Icons.ttf') 
-	format('truetype');
+        url('fonts/Gifts-Icons.ttf') 
+        format('truetype');
 }
 
 body {
@@ -39,17 +39,14 @@ h2 {
     font-size: 2em;
 }
 
-article p {
+main p {
     text-align: center;
 }
 
-article a button {
+main a button, main input[type="submit"] {
     text-align: center;
     text-transform: uppercase;
-    font-size: 2em;
-    display: block;
-    margin: 0 auto;
-    padding: 2em;
+    font-size: 1.5em;
     color: purple;
     padding: 0.5em;
     border: 0.1em solid purple;
@@ -59,9 +56,21 @@ article a button {
     transition: background-color 0.25s, color 0.25s;
 }
 
-article a button:hover, article a button:active {
+main a button {
+    display: block;
+    margin: 0 auto;
+    font-size: 2em;
+}
+
+main a button:hover, main a button:active,
+main input[type="submit"]:hover, main input[type="submit"]:active{
     background-color: purple;
     color: white;
+}
+
+main input[type="text"], main input[type="password"], main input[type="email"],
+main input[type="date"], select{
+    width: 90%;
 }
 
 h3 {
@@ -87,7 +96,7 @@ footer {
     color: white;
 }
 
-header input[type="text"], input[type="password"] {
+header input[type="text"], header input[type="password"] {
     display: inline-block;
     width: 100%;
     padding: 0.25em;
@@ -138,3 +147,19 @@ input[readonly] {
     padding-bottom: 1em;
 }
 
+#direita {
+    text-align: right;
+}
+
+.alerta_sucesso {
+    background-color: lightgreen;
+}
+
+.alerta_erro {
+    background-color: lightcoral;
+}
+
+#xis {
+    text-align: right;
+    font-weight: bolder;
+}

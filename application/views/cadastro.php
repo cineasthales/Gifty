@@ -3,9 +3,12 @@
     <article>
         <div class="container">
             <div class="grid-16">
-                <h2>Cadastre-se!</h2>
-                <form method="post" action="#">
-                    <h3>Sobre Você</h3>
+                <h2>Cadastro</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="grid-8">
+                <form method="post" action="<?= base_url('home/grava_cadastro') ?>">
                     <div>
                         <label for="nome">Nome</label> <span class="asterisco">*</span><br>
                         <input type="text" id="nome" name="nome" pattern="[A-Za-z]{,50}" 
@@ -17,9 +20,8 @@
                                maxlength="100" pattern="[A-Za-z]{,100}" required><br><br>
                     </div>
                     <div>
-                        <label for="sexo">Sexo</label> <span class="asterisco">*</span><br>
-                        <select id="sexo" name="sexo">
-                            <option value=""></option>
+                        <label for="genero">Gênero</label> <span class="asterisco">*</span><br>
+                        <select id="genero" name="genero">
                             <option value="Feminino">Feminino</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Outros">Outros</option>
@@ -60,45 +62,46 @@
                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}" maxlength="32"><br><br>
                     </div>
                     <div>
-                        <label for="imagem">Foto de Perfil</label> <span class="asterisco">*</span><br>
-                        <input type="file" id="imagem" name="imagem" accept=".gif, .jpg, .jpeg, .png" required><br><br>
-                    </div>       
-                    <br><h3>Seu Endereço</h3>
-                    <div>
-                        <label for="CEP">CEP</label> <span class="asterisco">*</span><br>
-                        <small>Apenas os 8 números.</small><br>
-                        <input type="text" id="cep" name="cep" required title="Apenas os 8 números."
-                               title="Apenas números." pattern="[0-9]{8}" maxlength="8"><br><br>
+                        <label for="imagem">Foto de Perfil</label><br>
+                        <input type="file" id="imagem" name="imagem" accept=".gif, .jpg, .jpeg, .png"><br><br>
                     </div>
-                    <div>
-                        <label for="logradouro">Logradouro</label><br>
-                        <input type="text" id="logradouro" name="logradouro" required readonly><br><br>
-                    </div>
-                    <div>
-                        <label for="numero">Número</label> <span class="asterisco">*</span><br>
-                        <input type="text" id="numero" name="numero" required
-                               pattern="[0-9]{,12}" maxlength="12"><br><br>
-                    </div>
-                    <div>
-                        <label for="complemento">Complemento</label><br>
-                        <input type="text" id="complemento" name="complemento"
-                               pattern="[A-Za-z0-9]{,100}" maxlength="100"><br><br>
-                    </div>
-                    <div>
-                        <label for="bairro">Bairro</label><br>
-                        <input type="text" id="bairro" name="bairro" required readonly><br><br>
-                    </div>
-                    <div>
-                        <label for="cidade">Cidade</label><br>
-                        <input type="text" id="cidade" name="cidade" required readonly><br><br>
-                    </div>
-                    <div>
-                        <label for="estado">Estado</label><br>
-                        <input type="text" id="estado" name="estado" required readonly><br><br>
-                    </div>            
-                    <div>  
-                        <input type="submit" value="Enviar"><br><br>
-                    </div>
+            </div>
+            <div class="grid-8">
+                <div>
+                    <label for="CEP">CEP</label> <span class="asterisco">*</span><br>
+                    <small>Apenas os 8 números.</small><br>
+                    <input type="text" id="cep" name="cep" required title="Apenas os 8 números."
+                           title="Apenas números." pattern="[0-9]{8}" maxlength="8"><br><br>
+                </div>
+                <div>
+                    <label for="logradouro">Logradouro</label><br>
+                    <input type="text" id="logradouro" name="logradouro" required readonly><br><br>
+                </div>
+                <div>
+                    <label for="numero">Número</label> <span class="asterisco">*</span><br>
+                    <input type="text" id="numero" name="numero" required
+                           pattern="[0-9]{,12}" maxlength="12"><br><br>
+                </div>
+                <div>
+                    <label for="complemento">Complemento</label><br>
+                    <input type="text" id="complemento" name="complemento"
+                           pattern="[A-Za-z0-9]{,100}" maxlength="100"><br><br>
+                </div>
+                <div>
+                    <label for="bairro">Bairro</label><br>
+                    <input type="text" id="bairro" name="bairro" required readonly><br><br>
+                </div>
+                <div>
+                    <label for="cidade">Cidade</label><br>
+                    <input type="text" id="cidade" name="cidade" required readonly><br><br>
+                </div>
+                <div>
+                    <label for="estado">Estado</label><br>
+                    <input type="text" id="estado" name="estado" required readonly><br><br>
+                </div>            
+                <div>  
+                    <input type="submit" value="Enviar"><br><br>
+                </div>
                 </form>
             </div>
         </div>

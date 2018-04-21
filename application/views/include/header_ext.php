@@ -14,17 +14,17 @@
     <body>    
         <header>
             <div class="container">
-                <div class="grid-4">
+                <div class="grid-5">
                     <h1>Gifty <span id="gift">d</span></h1>
                 </div>
                 <form method="post" action="<?= base_url('home/logar') ?>">
-                    <div class="grid-4">
+                    <div class="grid-5">
                         <br>
                         <label for="user" hidden><i class="fas fa-user"></i></label>
                         <input type="text" id="user" name="user"
                                placeholder="Nome de Usuário ou E-mail">
                     </div>
-                    <div class="grid-3">
+                    <div class="grid-4">
                         <br>
                         <label for="senha" hidden><i class="fas fa-lock"></i></label>
                         <input type="password" id="senha" name="senha"
@@ -33,12 +33,10 @@
                     <div class="grid-2">
                         <br>
                         <input type="submit" value="Entrar" id="btEntrar">
+                        <br>
+                        <small><a href="#">Esqueci a senha</a></small>
                     </div>
                 </form>
-                <div class="grid-3">
-                    <br>
-                    <small><a href="#">Esqueci a senha</a></small>
-                </div>
             </div>
         </div>
     </header>

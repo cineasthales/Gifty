@@ -3,18 +3,22 @@
         <div class="container">
             <div class="grid-16">
                 <h2>Perfil</h2>
-                <img src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>" 
+            </div>
+            <div class="grid-6">
+                <img src="<?= base_url('assets/img/misc/generic-profile.jpg') ?>" 
                      alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
+            </div>
+            <div class="grid-10">
                 <ul>
-                    <li>Nome: <?= $usuario->nome ?> <?= $usuario->sobrenome ?></li>
-                    <li>Data de Nascimento: <?= date_format(date_create($usuario->dataNasc), 'd/m/Y') ?></li>
+                    <li><i class="fas fa-user"></i> <?= $usuario->nome ?> <?= $usuario->sobrenome ?></li>
+                    <li><i class="fas fa-birthday-cake"></i> <?= date_format(date_create($usuario->dataNasc), 'd/m/Y') ?></li>
                     <li>Gênero: <?= $usuario->genero ?></li>
-                    <li>CPF: <?=
+                    <li><i class="fas fa-id-card"></i> <?=
                             substr($usuario->cpf, 0, 3) . '.' . substr($usuario->cpf, 3, 3) . '.'
                             . substr($usuario->cpf, 6, 3) . '-' . substr($usuario->cpf, 9, 2)
                             ?></li>
                     <li>Nome de Usuário: <?= $usuario->nomeUsuario ?></li>
-                    <li>E-mail: <?= $usuario->email ?></li>                    
+                    <li><i class="fas fa-at"></i> <?= $usuario->email ?></li>                    
                 </ul>      
             </div>
         </div>

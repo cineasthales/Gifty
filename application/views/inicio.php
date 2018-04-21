@@ -7,15 +7,29 @@
         $tipo = $this->session->flashdata('tipo');
         // if ($tipo==1)
         if ($tipo) {
-            echo "<article><div class='container'>";
-            echo "<div class='grid-16'>";
-            echo "<div class='alerta_sucesso'>";
-            echo $mensagem . "</div></div></div></article>";
-        } else {
-            echo "<article><div class='container'>";
-            echo "<div class='grid-16'>";
-            echo "<div class='alerta_erro'>";
-            echo "<strong>Erro. </strong>" . $mensagem . "</div></div></div></article>";
+            ?>
+            <article class="alerta_sucesso">
+                <div class="container">
+                        <div class="grid-15">
+                            <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
+                        </div>
+                        <div class="grid-1">
+                            <small id="xis"><a href="#">X</a></small>
+                        </div>
+                </div>
+            </article>
+        <?php } else { ?>
+            <article class="alerta_erro">
+                <div class="container">
+                        <div class="grid-15">
+                            <small><strong>Erro.</strong> <?= $mensagem ?></small>
+                        </div>
+                        <div class="grid-1">
+                            <small id="xis"><a href="#">X</a></small>
+                        </div>
+                </div>
+            </article>
+            <?php
         }
     }
     ?>

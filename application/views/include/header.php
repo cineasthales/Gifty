@@ -14,11 +14,14 @@
     <body>    
         <header>
             <div class="container">
-                <div class="grid-4">
+                <div class="grid-5">
                     <h1>Gifty <span id="gift">d</span></h1>
                 </div>
-                <div class="grid-12">
-                    <p><a href="<?= base_url('home/sair') ?>">Sair</a></p>
+                <div class="grid-11">
+                    <div id="direita">
+                        <br>
+                        <small><a href="<?= base_url('home/sair') ?>">Sair</a></small>
+                    </div>
                 </div>
             </div>
         </header>

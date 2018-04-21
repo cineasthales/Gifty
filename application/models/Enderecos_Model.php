@@ -11,7 +11,12 @@ class Enderecos_Model extends CI_Model {
         $this->db->where('id', $id);
         return $this->db->get('enderecos')->row(); // retorna registro obtido
     }
-    
+
+    public function last() {
+        $this->db->order_by('id DESC');
+        return $this->db->get('enderecos', 1)->row(); // retorna registro obtido        
+    }
+
     public function insert($registro) {
         return $this->db->insert('enderecos', $registro);
     }
