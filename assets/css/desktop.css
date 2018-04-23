@@ -163,3 +163,28 @@ input[readonly] {
     text-align: right;
     font-weight: bolder;
 }
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: right;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0.75em 1em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover, nav ul li a:active {
+    background-color: white;
+    color: purple;
+}

@@ -6,7 +6,7 @@ class Home extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {
-            redirect('usuario');
+            redirect('dashboard');
         } else {
             $this->load->view('include/header_ext');
             $this->load->view('inicio');
