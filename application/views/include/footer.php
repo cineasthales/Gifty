@@ -1,7 +1,13 @@
 <footer>
     <div class="container">
         <div class="grid-16">
-            <p>Desenvolvido por Thales Castro © 2018</p>
+            <ul>
+                <li><small><a href="#">Sobre o Gifty</a></small></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li><small><a href="#">Novidades</a></small></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li><small><a href="#">Quem somos</a></small></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li><small><a href="#">Contato</a></small></li>                
+            </ul>
+            <br>
         </div>
     </div>
 </footer>

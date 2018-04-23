@@ -37,7 +37,7 @@
         <div class="container">
             <div class="grid-16">
                 <h2>Listas de presentes personalizadas</h2>
-                <a href="<?= base_url('home/cadastrar') ?>"><button>Cadastre-se</button></a>
+                <button><a href="<?= base_url('home/cadastrar') ?>">Cadastre-se</a></button>
             </div>
         </div>
     </article>

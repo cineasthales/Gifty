@@ -6,10 +6,13 @@ class Home extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {
-            redirect('dashboard');
+            redirect('usuario/inicio');
+        } else
+        if ($this->session->logado_admin == true) {
+            redirect('admin/dashboard');
         } else {
             $this->load->view('include/header_ext');
-            $this->load->view('inicio');
+            $this->load->view('home');
             $this->load->view('include/footer');
         }
     }
@@ -20,10 +23,15 @@ class Home extends CI_Controller {
         $senha = $this->input->post('senha');
         $verifica = $this->usuarios->check($user, md5($senha));
         if (isset($verifica)) {
+            if ($verifica->nivel == 0) {
+                $sessao['logado'] = true;
+                $sessao['logado_admin'] = false;
+            } else {
+                $sessao['logado'] = false;
+                $sessao['logado_admin'] = true;
+            }
             $sessao['id'] = $verifica->id;
             $sessao['nome'] = $verifica->nome;
-            $sessao['nivel'] = $verifica->nivel;
-            $sessao['logado'] = true;
             $this->session->set_userdata($sessao);
         } else {
             $mensagem = "Nome de usuário, e-mail e/ou senha incorretos.";

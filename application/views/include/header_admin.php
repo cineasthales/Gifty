@@ -15,31 +15,18 @@
     <body>    
         <header>
             <div class="container">
-                <div class="grid-5">
+                <div class="grid-4">
                     <h1><a href="<?= base_url() ?>">
                             <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty"></a></h1>
                 </div>
-                <form method="post" action="<?= base_url('home/logar') ?>">
-                    <div class="grid-5">
-                        <br>
-                        <label for="user" hidden><i class="fas fa-user"></i></label>
-                        <input type="text" id="user" name="user"
-                               placeholder="Nome de Usuário ou E-mail">
-                    </div>
-                    <div class="grid-4">
-                        <br>
-                        <label for="senha" hidden><i class="fas fa-lock"></i></label>
-                        <input type="password" id="senha" name="senha"
-                               placeholder="Senha">
-                        <br>
-                        <small><a href="#">Esqueci a senha</a></small>
-                    </div>
-                    <div class="grid-2">
-                        <br>
-                        <input type="submit" value="Entrar" id="btEntrar">
-
-                    </div>
-                </form>
+                <div class="grid-10">
+                    <br>
+                    <small>Administrador</small>
+                </div>
+                <div class="grid-2">
+                    <small><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></small>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>

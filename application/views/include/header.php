@@ -4,6 +4,7 @@
         <title>Gifty</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/img/misc/favicon.png') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/normalize.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/reset.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/grid.css') ?>">
@@ -23,11 +24,11 @@
                         <br>
                         <ul>
                             <li><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
-                            <li><a href="<?= base_url('configuracoes') ?>"><i class="fas fa-cog"></i> Configurações</a></li>
-                            <li><a href="<?= base_url('perfil') ?>"><i class="fas fa-user"></i> Perfil</a></li>
-                            <li><a href="<?= base_url('amigos') ?>"><i class="fas fa-users"></i> Amigos</a></li>                            
-                            <li><a href="<?= base_url('listas') ?>"><i class="fas fa-list-ul"></i> Listas</a></li>
-                            <li><a href="<?= base_url('dashboard') ?>"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                            <li><a href="<?= base_url('usuario/configuracoes') ?>"><i class="fas fa-cog"></i> Configurações</a></li>
+                            <li><a href="<?= base_url('usuario/perfil') ?>"><i class="fas fa-user"></i> Perfil</a></li>
+                            <li><a href="<?= base_url('usuario/amigos') ?>"><i class="fas fa-users"></i> Amigos</a></li>                            
+                            <li><a href="<?= base_url('usuario/listas') ?>"><i class="fas fa-list-ul"></i> Listas</a></li>
+                            <li><a href="<?= base_url('usuario/inicio') ?>"><i class="fas fa-home"></i> Início</a></li>
                         </ul>
                     </div>
                 </nav>

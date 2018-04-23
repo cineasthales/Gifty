@@ -124,7 +124,8 @@ INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
    cpf, dataNasc, genero, imagem, nivel, ativo, tentaLogin, idEndereco)
 VALUES
-('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 1, '80606784004', '1989-06-24', 'Masculino', '1', 2, 1, 0, 1);
+('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '1', 1, 1, 0, 1);
+('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1995-01-01', 'Feminino', '1', 0, 1, 0, 1);
 
 /*
 ('', '', '', '', '',, '', '', '', '',,,,),
