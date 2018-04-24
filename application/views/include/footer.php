@@ -1,6 +1,6 @@
 <footer>
-    <div class="container">
-        <div class="grid-16">
+    <div class="row">
+        <div class="col-16">
             <ul>
                 <li><small><a href="#">Sobre o Gifty</a></small></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <li><small><a href="#">Novidades</a></small></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

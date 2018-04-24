@@ -1,13 +1,13 @@
 <script src="<?= base_url('assets/js/ajax.js') ?>"></script>
 <main>
     <article>
-        <div class="container">
-            <div class="grid-16">
+        <div class="row">
+            <div class="col-12">
                 <h2>Cadastro</h2>
             </div>
         </div>
-        <div class="container">
-            <div class="grid-8">
+        <div class="row">
+            <div class="col-6">
                 <form method="post" action="<?= base_url('home/grava_cadastro') ?>">
                     <div>
                         <label for="nome">Nome</label> <span class="asterisco">*</span><br>
@@ -66,7 +66,7 @@
                         <input type="file" id="imagem" name="imagem" accept=".gif, .jpg, .jpeg, .png"><br><br>
                     </div>
             </div>
-            <div class="grid-8">
+            <div class="col-6">
                 <div>
                     <label for="CEP">CEP</label> <span class="asterisco">*</span><br>
                     <small>Apenas os 8 números.</small><br>

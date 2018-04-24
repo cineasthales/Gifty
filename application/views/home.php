@@ -9,22 +9,22 @@
         if ($tipo) {
             ?>
             <article class="alerta_sucesso">
-                <div class="container">
-                        <div class="grid-15">
+                <div class="row">
+                        <div class="col-11">
                             <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
                         </div>
-                        <div class="grid-1">
+                        <div class="col-1">
                             <small id="xis"><a href="#">X</a></small>
                         </div>
                 </div>
             </article>
         <?php } else { ?>
             <article class="alerta_erro">
-                <div class="container">
-                        <div class="grid-15">
+                <div class="row">
+                        <div class="col-11">
                             <small><strong>Erro.</strong> <?= $mensagem ?></small>
                         </div>
-                        <div class="grid-1">
+                        <div class="col-1">
                             <small id="xis"><a href="#">X</a></small>
                         </div>
                 </div>
@@ -34,17 +34,17 @@
     }
     ?>
     <article>
-        <div class="container">
-            <div class="grid-16">
-                <h2>Listas de presentes personalizadas</h2>
+        <div class="row">
+            <div class="col-12">
+                <h1>Listas de presentes personalizadas</h1>
                 <button><a href="<?= base_url('home/cadastrar') ?>">Cadastre-se</a></button>
             </div>
         </div>
     </article>
     <article class="fundoAlt">
-        <div class="container">
-            <div class="grid-16">
-                <h2>Para qualquer evento particular</h2>
+        <div class="row">
+            <div class="col-12">
+                <h1>Para qualquer evento particular</h1>
                 <p>Mussum Ipsum, cacilds vidis litro abertis. Delegadis gente finis, 
                     bibendum egestas augue arcu ut est. Cevadis im ampola pa arma uma 
                     pindureta. Nullam volutpat risus nec leo commodo, ut interdum diam 
@@ -54,9 +54,9 @@
         </div>
     </article>
     <article>
-        <div class="container">
-            <div class="grid-16">
-                <h2>O que você vai ganhar ainda será um segredo</h2>
+        <div class="row">
+            <div class="col-12">
+                <h1>O que você vai ganhar ainda será um segredo</h1>
                 <p>Mussum Ipsum, cacilds vidis litro abertis. Delegadis gente finis, 
                     bibendum egestas augue arcu ut est. Cevadis im ampola pa arma uma 
                     pindureta. Nullam volutpat risus nec leo commodo, ut interdum diam 
@@ -66,9 +66,9 @@
         </div>
     </article>
     <article class="fundoAlt">
-        <div class="container" >
-            <div class="grid-16">
-                <h2>Nunca mais erre o presente</h2>
+        <div class="row" >
+            <div class="col-12">
+                <h1>Nunca mais erre o presente</h1>
                 <p>Mussum Ipsum, cacilds vidis litro abertis. Delegadis gente finis, 
                     bibendum egestas augue arcu ut est. Cevadis im ampola pa arma uma 
                     pindureta. Nullam volutpat risus nec leo commodo, ut interdum diam 

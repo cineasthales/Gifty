@@ -14,13 +14,13 @@
     </head>
     <body>    
         <header>
-            <div class="container">
-                <div class="grid-4">
+            <div class="row">
+                <div class="col-3">
                     <h1><a href="<?= base_url() ?>">
                             <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty"></a></h1>
                 </div>
                 <nav>
-                    <div class="grid-12">
+                    <div class="col-9">
                         <br>
                         <ul>
                             <li><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>

@@ -1,10 +1,10 @@
 <main>
     <article>
-        <div class="container">
-            <div class="grid-16">
+        <div class="row">
+            <div class="col-12">
                 <h2>Amigos</h2>
             </div>
-            <div class="grid-16">
+            <div class="col-12">
                 <p>Bem-vindo!</p>
             </div>            
         </div>

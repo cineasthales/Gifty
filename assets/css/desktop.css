@@ -1,3 +1,5 @@
+/* FONTES */
+
 @font-face {
     font-family: 'logo';
     src: 
@@ -12,29 +14,42 @@
         format('truetype');
 }
 
+/* GRID */
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* TUDO */
+
 body {
     font-family: sans-serif;
     font-size: 1em;
     background-color: purple;
 }
 
-h1 {
-    font-size: 3.5em;
-    font-family: 'logo';
-}
-
-#gift {
-    font-family: 'gift';
-}
-
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     color: #339900;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
 
-h2 {
+h1 {
     text-align: center;
     font-size: 2em;
 }
@@ -79,10 +94,6 @@ main input[type="text"], main input[type="password"], main input[type="email"],
 main input[type="date"], select {
     width: 90%;
 }
-
-h3 {
-    font-size: 1.5em;
-} 
 
 header {    
     color: white;
@@ -201,4 +212,26 @@ footer ul {
 
 footer ul li {
     display: inline;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 960px) {
+    /* For desktop: */
+    .row{width: 960px; margin: 0 auto;}
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
 }

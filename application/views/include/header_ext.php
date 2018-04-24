@@ -7,35 +7,34 @@
         <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/img/misc/favicon.png') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/normalize.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/reset.css') ?>">
-        <link rel="stylesheet" href="<?= base_url('assets/css/grid.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/desktop.css') ?>">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>    
         <header>
-            <div class="container">
-                <div class="grid-5">
+            <div class="row">
+                <div class="col-3">
                     <h1><a href="<?= base_url() ?>">
                             <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty"></a></h1>
                 </div>
                 <form method="post" action="<?= base_url('home/logar') ?>">
-                    <div class="grid-5">
-                        <br>
+                    <div class="col-4">
+                        <br><br>
                         <label for="user" hidden><i class="fas fa-user"></i></label>
                         <input type="text" id="user" name="user"
                                placeholder="Nome de Usuário ou E-mail">
                     </div>
-                    <div class="grid-4">
-                        <br>
+                    <div class="col-3">
+                        <br><br>
                         <label for="senha" hidden><i class="fas fa-lock"></i></label>
                         <input type="password" id="senha" name="senha"
                                placeholder="Senha">
                         <br>
                         <small><a href="#">Esqueci a senha</a></small>
                     </div>
-                    <div class="grid-2">
-                        <br>
+                    <div class="col-2">
+                        <br><br>
                         <input type="submit" value="Entrar" id="btEntrar">
                     </div>
                 </form>

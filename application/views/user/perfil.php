@@ -1,14 +1,14 @@
 <main>
     <article>
-        <div class="container">
-            <div class="grid-16">
+        <div class="row">
+            <div class="col-12">
                 <h2>Perfil</h2>
             </div>
-            <div class="grid-6">
+            <div class="col-3">
                 <img src="<?= base_url('assets/img/misc/generic-profile.jpg') ?>" 
                      alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
             </div>
-            <div class="grid-10">
+            <div class="col-9">
                 <ul>
                     <li><i class="fas fa-user"></i> <?= $usuario->nome ?> <?= $usuario->sobrenome ?></li>
                     <li><i class="fas fa-birthday-cake"></i> <?= date_format(date_create($usuario->dataNasc), 'd/m/Y') ?></li>
