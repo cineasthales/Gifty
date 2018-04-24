@@ -19,13 +19,14 @@
                     <h1><a href="<?= base_url() ?>">
                             <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty"></a></h1>
                 </div>
-                <div class="grid-10">
-                    <br>
-                    <small>Administrador</small>
-                </div>
-                <div class="grid-2">
-                    <small><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></small>
-                </div>
+                <nav>
+                    <div class="grid-12">
+                        <br>
+                        <ul>
+                            <li><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </div>
     </div>
