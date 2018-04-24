@@ -17,15 +17,23 @@
 /* GRID */
 
 *, *:before, *:after {
-  -webkit-box-sizing: border-box; 
-  -moz-box-sizing: border-box; 
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+.row {
+    margin: 0 auto;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .row::after {
     content: "";
     clear: both;
     display: table;
+    padding: 0px;
+    position: relative;
 }
 
 [class*="col-"] {
@@ -34,7 +42,7 @@
     padding-right: 10px;
 }
 
-/* TUDO */
+/* GERAL */
 
 body {
     font-family: sans-serif;
@@ -45,7 +53,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     color: #339900;
-    padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
 
@@ -54,11 +61,21 @@ h1 {
     font-size: 2em;
 }
 
-main p {
+input[readonly] {
+    background-color: lightgray;
+}
+
+/* PRINCIPAL */
+
+main section {
+    background-color: white;
+}
+
+main section p {
     text-align: center;
 }
 
-main button {
+main section button {
     background-color: transparent;
     display: block;
     margin: 0 auto;
@@ -66,7 +83,7 @@ main button {
     border: 0;
 }
 
-main button a, main input[type="submit"] {
+main section button a, main section input[type="submit"] {
     text-align: center;
     text-transform: uppercase;
     font-size: 1.5em;
@@ -79,38 +96,35 @@ main button a, main input[type="submit"] {
     transition: background-color 0.25s, color 0.25s;
 }
 
-main button a {
+main section button a {
     display: block;
     font-size: 2em;
 }
 
-main button a:hover, main button a:active,
-main input[type="submit"]:hover, main input[type="submit"]:active{
+main section button a:hover, main section button a:active,
+main section input[type="submit"]:hover, main section input[type="submit"]:active {
     background-color: purple;
     color: white;
 }
 
-main input[type="text"], main input[type="password"], main input[type="email"],
-main input[type="date"], select {
-    width: 90%;
+main section input[type="text"], main section input[type="password"], main section input[type="email"],
+main section input[type="date"], select {
+    width: 100%;
+    border: 0.1em solid black;
 }
+
+.fundoAlt {
+    background-color: #339900;
+    color: white;
+}
+
+.fundoAlt h1 {
+    color: white;
+}
+
+/* CABEÇALHO */
 
 header {    
-    color: white;
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-article {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    background-color: white;
-}
-
-footer {
-    padding-top: 2em;
-    padding-bottom: 1em;
-    text-align: center;
     color: white;
 }
 
@@ -147,41 +161,6 @@ header a:hover, header a:active, footer a:hover, footer a:active {
     text-decoration: none;
 }
 
-input[readonly] {
-    background-color: lightgray;
-}
-
-.fundoAlt {
-    background-color: #339900;
-    color: white;
-}
-
-.fundoAlt h2 {
-    color: white;
-}
-
-.container {
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-#direita {
-    text-align: right;
-}
-
-.alerta_sucesso {
-    background-color: lightgreen;
-}
-
-.alerta_erro {
-    background-color: lightcoral;
-}
-
-#xis {
-    text-align: right;
-    font-weight: bolder;
-}
-
 header nav ul {
     list-style-type: none;
     margin: 0;
@@ -206,6 +185,17 @@ header nav ul li a:hover, header nav ul li a:active {
     color: purple;
 }
 
+#logo {
+    float: left;
+}
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+    color: white;
+}
+
 footer ul {
     text-align: center;    
 }
@@ -214,14 +204,29 @@ footer ul li {
     display: inline;
 }
 
-/* For mobile phones: */
+/* ALERTAS */
+
+.alerta_sucesso {
+    background-color: lightgreen;
+}
+
+.alerta_erro {
+    background-color: lightcoral;
+}
+
+#xis {
+    text-align: right;
+    font-weight: bolder;
+}
+
+/* Para dispositivos móveis */
 [class*="col-"] {
     width: 100%;
 }
 
-@media only screen and (min-width: 960px) {
-    /* For desktop: */
-    .row{width: 960px; margin: 0 auto;}
+/* Para computadores */
+@media all and (min-width: 960px) {    
+    .row {width: 960px;}
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}

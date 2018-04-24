@@ -7,8 +7,7 @@
         <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/img/misc/favicon.png') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/normalize.css') ?>">
         <link rel="stylesheet" href="<?= base_url('assets/css/reset.css') ?>">
-        <link rel="stylesheet" href="<?= base_url('assets/css/grid.css') ?>">
-        <link rel="stylesheet" href="<?= base_url('assets/css/desktop.css') ?>">
+        <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
@@ -16,11 +15,11 @@
         <header>
             <div class="row">
                 <div class="col-3">
-                    <h1><a href="<?= base_url() ?>">
-                            <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty"></a></h1>
+                    <a href="<?= base_url() ?>">
+                        <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty" id="logo"></a>
                 </div>
-                <nav>
-                    <div class="col-9">
+                <div class="col-9">
+                    <nav>
                         <br>
                         <ul>
                             <li><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
@@ -30,8 +29,8 @@
                             <li><a href="<?= base_url('usuario/listas') ?>"><i class="fas fa-gift"></i> Listas</a></li>
                             <li><a href="<?= base_url('usuario/inicio') ?>"><i class="fas fa-home"></i> Início</a></li>
                         </ul>
-                    </div>
-                </nav>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
