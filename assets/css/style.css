@@ -226,7 +226,7 @@ footer ul li {
 
 /* Para computadores */
 @media all and (min-width: 960px) {    
-    .row {width: 960px;}
+    .row {width: 70%;}
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}
@@ -240,3 +240,10 @@ footer ul li {
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
 }
+
+/*aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}*/

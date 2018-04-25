@@ -37,6 +37,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>Listas de presentes personalizadas</h1>
+                <p>Organize seu evento, monte sua lista e convide seus amigos. Tudo gratuitamente. </p><br>
                 <button><a href="<?= base_url('home/cadastrar') ?>">Cadastre-se</a></button>
             </div>
         </div>
