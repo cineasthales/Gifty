@@ -1,7 +1,7 @@
 <script src="<?= base_url('assets/js/ajax.js') ?>"></script>
 <main>
     <section>
-        <div class="row">
+        <div class="row"> 
             <div class="col-12">
                 <h1>Cadastro</h1>
             </div>

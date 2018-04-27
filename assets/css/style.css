@@ -22,13 +22,13 @@
     box-sizing: border-box;
 }
 
-.row {
+.row, .row-plus {
     margin: 0 auto;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
-.row::after {
+.row::after, .row-plus::after {
     content: "";
     clear: both;
     display: table;
@@ -67,15 +67,15 @@ input[readonly] {
 
 /* PRINCIPAL */
 
-main section {
+section {
     background-color: white;
 }
 
-main section p {
+section p {
     text-align: center;
 }
 
-main section button {
+section button {
     background-color: transparent;
     display: block;
     margin: 0 auto;
@@ -83,7 +83,7 @@ main section button {
     border: 0;
 }
 
-main section button a, main section input[type="submit"] {
+section button a, section input[type="submit"] {
     text-align: center;
     text-transform: uppercase;
     font-size: 1.5em;
@@ -96,19 +96,19 @@ main section button a, main section input[type="submit"] {
     transition: background-color 0.25s, color 0.25s;
 }
 
-main section button a {
+section button a {
     display: block;
     font-size: 2em;
 }
 
-main section button a:hover, main section button a:active,
-main section input[type="submit"]:hover, main section input[type="submit"]:active {
+section button a:hover, section button a:active,
+section input[type="submit"]:hover, section input[type="submit"]:active {
     background-color: purple;
     color: white;
 }
 
-main section input[type="text"], main section input[type="password"], main section input[type="email"],
-main section input[type="date"], select {
+section input[type="text"], section input[type="password"], section input[type="email"],
+section input[type="date"], select {
     width: 100%;
     border: 0.1em solid black;
 }
@@ -227,6 +227,7 @@ footer ul li {
 /* Para computadores */
 @media all and (min-width: 960px) {    
     .row {width: 70%;}
+    .row-plus {margin-left: 25%; width: 70%;}
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}
@@ -241,9 +242,27 @@ footer ul li {
     .col-12 {width: 100%;}
 }
 
-/*aside {
-    position: absolute;
-    top: 0;
-    left: 0;
+aside ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #4d004d;
+    position: fixed;
     height: 100%;
-}*/
+    width: 20%;
+    overflow: auto;
+    box-shadow: 5px 0px 15px black;
+}
+
+aside li a {
+    font-weight: bold;
+    display: block;
+    color: white;
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
+
+aside li a:hover, aside li a:active {
+    background-color: white;
+    color: #4d004d;
+}

@@ -11,6 +11,7 @@ class Home extends CI_Controller {
         if ($this->session->logado_admin == true) {
             redirect('admin/dashboard');
         } else {
+            $this->load->view('include/head');
             $this->load->view('include/header_ext');
             $this->load->view('home');
             $this->load->view('include/footer');
@@ -49,6 +50,7 @@ class Home extends CI_Controller {
 
     public function cadastrar() {
         $this->session->sess_destroy();
+        $this->load->view('include/head');
         $this->load->view('include/header_ext');
         $this->load->view('cadastro');
         $this->load->view('include/footer');

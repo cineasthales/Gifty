@@ -1,5 +1,5 @@
 <footer>
-    <div class="row">
+    <div class="row-plus">
         <div class="col-12">
             <ul>
                 <li><small><a href="#">Sobre o Gifty</a></small></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -8,7 +8,8 @@ class Perfil extends CI_Controller {
         if ($this->session->logado == true) {
             $this->load->model('usuarios_model', 'usuarios');
             $dados['usuario'] = $this->usuarios->find($this->session->id);
-            $this->load->view('include/header');
+            $this->load->view('include/head');
+            $this->load->view('include/header_user');
             $this->load->view('user/perfil', $dados);
             $this->load->view('include/footer');
         } else {
