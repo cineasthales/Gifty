@@ -33,7 +33,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row">
             <div class="col-12">
-                <h1>Listas de presentes personalizadas</h1>
+                <h1 class="homeh1">Listas de presentes personalizadas</h1>
                 <p>Organize seu evento, monte sua lista e convide seus amigos. Tudo gratuitamente. </p><br>
                 <button><a href="<?= base_url('home/cadastrar') ?>">Cadastre-se</a></button>
             </div>
@@ -42,7 +42,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section class="fundoAlt">
         <div class="row">
             <div class="col-12">
-                <h1>Nunca mais erre o presente</h1>
+                <h1 class="homeh1">Nunca mais erre o presente</h1>
                 <p>Gifty foi projetado para que você saiba exatamente que presentes
                     escolher, sem riscos de constrangimentos ou de repetições.</p>
             </div>       
@@ -51,7 +51,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row">
             <div class="col-12">
-                <h1>O que você vai ganhar ainda será um segredo</h1>
+                <h1 class="homeh1">O que você vai ganhar ainda será um segredo</h1>
                 <p>Os seus convidados marcam os itens comprados, mas você não fica
                     sabendo quem comprou e o que foi comprado.</p>
             </div>
@@ -60,7 +60,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section class="fundoAlt">
         <div class="row">
             <div class="col-12">
-                <h1>Sem mais listas em lojas específicas</h1>
+                <h1 class="homeh1">Sem mais listas em lojas específicas</h1>
                 <p>Não importa se for casamento, formatura, aniversário ou qualquer
                     outro evento particular. Você e seus convidados não precisam mais ficar
                     sujeitos às opções de uma mesma loja.</p>

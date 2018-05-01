@@ -10,7 +10,6 @@ class Amizades extends CI_Controller {
             $this->load->view('include/head');
             $this->load->view('include/header_admin'); 
             $this->load->view('admin/amizades/list');
-            $this->load->view('include/footer_admin');
         } else {
             redirect();
         }

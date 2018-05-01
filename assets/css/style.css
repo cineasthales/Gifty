@@ -57,8 +57,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    text-align: center;
     font-size: 2em;
+}
+
+h2 {
+    color: purple;
 }
 
 input[readonly] {
@@ -120,6 +123,10 @@ section input[type="date"], select {
 
 .fundoAlt h1 {
     color: white;
+}
+
+.homeh1 {
+    text-align: center;
 }
 
 /* CABEÇALHO */
@@ -265,4 +272,14 @@ aside li a {
 aside li a:hover, aside li a:active {
     background-color: white;
     color: #4d004d;
+}
+
+.bt {
+    margin: 0;
+    display: inline-block;
+    float: right;
+}
+
+.bt a {
+    font-size: 1em;
 }
