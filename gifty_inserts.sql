@@ -89,86 +89,72 @@ VALUES
 ('atualizou os telefones'),
 ('atualizou os interesses');
 
-/*
 INSERT INTO empresas
 (razaoSocial, nomeFantasia, cnpj, email, logomarca, site, ativa)
 VALUES
-('', '', '', '', '', '',),
-('', '', '', '', '', '',),
-('', '', '', '', '', '',),
-('', '', '', '', '', '',),
-('', '', '', '', '', '',);
-*/
+('B2W - Companhia Digital', 'Americanas.com', '00.776.574/0006-60', 'atendimento.acom@americanas.com', 'logo_americanas.png', 'http://www.americanas.com.br', 0),
+('Via Varejo', 'Casas Bahia', '33.041.260/0652-90', 'sac@casasbahia.com.br', 'logo_casasbahia.png', 'http://www.casasbahia.com.br', 0),
+('Saraiva e Siciliano S/A', 'Livraria Saraiva', '61.365.284/0001-04', '', 'logo_saraiva.png', 'http://www.saraiva.com.br', 0);
 
 INSERT INTO enderecos
 (cep, logradouro, numero, complemento, bairro, cidade, estado)
 VALUES
-('96077010', 'Rua Alberto Pimentel', 317,'', 'Areal', 'Pelotas', 'RS');
-/*
-('', '',,'','','',''),
-('', '',,'','','',''),
-('', '',,'','','',''),
-('', '',,'','','','');
+('96077010', 'Rua Alberto Pimentel', 317,'', 'Areal', 'Pelotas', 'RS'),
+('96020000', 'Rua General Osório', 1125, '', 'Centro', 'Pelotas','RS'),
+('96015560', 'Rua Gonçalves Chaves', 2250, '', 'Centro', 'Pelotas','RS'),
+('96015140', 'Avenida Bento Gonçalves', 3500, '', 'Centro', 'Pelotas','RS'),
+('96085000', 'Avenida Ferreira Viana', 4750, '', 'Areal', 'Pelotas','RS');
 
 INSERT INTO itens
 (nome, descricao, categoria, preco, imagem)
 VALUES
-('', '', '',,''),
-('', '', '',,''),
-('', '', '',,''),
-('', '', '',,''),
-('', '', '',,'');
-*/
+('Apple iPhone X', 'O melhor IPhone já feito', 'Telefonia', 4000, 'iphonex.jpg'),
+('Samsung Galaxy S8', 'O melhor Samsung já feito', 'Telefonia', 3300, 'sgs8.jpg'),
+('Dell Inspiron 1111', 'O melhor Dell já feito', 'Informática', 2200, 'delli1111.jpg');
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
    cpf, dataNasc, genero, imagem, nivel, ativo, tentaLogin, idEndereco)
 VALUES
-('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '1', 1, 1, 0, 1);
-('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1995-01-01', 'Feminino', '1', 0, 1, 0, 1);
-
-/*
-('', '', '', '', '',, '', '', '', '',,,,),
-('', '', '', '', '',, '', '', '', '',,,,),
-('', '', '', '', '',, '', '', '', '',,,,),
-('', '', '', '', '',, '', '', '', '',,,,);
+('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '1.jpg', 1, 1, 0, 1),
+('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1995-01-01', 'Feminino', '2.jpg', 0, 1, 0, 2),
+('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1999-01-01', 'Feminino', '3.jpg', 0, 1, 0, 3),
+('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1997-01-01', 'Masculino', '4.jpg', 0, 1, 0, 4),
+('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', '5.jpg', 0, 0, 0, 5);
 
 INSERT INTO telefones
 (ddd, numero, idUsuario)
 VALUES
-('', '',),
-('', '',),
-('', '',),
-('', '',),
-('', '',);
+('53', '32281156', 1),
+('11', '981222222', 2),
+('21', '992133114', 3),
+('51', '993223352', 4),
+('31', '995325521', 5);
 
 INSERT INTO amizades
 (idUsuario1, idUsuario2, ativa, bloqueado1, bloqueado2, dataAmizade)
 VALUES
-(,,,,,''),
-(,,,,,''),
-(,,,,,''),
-(,,,,,''),
-(,,,,,'');
+(2,1,0,0,0,'2018-01-05'),
+(2,3,1,0,0,'2018-04-05'),
+(2,4,1,0,0,'2018-02-05'),
+(2,5,1,1,0,'2018-03-05');
 
 INSERT INTO logUsuarios
 (idUsuario, idAcaoUsuario, data, hora)
 VALUES
-(,,'',''),
-(,,'',''),
-(,,'',''),
-(,,'',''),
-(,,'','');
+(2,1,'2018-01-05','14:00'),
+(2,2,'2018-01-05','15:00');
 
 INSERT INTO interesses
 (idUsuario, idTipoInteresse)
 VALUES
-(,),
-(,),
-(,),
-(,),
-(,);
+(2,1),
+(2,2),
+(2,3),
+(2,4),
+(2,5);
 
+/*
 INSERT INTO eventos
 (titulo, descricao, data, hora, local, ativo, maxItens, dataLimite,
    idUsuario, idEndereco, idTipoEvento)

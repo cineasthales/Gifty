@@ -33,67 +33,42 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row-plus"> 
             <div class="col-10">
-                <h1>Itens</h1>
+                <h1>Tipos de Interesses</h1>
             </div>
             <div class="col-2">
-                <button class='bt'><a href="<?= base_url('admin/itens/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+                <button class='bt'><a href="<?= base_url('admin/tiposinteressess/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
                 <hr>
             </div>
             <?php
-            foreach ($itens as $item) {
+            foreach ($tiposinteresses as $tiposinteresses) {
                 ?>
                 <div class="col-12">
                     <br>
                 </div>
                 <div class="col-10">
-                    <h2># <?= $item->id ?></h2>
+                    <h2># <?= $tiposinteresses->id ?></h2>
                 </div>            
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/items/excluir/' . $item->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir item de código <?= $item->id ?>?')">
+                    <button class='bt'><a href="<?= base_url('admin/tiposinteressess/excluir/' . $tiposinteresses->id) ?>"
+                                          onclick="return confirm('Tem certeza que deseja excluir tipo de código <?= $tiposinteresses->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
-                    <button class='bt'><a href="<?= base_url('admin/items/atualizar/' . $item->id) ?>">
+                    <button class='bt'><a href="<?= base_url('admin/tiposinteressess/atualizar/' . $tiposinteresses->id) ?>">
                             <i class="fas fa-edit"></i></a></button>
 
                 </div>
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-4">
-                    <img src="<?= base_url('assets/img/misc/generic-profile.jpg') ?>" 
-                         alt="Foto de <?= $item->nome ?>"
-                         style="height: 10em; display: block; margin: 0 auto;">
-                </div>
-                <div class="col-2">
-                    <strong>Nome</strong>
-                </div>
-                <div class="col-6">
-                    <?= $item->nome ?>
-                </div>                
-                <div class="col-2">
-                    <strong>Categoria</strong>
-                </div>
-                <div class="col-6">
-                    <?= $item->categoria ?>
-                </div>
-                <div class="col-2">
-                    <strong>Preço</strong>
-                </div>
-                <div class="col-6">
-                    <?= number_format($item->preco, 2, ',', '.') ?>
-                </div>
-                <div class="col-2">
-                    <strong>Descrição</strong>
-                </div>
-                <div class="col-6">
-                    <?= $item->descricao ?>
+                <div class="col-12">
+                    <?= $tiposinteresses->descricao ?>
                 </div>
                 <div class="col-12">
                     <br><hr>
                 </div>
             <?php } ?>
+        </div>
         </div>
     </section>    
 </main>

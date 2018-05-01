@@ -63,44 +63,72 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>
                 <div class="col-4">
                     <img src="<?= base_url('assets/img/misc/generic-profile.jpg') ?>" 
-                         alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
+                         alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>"
+                         style="height: 10em; display: block; margin: 0 auto;">
                 </div>
-                <div class="col-8">
-                    <strong><?= $usuario->nome ?> <?= $usuario->sobrenome ?></strong>
+                <div class="col-2">
+                    <strong>Nome</strong>
                 </div>
-                <div class="col-4">
+                <div class="col-6">
+                    <?= $usuario->nome ?> <?= $usuario->sobrenome ?>
+                </div>
+                <div class="col-2">
+                    <strong>Nome de Usuário</strong>
+                </div>
+                <div class="col-6">
                     <?= $usuario->nomeUsuario ?>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
+                    <strong>E-mail</strong>
+                </div>
+                <div class="col-6">
                     <?= $usuario->email ?>
-                </div>         
-                <div class="col-4">
+                </div>
+                <div class="col-2">
+                    <strong>Gênero</strong>
+                </div>
+                <div class="col-6">
                     <?= $usuario->genero ?>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
+                    <strong>Nascimento</strong>
+                </div>
+                <div class="col-6">
                     <?= date_format(date_create($usuario->dataNasc), 'd/m/Y') ?>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
+                    <strong>CPF</strong>
+                </div>
+                <div class="col-6">
                     <?=
                     substr($usuario->cpf, 0, 3) . '.' . substr($usuario->cpf, 3, 3) . '.'
                     . substr($usuario->cpf, 6, 3) . '-' . substr($usuario->cpf, 9, 2)
                     ?>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
+                    <strong>Notificações</strong>
+                </div>
+                <div class="col-6">
                     <?php if ($usuario->notificaEmail) { ?>
-                        Com notificações
+                        Recebe
                     <?php } else { ?>
-                        Sem notificações
+                        Não Recebe
                     <?php } ?>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
+                    <strong>Bloqueio</strong>
+                </div>
+                <div class="col-6">
                     <?php if ($usuario->tentaLogin < 5) { ?>
                         Desbloqueado
                     <?php } else { ?>
                         Bloqueado
                     <?php } ?>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
+                    <strong>Status</strong>
+                </div>
+                <div class="col-6">
                     <?php if ($usuario->ativo) { ?>
                         <strong><span style='color: #339900'>ATIVO</span></strong>
                     <?php } else { ?>
@@ -111,7 +139,6 @@ if ($this->session->has_userdata('mensagem')) {
                     <br><hr>
                 </div>
             <?php } ?>
-        </div>
         </div>
     </section>    
 </main>

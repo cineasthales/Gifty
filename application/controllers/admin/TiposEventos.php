@@ -2,14 +2,16 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LogsUsuarios extends CI_Controller {
+class TiposEventos extends CI_Controller {
 
     public function index() {
         if ($this->session->logado_admin == true) {
+            $this->load->model('tiposeventos_model', 'tiposeventos');
+            $dados['tiposeventos'] = $this->tiposeventos->select();
             $this->load->view('include/aside');
             $this->load->view('include/head');
-            $this->load->view('include/header_admin'); 
-            $this->load->view('admin/logsusuarios/list');
+            $this->load->view('include/header_admin');
+            $this->load->view('admin/tiposeventos/list', $dados);
         } else {
             redirect();
         }

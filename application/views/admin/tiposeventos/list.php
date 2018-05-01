@@ -33,30 +33,32 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row-plus"> 
             <div class="col-10">
-                <h1>Interesses</h1>
+                <h1>Tipos de Eventos</h1>
             </div>
             <div class="col-2">
-                <button class='bt'><a href="<?= base_url('admin/interesses/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+                <button class='bt'><a href="<?= base_url('admin/tipoeventos/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
                 <hr>
             </div>
             <?php
-            foreach ($interesses as $interesse) {
+            foreach ($tiposeventos as $tipoevento) {
                 ?>
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-10">
-                    <?= $interesse->idUsuario ?> - <?= $interesse->idTipoInteresse ?>
+                <div class="col-1">
+                    <h2># <?= $tipoevento->id ?></h2>
+                </div>
+                <div class="col-9">
+                    <?= $tipoevento->descricao ?>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?=
-                        base_url('admin/interesses/excluir/' . $interesse->idUsuario . '/'
-                                . $interesse->idTipoInteresse)
-                        ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir este interesse?')">
+                    <button class='bt'><a href="<?= base_url('admin/tipoeventos/excluir/' . $tipoevento->id) ?>"
+                                          onclick="return confirm('Tem certeza que deseja excluir tipo de código <?= $tipoevento->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
+                    <button class='bt'><a href="<?= base_url('admin/tipoeventos/atualizar/' . $tipoevento->id) ?>">
+                            <i class="fas fa-edit"></i></a></button>
                 </div>
                 <div class="col-12">
                     <br><hr>

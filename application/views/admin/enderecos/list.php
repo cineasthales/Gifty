@@ -47,21 +47,10 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-10">
+                <div class="col-1">
                     <h2># <?= $endereco->id ?></h2>
-                </div>            
-                <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/enderecos/excluir/' . $endereco->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir endereço de código <?= $endereco->id ?>?')">
-                            <i class="fas fa-trash-alt"></i></a></button>
-                    <button class='bt'><a href="<?= base_url('admin/enderecos/atualizar/' . $endereco->id) ?>">
-                            <i class="fas fa-edit"></i></a></button>
-
                 </div>
-                <div class="col-12">
-                    <br>
-                </div>
-                <div class="col-12">
+                <div class="col-9">
                     <?= $endereco->logradouro ?>, <?= $endereco->numero ?>
                     <?php
                     if ($endereco->complemento) {
@@ -74,11 +63,17 @@ if ($this->session->has_userdata('mensagem')) {
                     ?> 
                     - <?= $endereco->cidade ?> / <?= $endereco->estado ?>
                 </div>
+                <div class="col-2">
+                    <button class='bt'><a href="<?= base_url('admin/enderecos/excluir/' . $endereco->id) ?>"
+                                          onclick="return confirm('Tem certeza que deseja excluir endereço de código <?= $endereco->id ?>?')">
+                            <i class="fas fa-trash-alt"></i></a></button>
+                    <button class='bt'><a href="<?= base_url('admin/enderecos/atualizar/' . $endereco->id) ?>">
+                            <i class="fas fa-edit"></i></a></button>
+                </div>
                 <div class="col-12">
                     <br><hr>
                 </div>
             <?php } ?>
-        </div>
         </div>
     </section>    
 </main>

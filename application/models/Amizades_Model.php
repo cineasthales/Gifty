@@ -1,6 +1,11 @@
 <?php
 
 class Amizades_Model extends CI_Model {
+    
+    public function select() {        
+        $this->db->order_by('idUsuario1');
+        return $this->db->get('amizades')->result(); // retorna vetor
+    }
 
     // busca todos os amigos de um usuário
     public function findAll($id) {        
