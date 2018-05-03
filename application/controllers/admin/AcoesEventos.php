@@ -12,6 +12,7 @@ class AcoesEventos extends CI_Controller {
             $this->load->view('include/head');
             $this->load->view('include/header_admin');
             $this->load->view('admin/acoeseventos/list', $dados);
+            $this->load->view('include/footer_admin');
         } else {
             redirect();
         }

@@ -68,6 +68,16 @@ input[readonly] {
     background-color: lightgray;
 }
 
+.bt {
+    margin: 0;
+    display: inline-block;
+    float: right;
+}
+
+.bt a {
+    font-size: 1em;
+}
+
 /* PRINCIPAL */
 
 section {
@@ -95,8 +105,8 @@ section button a, section input[type="submit"] {
     border: 0.1em solid purple;
     background-color: transparent;
     font-weight: bold;
-    -webkit-transition: background-color 0.25s, color 0.25s; /* Safari */
-    transition: background-color 0.25s, color 0.25s;
+    -webkit-transition: 0.25s;
+    transition: 0.25s;
 }
 
 section button a {
@@ -149,7 +159,7 @@ header input[type="submit"] {
     border: 0.1em solid white;
     background-color: transparent;
     font-weight: bold;
-    -webkit-transition: background-color 0.25s, color 0.25s; /* Safari */
+    -webkit-transition: background-color 0.25s, color 0.25s;
     transition: background-color 0.25s, color 0.25s;
 }
 
@@ -185,6 +195,8 @@ header nav ul li a {
     padding: 0.75em 1em;
     text-decoration: none;
     font-weight: bold;
+    -webkit-transition: background-color 0.25s, color 0.25s; /* Safari */
+    transition: background-color 0.25s, color 0.25s;
 }
 
 header nav ul li a:hover, header nav ul li a:active {
@@ -194,6 +206,52 @@ header nav ul li a:hover, header nav ul li a:active {
 
 #logo {
     float: left;
+}
+
+/* NAVEGAÇÃO */
+
+#menuIcon {
+    cursor: pointer;
+}
+
+aside {
+    width: 20%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #4d004d;
+    border: 0.1em solid #4d004d;
+}
+
+aside ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+aside ul li a {
+    padding: 0.4em 1em;
+    text-decoration: none;
+    color: white;
+    display: block;
+    -webkit-transition: background-color 0.25s, color 0.25s; /* Safari */
+    transition: background-color 0.25s, color 0.25s;
+    font-weight: bold;
+}
+
+aside ul li a:hover, aside ul li a:active {
+    background-color: white;
+    color: #4d004d;
+}
+
+aside .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 /* RODAPÉ */
@@ -247,39 +305,4 @@ footer ul li {
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
-}
-
-aside ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #4d004d;
-    position: fixed;
-    height: 100%;
-    width: 20%;
-    overflow: auto;
-    box-shadow: 5px 0px 15px black;
-}
-
-aside li a {
-    font-weight: bold;
-    display: block;
-    color: white;
-    padding: 0.5em 1em;
-    text-decoration: none;
-}
-
-aside li a:hover, aside li a:active {
-    background-color: white;
-    color: #4d004d;
-}
-
-.bt {
-    margin: 0;
-    display: inline-block;
-    float: right;
-}
-
-.bt a {
-    font-size: 1em;
 }

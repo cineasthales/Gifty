@@ -47,21 +47,10 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-10">
+                <div class="col-1">
                     <h2># <?= $telefone->id ?></h2>
-                </div>            
-                <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/telefones/excluir/' . $telefone->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir endereço de código <?= $telefone->id ?>?')">
-                            <i class="fas fa-trash-alt"></i></a></button>
-                    <button class='bt'><a href="<?= base_url('admin/telefones/atualizar/' . $telefone->id) ?>">
-                            <i class="fas fa-edit"></i></a></button>
-
                 </div>
-                <div class="col-12">
-                    <br>
-                </div>
-                <div class="col-12">
+                <div class="col-9">
                     (<?= $telefone->ddd ?>)
                     <?php
                     if (strlen($telefone->numero) == 9) {
@@ -70,6 +59,14 @@ if ($this->session->has_userdata('mensagem')) {
                         echo substr($telefone->numero, 0, 4) . '-' . substr($telefone->numero, 4);
                     }
                     ?>
+                </div>
+                <div class="col-2">
+                    <button class='bt'><a href="<?= base_url('admin/telefones/excluir/' . $telefone->id) ?>"
+                                          onclick="return confirm('Tem certeza que deseja excluir endereço de código <?= $telefone->id ?>?')">
+                            <i class="fas fa-trash-alt"></i></a></button>
+                    <button class='bt'><a href="<?= base_url('admin/telefones/atualizar/' . $telefone->id) ?>">
+                            <i class="fas fa-edit"></i></a></button>
+
                 </div>
                 <div class="col-12">
                     <br><hr>

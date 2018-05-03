@@ -2,14 +2,18 @@
 
 class Interesses_Model extends CI_Model {
 
-    public function select() {        
+    public function select() {
+        $this->db->select('i.*, t.descricao AS inter, u.nome AS nome, u.sobrenome AS snome');
+        $this->db->from('interesses i');
+        $this->db->join('tiposInteresses t', 'i.idTipoInteresse = t.id', 'inner');
+        $this->db->join('usuarios u', 'i.idUsuario = u.id', 'inner');
         $this->db->order_by('idUsuario');
-        return $this->db->get('interesses')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function find($idUsuario, $idTipoInteresse) {
         $this->db->where('idUsuario', $idUsuario);
-        $this->db->where('idTipoInteresse', $idTipoInteresse);        
+        $this->db->where('idTipoInteresse', $idTipoInteresse);
         return $this->db->get('interesses')->row(); // retorna registro obtido
     }
 

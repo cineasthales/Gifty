@@ -48,7 +48,8 @@ if ($this->session->has_userdata('mensagem')) {
                     <br>
                 </div>
                 <div class="col-10">
-                    <?= $interesse->idUsuario ?> - <?= $interesse->idTipoInteresse ?>
+                    <strong><?= $interesse->nome ?> <?= $interesse->snome ?> (# <?= $interesse->idUsuario ?>)</strong>
+                    tem interesse em <strong><?= $interesse->inter ?></strong>
                 </div>
                 <div class="col-2">
                     <button class='bt'><a href="<?=

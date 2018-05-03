@@ -47,9 +47,12 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-10">
+                <div class="col-1">
                     <h2># <?= $tiposinteresses->id ?></h2>
                 </div>            
+                <div class="col-9">
+                    <?= $tiposinteresses->descricao ?>
+                </div>
                 <div class="col-2">
                     <button class='bt'><a href="<?= base_url('admin/tiposinteressess/excluir/' . $tiposinteresses->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir tipo de código <?= $tiposinteresses->id ?>?')">
@@ -57,12 +60,6 @@ if ($this->session->has_userdata('mensagem')) {
                     <button class='bt'><a href="<?= base_url('admin/tiposinteressess/atualizar/' . $tiposinteresses->id) ?>">
                             <i class="fas fa-edit"></i></a></button>
 
-                </div>
-                <div class="col-12">
-                    <br>
-                </div>
-                <div class="col-12">
-                    <?= $tiposinteresses->descricao ?>
                 </div>
                 <div class="col-12">
                     <br><hr>

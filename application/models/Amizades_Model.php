@@ -2,9 +2,13 @@
 
 class Amizades_Model extends CI_Model {
     
-    public function select() {        
+    public function select() {
+        $this->db->select('a.*, u1.nome AS nome1, u1.sobrenome AS snome1, u2.nome AS nome2, u2.sobrenome AS snome2');
+        $this->db->from('amizades a');
+        $this->db->join('usuarios u1', 'a.idUsuario1 = u1.id', 'inner');
+        $this->db->join('usuarios u2', 'a.idUsuario2 = u2.id', 'inner');
         $this->db->order_by('idUsuario1');
-        return $this->db->get('amizades')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     // busca todos os amigos de um usuário

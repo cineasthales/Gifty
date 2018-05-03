@@ -47,16 +47,34 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-10">
-                    <?= $amizade->idUsuario1 ?> - <?= $amizade->idUsuario2 ?>
+                <div class="col-11">
+                    <strong><?= $amizade->nome1 ?> <?= $amizade->snome1 ?> (# <?= $amizade->idUsuario1 ?>)</strong>
+                    é amigo(a) de <strong><?= $amizade->nome2 ?> <?= $amizade->snome2 ?> (# <?= $amizade->idUsuario2 ?>)</strong>
+                    desde <?= date_format(date_create($amizade->dataAmizade), 'd/m/Y') ?>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <button class='bt'><a href="<?=
                         base_url('admin/amizades/excluir/' . $amizade->idUsuario1 . '/'
                                 . $amizade->idUsuario2)
                         ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir esta amizade?')">
                             <i class="fas fa-trash-alt"></i></a></button>
+                </div>
+                <div class="col-2">
+                    <?php if ($amizade->ativa) { ?>
+                        <strong><span style='color: #339900'>ATIVA</span></strong>
+                    <?php } else { ?>
+                        <strong><span style='color: red'>INATIVA</span></strong>
+                    <?php } ?>
+                </div>
+                <div class="col-10">
+                    <?php if ($amizade->bloqueado1 && $amizade->bloqueado2) { ?>
+                        Ambos os usuários bloquearam o outro.
+                    <?php } else if ($amizade->bloqueado1) { ?>
+                        <?= $amizade->nome2 ?> <?= $amizade->snome2 ?> bloqueou <?= $amizade->nome1 ?> <?= $amizade->snome1 ?>.
+                    <?php } else if ($amizade->bloqueado2) { ?>
+                        <?= $amizade->nome1 ?> <?= $amizade->snome1 ?> bloqueou <?= $amizade->nome2 ?> <?= $amizade->snome2 ?>.
+                    <?php } ?>
                 </div>
                 <div class="col-12">
                     <br><hr>
