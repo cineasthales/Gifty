@@ -47,21 +47,18 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-10">
+                <div class="col-1">
                     <h2># <?= $acao->id ?></h2>
-                </div>            
+                </div>
+                <div class="col-9">
+                    <?= $acao->descricao ?>
+                </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/acoesusuarios/excluir/' . $acao->id) ?>"
+                    <button class='bt'><a href="<?= base_url('admin/acoeseventos/excluir/' . $acao->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir ação de código <?= $acao->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
-                    <button class='bt'><a href="<?= base_url('admin/acoesusuarios/atualizar/' . $acao->id) ?>">
+                    <button class='bt'><a href="<?= base_url('admin/acoeseventos/atualizar/' . $acao->id) ?>">
                             <i class="fas fa-edit"></i></a></button>
-                </div>
-                <div class="col-12">
-                    <br>
-                </div>
-                <div class="col-12">
-                    <?= $acao->descricao ?>
                 </div>
                 <div class="col-12">
                     <br><hr>

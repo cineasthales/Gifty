@@ -2,9 +2,13 @@
 
 class Listas_Model extends CI_Model {
 
-    public function select() {        
+    public function select() {
+        $this->db->select('l.*, i.nome AS item, e.titulo AS evento');
+        $this->db->from('listas l');
+        $this->db->join('itens i', 'l.idItem = i.id', 'inner');
+        $this->db->join('eventos e', 'l.idEvento = e.id', 'inner');
         $this->db->order_by('idEvento');
-        return $this->db->get('listas')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function find($idEvento, $idItem) {

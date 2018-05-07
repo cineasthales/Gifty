@@ -36,27 +36,27 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Listas</h1>
             </div>
             <div class="col-2">
-                <button class='bt'><a href="<?= base_url('admin/interesses/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+                <button class='bt'><a href="<?= base_url('admin/listas/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
                 <hr>
             </div>
             <?php
-            foreach ($interesses as $interesse) {
+            foreach ($listas as $lista) {
                 ?>
                 <div class="col-12">
                     <br>
                 </div>
                 <div class="col-10">
-                    <strong><?= $interesse->nome ?> <?= $interesse->snome ?> (# <?= $interesse->idUsuario ?>)</strong>
-                    tem interesse em <strong><?= $interesse->inter ?></strong>
+                    A lista do evento <strong><?= $lista->evento ?> (# <?= $lista->idEvento ?>)</strong>
+                    tem o item <strong><?= $lista->item ?></strong>
                 </div>
                 <div class="col-2">
                     <button class='bt'><a href="<?=
-                        base_url('admin/interesses/excluir/' . $interesse->idUsuario . '/'
-                                . $interesse->idTipoInteresse)
+                        base_url('admin/listas/excluir/' . $lista->idUsuario . '/'
+                                . $lista->idTipolista)
                         ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir este interesse?')">
+                                          onclick="return confirm('Tem certeza que deseja excluir este item da lista?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                 </div>
                 <div class="col-12">
