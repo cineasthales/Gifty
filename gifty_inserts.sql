@@ -63,16 +63,16 @@ VALUES
 INSERT INTO acoesEventos
 (descricao)
 VALUES
-('criou o evento'),
-('atualizou a data'),
-('atualizou a hora'),
-('atualizou o local'),
-('atualizou o endereço'),
-('atualizou a data limite de confirmação'),
-('atualizou o máximo de itens por convidado'),
-('atualizou a lista de presentes'),
-('atualizou os convidados'),
-('cancelou o evento');
+('foi criado'),
+('teve a data atualizada'),
+('teve a hora atualizada'),
+('teve o local atualizado'),
+('teve o endereço atualizado'),
+('teve a data limite de confirmação atualizada'),
+('teve o limite de itens por convidado atualizado'),
+('teve a lista de presentes atualizada'),
+('teve os convidados atualizados'),
+('foi cancelado');
 
 INSERT INTO acoesUsuarios
 (descricao)
@@ -93,18 +93,18 @@ VALUES
 INSERT INTO empresas
 (razaoSocial, nomeFantasia, cnpj, email, logomarca, site, ativa)
 VALUES
-('B2W - Companhia Digital', 'Americanas', '00.776.574/0006-60', 'atendimento.acom@americanas.com', 'logo_americanas.png', 'http://www.americanas.com.br', 0),
-('B2W - Companhia Digital', 'Submarino', '00.776.574/0006-60', 'atendimento.sub@americanas.com', 'logo_submarino.png', 'http://www.submarino.com.br', 0),
-('B2W - Companhia Digital', 'Shoptime', '00.776.574/0006-60', 'atendimento.shop@americanas.com', 'logo_shoptime.png', 'http://www.shoptime.com.br', 0),
-('Via Varejo', 'Casas Bahia', '33.041.260/0652-90', 'email@casasbahia.com.br', 'logo_casasbahia.png', 'http://www.casasbahia.com.br', 0),
-('Saraiva e Siciliano S/A', 'Livraria Saraiva', '61.365.284/0001-04', 'email@saraiva.com.br', 'logo_saraiva.png', 'http://www.saraiva.com.br', 0),
-('F. Brasil LTDA', 'Fnac', '02.634.926/0001-64', 'email@fnac.com.br', 'logo_fnac.png', 'http://www.fnac.com.br', 0),
-('Livraria Cultura S/A', 'Livraria Cultura', '62.410.352/0001-72', 'email@livrariacultura.com.br', 'logo_livcultura.png', 'http://www.livrariacultura.com.br', 0),
-('CNOVA Comércio Eletrônico S/A', 'Ponto Frio', '07.170.938/0001-07', 'email@pontofrio.com.br', 'logo_pontofrio.png', 'http://www.pontofrio.com.br', 0),
-('CNOVA Comércio Eletrônico S/A', 'Extra', '07.170.938/0001-07', 'email@extra.com.br', 'logo_extra.png', 'http://www.extra.com.br', 0),
-('Magazine Luiza S/A', 'Magazine Luiza', '47.960.950/0449-27', 'atendimento.site@magazineluiza.com.br', 'logo_mluiza.png', 'http://www.magazineluiza.com.br', 0),
-('Fast Shop S/A', 'Fast Shop', '43.708.379/0001-00', 'email@fastshop.com.br', 'logo_fastshop.png', 'https://www.fastshop.com.br', 0),
-('RN Comércio Varejista S/A', 'Ricardo Eletro', '13.481.309/0101-55', 'email@ricardoeletro.com.br', 'logo_ricardoeletro.png', 'http://www.ricardoeletro.com.br', 0);
+('B2W - Companhia Digital', 'Americanas', '00.776.574/0006-60', 'atendimento.acom@americanas.com', 'empresas_1.png', 'http://www.americanas.com.br', 0),
+('B2W - Companhia Digital', 'Submarino', '00.776.574/0006-60', 'atendimento.sub@americanas.com', 'empresas_2.png', 'http://www.submarino.com.br', 0),
+('B2W - Companhia Digital', 'Shoptime', '00.776.574/0006-60', 'atendimento.shop@americanas.com', 'empresas_3.png', 'http://www.shoptime.com.br', 0),
+('Via Varejo', 'Casas Bahia', '33.041.260/0652-90', 'email@casasbahia.com.br', 'empresas_4.png', 'http://www.casasbahia.com.br', 0),
+('Saraiva e Siciliano S/A', 'Livraria Saraiva', '61.365.284/0001-04', 'email@saraiva.com.br', 'empresas_5.png', 'http://www.saraiva.com.br', 0),
+('F. Brasil LTDA', 'Fnac', '02.634.926/0001-64', 'email@fnac.com.br', 'empresas_6.png', 'http://www.fnac.com.br', 0),
+('Livraria Cultura S/A', 'Livraria Cultura', '62.410.352/0001-72', 'email@livrariacultura.com.br', 'empresas_7.png', 'http://www.livrariacultura.com.br', 0),
+('CNOVA Comércio Eletrônico S/A', 'Ponto Frio', '07.170.938/0001-07', 'email@pontofrio.com.br', 'empresas_8.png', 'http://www.pontofrio.com.br', 0),
+('CNOVA Comércio Eletrônico S/A', 'Extra', '07.170.938/0001-07', 'email@extra.com.br', 'empresas_9.png', 'http://www.extra.com.br', 0),
+('Magazine Luiza S/A', 'Magazine Luiza', '47.960.950/0449-27', 'atendimento.site@magazineluiza.com.br', 'empresas_10.png', 'http://www.magazineluiza.com.br', 0),
+('Fast Shop S/A', 'Fast Shop', '43.708.379/0001-00', 'email@fastshop.com.br', 'empresas_11.png', 'https://www.fastshop.com.br', 0),
+('RN Comércio Varejista S/A', 'Ricardo Eletro', '13.481.309/0101-55', 'email@ricardoeletro.com.br', 'empresas_12.png', 'http://www.ricardoeletro.com.br', 0);
 
 INSERT INTO enderecos
 (cep, logradouro, numero, complemento, bairro, cidade, estado)
@@ -166,108 +166,106 @@ VALUES
 INSERT INTO amizades
 (idUsuario1, idUsuario2, ativa, bloqueado1, bloqueado2, dataAmizade)
 VALUES
-(2,1,0,0,0,'2018-01-05'),
-(2,3,1,0,0,'2018-02-05'),
-(2,4,1,0,0,'2018-03-05'),
-(2,5,1,1,0,'2018-04-05'),
-(2,6,1,0,1,'2018-05-05'),
-(2,7,1,1,1,'2018-06-05'),
-(2,8,1,0,0,'2018-07-05');
+(2, 1, 0, 0, 0, '2018-01-05'),
+(2, 3, 1, 0, 0, '2018-02-05'),
+(2, 4, 1, 0, 0, '2018-03-05'),
+(2, 5, 1, 1, 0, '2018-04-05'),
+(2, 6, 1, 0, 1, '2018-05-05'),
+(2, 7, 1, 1, 1, '2018-06-05'),
+(2, 8, 1, 0, 0, '2018-07-05');
 
 INSERT INTO logUsuarios
 (idUsuario, idAcaoUsuario, data, hora)
 VALUES
-(2,1,'2018-01-05','14:00'),
-(2,2,'2018-01-05','15:00'),
-(2,1,'2018-01-05','16:00'),
-(2,2,'2018-01-05','17:00'),
-(2,1,'2018-01-05','18:00'),
-(2,2,'2018-01-05','19:00');
+(2, 1, '2018-01-05', '14:00'),
+(2, 2, '2018-01-05', '15:00'),
+(2, 1, '2018-01-05', '16:00'),
+(2, 2, '2018-01-05', '17:00'),
+(2, 1, '2018-01-05', '18:00'),
+(2, 2, '2018-01-05', '19:00');
 
 INSERT INTO interesses
 (idUsuario, idTipoInteresse)
 VALUES
-(2,1),
-(2,2),
-(2,3),
-(2,4),
-(2,5),
-(3,6),
-(3,7),
-(3,8),
-(3,9),
-(3,10);
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(2, 5),
+(3, 6),
+(3, 7),
+(3, 8),
+(3, 9),
+(3, 10);
 
 INSERT INTO eventos
 (titulo, descricao, data, hora, local, ativo, maxItens, dataLimite,
    idUsuario, idEndereco, idTipoEvento)
 VALUES
-('Aniversário de 25 anos', 'Muitas gostosuras e bebidas geladas!', '2018-06-06', '20:00', 'Casa da Alice', 1, 2, '2018-06-01',2,2,1),
-('Festa de Natal Família Moreira', 'Vai ser uma festa muito divertida! Venham!', '2018-12-25', '21:00', 'Casa da Alice', 1, 3, '2018-11-25',2,2,6),
-('Casamento da Alice com Paulo', 'Um evento marcante em nossas vidas e contamos com a presença de vocês.', '2018-11-30', '16:00', 'Igreja do Porto', 1, 4, '2018-10-30',2,10,4),
-('Chá de Casa Nova da Alice', 'Querem ajudar a mobiliar minha casa?', '2018-04-17', '18:00', 'Casa da Alice', 1, 2,'2018-04-10',2,2,13),
-('Formatura da Alice', 'Minha formatura está chegando e quero comemorar essa vitória!', '2019-01-10', '19:00', 'Theatro Guarany', 0, 3, '2019-01-10',2,9,5);
+('Aniversário de 25 anos', 'Muitas gostosuras e bebidas geladas!', '2018-06-06', '20:00', 'Casa da Alice', 1, 2, '2018-06-01', 2, 2, 1),
+('Festa de Natal Família Moreira', 'Vai ser uma festa muito divertida! Venham!', '2018-12-25', '21:00', 'Casa da Alice', 1, 3, '2018-11-25', 2, 2, 6),
+('Casamento da Alice com Paulo', 'Um evento marcante em nossas vidas e contamos com a presença de vocês.', '2018-11-30', '16:00', 'Igreja do Porto', 1, 4, '2018-10-30', 2, 10, 4),
+('Chá de Casa Nova da Alice', 'Querem ajudar a mobiliar minha casa?', '2018-04-17', '18:00', 'Casa da Alice', 1, 2,'2018-04-10', 2, 2, 13),
+('Formatura da Alice', 'Minha formatura está chegando e quero comemorar essa vitória!', '2019-01-10', '19:00', 'Theatro Guarany', 0, 3, '2019-01-10', 2, 9, 5);
 
 INSERT INTO convidados
 (idUsuario, idEvento, comparecera, compareceu, bloqueado)
 VALUES
-(3,1,0,0,0),
-(4,1,1,0,0),
-(5,2,1,0,0),
-(6,3,1,0,1),
-(7,3,0,0,0),
-(8,3,1,0,0),
-(9,4,1,1,0),
-(3,4,1,0,0),
-(4,5,1,0,0);
+(3, 1, 0, 0, 0),
+(4, 1, 1, 0, 0),
+(5, 2, 1, 0, 0),
+(6, 3, 1, 0, 1),
+(7, 3, 0, 0, 0),
+(8, 3, 1, 0, 0),
+(9, 4, 1, 1, 0),
+(3, 4, 1, 0, 0),
+(4, 5, 1, 0, 0);
 
 INSERT INTO listas
 (idEvento, idItem, prioridade, dataAdicao, idComprador)
 VALUES
-(1,1,1,'2018-04-01',3),
-(1,2,2,'2018-04-02',0),
-(2,3,1,'2018-04-03',0),
-(3,4,3,'2018-04-04',5),
-(3,5,1,'2018-04-05',6),
-(3,6,2,'2018-04-06',0),
-(4,7,1,'2018-04-07',9),
-(5,8,2,'2018-04-08',0),
-(5,9,1,'2018-04-09',0);
+(1, 1, 1, '2018-04-01', 3),
+(1, 2, 2, '2018-04-02', 0),
+(2, 3, 1, '2018-04-03', 0),
+(3, 4, 3, '2018-04-04', 5),
+(3, 5, 1, '2018-04-05', 6),
+(3, 6, 2, '2018-04-06', 0),
+(4, 7, 1, '2018-04-07', 9),
+(5, 8, 2, '2018-04-08', 0),
+(5, 9, 1, '2018-04-09', 0);
 
-/*
 INSERT INTO logEventos
 (idEvento, idUsuario, idAcaoEvento, data, hora)
 VALUES
-(,,,'',''),
-(,,,'',''),
-(,,,'',''),
-(,,,'',''),
-(,,,'','');
+(1, 2, 1, '2018-04-01', '14:10'),
+(1, 2, 2, '2018-04-02', '14:15'),
+(1, 2, 3, '2018-04-03', '14:16'),
+(1, 2, 4, '2018-04-04', '14:17'),
+(1, 2, 5, '2018-04-05', '14:18');
 
 INSERT INTO anuncios
 (imagem, url, ativo, idEmpresa)
 VALUES
-('','',,),
-('','',,),
-('','',,),
-('','',,),
-('','',,);
+('anuncio_1.gif', 'http://www.americanas.com.br/produto/1', 1, 1),
+('anuncio_2.gif', 'http://www.submarino.com.br/produto/2', 0, 2),
+('anuncio_3.gif', 'http://www.shoptime.com.br/produto/3', 0, 3),
+('anuncio_4.gif', 'http://www.casasbahia.com.br/produto/4', 0, 4),
+('anuncio_5.gif', 'http://www.saraiva.com.br/produto/5', 0, 5);
 
 INSERT INTO cliquesAnuncios
 (data, hora, idAnuncio, idUsuario)
 VALUES
-('','',,),
-('','',,),
-('','',,),
-('','',,),
-('','',,);
+('2018-04-01', '14:00', 1, 2),
+('2018-04-01', '14:01', 1, 2),
+('2018-04-01', '14:02', 1, 2),
+('2018-04-01', '14:03', 1, 2),
+('2018-04-01', '14:04', 1, 2);
 
 INSERT INTO cliquesEmpresas
 (data, hora, idEmpresa, idUsuario)
 VALUES
-('','',,),
-('','',,),
-('','',,),
-('','',,),
-('','',,);
-*/
+('2018-04-01', '14:11',1,2),
+('2018-04-01', '14:12',1,2),
+('2018-04-01', '14:13',1,2),
+('2018-04-01', '14:15',1,2),
+('2018-04-01', '14:15',1,2);

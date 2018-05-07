@@ -3,10 +3,12 @@
 class Anuncios_Model extends CI_Model {
 
     public function select() {
+        $this->db->select('a.*, e.nomeFantasia AS empresa');
+        $this->db->from('anuncios a');
+        $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
         $this->db->order_by('id');
-        return $this->db->get('anuncios')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
-
     public function find($id) {
         $this->db->where('id', $id);
         return $this->db->get('anuncios')->row(); // retorna registro obtido

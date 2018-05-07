@@ -7,7 +7,7 @@ class Listas_Model extends CI_Model {
         $this->db->from('listas l');
         $this->db->join('itens i', 'l.idItem = i.id', 'inner');
         $this->db->join('eventos e', 'l.idEvento = e.id', 'inner');
-        $this->db->order_by('idEvento');
+        $this->db->order_by('idEvento, prioridade');
         return $this->db->get()->result(); // retorna vetor
     }
 

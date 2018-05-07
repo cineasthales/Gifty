@@ -3,8 +3,12 @@
 class CliquesEmpresas_Model extends CI_Model {
 
     public function select() {
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, e.nomeFantasia AS empresa');
+        $this->db->from('cliquesEmpresas c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->join('empresas e', 'c.idEmpresa = e.id', 'inner');
         $this->db->order_by('id');
-        return $this->db->get('cliquesEmpresas')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function find($id) {

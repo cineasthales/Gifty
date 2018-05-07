@@ -94,7 +94,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <strong>Site</strong>
                 </div>
                 <div class="col-6">
-                    <a href="<?= $empresa->cnpj ?>" target="_blank"><?= $empresa->site ?></a>
+                    <a href="<?= $empresa->site ?>" target="_blank"><?= $empresa->site ?></a>
                 </div>                
                 <div class="col-2">
                     <strong>Status</strong>

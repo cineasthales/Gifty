@@ -3,8 +3,12 @@
 class LogUsuarios_Model extends CI_Model {
 
     public function select() {
+        $this->db->select('l.*, u.nome AS nome, u.sobrenome AS snome, a.descricao AS acao');
+        $this->db->from('logUsuarios l');
+        $this->db->join('usuarios u', 'l.idUsuario = u.id', 'inner');
+        $this->db->join('acoesUsuarios a', 'l.idAcaoUsuario = a.id', 'inner');
         $this->db->order_by('id');
-        return $this->db->get('logUsuarios')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function find($id) {

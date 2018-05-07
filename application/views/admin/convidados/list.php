@@ -55,12 +55,12 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-2">
                     <button class='bt'><a href="<?=
                         base_url('admin/convidados/excluir/' . $convidado->idUsuario . '/'
-                                . $convidado->idTipoconvidado)
+                                . $convidado->idEvento)
                         ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir este item da convidado?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <?php if (!$convidado->bloqueado) { ?>
                         <strong><span style='color: #339900'>ATIVO</span></strong>
                     <?php } else { ?>
@@ -71,12 +71,12 @@ if ($this->session->has_userdata('mensagem')) {
                     <?php if ($convidado->comparecera) { ?>
                         Marcou comparecimento
                     <?php } else { ?>
-                        Marcou não comparecimento
+                        Não marcou comparecimento
                     <?php } ?>
                 </div>
-                <div class="col-4">
+                <div class="col-5">
                     <?php
-                    if ($convidado->comparecera && $convidado->data >= date("Y-m-d") && $convidado->hora >= date("h:i")) {
+                    if ($convidado->comparecera && date("Y-m-d") > $convidado->data) {
                         if ($convidado->compareceu) {
                             ?>
                             Compareceu
