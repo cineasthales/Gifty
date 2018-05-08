@@ -58,7 +58,7 @@ if ($this->session->has_userdata('mensagem')) {
                     - <?= $endereco->cidade ?> / <?= $endereco->estado ?>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/enderecos/excluir/' . $endereco->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/enderecos/excluir/' . $endereco->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir endereço de código <?= $endereco->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/enderecos/atualizar/' . $endereco->id) ?>">

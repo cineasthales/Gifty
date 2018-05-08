@@ -30,7 +30,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Tipos de Eventos</h1>
             </div>
             <div class="col-2">
-                <button class='bt'><a href="<?= base_url('admin/tipoeventos/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+                <button class='bt'><a href="<?= base_url('admin/tiposeventos/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
                 <hr>
@@ -48,7 +48,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <?= $tipoevento->descricao ?>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/tiposeventos/excluir/' . $tipoevento->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/tiposeventos/excluir/' . $tipoevento->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir tipo de evento de código <?= $tipoevento->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/tiposeventos/atualizar/' . $tipoevento->id) ?>">

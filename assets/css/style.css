@@ -32,7 +32,7 @@
     content: "";
     clear: both;
     display: table;
-    padding: 0px;
+    padding: 0;
     position: relative;
 }
 
@@ -78,9 +78,13 @@ input[readonly] {
     font-size: 1em;
 }
 
+#btdel {
+    padding-left: 0.5em;
+}
+
 /* PRINCIPAL */
 
-section {
+section, article {
     background-color: white;
 }
 
@@ -146,6 +150,7 @@ header {
 }
 
 header input[type="text"], header input[type="password"] {
+    margin-top: 1em;
     display: inline-block;
     width: 100%;
     padding: 0.25em;
@@ -154,6 +159,7 @@ header input[type="text"], header input[type="password"] {
 }
 
 header input[type="submit"] {
+    margin-top: 1em;
     width: 100%;
     padding: 0.25em;
     border: 0.1em solid white;
@@ -186,6 +192,7 @@ header nav ul {
 
 header nav ul li {
     float: right;
+    padding: 0.5em 0 0 0.5em;
 }
 
 header nav ul li a {
@@ -197,6 +204,7 @@ header nav ul li a {
     font-weight: bold;
     -webkit-transition: background-color 0.25s, color 0.25s; /* Safari */
     transition: background-color 0.25s, color 0.25s;
+    border: 0.1em solid white;
 }
 
 header nav ul li a:hover, header nav ul li a:active {
@@ -246,12 +254,12 @@ aside ul li a:hover, aside ul li a:active {
     color: #4d004d;
 }
 
-aside .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+#asideTitle {
+    text-align: center;
+    font-family: 'logo';
+    color: white;
+    font-size: 1.75em;
+    padding-top: 0.25em;
 }
 
 /* RODAPÉ */
@@ -267,6 +275,7 @@ footer ul {
 
 footer ul li {
     display: inline;
+    padding: 0 1em;
 }
 
 /* ALERTAS */

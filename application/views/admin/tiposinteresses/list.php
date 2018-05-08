@@ -30,7 +30,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Tipos de Interesses</h1>
             </div>
             <div class="col-2">
-                <button class='bt'><a href="<?= base_url('admin/tiposinteressess/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+                <button class='bt'><a href="<?= base_url('admin/tiposinteresses/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
                 <hr>
@@ -48,7 +48,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <?= $tipointeresse->descricao ?>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/tiposinteresses/excluir/' . $tipointeresse->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/tiposinteresses/excluir/' . $tipointeresse->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir tipo de interesse de código <?= $tipointeresse->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/tiposinteresses/atualizar/' . $tipointeresse->id) ?>">

@@ -6,13 +6,11 @@
         </div>
         <form method="post" action="<?= base_url('home/logar') ?>">
             <div class="col-4">
-                <br>
                 <label for="user" hidden><i class="fas fa-user"></i></label>
                 <input type="text" id="user" name="user"
                        placeholder="Nome de Usuário ou E-mail">
             </div>
             <div class="col-3">
-                <br>
                 <label for="senha" hidden><i class="fas fa-lock"></i></label>
                 <input type="password" id="senha" name="senha"
                        placeholder="Senha">
@@ -20,7 +18,6 @@
                 <small><a href="#">Esqueci a senha</a></small>
             </div>
             <div class="col-2">
-                <br>
                 <input type="submit" value="Entrar" id="btEntrar">
             </div>
         </form>

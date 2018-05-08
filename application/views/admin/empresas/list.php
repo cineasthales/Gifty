@@ -45,7 +45,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <h2># <?= $empresa->id ?></h2>
                 </div>            
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/empresas/excluir/' . $empresa->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/empresas/excluir/' . $empresa->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir empresa de código <?= $empresa->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/empresas/atualizar/' . $empresa->id) ?>">

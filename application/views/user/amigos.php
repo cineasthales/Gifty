@@ -5,8 +5,11 @@
                 <h1>Amigos</h1>
             </div>
             <div class="col-12">
-                <p>Bem-vindo!</p>
-            </div> 
+                <h2>Listar Amigos</h2>
+            </div>
+            <div class="col-12">
+                <h2>Bloquear e Desfazer Amizade</h2>
+            </div>
         </div>
     </section>    
 </main>

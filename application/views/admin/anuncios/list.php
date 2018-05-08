@@ -45,7 +45,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <h2># <?= $anuncio->id ?></h2>
                 </div>            
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/anuncios/excluir/' . $anuncio->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/anuncios/excluir/' . $anuncio->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir anúncio de código <?= $anuncio->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/anuncios/atualizar/' . $anuncio->id) ?>">

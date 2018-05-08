@@ -49,7 +49,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <?= date_format(date_create($logevento->data), 'd/m/Y') ?> às <?= substr($logevento->hora, 0, 5) ?>
                 </div>                
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/logeventos/excluir/' . $logevento->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/logeventos/excluir/' . $logevento->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir log de evento de código <?= $logevento->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/logeventos/atualizar/' . $logevento->id) ?>">

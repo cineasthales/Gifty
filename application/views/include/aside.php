@@ -1,5 +1,5 @@
 <aside id="sideNav">
-    <br><br>
+    <div id="asideTitle">Menu Admin</div>
     <ul>
         <li><a href="<?= base_url('admin/usuarios') ?>"><i class="fas fa-user"></i> Usuários</a></li>
         <li><a href="<?= base_url('admin/enderecos') ?>"><i class="fas fa-map-marker-alt"></i> Endereços</a></li>

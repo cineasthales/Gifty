@@ -26,7 +26,7 @@ class Dashboard extends CI_Controller {
         $this->load->helper('file');
         write_file(base_url(), $backup);
         $this->load->helper('download');
-        force_download(date("d-m-Y_h:i") . '.zip', $backup);
+        force_download(date("d-m-Y_h-i") . '.zip', $backup);
     }
 
 }

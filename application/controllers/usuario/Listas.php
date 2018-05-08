@@ -9,7 +9,7 @@ class Listas extends CI_Controller {
             $this->load->view('include/head');
             $this->load->view('include/header_user');
             $this->load->view('user/listas');
-            $this->load->view('include/footer');
+            $this->load->view('include/footer_user');
         } else {
             redirect();
         }

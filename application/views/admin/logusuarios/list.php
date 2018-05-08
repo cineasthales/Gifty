@@ -50,7 +50,7 @@ if ($this->session->has_userdata('mensagem')) {
                     às <?= substr($logusuario->hora, 0, 5) ?>
                 </div>                
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/logusuarios/excluir/' . $logusuario->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/logusuarios/excluir/' . $logusuario->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir log de usuário de código <?= $logusuario->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/logusuarios/atualizar/' . $logusuario->id) ?>">

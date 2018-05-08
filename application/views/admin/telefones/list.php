@@ -55,7 +55,7 @@ if ($this->session->has_userdata('mensagem')) {
                     ?>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/telefones/excluir/' . $telefone->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/telefones/excluir/' . $telefone->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir telefone de código <?= $telefone->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/telefones/atualizar/' . $telefone->id) ?>">

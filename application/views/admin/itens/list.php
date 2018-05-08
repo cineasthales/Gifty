@@ -45,7 +45,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <h2># <?= $item->id ?></h2>
                 </div>            
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/itens/excluir/' . $item->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/itens/excluir/' . $item->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir item de código <?= $item->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/itens/atualizar/' . $item->id) ?>">

@@ -45,7 +45,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <h2># <?= $evento->id ?></h2>
                 </div>            
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/eventos/excluir/' . $evento->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/eventos/excluir/' . $evento->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir evento de código <?= $evento->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/eventos/atualizar/' . $evento->id) ?>">

@@ -6,7 +6,6 @@
         </div>
         <div class="col-9">
             <nav>
-                <br>
                 <ul>
                     <li><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                     <li><a href="<?= base_url('usuario/configuracoes') ?>"><i class="fas fa-cog"></i> Configurações</a></li>

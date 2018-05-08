@@ -30,7 +30,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Cliques em Anúncios</h1>
             </div>
             <div class="col-2">
-                <button class='bt'><a href="<?= base_url('admin/cliques/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+                <button class='bt'><a href="<?= base_url('admin/cliquesanuncios/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
                 <hr>
@@ -50,7 +50,7 @@ if ($this->session->has_userdata('mensagem')) {
                     às <?= substr($clique->hora, 0, 5) ?>
                 </div>                
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/cliquesanuncios/excluir/' . $clique->id) ?>"
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/cliquesanuncios/excluir/' . $clique->id) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir clique de código <?= $clique->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/cliquesanuncios/atualizar/' . $clique->id) ?>">
