@@ -30,8 +30,8 @@
                     <span id="msgEmail" name="msgEmail"></span><br>
                     <input type="email" id="email" name="email" required
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br><br>
-                    <label for="notificarEmail">
-                        <input type="checkbox" id="notificarEmail" name="notificarEmail"> Receber notificações por e-mail
+                    <label for="notificaEmail">
+                        <input type="checkbox" id="notificaEmail" name="notificaEmail"> Receber notificações por e-mail
                     </label><br><br>
                     <label for="nomeUsuario">Nome de Usuário</label> <span class="asterisco">*</span>
                     <span id="msgNomeUsuario" name="msgNomeUsuario"></span><br>

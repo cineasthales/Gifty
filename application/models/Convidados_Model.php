@@ -21,8 +21,8 @@ class Convidados_Model extends CI_Model {
         return $this->db->insert('convidados', $registro);
     }
 
-    public function delete($id) {
-        return $this->db->delete('convidados', array('id' => $id));
+    public function delete($idUsuario, $idEvento) {
+        return $this->db->delete('convidados', array('idUsuario' => $idUsuario, 'idEvento' => $idEvento));
     }
 
 }

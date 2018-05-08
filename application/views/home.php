@@ -6,22 +6,16 @@ if ($this->session->has_userdata('mensagem')) {
         ?>
         <section class="alerta_sucesso">
             <div class="row">
-                <div class="col-11">
+                <div class="col-12">
                     <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
-                </div>
-                <div class="col-1">
-                    <small id="xis"><a href="#">X</a></small>
                 </div>
             </div>
         </section>
     <?php } else { ?>
         <section class="alerta_erro">
             <div class="row">
-                <div class="col-11">
+                <div class="col-12">
                     <small><strong>Erro.</strong> <?= $mensagem ?></small>
-                </div>
-                <div class="col-1">
-                    <small id="xis"><a href="#">X</a></small>
                 </div>
             </div>
         </section>

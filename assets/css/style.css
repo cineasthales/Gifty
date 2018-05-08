@@ -279,11 +279,6 @@ footer ul li {
     background-color: lightcoral;
 }
 
-#xis {
-    text-align: right;
-    font-weight: bolder;
-}
-
 /* Para dispositivos móveis */
 [class*="col-"] {
     width: 100%;

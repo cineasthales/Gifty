@@ -31,8 +31,8 @@ class Amizades_Model extends CI_Model {
         return $this->db->insert('amizades', $registro);
     }
 
-    public function delete($id) {
-        return $this->db->delete('amizades', array('id' => $id));
+    public function delete($idUsuario1, $idUsuario2) {
+        return $this->db->delete('amizades', array('idUsuario1' => $idUsuario1, 'idUsuario2' => $idUsuario2));
     }
 
 }

@@ -73,7 +73,11 @@ class Home extends CI_Controller {
             $dadosUsuario['nome'] = $this->input->post('nome');
             $dadosUsuario['sobrenome'] = $this->input->post('sobrenome');
             $dadosUsuario['email'] = $this->input->post('email');
-            $dadosUsuario['notificaEmail'] = $this->input->post('notificaEmail');
+            if ($this->input->post('notificaEmail')){
+                $dadosUsuario['notificaEmail'] = 1;
+            } else {
+                $dadosUsuario['notificaEmail'] = 0;
+            }
             $dadosUsuario['cpf'] = $this->input->post('cpf');
             $dadosUsuario['dataNasc'] = $this->input->post('dataNasc');
             $dadosUsuario['genero'] = $this->input->post('genero');

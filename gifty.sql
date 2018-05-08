@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS `gifty`.`usuarios` (
   CONSTRAINT `fk_usuarios_enderecos1`
     FOREIGN KEY (`idEndereco`)
     REFERENCES `gifty`.`enderecos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -72,8 +72,8 @@ CREATE TABLE IF NOT EXISTS `gifty`.`telefones` (
   CONSTRAINT `fk_telefones_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -110,18 +110,18 @@ CREATE TABLE IF NOT EXISTS `gifty`.`eventos` (
   CONSTRAINT `fk_eventos_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_eventos_enderecos1`
     FOREIGN KEY (`idEndereco`)
     REFERENCES `gifty`.`enderecos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_eventos_tiposEventos1`
     FOREIGN KEY (`idTipoEvento`)
     REFERENCES `gifty`.`tiposEventos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -156,13 +156,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`amizades` (
   CONSTRAINT `fk_usuarios_has_usuarios_usuarios`
     FOREIGN KEY (`idUsuario2`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_usuarios_has_usuarios_usuarios1`
     FOREIGN KEY (`idUsuario1`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -181,13 +181,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`convidados` (
   CONSTRAINT `fk_usuarios_has_eventos_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_usuarios_has_eventos_eventos1`
     FOREIGN KEY (`idEvento`)
     REFERENCES `gifty`.`eventos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -206,13 +206,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`listas` (
   CONSTRAINT `fk_eventos_has_itens_eventos1`
     FOREIGN KEY (`idEvento`)
     REFERENCES `gifty`.`eventos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_eventos_has_itens_itens1`
     FOREIGN KEY (`idItem`)
     REFERENCES `gifty`.`itens` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -246,8 +246,8 @@ CREATE TABLE IF NOT EXISTS `gifty`.`anuncios` (
   CONSTRAINT `fk_banners_empresas1`
     FOREIGN KEY (`idEmpresa`)
     REFERENCES `gifty`.`empresas` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -273,13 +273,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`interesses` (
   CONSTRAINT `fk_usuarios_has_interesses_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_usuarios_has_interesses_interesses1`
     FOREIGN KEY (`idTipoInteresse`)
     REFERENCES `gifty`.`tiposInteresses` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -298,13 +298,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`cliquesAnuncios` (
   CONSTRAINT `fk_logCliques_banners1`
     FOREIGN KEY (`idAnuncio`)
     REFERENCES `gifty`.`anuncios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_cliquesAnuncios_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -323,13 +323,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`cliquesEmpresas` (
   CONSTRAINT `fk_cliquesEmpresas_empresas1`
     FOREIGN KEY (`idEmpresa`)
     REFERENCES `gifty`.`empresas` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_cliquesItens_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -358,13 +358,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`logUsuarios` (
   CONSTRAINT `fk_usuarios_has_acoes_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `gifty`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_usuarios_has_acoes_acoes1`
     FOREIGN KEY (`idAcaoUsuario`)
     REFERENCES `gifty`.`acoesUsuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -394,13 +394,13 @@ CREATE TABLE IF NOT EXISTS `gifty`.`logEventos` (
   CONSTRAINT `fk_eventos_has_acoesEventos_eventos1`
     FOREIGN KEY (`idEvento` , `idUsuario`)
     REFERENCES `gifty`.`eventos` (`id` , `idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_eventos_has_acoesEventos_acoesEventos1`
     FOREIGN KEY (`idAcaoEvento`)
     REFERENCES `gifty`.`acoesEventos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

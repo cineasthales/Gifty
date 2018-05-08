@@ -21,8 +21,8 @@ class Interesses_Model extends CI_Model {
         return $this->db->insert('interesses', $registro);
     }
 
-    public function delete($id) {
-        return $this->db->delete('interesses', array('id' => $id));
+    public function delete($idUsuario, $idTipoInteresse) {
+        return $this->db->delete('interesses', array('idUsuario' => $idUsuario, 'idTipoInteresse' => $idTipoInteresse));
     }
 
 }

@@ -21,8 +21,8 @@ class Listas_Model extends CI_Model {
         return $this->db->insert('listas', $registro);
     }
 
-    public function delete($id) {
-        return $this->db->delete('listas', array('id' => $id));
+    public function delete($idEvento, $idItem) {
+        return $this->db->delete('listas', array('idEvento' => $idEvento, 'idItem' => $idItem));
     }
 
 }

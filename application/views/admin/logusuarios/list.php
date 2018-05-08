@@ -6,22 +6,16 @@ if ($this->session->has_userdata('mensagem')) {
         ?>
         <section class="alerta_sucesso">
             <div class="row-plus">
-                <div class="col-11">
+                <div class="col-12">
                     <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
-                </div>
-                <div class="col-1">
-                    <small id="xis"><a href="#">X</a></small>
                 </div>
             </div>
         </section>
     <?php } else { ?>
         <section class="alerta_erro">
             <div class="row-plus">
-                <div class="col-11">
+                <div class="col-12">
                     <small><strong>Erro.</strong> <?= $mensagem ?></small>
-                </div>
-                <div class="col-1">
-                    <small id="xis"><a href="#">X</a></small>
                 </div>
             </div>
         </section>
@@ -57,7 +51,7 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>                
                 <div class="col-2">
                     <button class='bt'><a href="<?= base_url('admin/logusuarios/excluir/' . $logusuario->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir logusuario de código <?= $logusuario->id ?>?')">
+                                          onclick="return confirm('Tem certeza que deseja excluir log de usuário de código <?= $logusuario->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/logusuarios/atualizar/' . $logusuario->id) ?>">
                             <i class="fas fa-edit"></i></a></button>

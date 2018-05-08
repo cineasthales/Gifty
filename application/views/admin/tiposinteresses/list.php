@@ -6,22 +6,16 @@ if ($this->session->has_userdata('mensagem')) {
         ?>
         <section class="alerta_sucesso">
             <div class="row-plus">
-                <div class="col-11">
+                <div class="col-12">
                     <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
-                </div>
-                <div class="col-1">
-                    <small id="xis"><a href="#">X</a></small>
                 </div>
             </div>
         </section>
     <?php } else { ?>
         <section class="alerta_erro">
             <div class="row-plus">
-                <div class="col-11">
+                <div class="col-12">
                     <small><strong>Erro.</strong> <?= $mensagem ?></small>
-                </div>
-                <div class="col-1">
-                    <small id="xis"><a href="#">X</a></small>
                 </div>
             </div>
         </section>
@@ -42,22 +36,22 @@ if ($this->session->has_userdata('mensagem')) {
                 <hr>
             </div>
             <?php
-            foreach ($tiposinteresses as $tiposinteresses) {
+            foreach ($tiposinteresses as $tipointeresse) {
                 ?>
                 <div class="col-12">
                     <br>
                 </div>
                 <div class="col-1">
-                    <h2># <?= $tiposinteresses->id ?></h2>
+                    <h2># <?= $tipointeresse->id ?></h2>
                 </div>            
                 <div class="col-9">
-                    <?= $tiposinteresses->descricao ?>
+                    <?= $tipointeresse->descricao ?>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?= base_url('admin/tiposinteressess/excluir/' . $tiposinteresses->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir tipo de código <?= $tiposinteresses->id ?>?')">
+                    <button class='bt'><a href="<?= base_url('admin/tiposinteresses/excluir/' . $tipointeresse->id) ?>"
+                                          onclick="return confirm('Tem certeza que deseja excluir tipo de interesse de código <?= $tipointeresse->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
-                    <button class='bt'><a href="<?= base_url('admin/tiposinteressess/atualizar/' . $tiposinteresses->id) ?>">
+                    <button class='bt'><a href="<?= base_url('admin/tiposinteresses/atualizar/' . $tipointeresse->id) ?>">
                             <i class="fas fa-edit"></i></a></button>
 
                 </div>
