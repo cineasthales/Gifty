@@ -50,9 +50,11 @@ class Home extends CI_Controller {
 
     public function cadastrar() {
         $this->session->sess_destroy();
+        $this->load->model('tiposinteresses_model', 'tiposinteresses');
+        $dados['interesses'] = $this->tiposinteresses->selectByName();
         $this->load->view('include/head');
         $this->load->view('include/header_ext');
-        $this->load->view('cadastro');
+        $this->load->view('cadastro', $dados);
         $this->load->view('include/footer');
     }
 
@@ -73,7 +75,7 @@ class Home extends CI_Controller {
             $dadosUsuario['nome'] = $this->input->post('nome');
             $dadosUsuario['sobrenome'] = $this->input->post('sobrenome');
             $dadosUsuario['email'] = $this->input->post('email');
-            if ($this->input->post('notificaEmail')){
+            if ($this->input->post('notificaEmail')) {
                 $dadosUsuario['notificaEmail'] = 1;
             } else {
                 $dadosUsuario['notificaEmail'] = 0;
@@ -86,7 +88,15 @@ class Home extends CI_Controller {
             $dadosUsuario['ativo'] = 1;
             $dadosUsuario['tentaLogin'] = 0;
             if ($this->usuarios->insert($dadosUsuario)) {
-                $mensagem = "Confirme seu cadastro por e-mail.";
+                $registro['idUsuario'] = $this->usuarios->last()->id;
+                $this->load->model('interesses_model', 'interesses');
+                for ($i = 0; $i < 36; $i++) {
+                    if ($this->input->post('interesse_' . $i)) {
+                        $registro['idTipoInteresse'] = $i;
+                        $this->interesses->insert($registro);
+                    }
+                }
+                $mensagem = "Confirme seu cadastro no e-mail <strong>" . $dadosUsuario['email'] . "</strong>.";
                 $tipo = 1;
             } else {
                 $mensagem = "Dados de usuário não foram cadastrados.";

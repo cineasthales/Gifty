@@ -7,6 +7,11 @@ class Usuarios_Model extends CI_Model {
         return $this->db->get('usuarios')->result(); // retorna vetor
     }
 
+    public function last() {
+        $this->db->order_by('id DESC');
+        return $this->db->get('usuarios', 1)->row(); // retorna registro obtido        
+    }
+
     public function find($id) {
         $this->db->where('id', $id);
         return $this->db->get('usuarios')->row(); // retorna registro obtido

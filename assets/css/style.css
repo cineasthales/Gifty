@@ -66,6 +66,8 @@ h2 {
 
 input[readonly] {
     background-color: lightgray;
+    outline: none;
+    cursor: default;
 }
 
 .bt {
@@ -111,6 +113,8 @@ section button a, section input[type="submit"] {
     font-weight: bold;
     -webkit-transition: 0.25s;
     transition: 0.25s;
+    display: block;
+    margin: 0 auto;
 }
 
 section button a {
@@ -128,11 +132,24 @@ section input[type="text"], section input[type="password"], section input[type="
 section input[type="date"], select {
     width: 100%;
     border: 0.1em solid black;
+    padding: 0.25em;
+    outline: none;
+}
+
+.fundo {
+    background-image: url("bg/bg2.png");
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+    background-repeat: repeat;
 }
 
 .fundoAlt {
-    background-color: #339900;
+    background-image: url("bg/bg1.png");
+    background-color: purple;
     color: white;
+    font-weight: bold;
+    background-size: cover;
 }
 
 .fundoAlt h1 {
@@ -156,6 +173,7 @@ header input[type="text"], header input[type="password"] {
     padding: 0.25em;
     border: 0.1em solid white;
     color: black;
+    outline: none;
 }
 
 header input[type="submit"] {
@@ -260,6 +278,11 @@ aside ul li a:hover, aside ul li a:active {
     color: white;
     font-size: 1.75em;
     padding-top: 0.25em;
+}
+
+.recuo {
+    display: inline-block;
+    width: 2.25em;
 }
 
 /* RODAPÉ */

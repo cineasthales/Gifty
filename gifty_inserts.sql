@@ -52,7 +52,7 @@ VALUES
 ('Bicicletas'),
 ('Fotografia e Video'),
 ('Joias e Relógios'),
-('Itens para Indústria, Comércio e Serviços'),
+('Indústria, Comércio e Serviços'),
 ('Informática'),
 ('Animais Domésticos'),
 ('Perfumaria, Beleza e Higiene Pessoal'),

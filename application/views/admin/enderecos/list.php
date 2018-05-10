@@ -48,7 +48,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <?= $endereco->logradouro ?>, <?= $endereco->numero ?>
                     <?php
                     if ($endereco->complemento) {
-                        echo ' - $endereco->complemento ?> ';
+                        echo ' - ' . $endereco->complemento;
                     }
                     ?>
                     - <?= $endereco->bairro ?> - <?=
