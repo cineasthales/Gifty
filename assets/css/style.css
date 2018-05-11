@@ -60,10 +60,6 @@ h1 {
     font-size: 2em;
 }
 
-h2 {
-    color: purple;
-}
-
 input[readonly] {
     background-color: lightgray;
     outline: none;
@@ -136,28 +132,44 @@ section input[type="date"], select {
     outline: none;
 }
 
-.fundo {
-    background-image: url("bg/bg2.png");
-    background-color: purple;
-    color: white;
-    font-weight: bold;
-    background-repeat: repeat;
-}
-
-.fundoAlt {
-    background-image: url("bg/bg1.png");
-    background-color: purple;
-    color: white;
-    font-weight: bold;
+.fundo1 {
+    background-image: url("bg/bg2a.png");
     background-size: cover;
+    background-color: black;
+    font-weight: bold;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
-.fundoAlt h1 {
+.fundo1 h1, .fundo1 h2, .fundo2 h1, .fundo2 h2 {
+    color: #47d102;
+    padding: 0;
+}
+
+.fundo1 p, .fundo2 p {
     color: white;
 }
 
-.homeh1 {
+.fundo2 {
+    background-image: url("bg/bg1a.png");
+    background-size: cover;
+    background-color: black;
+}
+
+.homeh {
     text-align: center;
+}
+
+#saibamais a {
+    border-color: #47d102;
+    color: #47d102;
+    font-size: 1.25em;
+    padding: 0.5em;
+}
+
+#saibamais a:hover, #saibamais a:active {
+    background-color: #47d102;
+    color: #4d004d;
 }
 
 /* CABEÇALHO */
@@ -235,10 +247,6 @@ header nav ul li a:hover, header nav ul li a:active {
 }
 
 /* NAVEGAÇÃO */
-
-#menuIcon {
-    cursor: pointer;
-}
 
 aside {
     width: 20%;
