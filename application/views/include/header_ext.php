@@ -15,7 +15,7 @@
                 <input type="password" id="senha" name="senha"
                        placeholder="Senha">
                 <br>
-                <small><a href="#">Esqueci a senha</a></small>
+                <small><a href="<?= base_url('home/esquecisenha') ?>">Esqueci minha senha</a></small>
             </div>
             <div class="col-2">
                 <input type="submit" value="Entrar" id="btEntrar">

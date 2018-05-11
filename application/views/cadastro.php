@@ -108,7 +108,7 @@
                     $tam = count($interesses);
                     for ($i = 0; $i < $tam / 3; $i++) {
                         ?>
-                        <label for="<?= $interesses[$i]->descricao ?>">
+                        <label for="<?= 'interesse_' . $interesses[$i]->id ?>">
                             <input type="checkbox" id="<?= 'interesse_' . $interesses[$i]->id ?>" 
                                    name="<?= 'interesse_' . $interesses[$i]->id ?>"> <?= $interesses[$i]->descricao ?>
                         </label><br> 
@@ -116,7 +116,7 @@
                 </div>
                 <div class="col-4">
                     <?php for ($i = $tam / 3; $i < $tam * (2 / 3); $i++) { ?>
-                        <label for="<?= $interesses[$i]->descricao ?>">
+                        <label for="<?= 'interesse_' . $interesses[$i]->id ?>">
                             <input type="checkbox" id="<?= 'interesse_' . $interesses[$i]->id ?>" 
                                    name="<?= 'interesse_' . $interesses[$i]->id ?>"> <?= $interesses[$i]->descricao ?>
                         </label><br> 
@@ -124,7 +124,7 @@
                 </div>
                 <div class="col-4">
                     <?php for ($i = $tam * (2 / 3); $i < $tam; $i++) { ?>
-                        <label for="<?= $interesses[$i]->descricao ?>">
+                        <label for="<?= 'interesse_' . $interesses[$i]->id ?>">
                             <input type="checkbox" id="<?= 'interesse_' . $interesses[$i]->id ?>" 
                                    name="<?= 'interesse_' . $interesses[$i]->id ?>"> <?= $interesses[$i]->descricao ?>
                         </label><br> 

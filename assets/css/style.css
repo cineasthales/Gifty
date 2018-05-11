@@ -133,43 +133,100 @@ section input[type="date"], select {
 }
 
 .fundo1 {
-    background-image: url("bg/bg2a.png");
+    background-image: url("bg/bg1a.png");
     background-size: cover;
     background-color: black;
-    font-weight: bold;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
-.fundo1 h1, .fundo1 h2, .fundo2 h1, .fundo2 h2 {
+.fundo1 h1 {
     color: #47d102;
     padding: 0;
+    font-size: 2.5em;
 }
 
-.fundo1 p, .fundo2 p {
+.fundo1 p {
+    color: white;
+    font-size: 1.3em;
+}
+
+.fundo1 button a {
+    border-color: #47d102;
+    color: #47d102;
+}
+
+.fundo1 button a:hover, .fundo1 button a:active {
+    border-color: #339900;
+    background-color: #339900;
     color: white;
 }
 
 .fundo2 {
-    background-image: url("bg/bg1a.png");
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.fundo2 h2 {
+    font-size: 1.25em;
+}
+
+.fundo2 i {
+    font-size: 2em;
+}
+
+.fundo3 {
+    background-image: url("bg/bg2a.png");
     background-size: cover;
     background-color: black;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.fundo3 h1 {
+    color: #47d102;
+    padding: 0;
+}
+
+.fundo3 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fundo3 ul li {
+    display: inline-block;
+    padding: 0 1em;
+}
+
+
+.fundo3 ul li a {
+    color: #47d102;
+    font-size: 2em;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: background-color 0.25s, color 0.25s; /* Safari */
+    transition: background-color 0.25s, color 0.25s;
+}
+
+.fundo3 ul li a:hover, .fundo3 ul li a:active {
+    color: white;
 }
 
 .homeh {
     text-align: center;
 }
 
-#saibamais a {
-    border-color: #47d102;
-    color: #47d102;
-    font-size: 1.25em;
+#btSaibaMais a {
+    border-color: #339900;
+    color: #339900;
+    font-size: 1.5em;
     padding: 0.5em;
 }
 
-#saibamais a:hover, #saibamais a:active {
-    background-color: #47d102;
-    color: #4d004d;
+#btSaibaMais a:hover, #btSaibaMais a:active {
+    background-color: #339900;
+    color: white;
 }
 
 /* CABEÇALHO */
@@ -312,11 +369,11 @@ footer ul li {
 /* ALERTAS */
 
 .alerta_sucesso {
-    background-color: lightgreen;
+    background-color: #339900;
 }
 
 .alerta_erro {
-    background-color: lightcoral;
+    background-color: #ff6666;
 }
 
 /* Para dispositivos móveis */
