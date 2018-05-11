@@ -32,10 +32,10 @@ if ($this->session->has_userdata('mensagem')) {
         </div>
         <div class="row">
             <div class="col-12">
-                <p>Organize seu evento.<br>
-                    Monte sua lista de presentes.<br>
-                    Convide seus amigos.<br><br>
-                    Tudo gratuitamente.</p>
+                <p>Organize seu evento<br>
+                    Monte sua lista de presentes<br>
+                    Convide seus amigos<br><br>
+                    Tudo gratuitamente</p>
             </div>
         </div>
         <div class="row">

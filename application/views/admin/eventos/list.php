@@ -46,7 +46,7 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>            
                 <div class="col-2">
                     <button class='bt' id='btdel'><a href="<?= base_url('admin/eventos/excluir/' . $evento->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir evento de código <?= $evento->id ?>?')">
+                                                     onclick="return confirm('Tem certeza que deseja excluir evento de código <?= $evento->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/eventos/atualizar/' . $evento->id) ?>">
                             <i class="fas fa-edit"></i></a></button>
@@ -128,6 +128,12 @@ if ($this->session->has_userdata('mensagem')) {
                     <?php } else { ?>
                         <strong><span style='color: red'>INATIVO</span></strong>
                     <?php } ?>
+                </div>
+                <div class="col-2">
+                    <strong>Descrição</strong>
+                </div>
+                <div class="col-10">
+                    <?= $evento->descricao ?>
                 </div>            
                 <div class="col-12">
                     <br><hr>
