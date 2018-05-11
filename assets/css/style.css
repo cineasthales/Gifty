@@ -80,6 +80,13 @@ input[readonly] {
     padding-left: 0.5em;
 }
 
+.bdImg {
+    display: block;
+    margin: 0 auto;
+    max-height: 10em;
+    max-width: 100%;
+}
+
 /* PRINCIPAL */
 
 section, article {

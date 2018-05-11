@@ -57,9 +57,8 @@ if ($this->session->has_userdata('mensagem')) {
                         <br>
                     </div>
                     <div class="col-4">
-                        <img src="<?= base_url('assets/img/misc/generic-profile.jpg') ?>" 
-                             alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>"
-                             style="height: 10em; display: block; margin: 0 auto;">
+                        <img class="bdImg" src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
+                             alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
                     </div>
                     <div class="col-2">
                         <strong>Nome</strong>

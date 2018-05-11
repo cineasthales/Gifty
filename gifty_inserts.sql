@@ -93,18 +93,18 @@ VALUES
 INSERT INTO empresas
 (razaoSocial, nomeFantasia, cnpj, email, logomarca, site, ativa)
 VALUES
-('B2W - Companhia Digital', 'Americanas', '00.776.574/0006-60', 'atendimento.acom@americanas.com', 'empresas_1.png', 'http://www.americanas.com.br', 0),
-('B2W - Companhia Digital', 'Submarino', '00.776.574/0006-60', 'atendimento.sub@americanas.com', 'empresas_2.png', 'http://www.submarino.com.br', 0),
-('B2W - Companhia Digital', 'Shoptime', '00.776.574/0006-60', 'atendimento.shop@americanas.com', 'empresas_3.png', 'http://www.shoptime.com.br', 0),
-('Via Varejo', 'Casas Bahia', '33.041.260/0652-90', 'email@casasbahia.com.br', 'empresas_4.png', 'http://www.casasbahia.com.br', 0),
-('Saraiva e Siciliano S/A', 'Livraria Saraiva', '61.365.284/0001-04', 'email@saraiva.com.br', 'empresas_5.png', 'http://www.saraiva.com.br', 0),
-('F. Brasil LTDA', 'Fnac', '02.634.926/0001-64', 'email@fnac.com.br', 'empresas_6.png', 'http://www.fnac.com.br', 0),
-('Livraria Cultura S/A', 'Livraria Cultura', '62.410.352/0001-72', 'email@livrariacultura.com.br', 'empresas_7.png', 'http://www.livrariacultura.com.br', 0),
-('CNOVA Comércio Eletrônico S/A', 'Ponto Frio', '07.170.938/0001-07', 'email@pontofrio.com.br', 'empresas_8.png', 'http://www.pontofrio.com.br', 0),
-('CNOVA Comércio Eletrônico S/A', 'Extra', '07.170.938/0001-07', 'email@extra.com.br', 'empresas_9.png', 'http://www.extra.com.br', 0),
-('Magazine Luiza S/A', 'Magazine Luiza', '47.960.950/0449-27', 'atendimento.site@magazineluiza.com.br', 'empresas_10.png', 'http://www.magazineluiza.com.br', 0),
-('Fast Shop S/A', 'Fast Shop', '43.708.379/0001-00', 'email@fastshop.com.br', 'empresas_11.png', 'https://www.fastshop.com.br', 0),
-('RN Comércio Varejista S/A', 'Ricardo Eletro', '13.481.309/0101-55', 'email@ricardoeletro.com.br', 'empresas_12.png', 'http://www.ricardoeletro.com.br', 0);
+('B2W - Companhia Digital', 'Americanas', '00.776.574/0006-60', 'atendimento.acom@americanas.com', '1.jpg', 'http://www.americanas.com.br', 0),
+('B2W - Companhia Digital', 'Submarino', '00.776.574/0006-60', 'atendimento.sub@americanas.com', '2.jpg', 'http://www.submarino.com.br', 0),
+('B2W - Companhia Digital', 'Shoptime', '00.776.574/0006-60', 'atendimento.shop@americanas.com', '3.jpg', 'http://www.shoptime.com.br', 0),
+('Via Varejo', 'Casas Bahia', '33.041.260/0652-90', 'email@casasbahia.com.br', '4.jpg', 'http://www.casasbahia.com.br', 0),
+('Saraiva e Siciliano S/A', 'Livraria Saraiva', '61.365.284/0001-04', 'email@saraiva.com.br', '5.jpg', 'http://www.saraiva.com.br', 0),
+('F. Brasil LTDA', 'Fnac', '02.634.926/0001-64', 'email@fnac.com.br', '6.jpg', 'http://www.fnac.com.br', 0),
+('Livraria Cultura S/A', 'Livraria Cultura', '62.410.352/0001-72', 'email@livrariacultura.com.br', '7.jpg', 'http://www.livrariacultura.com.br', 0),
+('CNOVA Comércio Eletrônico S/A', 'Ponto Frio', '07.170.938/0001-07', 'email@pontofrio.com.br', '8.jpg', 'http://www.pontofrio.com.br', 0),
+('CNOVA Comércio Eletrônico S/A', 'Extra', '07.170.938/0001-07', 'email@extra.com.br', '9.jpg', 'http://www.extra.com.br', 0),
+('Magazine Luiza S/A', 'Magazine Luiza', '47.960.950/0449-27', 'atendimento.site@magazineluiza.com.br', '10.jpg', 'http://www.magazineluiza.com.br', 0),
+('Fast Shop S/A', 'Fast Shop', '43.708.379/0001-00', 'email@fastshop.com.br', '11.jpg', 'https://www.fastshop.com.br', 0),
+('RN Comércio Varejista S/A', 'Ricardo Eletro', '13.481.309/0101-55', 'email@ricardoeletro.com.br', '12.jpg', 'http://www.ricardoeletro.com.br', 0);
 
 INSERT INTO enderecos
 (cep, logradouro, numero, complemento, bairro, cidade, estado)
@@ -123,16 +123,16 @@ VALUES
 INSERT INTO itens
 (nome, descricao, categoria, preco, imagem)
 VALUES
-('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 'Telefonia', 3999.99, 'itens_1.jpg'),
-('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 'Telefonia', 3299.99, 'itens_2.jpg'),
-('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 'Eletrodomésticos', 2229.99, 'itens_3.jpg'),
-('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 'Eletrodomésticos', 1329.99, 'itens_4.jpg'),
-('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 'Informática', 939.99, 'itens_5.jpg'),
-('Smart TV LED 70” LG 4K/Ultra HD 70UJ6585 WebOS - Conversor Digital Wi-Fi 4 HDMI 2 USB Bluetooth HDR', 'A melhor TV já feita', 'Eletrônicos', 6839.99, 'itens_6.jpg'),
-('Sofá 3 Lugares Aruba - American Comfort', 'O melhor sofá já feito', 'Móveis', 569.99, 'itens_7.jpg'),
-('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 'Informática', 4274.05, 'itens_8.jpg'),
-('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 'Games', 1199.00, 'itens_9.jpg'),
-('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 'Games', 1430.90, 'itens_10.jpg');
+('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 'Telefonia', 3999.99, '1.jpg'),
+('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 'Telefonia', 3299.99, '2.jpg'),
+('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 'Eletrodomésticos', 2229.99, '3.jpg'),
+('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 'Eletrodomésticos', 1329.99, '4.jpg'),
+('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 'Informática', 939.99, '5.jpg'),
+('Smart TV LED 70” LG 4K/Ultra HD 70UJ6585 WebOS - Conversor Digital Wi-Fi 4 HDMI 2 USB Bluetooth HDR', 'A melhor TV já feita', 'Eletrônicos', 6839.99, '6.jpg'),
+('Sofá 3 Lugares Aruba - American Comfort', 'O melhor sofá já feito', 'Móveis', 569.99, '7.jpg'),
+('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 'Informática', 4274.05, '8.jpg'),
+('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 'Games', 1199.00, '9.jpg'),
+('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 'Games', 1430.90, '10.jpg');
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
@@ -246,11 +246,11 @@ VALUES
 INSERT INTO anuncios
 (imagem, url, ativo, idEmpresa)
 VALUES
-('anuncio_1.gif', 'http://www.americanas.com.br/produto/1', 1, 1),
-('anuncio_2.gif', 'http://www.submarino.com.br/produto/2', 0, 2),
-('anuncio_3.gif', 'http://www.shoptime.com.br/produto/3', 0, 3),
-('anuncio_4.gif', 'http://www.casasbahia.com.br/produto/4', 0, 4),
-('anuncio_5.gif', 'http://www.saraiva.com.br/produto/5', 0, 5);
+('1.jpg', 'http://www.americanas.com.br/produto/1', 1, 1),
+('2.jpg', 'http://www.submarino.com.br/produto/2', 0, 2),
+('3.jpg', 'http://www.shoptime.com.br/produto/3', 0, 3),
+('4.jpg', 'http://www.casasbahia.com.br/produto/4', 0, 4),
+('5.jpg', 'http://www.saraiva.com.br/produto/5', 0, 5);
 
 INSERT INTO cliquesAnuncios
 (data, hora, idAnuncio, idUsuario)
