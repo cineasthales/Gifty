@@ -33,6 +33,15 @@ if ($this->session->has_userdata('mensagem')) {
                 <button class='bt'><a href="<?= base_url('admin/telefones/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
+                <?php if (count($telefones) > 1) { ?>
+                    <small><strong><?= count($telefones) ?> registros encontrados.</strong></small>
+                <?php } else if (count($telefones) == 1) { ?>
+                    <small><strong><?= count($telefones) ?> registro encontrado.</strong></small>
+                <?php } else { ?>
+                    <small><strong>Nenhum registro encontrado.</strong></small>
+                <?php } ?>              
+            </div>
+            <div class="col-12">
                 <hr>
             </div>
             <?php
@@ -56,7 +65,7 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>
                 <div class="col-2">
                     <button class='bt' id='btdel'><a href="<?= base_url('admin/telefones/excluir/' . $telefone->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir telefone de código <?= $telefone->id ?>?')">
+                                                     onclick="return confirm('Tem certeza que deseja excluir telefone de código <?= $telefone->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/telefones/atualizar/' . $telefone->id) ?>">
                             <i class="fas fa-edit"></i></a></button>

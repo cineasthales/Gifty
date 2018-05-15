@@ -33,6 +33,15 @@ if ($this->session->has_userdata('mensagem')) {
                 <button class='bt'><a href="<?= base_url('admin/interesses/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
+                <?php if (count($interesses) > 1) { ?>
+                    <small><strong><?= count($interesses) ?> registros encontrados.</strong></small>
+                <?php } else if (count($interesses) == 1) { ?>
+                    <small><strong><?= count($interesses) ?> registro encontrado.</strong></small>
+                <?php } else { ?>
+                    <small><strong>Nenhum registro encontrado.</strong></small>
+                <?php } ?>              
+            </div>
+            <div class="col-12">
                 <hr>
             </div>
             <?php

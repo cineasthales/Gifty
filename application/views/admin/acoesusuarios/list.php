@@ -33,6 +33,15 @@ if ($this->session->has_userdata('mensagem')) {
                 <button class='bt'><a href="<?= base_url('admin/acoesusuarios/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
+                <?php if (count($acoesusuarios) > 1) { ?>
+                    <small><strong><?= count($acoesusuarios) ?> registros encontrados.</strong></small>
+                <?php } else if (count($acoesusuarios) == 1) { ?>
+                    <small><strong><?= count($acoesusuarios) ?> registro encontrado.</strong></small>
+                <?php } else { ?>
+                    <small><strong>Nenhum registro encontrado.</strong></small>
+                <?php } ?>              
+            </div>
+            <div class="col-12">
                 <hr>
             </div>
             <?php
@@ -49,7 +58,7 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>
                 <div class="col-2">
                     <button class='bt' id='btdel'><a href="<?= base_url('admin/acoesusuarios/excluir/' . $acao->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir ação de código <?= $acao->id ?>?')">
+                                                     onclick="return confirm('Tem certeza que deseja excluir ação de código <?= $acao->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/acoesusuarios/atualizar/' . $acao->id) ?>">
                             <i class="fas fa-edit"></i></a></button>

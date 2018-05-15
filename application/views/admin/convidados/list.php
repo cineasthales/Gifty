@@ -33,6 +33,15 @@ if ($this->session->has_userdata('mensagem')) {
                 <button class='bt'><a href="<?= base_url('admin/convidados/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
+                <?php if (count($convidados) > 1) { ?>
+                    <small><strong><?= count($convidados) ?> registros encontrados.</strong></small>
+                <?php } else if (count($convidados) == 1) { ?>
+                    <small><strong><?= count($convidados) ?> registro encontrado.</strong></small>
+                <?php } else { ?>
+                    <small><strong>Nenhum registro encontrado.</strong></small>
+                <?php } ?>              
+            </div>
+            <div class="col-12">
                 <hr>
             </div>
             <?php

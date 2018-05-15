@@ -76,6 +76,11 @@ input[readonly] {
     font-size: 1em;
 }
 
+#btsearch {
+    float: left;
+    font-size: 1em;
+}
+
 #btdel {
     padding-left: 0.5em;
 }
@@ -105,7 +110,7 @@ section button {
     border: 0;
 }
 
-section button a, section input[type="submit"] {
+section button a, section input[type="submit"], button[type="submit"] {
     text-align: center;
     text-transform: uppercase;
     font-size: 1.5em;
@@ -126,17 +131,22 @@ section button a {
 }
 
 section button a:hover, section button a:active,
-section input[type="submit"]:hover, section input[type="submit"]:active {
+section input[type="submit"]:hover, section input[type="submit"]:active,
+button[type="submit"]:hover, button[type="submit"]:active {
     background-color: purple;
     color: white;
 }
 
 section input[type="text"], section input[type="password"], section input[type="email"],
-section input[type="date"], select {
+section input[type="date"], section input[type="search"], select {
     width: 100%;
     border: 0.1em solid black;
     padding: 0.25em;
     outline: none;
+}
+
+section input[type="search"], #filtro {
+    padding: 0.4em;
 }
 
 .fundo1 {

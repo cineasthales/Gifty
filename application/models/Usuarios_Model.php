@@ -42,6 +42,24 @@ class Usuarios_Model extends CI_Model {
         return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
 
+    public function searchNomeUsuario($nomeUsuario) {
+        $this->db->like('nomeUsuario', $nomeUsuario);
+        $this->db->order_by('nomeUsuario');
+        return $this->db->get('usuarios')->result(); // retorna vetor
+    }
+
+    public function searchNome($nome) {
+        $this->db->like('nome', $nome);
+        $this->db->order_by('nome, sobrenome');
+        return $this->db->get('usuarios')->result(); // retorna vetor
+    }
+
+    public function searchEmail($email) {
+        $this->db->like('email', $email);
+        $this->db->order_by('email');
+        return $this->db->get('usuarios')->result(); // retorna vetor
+    }
+
     public function insert($registro) {
         return $this->db->insert('usuarios', $registro);
     }

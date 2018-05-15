@@ -33,6 +33,15 @@ if ($this->session->has_userdata('mensagem')) {
                 <button class='bt'><a href="<?= base_url('admin/itens/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
+                <?php if (count($itens) > 1) { ?>
+                    <small><strong><?= count($itens) ?> registros encontrados.</strong></small>
+                <?php } else if (count($itens) == 1) { ?>
+                    <small><strong><?= count($itens) ?> registro encontrado.</strong></small>
+                <?php } else { ?>
+                    <small><strong>Nenhum registro encontrado.</strong></small>
+                <?php } ?>              
+            </div>
+            <div class="col-12">
                 <hr>
             </div>
             <?php
@@ -46,7 +55,7 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>            
                 <div class="col-2">
                     <button class='bt' id='btdel'><a href="<?= base_url('admin/itens/excluir/' . $item->id) ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir item de código <?= $item->id ?>?')">
+                                                     onclick="return confirm('Tem certeza que deseja excluir item de código <?= $item->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
                     <button class='bt'><a href="<?= base_url('admin/itens/atualizar/' . $item->id) ?>">
                             <i class="fas fa-edit"></i></a></button>

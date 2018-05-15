@@ -26,11 +26,37 @@ if ($this->session->has_userdata('mensagem')) {
 <main>
     <section>
         <div class="row-plus"> 
-            <div class="col-10">
+            <div class="col-3">
                 <h1>Usuários</h1>
-            </div>
-            <div class="col-2">
+            </div>            
+            <form method="post" action="<?= base_url('admin/usuarios/buscar') ?>">
+                <div class="col-3">
+                    <label for="filtro" hidden>Filtro</label>
+                    <select id="filtro" name="filtro">
+                        <option value="1">Nome</option>
+                        <option value="2">E-mail</option>
+                        <option value="3">Nome de Usuário</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="busca" hidden>Buscar</label>
+                    <input type="search" id="busca" name="busca">
+                </div>                
+                <div class="col-1">
+                    <button id='btsearch' type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <div class="col-1">
                 <button class='bt'><a href="<?= base_url('admin/usuarios/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+            </div>
+            <div class="col-12">
+                <?php if (count($usuarios) > 1) { ?>
+                    <small><strong><?= count($usuarios) ?> registros encontrados.</strong></small>
+                <?php } else if (count($usuarios) == 1) { ?>
+                    <small><strong><?= count($usuarios) ?> registro encontrado.</strong></small>
+                <?php } else { ?>
+                    <small><strong>Nenhum registro encontrado.</strong></small>
+                <?php } ?>              
             </div>
             <div class="col-12">
                 <hr>
@@ -47,7 +73,7 @@ if ($this->session->has_userdata('mensagem')) {
                     </div>            
                     <div class="col-2">
                         <button class='bt' id='btdel'><a href="<?= base_url('admin/usuarios/excluir/' . $usuario->id) ?>"
-                                              onclick="return confirm('Tem certeza que deseja excluir usuário de código <?= $usuario->id ?>?')">
+                                                         onclick="return confirm('Tem certeza que deseja excluir usuário de código <?= $usuario->id ?>?')">
                                 <i class="fas fa-trash-alt"></i></a></button>
                         <button class='bt'><a href="<?= base_url('admin/usuarios/atualizar/' . $usuario->id) ?>">
                                 <i class="fas fa-edit"></i></a></button>
