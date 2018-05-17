@@ -27,7 +27,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section class="fundo1">
         <div class="row">
             <div class="col-12">
-                <h1 class="homeh">LISTAS DE PRESENTES PERSONALIZADAS</h1>
+                <h1>LISTAS DE PRESENTES<br>PERSONALIZADAS</h1>
             </div>
         </div>
         <div class="row">
@@ -78,7 +78,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section class="fundo3">
         <div class="row">
             <div class="col-12">
-                <h1 class="homeh">
+                <h1 class="footerh">
                     <ul>
                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>

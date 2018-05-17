@@ -45,14 +45,15 @@
 /* GERAL */
 
 body {
-    font-family: sans-serif;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1em;
-    background-color: purple;
+    background-color: #800080;
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: Tahoma, Geneva, sans-serif;
     font-weight: bold;
-    color: #339900;
+    color: #2D8000;
     padding-bottom: 0.5em;
 }
 
@@ -61,7 +62,7 @@ h1 {
 }
 
 input[readonly] {
-    background-color: lightgray;
+    background-color: #e6e6e6;
     outline: none;
     cursor: default;
 }
@@ -114,9 +115,9 @@ section button a, section input[type="submit"], button[type="submit"] {
     text-align: center;
     text-transform: uppercase;
     font-size: 1.5em;
-    color: purple;
+    color: #2D8000;
     padding: 0.5em;
-    border: 0.1em solid purple;
+    border: 0.1em solid #2D8000;
     background-color: transparent;
     font-weight: bold;
     -webkit-transition: 0.25s;
@@ -133,7 +134,7 @@ section button a {
 section button a:hover, section button a:active,
 section input[type="submit"]:hover, section input[type="submit"]:active,
 button[type="submit"]:hover, button[type="submit"]:active {
-    background-color: purple;
+    background-color: #2D8000;
     color: white;
 }
 
@@ -150,32 +151,38 @@ section input[type="search"], #filtro {
 }
 
 .fundo1 {
-    background-image: url("bg/bg1a.png");
+    background-image: url("bg/bg1.png");
     background-size: cover;
-    background-color: black;
+    background-color: white;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
 .fundo1 h1 {
-    color: #47d102;
+    color: #2D8000;
     padding: 0;
     font-size: 2.5em;
+    text-align: left;
 }
 
 .fundo1 p {
-    color: white;
+    color: black;
     font-size: 1.3em;
+    text-align: left;
+}
+
+.fundo1 button {
+    margin: 0;
 }
 
 .fundo1 button a {
-    border-color: #47d102;
-    color: #47d102;
+    border-color: #2D8000;
+    color: #2D8000;
 }
 
 .fundo1 button a:hover, .fundo1 button a:active {
-    border-color: #339900;
-    background-color: #339900;
+    border-color: #2D8000;
+    background-color: #2D8000;
     color: white;
 }
 
@@ -195,13 +202,13 @@ section input[type="search"], #filtro {
 .fundo3 {
     background-image: url("bg/bg2a.png");
     background-size: cover;
-    background-color: black;
+    background-color: white;
     padding-top: 1em;
     padding-bottom: 1em;
 }
 
 .fundo3 h1 {
-    color: #47d102;
+    color: #2D8000;
     padding: 0;
 }
 
@@ -216,9 +223,16 @@ section input[type="search"], #filtro {
     padding: 0 1em;
 }
 
+.fundo3 ul li:first-child {
+    padding: 0 1em 0 0;
+}
+
+.fundo3 ul li:last-child {
+    padding: 0 0 0 1em;
+}
 
 .fundo3 ul li a {
-    color: #47d102;
+    color: black;
     font-size: 2em;
     text-decoration: none;
     font-weight: bold;
@@ -227,22 +241,26 @@ section input[type="search"], #filtro {
 }
 
 .fundo3 ul li a:hover, .fundo3 ul li a:active {
-    color: white;
+    color: #2D8000;
 }
 
 .homeh {
     text-align: center;
 }
 
+.footerh {
+    text-align: right;
+}
+
 #btSaibaMais a {
-    border-color: #339900;
-    color: #339900;
+    border-color: #2D8000;
+    color: #2D8000;
     font-size: 1.5em;
     padding: 0.5em;
 }
 
 #btSaibaMais a:hover, #btSaibaMais a:active {
-    background-color: #339900;
+    background-color: #2D8000;
     color: white;
 }
 
@@ -275,7 +293,7 @@ header input[type="submit"] {
 
 header input[type="submit"]:hover, header input[type="submit"]:active {
     background-color: white;
-    color: purple;
+    color: #800080;
 }
 
 header a, header a:visited, footer a, footer a:visited {
@@ -313,7 +331,7 @@ header nav ul li a {
 
 header nav ul li a:hover, header nav ul li a:active {
     background-color: white;
-    color: purple;
+    color: #800080;
 }
 
 #logo {
@@ -329,7 +347,7 @@ aside {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #4d004d;
+    background-color: #330033;
     border: 0.1em solid #4d004d;
 }
 
@@ -340,7 +358,7 @@ aside ul {
 }
 
 aside ul li a {
-    padding: 0.4em 1em;
+    padding: 0.35em 1em;
     text-decoration: none;
     color: white;
     display: block;
@@ -386,11 +404,11 @@ footer ul li {
 /* ALERTAS */
 
 .alerta_sucesso {
-    background-color: #339900;
+    background-color: #2D8000;
 }
 
 .alerta_erro {
-    background-color: #ff6666;
+    background-color: #CC14CC;
 }
 
 /* Para dispositivos móveis */
