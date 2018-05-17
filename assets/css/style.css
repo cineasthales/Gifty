@@ -78,7 +78,6 @@ input[readonly] {
 }
 
 #btsearch {
-    float: left;
     font-size: 1em;
 }
 
@@ -153,7 +152,7 @@ section input[type="search"], #filtro {
 .fundo1 {
     background-image: url("bg/bg1.png");
     background-size: cover;
-    background-color: white;
+    background-color: black;
     padding-top: 2em;
     padding-bottom: 2em;
 }
@@ -166,7 +165,7 @@ section input[type="search"], #filtro {
 }
 
 .fundo1 p {
-    color: black;
+    color: white;
     font-size: 1.3em;
     text-align: left;
 }
@@ -232,7 +231,7 @@ section input[type="search"], #filtro {
 }
 
 .fundo3 ul li a {
-    color: black;
+    color: #2D8000;
     font-size: 2em;
     text-decoration: none;
     font-weight: bold;
@@ -241,7 +240,7 @@ section input[type="search"], #filtro {
 }
 
 .fundo3 ul li a:hover, .fundo3 ul li a:active {
-    color: #2D8000;
+    color: black;
 }
 
 .homeh {
@@ -405,10 +404,12 @@ footer ul li {
 
 .alerta_sucesso {
     background-color: #2D8000;
+    color: white;
 }
 
 .alerta_erro {
-    background-color: #CC14CC;
+    background-color: #8D0707;
+    color: white;
 }
 
 /* Para dispositivos móveis */
