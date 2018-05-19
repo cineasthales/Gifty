@@ -26,10 +26,29 @@ if ($this->session->has_userdata('mensagem')) {
 <main>
     <section>
         <div class="row-plus"> 
-            <div class="col-10">
+            <div class="col-3">
                 <h1>Empresas</h1>
             </div>
-            <div class="col-2">
+            <form method="post" action="<?= base_url('admin/empresas/buscar') ?>">
+                <div class="col-3">
+                    <label for="filtro" hidden>Filtro</label>
+                    <select id="filtro" name="filtro">
+                        <option value="0">------</option>
+                        <option value="1">ID</option>                        
+                        <option value="2">Nome Fantasia</option>
+                        <option value="3">Razão Social</option>   
+                        <option value="4">CNPJ</option>                        
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="busca" hidden>Buscar</label>
+                    <input type="search" id="busca" name="busca">
+                </div>                
+                <div class="col-1">
+                    <button id='btsearch' type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <div class="col-1">
                 <button class='bt'><a href="<?= base_url('admin/empresas/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">

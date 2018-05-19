@@ -23,9 +23,13 @@ class Usuarios extends CI_Controller {
     public function buscar() {
         $this->verificaSessao();
         $busca = $this->input->post('busca');
-        if ($this->input->post('filtro') == '1') {
-            $dados['usuarios'] = $this->usuarios->searchNome($busca);
+        if ($this->input->post('filtro') == '0') {
+            redirect('admin/usuarios');
+        } else if ($this->input->post('filtro') == '1') {
+            $dados['usuarios'] = $this->usuarios->searchId($busca);
         } else if ($this->input->post('filtro') == '2') {
+            $dados['usuarios'] = $this->usuarios->searchNome($busca);
+        } else if ($this->input->post('filtro') == '3') {
             $dados['usuarios'] = $this->usuarios->searchEmail($busca);
         } else {
             $dados['usuarios'] = $this->usuarios->searchNomeUsuario($busca);

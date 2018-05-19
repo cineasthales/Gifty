@@ -151,7 +151,7 @@ section input[type="search"], #filtro {
 
 .fundo1 {
     background-image: url("bg/bg1.png");
-    background-size: cover;
+    background-size: 100%;
     background-color: black;
     padding-top: 2em;
     padding-bottom: 2em;
