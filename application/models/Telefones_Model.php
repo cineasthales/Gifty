@@ -12,6 +12,24 @@ class Telefones_Model extends CI_Model {
         return $this->db->get('telefones')->row(); // retorna registro obtido
     }
 
+    public function searchId($id) {
+        $this->db->where('id', $id);
+        $this->db->order_by('id');
+        return $this->db->get('telefones')->result(); // retorna vetor
+    }
+
+    public function searchDDD($ddd) {
+        $this->db->like('ddd', $ddd);
+        $this->db->order_by('ddd');
+        return $this->db->get('telefones')->result(); // retorna vetor
+    }
+
+    public function searchNumero($numero) {
+        $this->db->like('numero', $numero);
+        $this->db->order_by('numero');
+        return $this->db->get('telefones')->result(); // retorna vetor
+    }
+
     public function insert($registro) {
         return $this->db->insert('telefones', $registro);
     }

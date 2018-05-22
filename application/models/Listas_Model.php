@@ -13,8 +13,20 @@ class Listas_Model extends CI_Model {
 
     public function find($idEvento, $idItem) {
         $this->db->where('idEvento', $idEvento);
-        $this->db->where('idItem', $idItem);        
+        $this->db->where('idItem', $idItem);
         return $this->db->get('listas')->row(); // retorna registro obtido
+    }
+
+    public function searchIdEvento($idEvento) {
+        $this->db->like('idEvento', $idEvento);
+        $this->db->order_by('idEvento');
+        return $this->db->get('listas')->result(); // retorna vetor
+    }
+
+    public function searchIdItem($idItem) {
+        $this->db->like('idItem', $idItem);
+        $this->db->order_by('idItem');
+        return $this->db->get('listas')->result(); // retorna vetor
     }
 
     public function insert($registro) {

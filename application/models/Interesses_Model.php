@@ -17,6 +17,18 @@ class Interesses_Model extends CI_Model {
         return $this->db->get('interesses')->row(); // retorna registro obtido
     }
 
+    public function searchIdTipoInteresse($idTipoInteresse) {
+        $this->db->like('idTipoInteresse', $idTipoInteresse);
+        $this->db->order_by('idTipoInteresse');
+        return $this->db->get('interesses')->result(); // retorna vetor
+    }
+
+    public function searchIdUsuario($idUsuario) {
+        $this->db->like('idUsuario', $idUsuario);
+        $this->db->order_by('idUsuario');
+        return $this->db->get('interesses')->result(); // retorna vetor
+    }
+
     public function insert($registro) {
         return $this->db->insert('interesses', $registro);
     }

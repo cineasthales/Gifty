@@ -9,6 +9,8 @@
                 <label for="user" hidden><i class="fas fa-user"></i></label>
                 <input type="text" id="user" name="user"
                        placeholder="Nome de Usuário ou E-mail">
+                <br>
+                <small>Ainda não é membro? <a href="<?= base_url('home/cadastrar') ?>">Cadastre-se!</a></small>
             </div>
             <div class="col-3">
                 <label for="senha" hidden><i class="fas fa-lock"></i></label>

@@ -38,6 +38,7 @@ if ($this->session->has_userdata('mensagem')) {
                         <option value="2">Nome</option>
                         <option value="3">E-mail</option>
                         <option value="4">Nome de Usuário</option>
+                        <option value="5">CPF</option>
                     </select>
                 </div>
                 <div class="col-4">

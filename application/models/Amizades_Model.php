@@ -1,7 +1,7 @@
 <?php
 
 class Amizades_Model extends CI_Model {
-    
+
     public function select() {
         $this->db->select('a.*, u1.nome AS nome1, u1.sobrenome AS snome1, u2.nome AS nome2, u2.sobrenome AS snome2');
         $this->db->from('amizades a');
@@ -12,7 +12,7 @@ class Amizades_Model extends CI_Model {
     }
 
     // busca todos os amigos de um usuário
-    public function findAll($id) {        
+    public function findAll($id) {
         $this->db->where('idUsuario1', $id);
         $this->db->where('idUsuario2', $id);
         return $this->db->get('amizades')->result(); // retorna vetor
@@ -25,6 +25,24 @@ class Amizades_Model extends CI_Model {
         $this->db->or_where('idUsuario1', $id2);
         $this->db->where('idUsuario2', $id1);
         return $this->db->get('amizades')->row(); // retorna registro obtido
+    }
+
+    public function searchIdUsuario1($idUsuario1) {
+        $this->db->like('idUsuario1', $idUsuario1);
+        $this->db->order_by('idUsuario1');
+        return $this->db->get('amizades')->result(); // retorna vetor
+    }
+
+    public function searchIdUsuario2($idUsuario2) {
+        $this->db->like('idUsuario2', $idUsuario2);
+        $this->db->order_by('idUsuario2');
+        return $this->db->get('amizades')->result(); // retorna vetor
+    }
+
+    public function searchDataAmizade($dataAmizade) {
+        $this->db->like('dataAmizade', $dataAmizade);
+        $this->db->order_by('dataAmizade');
+        return $this->db->get('amizades')->result(); // retorna vetor
     }
 
     public function insert($registro) {

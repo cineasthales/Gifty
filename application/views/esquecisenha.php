@@ -1,10 +1,20 @@
 <main>
-    <article>
+    <section>
         <div class="row">
             <div class="col-12">
                 <h1>Esqueci minha senha</h1>
-                <p>Em breve.</p>
             </div>
+            <form method="post" action="<?= base_url('home/recuperarsenha/') ?>"> 
+                <div class="col-10"> 
+                    <label for="email">E-mail</label><br>
+                    <input type="email" id="email" name="email" required
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br><br>
+                </div>
+                <div class="col-2">
+                    <input type="submit" value="Enviar" style="float: right"><br>
+                </div>
+            </form>
         </div>
-    </article>
+        </div>
+    </section>
 </main>

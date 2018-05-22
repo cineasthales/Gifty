@@ -9,9 +9,22 @@ class Anuncios_Model extends CI_Model {
         $this->db->order_by('id');
         return $this->db->get()->result(); // retorna vetor
     }
+
     public function find($id) {
         $this->db->where('id', $id);
         return $this->db->get('anuncios')->row(); // retorna registro obtido
+    }
+
+    public function searchId($id) {
+        $this->db->where('id', $id);
+        $this->db->order_by('id');
+        return $this->db->get('anuncios')->result(); // retorna vetor
+    }
+
+    public function searchEmpresa($idEmpresa) {
+        $this->db->like('idEmpresa', $idEmpresa);
+        $this->db->order_by('idEmpresa');
+        return $this->db->get('anuncios')->result(); // retorna vetor
     }
 
     public function insert($registro) {

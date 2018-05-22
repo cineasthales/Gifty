@@ -18,6 +18,42 @@ class Eventos_Model extends CI_Model {
         return $this->db->get('eventos')->row(); // retorna registro obtido
     }
 
+    public function searchId($id) {
+        $this->db->where('id', $id);
+        $this->db->order_by('id');
+        return $this->db->get('eventos')->result(); // retorna vetor
+    }
+
+    public function searchTitulo($titulo) {
+        $this->db->like('titulo', $titulo);
+        $this->db->order_by('titulo');
+        return $this->db->get('eventos')->result(); // retorna vetor
+    }
+
+    public function searchData($data) {
+        $this->db->like('data', $data);
+        $this->db->order_by('data');
+        return $this->db->get('eventos')->result(); // retorna vetor
+    }
+
+    public function searchLocal($local) {
+        $this->db->like('local', $local);
+        $this->db->order_by('local');
+        return $this->db->get('eventos')->result(); // retorna vetor
+    }
+
+    public function searchUsuario($idUsuario) {
+        $this->db->like('idUsuario', $idUsuario);
+        $this->db->order_by('idUsuario');
+        return $this->db->get('eventos')->result(); // retorna vetor
+    }
+
+    public function searchTipoEvento($idTipoEvento) {
+        $this->db->like('idTipoEvento', $idTipoEvento);
+        $this->db->order_by('idTipoEvento');
+        return $this->db->get('eventos')->result(); // retorna vetor
+    }
+
     public function insert($registro) {
         return $this->db->insert('eventos', $registro);
     }

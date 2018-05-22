@@ -31,8 +31,10 @@ class Usuarios extends CI_Controller {
             $dados['usuarios'] = $this->usuarios->searchNome($busca);
         } else if ($this->input->post('filtro') == '3') {
             $dados['usuarios'] = $this->usuarios->searchEmail($busca);
-        } else {
+        } else if ($this->input->post('filtro') == '4') {
             $dados['usuarios'] = $this->usuarios->searchNomeUsuario($busca);
+        } else {
+            $dados['usuarios'] = $this->usuarios->searchCPF($busca);
         }
         $this->load->view('include/aside');
         $this->load->view('include/head');

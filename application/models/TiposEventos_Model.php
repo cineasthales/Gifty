@@ -12,6 +12,18 @@ class TiposEventos_Model extends CI_Model {
         return $this->db->get('tiposEventos')->row(); // retorna registro obtido
     }
 
+    public function searchId($id) {
+        $this->db->where('id', $id);
+        $this->db->order_by('id');
+        return $this->db->get('tiposEventos')->result(); // retorna vetor
+    }
+
+    public function searchDescricao($descricao) {
+        $this->db->like('descricao', $descricao);
+        $this->db->order_by('descricao');
+        return $this->db->get('tiposEventos')->result(); // retorna vetor
+    }
+
     public function insert($registro) {
         return $this->db->insert('tiposEventos', $registro);
     }

@@ -11,10 +11,22 @@ class TiposInteresses_Model extends CI_Model {
         $this->db->order_by('descricao');
         return $this->db->get('tiposInteresses')->result(); // retorna vetor
     }
-    
+
     public function find($id) {
         $this->db->where('id', $id);
         return $this->db->get('tiposInteresses')->row(); // retorna registro obtido
+    }
+
+    public function searchId($id) {
+        $this->db->where('id', $id);
+        $this->db->order_by('id');
+        return $this->db->get('tiposInteresses')->result(); // retorna vetor
+    }
+
+    public function searchDescricao($descricao) {
+        $this->db->like('descricao', $descricao);
+        $this->db->order_by('descricao');
+        return $this->db->get('tiposInteresses')->result(); // retorna vetor
     }
 
     public function insert($registro) {

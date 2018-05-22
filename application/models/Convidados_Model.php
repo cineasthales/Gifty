@@ -13,8 +13,20 @@ class Convidados_Model extends CI_Model {
 
     public function find($idEvento, $idUsuario) {
         $this->db->where('idEvento', $idEvento);
-        $this->db->where('idUsuario', $idUsuario);        
+        $this->db->where('idUsuario', $idUsuario);
         return $this->db->get('convidados')->row(); // retorna registro obtido
+    }
+
+    public function searchIdEvento($idEvento) {
+        $this->db->like('idEvento', $idEvento);
+        $this->db->order_by('idEvento');
+        return $this->db->get('convidados')->result(); // retorna vetor
+    }
+
+    public function searchIdUsuario($idUsuario) {
+        $this->db->like('idUsuario', $idUsuario);
+        $this->db->order_by('idUsuario');
+        return $this->db->get('convidados')->result(); // retorna vetor
     }
 
     public function insert($registro) {

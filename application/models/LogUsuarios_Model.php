@@ -16,6 +16,18 @@ class LogUsuarios_Model extends CI_Model {
         return $this->db->get('logUsuarios')->row(); // retorna registro obtido
     }
 
+    public function searchId($id) {
+        $this->db->where('id', $id);
+        $this->db->order_by('id');
+        return $this->db->get('logUsuarios')->result(); // retorna vetor
+    }
+
+    public function searchIdUsuario($idUsuario) {
+        $this->db->like('idUsuario', $idUsuario);
+        $this->db->order_by('idUsuario');
+        return $this->db->get('logUsuarios')->result(); // retorna vetor
+    }
+
     public function insert($registro) {
         return $this->db->insert('logUsuarios', $registro);
     }
