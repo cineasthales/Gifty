@@ -68,7 +68,7 @@ class Usuarios_Model extends CI_Model {
     }
 
     public function searchCPF($cpf) {
-        $this->db->like('cpf', $cpf);
+        $this->db->where('cpf', $cpf);
         $this->db->order_by('cpf');
         return $this->db->get('usuarios')->result(); // retorna vetor
     }

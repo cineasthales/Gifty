@@ -29,10 +29,11 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-3">
                 <h1>Usuários</h1>
             </div>            
-            <form method="post" action="<?= base_url('admin/usuarios') ?>">
+            <form method="post" action="<?= base_url('admin/usuarios/buscar') ?>">
                 <div class="col-3">
                     <label for="filtro" hidden>Filtro</label>
                     <select id="filtro" name="filtro">
+                        <option value="0">------</option>
                         <option value="1">ID</option>
                         <option value="2">Nome</option>
                         <option value="3">E-mail</option>
