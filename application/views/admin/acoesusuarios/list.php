@@ -33,7 +33,6 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-2">
                     <label for="filtro" hidden>Filtro</label>
                     <select id="filtro" name="filtro">
-                        <option value="0">------</option>
                         <option value="1">ID</option>
                         <option value="2">Ação</option>
                     </select>
