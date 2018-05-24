@@ -12,7 +12,24 @@ class Enderecos extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['enderecos'] = $this->enderecos->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['enderecos'] = $this->enderecos->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/enderecos');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['enderecos'] = $this->enderecos->searchId($busca);
+            } else if ($this->input->post('filtro') == '2') {
+                $dados['enderecos'] = $this->enderecos->searchLogradouro($busca);
+            } else if ($this->input->post('filtro') == '3') {
+                $dados['enderecos'] = $this->enderecos->searchBairro($busca);
+            } else if ($this->input->post('filtro') == '4') {
+                $dados['enderecos'] = $this->enderecos->searchCidade($busca);
+            } else {
+                $dados['enderecos'] = $this->enderecos->searchEstado($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

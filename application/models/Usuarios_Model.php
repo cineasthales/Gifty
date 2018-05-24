@@ -3,7 +3,7 @@
 class Usuarios_Model extends CI_Model {
 
     public function select() {
-        $this->db->order_by('id');
+        $this->db->order_by('id DESC');
         return $this->db->get('usuarios')->result(); // retorna vetor
     }
 
@@ -44,7 +44,6 @@ class Usuarios_Model extends CI_Model {
 
     public function searchId($id) {
         $this->db->where('id', $id);
-        $this->db->where('nivel', 0);
         $this->db->order_by('id');
         return $this->db->get('usuarios')->result(); // retorna vetor
     }
@@ -68,7 +67,7 @@ class Usuarios_Model extends CI_Model {
     }
 
     public function searchCPF($cpf) {
-        $this->db->where('cpf', $cpf);
+        $this->db->like('cpf', $cpf);
         $this->db->order_by('cpf');
         return $this->db->get('usuarios')->result(); // retorna vetor
     }

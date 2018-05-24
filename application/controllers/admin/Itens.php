@@ -12,7 +12,20 @@ class Itens extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['itens'] = $this->itens->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['itens'] = $this->itens->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/itens');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['itens'] = $this->itens->searchId($busca);
+            } else if ($this->input->post('filtro') == '2') {
+                $dados['itens'] = $this->itens->searchNome($busca);
+            } else {
+                $dados['itens'] = $this->itens->searchCategoria($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

@@ -12,7 +12,18 @@ class Convidados extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['convidados'] = $this->convidados->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['convidados'] = $this->convidados->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/convidados');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['convidados'] = $this->convidados->searchEvento($busca);
+            } else {
+                $dados['convidados'] = $this->convidados->searchUsuario($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

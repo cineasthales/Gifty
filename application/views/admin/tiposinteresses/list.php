@@ -29,13 +29,13 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-5">
                 <h1>Tipos de Interesses</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/tiposinteresses/buscar') ?>">
+            <form method="post" action="<?= base_url('admin/tiposinteresses') ?>">
                 <div class="col-2">
                     <label for="filtro" hidden>Filtro</label>
                     <select id="filtro" name="filtro">
                         <option value="0">------</option>
                         <option value="1">ID</option>
-                        <option value="2">Tipo</option>
+                        <option value="2">Descrição</option>
                     </select>
                 </div>
                 <div class="col-3">

@@ -3,7 +3,7 @@
 class Empresas_Model extends CI_Model {
 
     public function select() {
-        $this->db->order_by('id');
+        $this->db->order_by('id DESC');
         return $this->db->get('empresas')->result(); // retorna vetor
     }
 
@@ -31,7 +31,7 @@ class Empresas_Model extends CI_Model {
     }
 
     public function searchCNPJ($cnpj) {
-        $this->db->where('cnpj', $cnpj);
+        $this->db->like('cnpj', $cnpj);
         $this->db->order_by('cnpj');
         return $this->db->get('empresas')->result(); // retorna vetor
     }

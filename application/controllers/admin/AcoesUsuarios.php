@@ -11,8 +11,19 @@ class AcoesUsuarios extends CI_Controller {
     }
 
     public function index() {
-        $this->verificaSessao();        
-        $dados['acoesusuarios'] = $this->acoesusuarios->select();
+        $this->verificaSessao();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['acoesusuarios'] = $this->acoesusuarios->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/acoesusuarios');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['acoesusuarios'] = $this->acoesusuarios->searchId($busca);
+            } else {
+                $dados['acoesusuarios'] = $this->acoesusuarios->searchAcao($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

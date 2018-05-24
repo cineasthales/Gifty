@@ -12,7 +12,18 @@ class Empresas extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['empresas'] = $this->empresas->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['empresas'] = $this->empresas->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/empresas');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['empresas'] = $this->empresas->searchEvento($busca);
+            } else {
+                $dados['empresas'] = $this->empresas->searchUsuario($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

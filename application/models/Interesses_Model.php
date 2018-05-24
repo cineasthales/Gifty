@@ -7,7 +7,7 @@ class Interesses_Model extends CI_Model {
         $this->db->from('interesses i');
         $this->db->join('tiposInteresses t', 'i.idTipoInteresse = t.id', 'inner');
         $this->db->join('usuarios u', 'i.idUsuario = u.id', 'inner');
-        $this->db->order_by('idUsuario');
+        $this->db->order_by('idUsuario DESC');
         return $this->db->get()->result(); // retorna vetor
     }
 
@@ -17,13 +17,13 @@ class Interesses_Model extends CI_Model {
         return $this->db->get('interesses')->row(); // retorna registro obtido
     }
 
-    public function searchIdTipoInteresse($idTipoInteresse) {
+    public function searchTipoInteresse($idTipoInteresse) {
         $this->db->like('idTipoInteresse', $idTipoInteresse);
         $this->db->order_by('idTipoInteresse');
         return $this->db->get('interesses')->result(); // retorna vetor
     }
 
-    public function searchIdUsuario($idUsuario) {
+    public function searchUsuario($idUsuario) {
         $this->db->like('idUsuario', $idUsuario);
         $this->db->order_by('idUsuario');
         return $this->db->get('interesses')->result(); // retorna vetor

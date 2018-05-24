@@ -11,8 +11,21 @@ class Telefones extends CI_Controller {
     }
 
     public function index() {
-        $this->verificaSessao();        
-        $dados['telefones'] = $this->telefones->select();
+        $this->verificaSessao();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['telefones'] = $this->telefones->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/telefones');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['telefones'] = $this->telefones->searchId($busca);
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['telefones'] = $this->telefones->searchDDD($busca);
+            } else {
+                $dados['telefones'] = $this->telefones->searchNumero($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

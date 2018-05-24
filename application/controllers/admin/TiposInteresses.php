@@ -12,7 +12,18 @@ class TiposInteresses extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['tiposinteresses'] = $this->tiposinteresses->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['tiposinteresses'] = $this->tiposinteresses->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/tiposinteresses');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['tiposinteresses'] = $this->tiposinteresses->searchId($busca);
+            } else {
+                $dados['tiposinteresses'] = $this->tiposinteresses->searchDescricao($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

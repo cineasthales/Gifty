@@ -7,7 +7,7 @@ class Amizades_Model extends CI_Model {
         $this->db->from('amizades a');
         $this->db->join('usuarios u1', 'a.idUsuario1 = u1.id', 'inner');
         $this->db->join('usuarios u2', 'a.idUsuario2 = u2.id', 'inner');
-        $this->db->order_by('idUsuario1');
+        $this->db->order_by('data DESC');
         return $this->db->get()->result(); // retorna vetor
     }
 
@@ -27,21 +27,16 @@ class Amizades_Model extends CI_Model {
         return $this->db->get('amizades')->row(); // retorna registro obtido
     }
 
-    public function searchIdUsuario1($idUsuario1) {
-        $this->db->like('idUsuario1', $idUsuario1);
-        $this->db->order_by('idUsuario1');
+    public function searchUsuario($idUsuario) {
+        $this->db->like('idUsuario1', $idUsuario);
+        $this->db->like('idUsuario2', $idUsuario);
+        $this->db->order_by('data DESC');
         return $this->db->get('amizades')->result(); // retorna vetor
     }
 
-    public function searchIdUsuario2($idUsuario2) {
-        $this->db->like('idUsuario2', $idUsuario2);
-        $this->db->order_by('idUsuario2');
-        return $this->db->get('amizades')->result(); // retorna vetor
-    }
-
-    public function searchDataAmizade($dataAmizade) {
-        $this->db->like('dataAmizade', $dataAmizade);
-        $this->db->order_by('dataAmizade');
+    public function searchData($data) {
+        $this->db->like('data', $data);
+        $this->db->order_by('data DESC');
         return $this->db->get('amizades')->result(); // retorna vetor
     }
 

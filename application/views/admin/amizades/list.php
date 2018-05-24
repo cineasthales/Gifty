@@ -29,7 +29,7 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-3">
                 <h1>Amizades</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/amizades/buscar') ?>">
+            <form method="post" action="<?= base_url('admin/amizades') ?>">
                 <div class="col-3">
                     <label for="filtro" hidden>Filtro</label>
                     <select id="filtro" name="filtro">
@@ -70,7 +70,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-11">
                     <strong><?= $amizade->nome1 ?> <?= $amizade->snome1 ?> (# <?= $amizade->idUsuario1 ?>)</strong>
                     é amigo(a) de <strong><?= $amizade->nome2 ?> <?= $amizade->snome2 ?> (# <?= $amizade->idUsuario2 ?>)</strong>
-                    desde <?= date_format(date_create($amizade->dataAmizade), 'd/m/Y') ?>
+                    desde <?= date_format(date_create($amizade->data), 'd/m/Y') ?>
                 </div>
                 <div class="col-1">
                     <button class='bt'><a href="<?=

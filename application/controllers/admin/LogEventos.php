@@ -11,15 +11,28 @@ class LogEventos extends CI_Controller {
     }
 
     public function index() {
-        $this->verificaSessao();        
-        $dados['logeventos'] = $this->logeventos->select();
+        $this->verificaSessao();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['logeventos'] = $this->logeventos->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/logeventos');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['logeventos'] = $this->logeventos->searchId($busca);
+            } else if ($this->input->post('filtro') == '2') {
+                $dados['logeventos'] = $this->logeventos->searchEvento($busca);
+            } else {
+                $dados['logeventos'] = $this->logeventos->searchUsuario($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');
         $this->load->view('admin/logeventos/list', $dados);
         $this->load->view('include/footer_admin');
     }
-
+    
     public function verificaSessao() {
         if (!$this->session->logado_admin) {
             redirect();

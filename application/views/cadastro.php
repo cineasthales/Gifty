@@ -25,7 +25,10 @@
                     <select id="genero" name="genero">
                         <option value="Feminino">Feminino</option>
                         <option value="Masculino">Masculino</option>
-                        <option value="Outros">Outros</option>
+                        <option value="Transexual">Transexual</option>
+                        <option value="Travesti">Travesti</option>
+                        <option value="Não-Binário">Não-Binário</option>
+                        <option value="Outro">Outro</option>
                     </select><br><br>
                 </div>
                 <div class="col-6">
@@ -102,6 +105,9 @@
                 </div>
                 <div class="col-12">
                     <h2>Seus Interesses</h2>
+                    <small>Marque quantas opções quiser. Isto ajudará nosso sistema
+                        a recomendar itens mais adequados para você.
+                        <a href="<?= base_url('sobre') ?>" target="_blank">Saiba mais</a></small><br><br>
                 </div>
                 <div class="col-4">
                     <?php

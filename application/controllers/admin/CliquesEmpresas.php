@@ -12,7 +12,20 @@ class CliquesEmpresas extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['cliques'] = $this->cliquesempresas->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['cliques'] = $this->cliquesempresas->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/cliquesempresas');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['cliques'] = $this->cliquesempresas->searchId($busca);
+            } else if ($this->input->post('filtro') == '2') {
+                $dados['cliques'] = $this->cliquesempresas->searchEmpresa($busca);
+            } else {
+                $dados['cliques'] = $this->cliquesempresas->searchUsuario($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

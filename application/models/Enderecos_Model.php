@@ -3,7 +3,7 @@
 class Enderecos_Model extends CI_Model {
 
     public function select() {
-        $this->db->order_by('id');
+        $this->db->order_by('id DESC');
         return $this->db->get('enderecos')->result(); // retorna vetor
     }
 

@@ -6,7 +6,7 @@ class Anuncios_Model extends CI_Model {
         $this->db->select('a.*, e.nomeFantasia AS empresa');
         $this->db->from('anuncios a');
         $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
-        $this->db->order_by('id');
+        $this->db->order_by('id DESC');
         return $this->db->get()->result(); // retorna vetor
     }
 

@@ -12,7 +12,18 @@ class Amizades extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['amizades'] = $this->amizades->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['amizades'] = $this->amizades->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/amizades');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['amizades'] = $this->amizades->searchUsuario($busca);
+            } else {
+                $dados['amizades'] = $this->amizades->searchData($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

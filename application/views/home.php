@@ -46,6 +46,9 @@ if ($this->session->has_userdata('mensagem')) {
     </section>
     <section class="fundo2">
         <div class="row">
+            <div class="col-12">
+                <h1 style="text-align: center">POR QUE USAR O GIFTY?</h1><br><br><br>
+            </div>             
             <div class="col-6">
                 <h2 class="homeh"><i class="fas fa-gift"></i><br><br>Nunca mais erre o presente</h2><br>
                 <p>Gifty foi projetado para que você saiba exatamente que presentes

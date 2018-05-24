@@ -98,6 +98,15 @@ section, article {
     background-color: white;
 }
 
+section a, section a:visited, article a, article a:visited {
+    color: #2D8000;
+    text-decoration: underline;
+}
+
+section a:hover, section a:active, article a:hover, article a:active {
+    text-decoration: none;
+}
+
 section p {
     text-align: center;
 }
@@ -128,6 +137,7 @@ section button a, section input[type="submit"], button[type="submit"] {
 section button a {
     display: block;
     font-size: 2em;
+    text-decoration: none;
 }
 
 section button a:hover, section button a:active,
@@ -199,7 +209,7 @@ section input[type="search"], #filtro {
 }
 
 .fundo3 {
-    background-image: url("bg/bg2a.png");
+    background-image: url("bg/bg2.png");
     background-size: cover;
     background-color: white;
     padding-top: 1em;

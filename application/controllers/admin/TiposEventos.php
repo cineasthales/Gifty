@@ -12,7 +12,18 @@ class TiposEventos extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['tiposeventos'] = $this->tiposeventos->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['tiposeventos'] = $this->tiposeventos->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/tiposeventos');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['tiposeventos'] = $this->tiposeventos->searchId($busca);
+            } else {
+                $dados['tiposeventos'] = $this->tiposeventos->searchDescricao($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

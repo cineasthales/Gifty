@@ -164,7 +164,7 @@ VALUES
 ('91', '964919625', 10);
 
 INSERT INTO amizades
-(idUsuario1, idUsuario2, ativa, bloqueado1, bloqueado2, dataAmizade)
+(idUsuario1, idUsuario2, ativa, bloqueado1, bloqueado2, data)
 VALUES
 (2, 1, 0, 0, 0, '2018-01-05'),
 (2, 3, 1, 0, 0, '2018-02-05'),

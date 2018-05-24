@@ -9,18 +9,23 @@
                 <label for="user" hidden><i class="fas fa-user"></i></label>
                 <input type="text" id="user" name="user"
                        placeholder="Nome de Usuário ou E-mail">
-                <br>
-                <small>Ainda não é membro? <a href="<?= base_url('home/cadastrar') ?>">Cadastre-se!</a></small>
+                
             </div>
             <div class="col-3">
                 <label for="senha" hidden><i class="fas fa-lock"></i></label>
                 <input type="password" id="senha" name="senha"
-                       placeholder="Senha">
-                <br>
-                <small><a href="<?= base_url('home/esquecisenha') ?>">Esqueci minha senha</a></small>
+                       placeholder="Senha">      
             </div>
             <div class="col-2">
                 <input type="submit" value="Entrar" id="btEntrar">
+            </div>
+            <div class="col-3">
+            </div>
+            <div class="col-4">
+                <small>Ainda não é membro? <a href="<?= base_url('home/cadastrar') ?>">Cadastre-se!</a></small>
+            </div>
+            <div class="col-5">
+                <small><a href="<?= base_url('home/esquecisenha') ?>">Esqueceu a senha?</a></small>
             </div>
         </form>
     </div>

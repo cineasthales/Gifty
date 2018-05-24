@@ -12,14 +12,33 @@ class Eventos extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['eventos'] = $this->eventos->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['eventos'] = $this->eventos->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/eventos');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['eventos'] = $this->eventos->searchId($busca);
+            } else if ($this->input->post('filtro') == '2') {
+                $dados['eventos'] = $this->eventos->searchTitulo($busca);
+            } else if ($this->input->post('filtro') == '3') {
+                $dados['eventos'] = $this->eventos->searchData($busca);
+            } else if ($this->input->post('filtro') == '4') {
+                $dados['eventos'] = $this->eventos->searchLocal($busca);
+            } else if ($this->input->post('filtro') == '5') {
+                $dados['eventos'] = $this->eventos->searchUsuario($busca);
+            } else {
+                $dados['eventos'] = $this->eventos->searchTipoEvento($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');
         $this->load->view('admin/eventos/list', $dados);
         $this->load->view('include/footer_admin');
     }
-
+    
     public function verificaSessao() {
         if (!$this->session->logado_admin) {
             redirect();

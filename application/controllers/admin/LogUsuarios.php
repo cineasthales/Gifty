@@ -11,8 +11,19 @@ class LogUsuarios extends CI_Controller {
     }
 
     public function index() {
-        $this->verificaSessao();        
-        $dados['logusuarios'] = $this->logusuarios->select();
+        $this->verificaSessao();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['logusuarios'] = $this->logusuarios->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/logusuarios');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['logusuarios'] = $this->logusuarios->searchId($busca);
+            } else {
+                $dados['logusuarios'] = $this->logusuarios->searchUsuario($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

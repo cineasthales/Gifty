@@ -29,7 +29,7 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-3">
                 <h1>Usuários</h1>
             </div>            
-            <form method="post" action="<?= base_url('admin/usuarios/buscar') ?>">
+            <form method="post" action="<?= base_url('admin/usuarios') ?>">
                 <div class="col-3">
                     <label for="filtro" hidden>Filtro</label>
                     <select id="filtro" name="filtro">
@@ -64,105 +64,101 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-12">
                 <hr>
             </div>
-            <?php
-            foreach ($usuarios as $usuario) {
-                if ($usuario->nivel == 0) {
-                    ?>
-                    <div class="col-12">
-                        <br>
-                    </div>
-                    <div class="col-10">
-                        <h2># <?= $usuario->id ?></h2>
-                    </div>            
-                    <div class="col-2">
-                        <button class='bt' id='btdel'><a href="<?= base_url('admin/usuarios/excluir/' . $usuario->id) ?>"
-                                                         onclick="return confirm('Tem certeza que deseja excluir usuário de código <?= $usuario->id ?>?')">
-                                <i class="fas fa-trash-alt"></i></a></button>
-                        <button class='bt'><a href="<?= base_url('admin/usuarios/atualizar/' . $usuario->id) ?>">
-                                <i class="fas fa-edit"></i></a></button>
+            <?php foreach ($usuarios as $usuario) { ?>
+                <div class="col-12">
+                    <br>
+                </div>
+                <div class="col-10">
+                    <h2># <?= $usuario->id ?></h2>
+                </div>            
+                <div class="col-2">
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/usuarios/excluir/' . $usuario->id) ?>"
+                                                     onclick="return confirm('Tem certeza que deseja excluir usuário de código <?= $usuario->id ?>?')">
+                            <i class="fas fa-trash-alt"></i></a></button>
+                    <button class='bt'><a href="<?= base_url('admin/usuarios/atualizar/' . $usuario->id) ?>">
+                            <i class="fas fa-edit"></i></a></button>
 
-                    </div>
-                    <div class="col-12">
-                        <br>
-                    </div>
-                    <div class="col-4">
-                        <img class="bdImg" src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
-                             alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
-                    </div>
-                    <div class="col-2">
-                        <strong>Nome</strong>
-                    </div>
-                    <div class="col-6">
-                        <?= $usuario->nome ?> <?= $usuario->sobrenome ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>Nome de Usuário</strong>
-                    </div>
-                    <div class="col-6">
-                        <?= $usuario->nomeUsuario ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>E-mail</strong>
-                    </div>
-                    <div class="col-6">
-                        <?= $usuario->email ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>Gênero</strong>
-                    </div>
-                    <div class="col-6">
-                        <?= $usuario->genero ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>Nascimento</strong>
-                    </div>
-                    <div class="col-6">
-                        <?= date_format(date_create($usuario->dataNasc), 'd/m/Y') ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>CPF</strong>
-                    </div>
-                    <div class="col-6">
-                        <?=
-                        substr($usuario->cpf, 0, 3) . '.' . substr($usuario->cpf, 3, 3) . '.'
-                        . substr($usuario->cpf, 6, 3) . '-' . substr($usuario->cpf, 9, 2)
-                        ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>Notificações</strong>
-                    </div>
-                    <div class="col-6">
-                        <?php if ($usuario->notificaEmail) { ?>
-                            Recebe
-                        <?php } else { ?>
-                            Não Recebe
-                        <?php } ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>Bloqueio</strong>
-                    </div>
-                    <div class="col-6">
-                        <?php if ($usuario->tentaLogin < 5) { ?>
-                            Desbloqueado
-                        <?php } else { ?>
-                            Bloqueado
-                        <?php } ?>
-                    </div>
-                    <div class="col-2">
-                        <strong>Status</strong>
-                    </div>
-                    <div class="col-6">
-                        <?php if ($usuario->ativo) { ?>
-                            <strong><span style='color: #339900'>ATIVO</span></strong>
-                        <?php } else { ?>
-                            <strong><span style='color: red'>INATIVO</span></strong>
-                        <?php } ?>
-                    </div>            
-                    <div class="col-12">
-                        <br><hr>
-                    </div>
-                    <?php
-                }
+                </div>
+                <div class="col-12">
+                    <br>
+                </div>
+                <div class="col-4">
+                    <img class="bdImg" src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
+                         alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
+                </div>
+                <div class="col-2">
+                    <strong>Nome</strong>
+                </div>
+                <div class="col-6">
+                    <?= $usuario->nome ?> <?= $usuario->sobrenome ?>
+                </div>
+                <div class="col-2">
+                    <strong>Nome de Usuário</strong>
+                </div>
+                <div class="col-6">
+                    <?= $usuario->nomeUsuario ?>
+                </div>
+                <div class="col-2">
+                    <strong>E-mail</strong>
+                </div>
+                <div class="col-6">
+                    <?= $usuario->email ?>
+                </div>
+                <div class="col-2">
+                    <strong>Gênero</strong>
+                </div>
+                <div class="col-6">
+                    <?= $usuario->genero ?>
+                </div>
+                <div class="col-2">
+                    <strong>Nascimento</strong>
+                </div>
+                <div class="col-6">
+                    <?= date_format(date_create($usuario->dataNasc), 'd/m/Y') ?>
+                </div>
+                <div class="col-2">
+                    <strong>CPF</strong>
+                </div>
+                <div class="col-6">
+                    <?=
+                    substr($usuario->cpf, 0, 3) . '.' . substr($usuario->cpf, 3, 3) . '.'
+                    . substr($usuario->cpf, 6, 3) . '-' . substr($usuario->cpf, 9, 2)
+                    ?>
+                </div>
+                <div class="col-2">
+                    <strong>Notificações</strong>
+                </div>
+                <div class="col-6">
+                    <?php if ($usuario->notificaEmail) { ?>
+                        Recebe
+                    <?php } else { ?>
+                        Não Recebe
+                    <?php } ?>
+                </div>
+                <div class="col-2">
+                    <strong>Bloqueio</strong>
+                </div>
+                <div class="col-6">
+                    <?php if ($usuario->tentaLogin < 5) { ?>
+                        Desbloqueado
+                    <?php } else { ?>
+                        Bloqueado
+                    <?php } ?>
+                </div>
+                <div class="col-2">
+                    <strong>Status</strong>
+                </div>
+                <div class="col-6">
+                    <?php if ($usuario->ativo) { ?>
+                        <strong><span style='color: #339900'>ATIVO</span></strong>
+                    <?php } else { ?>
+                        <strong><span style='color: red'>INATIVO</span></strong>
+                    <?php } ?>
+                </div>            
+                <div class="col-12">
+                    <br><hr>
+                </div>
+                <?php
             }
             ?>
         </div>

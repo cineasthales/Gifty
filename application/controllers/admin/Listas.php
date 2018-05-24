@@ -12,7 +12,18 @@ class Listas extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['listas'] = $this->listas->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['listas'] = $this->listas->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/listas');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['listas'] = $this->listas->searchEvento($busca);
+            } else {
+                $dados['listas'] = $this->listas->searchItem($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

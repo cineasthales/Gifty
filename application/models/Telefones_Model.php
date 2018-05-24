@@ -3,7 +3,7 @@
 class Telefones_Model extends CI_Model {
 
     public function select() {
-        $this->db->order_by('id');
+        $this->db->order_by('id DESC');
         return $this->db->get('telefones')->result(); // retorna vetor
     }
 

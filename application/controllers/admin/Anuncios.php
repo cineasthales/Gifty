@@ -12,7 +12,18 @@ class Anuncios extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['anuncios'] = $this->anuncios->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['anuncios'] = $this->anuncios->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/anuncios');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['anuncios'] = $this->anuncios->searchId($busca);
+            } else {
+                $dados['anuncios'] = $this->anuncios->searchEmpresa($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');

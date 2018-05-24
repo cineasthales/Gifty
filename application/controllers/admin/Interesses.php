@@ -12,14 +12,25 @@ class Interesses extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['interesses'] = $this->interesses->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['interesses'] = $this->interesses->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/interesses');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['interesses'] = $this->interesses->searchUsuario($busca);
+            } else {
+                $dados['interesses'] = $this->interesses->searchInteresse($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');
         $this->load->view('admin/interesses/list', $dados);
         $this->load->view('include/footer_admin');
     }
-
+    
     public function verificaSessao() {
         if (!$this->session->logado_admin) {
             redirect();

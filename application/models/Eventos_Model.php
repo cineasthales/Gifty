@@ -9,7 +9,7 @@ class Eventos_Model extends CI_Model {
         $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
         $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
         $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
-        $this->db->order_by('e.id');
+        $this->db->order_by('e.id DESC');
         return $this->db->get()->result(); // retorna vetor
     }
 

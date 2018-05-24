@@ -29,7 +29,7 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-5">
                 <h1>Cliques em Anúncios</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/cliquesanuncios/buscar') ?>">
+            <form method="post" action="<?= base_url('admin/cliquesanuncios') ?>">
                 <div class="col-2">
                     <label for="filtro" hidden>Filtro</label>
                     <select id="filtro" name="filtro">

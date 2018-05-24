@@ -12,7 +12,18 @@ class CliquesAnuncios extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $dados['cliques'] = $this->cliquesanuncios->select();
+        $busca = $this->input->post('busca');
+        if (!isset($busca)) {
+            $dados['cliques'] = $this->cliquesanuncios->select();
+        } else {
+            if ($this->input->post('filtro') == '0') {
+                redirect('admin/cliquesanuncios');
+            } else if ($this->input->post('filtro') == '1') {
+                $dados['cliques'] = $this->cliquesanuncios->searchId($busca);
+            } else {
+                $dados['cliques'] = $this->cliquesanuncios->searchUsuario($busca);
+            }
+        }
         $this->load->view('include/aside');
         $this->load->view('include/head');
         $this->load->view('include/header_admin');
