@@ -21,6 +21,8 @@ class Convidados extends CI_Controller {
             } else if ($this->input->post('filtro') == '1') {
                 $dados['convidados'] = $this->convidados->searchEvento($busca);
             } else {
+                $aux = explode(" ", $busca);
+                $busca = $aux[0];
                 $dados['convidados'] = $this->convidados->searchUsuario($busca);
             }
         }

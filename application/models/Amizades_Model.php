@@ -27,11 +27,15 @@ class Amizades_Model extends CI_Model {
         return $this->db->get('amizades')->row(); // retorna registro obtido
     }
 
-    public function searchUsuario($idUsuario) {
-        $this->db->like('idUsuario1', $idUsuario);
-        $this->db->like('idUsuario2', $idUsuario);
+    public function searchUsuario($usuario) {
+        $this->db->select('a.*, u1.nome AS nome1, u1.sobrenome AS snome1, u2.nome AS nome2, u2.sobrenome AS snome2');
+        $this->db->from('amizades a');
+        $this->db->join('usuarios u1', 'a.idUsuario1 = u1.id', 'inner');
+        $this->db->join('usuarios u2', 'a.idUsuario2 = u2.id', 'inner');
+        $this->db->like('u1.nome', $usuario);
+        $this->db->or_like('u2.nome', $usuario);
         $this->db->order_by('data DESC');
-        return $this->db->get('amizades')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchData($data) {

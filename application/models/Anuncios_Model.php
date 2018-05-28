@@ -21,10 +21,13 @@ class Anuncios_Model extends CI_Model {
         return $this->db->get('anuncios')->result(); // retorna vetor
     }
 
-    public function searchEmpresa($idEmpresa) {
-        $this->db->like('idEmpresa', $idEmpresa);
-        $this->db->order_by('idEmpresa');
-        return $this->db->get('anuncios')->result(); // retorna vetor
+    public function searchEmpresa($empresa) {
+        $this->db->select('a.*, e.nomeFantasia AS empresa');
+        $this->db->from('anuncios a');
+        $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
+        $this->db->like('e.nomeFantasia', $empresa);
+        $this->db->order_by('e.nomeFantasia');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

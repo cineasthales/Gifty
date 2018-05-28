@@ -7,7 +7,7 @@ class Listas_Model extends CI_Model {
         $this->db->from('listas l');
         $this->db->join('itens i', 'l.idItem = i.id', 'inner');
         $this->db->join('eventos e', 'l.idEvento = e.id', 'inner');
-        $this->db->order_by('idEvento DESC, prioridade');
+        $this->db->order_by('idEvento DESC, l.prioridade');
         return $this->db->get()->result(); // retorna vetor
     }
 
@@ -17,16 +17,24 @@ class Listas_Model extends CI_Model {
         return $this->db->get('listas')->row(); // retorna registro obtido
     }
 
-    public function searchEvento($idEvento) {
-        $this->db->like('idEvento', $idEvento);
-        $this->db->order_by('idEvento');
-        return $this->db->get('listas')->result(); // retorna vetor
+    public function searchEvento($evento) {
+        $this->db->select('l.*, i.nome AS item, e.titulo AS evento');
+        $this->db->from('listas l');
+        $this->db->join('itens i', 'l.idItem = i.id', 'inner');
+        $this->db->join('eventos e', 'l.idEvento = e.id', 'inner');
+        $this->db->like('e.titulo', $evento);
+        $this->db->order_by('e.titulo, l.prioridade');
+        return $this->db->get()->result(); // retorna vetor
     }
 
-    public function searchItem($idItem) {
-        $this->db->like('idItem', $idItem);
-        $this->db->order_by('idItem');
-        return $this->db->get('listas')->result(); // retorna vetor
+    public function searchItem($item) {
+        $this->db->select('l.*, i.nome AS item, e.titulo AS evento');
+        $this->db->from('listas l');
+        $this->db->join('itens i', 'l.idItem = i.id', 'inner');
+        $this->db->join('eventos e', 'l.idEvento = e.id', 'inner');
+        $this->db->like('i.nome', $item);
+        $this->db->order_by('i.nome, e.titulo, l.prioridade');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

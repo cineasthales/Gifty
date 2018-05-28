@@ -36,7 +36,6 @@ if ($this->session->has_userdata('mensagem')) {
                         <option value="0">------</option>
                         <option value="1">ID</option>
                         <option value="2">Evento</option>
-                        <option value="3">Usuário</option>
                     </select>
                 </div>
                 <div class="col-4">

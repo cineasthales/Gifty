@@ -22,10 +22,14 @@ class CliquesAnuncios_Model extends CI_Model {
         return $this->db->get('cliquesAnuncios')->result(); // retorna vetor
     }
 
-    public function searchUsuario($idUsuario) {
-        $this->db->like('idUsuario', $idUsuario);
-        $this->db->order_by('idUsuario');
-        return $this->db->get('cliquesAnuncios')->result(); // retorna vetor
+    public function searchUsuario($usuario) {
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, a.url AS url');
+        $this->db->from('cliquesAnuncios c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->join('anuncios a', 'c.idAnuncio = a.id', 'inner');
+        $this->db->like('u.nome', $usuario);
+        $this->db->order_by('u.nome, u.sobrenome');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

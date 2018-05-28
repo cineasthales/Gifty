@@ -19,6 +19,8 @@ class Amizades extends CI_Controller {
             if ($this->input->post('filtro') == '0') {
                 redirect('admin/amizades');
             } else if ($this->input->post('filtro') == '1') {
+                $aux = explode(" ", $busca);
+                $busca = $aux[0];
                 $dados['amizades'] = $this->amizades->searchUsuario($busca);
             } else {
                 $dados['amizades'] = $this->amizades->searchData($busca);

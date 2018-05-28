@@ -19,6 +19,8 @@ class Interesses extends CI_Controller {
             if ($this->input->post('filtro') == '0') {
                 redirect('admin/interesses');
             } else if ($this->input->post('filtro') == '1') {
+                $aux = explode(" ", $busca);
+                $busca = $aux[0];
                 $dados['interesses'] = $this->interesses->searchUsuario($busca);
             } else {
                 $dados['interesses'] = $this->interesses->searchInteresse($busca);
@@ -30,7 +32,7 @@ class Interesses extends CI_Controller {
         $this->load->view('admin/interesses/list', $dados);
         $this->load->view('include/footer_admin');
     }
-    
+
     public function verificaSessao() {
         if (!$this->session->logado_admin) {
             redirect();

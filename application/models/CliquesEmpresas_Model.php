@@ -22,16 +22,24 @@ class CliquesEmpresas_Model extends CI_Model {
         return $this->db->get('cliquesEmpresas')->result(); // retorna vetor
     }
 
-    public function searchEmpresa($idEmpresa) {
-        $this->db->like('idEmpresa', $idEmpresa);
-        $this->db->order_by('idEmpresa');
-        return $this->db->get('cliquesEmpresas')->result(); // retorna vetor
+    public function searchEmpresa($empresa) {
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, e.nomeFantasia AS empresa');
+        $this->db->from('cliquesEmpresas c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->join('empresas e', 'c.idEmpresa = e.id', 'inner');
+        $this->db->like('e.nomeFantasia', $empresa);
+        $this->db->order_by('e.nomeFantasia');
+        return $this->db->get()->result(); // retorna vetor
     }
 
-    public function searchUsuario($idUsuario) {
-        $this->db->like('idUsuario', $idUsuario);
-        $this->db->order_by('idUsuario');
-        return $this->db->get('cliquesEmpresas')->result(); // retorna vetor
+    public function searchUsuario($usuario) {
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, e.nomeFantasia AS empresa');
+        $this->db->from('cliquesEmpresas c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->join('empresas e', 'c.idEmpresa = e.id', 'inner');
+        $this->db->like('u.nome', $usuario);
+        $this->db->order_by('u.nome, u.sobrenome');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

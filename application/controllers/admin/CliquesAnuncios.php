@@ -21,6 +21,8 @@ class CliquesAnuncios extends CI_Controller {
             } else if ($this->input->post('filtro') == '1') {
                 $dados['cliques'] = $this->cliquesanuncios->searchId($busca);
             } else {
+                $aux = explode(" ", $busca);
+                $busca = $aux[0];
                 $dados['cliques'] = $this->cliquesanuncios->searchUsuario($busca);
             }
         }

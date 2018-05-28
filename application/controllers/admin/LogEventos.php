@@ -20,10 +20,8 @@ class LogEventos extends CI_Controller {
                 redirect('admin/logeventos');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['logeventos'] = $this->logeventos->searchId($busca);
-            } else if ($this->input->post('filtro') == '2') {
-                $dados['logeventos'] = $this->logeventos->searchEvento($busca);
             } else {
-                $dados['logeventos'] = $this->logeventos->searchUsuario($busca);
+                $dados['logeventos'] = $this->logeventos->searchEvento($busca);
             }
         }
         $this->load->view('include/aside');

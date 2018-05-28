@@ -27,6 +27,8 @@ class Eventos extends CI_Controller {
             } else if ($this->input->post('filtro') == '4') {
                 $dados['eventos'] = $this->eventos->searchLocal($busca);
             } else if ($this->input->post('filtro') == '5') {
+                $aux = explode(" ", $busca);
+                $busca = $aux[0];
                 $dados['eventos'] = $this->eventos->searchUsuario($busca);
             } else {
                 $dados['eventos'] = $this->eventos->searchTipoEvento($busca);
@@ -38,7 +40,7 @@ class Eventos extends CI_Controller {
         $this->load->view('admin/eventos/list', $dados);
         $this->load->view('include/footer_admin');
     }
-    
+
     public function verificaSessao() {
         if (!$this->session->logado_admin) {
             redirect();

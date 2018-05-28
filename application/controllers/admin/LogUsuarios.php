@@ -21,6 +21,8 @@ class LogUsuarios extends CI_Controller {
             } else if ($this->input->post('filtro') == '1') {
                 $dados['logusuarios'] = $this->logusuarios->searchId($busca);
             } else {
+                $aux = explode(" ", $busca);
+                $busca = $aux[0];
                 $dados['logusuarios'] = $this->logusuarios->searchUsuario($busca);
             }
         }

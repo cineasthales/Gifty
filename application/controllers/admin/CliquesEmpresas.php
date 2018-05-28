@@ -23,6 +23,8 @@ class CliquesEmpresas extends CI_Controller {
             } else if ($this->input->post('filtro') == '2') {
                 $dados['cliques'] = $this->cliquesempresas->searchEmpresa($busca);
             } else {
+                $aux = explode(" ", $busca);
+                $busca = $aux[0];
                 $dados['cliques'] = $this->cliquesempresas->searchUsuario($busca);
             }
         }

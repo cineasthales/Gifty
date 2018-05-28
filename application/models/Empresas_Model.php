@@ -3,7 +3,7 @@
 class Empresas_Model extends CI_Model {
 
     public function select() {
-        $this->db->order_by('id DESC');
+        $this->db->order_by('id');
         return $this->db->get('empresas')->result(); // retorna vetor
     }
 

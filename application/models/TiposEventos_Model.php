@@ -3,7 +3,7 @@
 class TiposEventos_Model extends CI_Model {
 
     public function select() {
-        $this->db->order_by('id');
+        $this->db->order_by('descricao');
         return $this->db->get('tiposEventos')->result(); // retorna vetor
     }
 

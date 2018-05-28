@@ -22,10 +22,14 @@ class LogUsuarios_Model extends CI_Model {
         return $this->db->get('logUsuarios')->result(); // retorna vetor
     }
 
-    public function searchUsuario($idUsuario) {
-        $this->db->like('idUsuario', $idUsuario);
-        $this->db->order_by('idUsuario');
-        return $this->db->get('logUsuarios')->result(); // retorna vetor
+    public function searchUsuario($usuario) {
+        $this->db->select('l.*, u.nome AS nome, u.sobrenome AS snome, a.descricao AS acao');
+        $this->db->from('logUsuarios l');
+        $this->db->join('usuarios u', 'l.idUsuario = u.id', 'inner');
+        $this->db->join('acoesUsuarios a', 'l.idAcaoUsuario = a.id', 'inner');
+        $this->db->like('u.nome', $usuario);
+        $this->db->order_by('u.nome, u.sobrenome, l.data DESC, l.hora DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

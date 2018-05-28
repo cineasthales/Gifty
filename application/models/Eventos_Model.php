@@ -42,16 +42,28 @@ class Eventos_Model extends CI_Model {
         return $this->db->get('eventos')->result(); // retorna vetor
     }
 
-    public function searchUsuario($idUsuario) {
-        $this->db->like('idUsuario', $idUsuario);
-        $this->db->order_by('idUsuario');
-        return $this->db->get('eventos')->result(); // retorna vetor
+    public function searchUsuario($usuario) {
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
+        $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
+        $this->db->from('eventos e');
+        $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
+        $this->db->like('u.nome', $usuario);
+        $this->db->order_by('u.nome, u.sobrenome, e.data DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
-    public function searchTipoEvento($idTipoEvento) {
-        $this->db->like('idTipoEvento', $idTipoEvento);
-        $this->db->order_by('idTipoEvento');
-        return $this->db->get('eventos')->result(); // retorna vetor
+    public function searchTipoEvento($tipoEvento) {
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
+        $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
+        $this->db->from('eventos e');
+        $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
+        $this->db->like('t.descricao', $tipoEvento);
+        $this->db->order_by('t.descricao, e.data DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

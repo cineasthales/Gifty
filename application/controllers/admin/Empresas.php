@@ -19,9 +19,13 @@ class Empresas extends CI_Controller {
             if ($this->input->post('filtro') == '0') {
                 redirect('admin/empresas');
             } else if ($this->input->post('filtro') == '1') {
-                $dados['empresas'] = $this->empresas->searchEvento($busca);
+                $dados['empresas'] = $this->empresas->searchId($busca);
+            } else if ($this->input->post('filtro') == '2') {
+                $dados['empresas'] = $this->empresas->searchNomeFantasia($busca);
+            } else if ($this->input->post('filtro') == '3') {
+                $dados['empresas'] = $this->empresas->searchRazaoSocial($busca);
             } else {
-                $dados['empresas'] = $this->empresas->searchUsuario($busca);
+                $dados['empresas'] = $this->empresas->searchCNPJ($busca);
             }
         }
         $this->load->view('include/aside');
