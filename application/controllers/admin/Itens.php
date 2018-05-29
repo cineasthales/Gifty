@@ -26,8 +26,8 @@ class Itens extends CI_Controller {
                 $dados['itens'] = $this->itens->searchCategoria($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/itens/list', $dados);
         $this->load->view('include/footer_admin');

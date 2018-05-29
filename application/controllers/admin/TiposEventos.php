@@ -24,8 +24,8 @@ class TiposEventos extends CI_Controller {
                 $dados['tiposeventos'] = $this->tiposeventos->searchDescricao($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/tiposeventos/list', $dados);
         $this->load->view('include/footer_admin');

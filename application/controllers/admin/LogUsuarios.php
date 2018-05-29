@@ -26,8 +26,8 @@ class LogUsuarios extends CI_Controller {
                 $dados['logusuarios'] = $this->logusuarios->searchUsuario($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/logusuarios/list', $dados);
         $this->load->view('include/footer_admin');

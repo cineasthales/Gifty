@@ -24,8 +24,8 @@ class TiposInteresses extends CI_Controller {
                 $dados['tiposinteresses'] = $this->tiposinteresses->searchDescricao($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/tiposinteresses/list', $dados);
         $this->load->view('include/footer_admin');

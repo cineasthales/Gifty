@@ -30,8 +30,8 @@ class Enderecos extends CI_Controller {
                 $dados['enderecos'] = $this->enderecos->searchEstado($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/enderecos/list', $dados);
         $this->load->view('include/footer_admin');
