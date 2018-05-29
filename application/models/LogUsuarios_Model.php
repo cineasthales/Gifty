@@ -17,9 +17,13 @@ class LogUsuarios_Model extends CI_Model {
     }
 
     public function searchId($id) {
-        $this->db->where('id', $id);
-        $this->db->order_by('id');
-        return $this->db->get('logUsuarios')->result(); // retorna vetor
+        $this->db->select('l.*, u.nome AS nome, u.sobrenome AS snome, a.descricao AS acao');
+        $this->db->from('logUsuarios l');
+        $this->db->join('usuarios u', 'l.idUsuario = u.id', 'inner');
+        $this->db->join('acoesUsuarios a', 'l.idAcaoUsuario = a.id', 'inner');
+        $this->db->where('l.id', $id);
+        $this->db->order_by('l.id DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchUsuario($usuario) {

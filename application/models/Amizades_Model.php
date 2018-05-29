@@ -39,9 +39,13 @@ class Amizades_Model extends CI_Model {
     }
 
     public function searchData($data) {
+        $this->db->select('a.*, u1.nome AS nome1, u1.sobrenome AS snome1, u2.nome AS nome2, u2.sobrenome AS snome2');
+        $this->db->from('amizades a');
+        $this->db->join('usuarios u1', 'a.idUsuario1 = u1.id', 'inner');
+        $this->db->join('usuarios u2', 'a.idUsuario2 = u2.id', 'inner');
         $this->db->like('data', $data);
         $this->db->order_by('data DESC');
-        return $this->db->get('amizades')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

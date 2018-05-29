@@ -25,11 +25,14 @@ class Empresas extends CI_Controller {
             } else if ($this->input->post('filtro') == '3') {
                 $dados['empresas'] = $this->empresas->searchRazaoSocial($busca);
             } else {
+                $busca = str_replace(".", "", $busca);
+                $busca = str_replace("/", "", $busca);
+                $busca = str_replace("-", "", $busca);
                 $dados['empresas'] = $this->empresas->searchCNPJ($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/empresas/list', $dados);
         $this->load->view('include/footer_admin');

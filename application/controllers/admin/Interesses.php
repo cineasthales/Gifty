@@ -23,11 +23,11 @@ class Interesses extends CI_Controller {
                 $busca = $aux[0];
                 $dados['interesses'] = $this->interesses->searchUsuario($busca);
             } else {
-                $dados['interesses'] = $this->interesses->searchInteresse($busca);
+                $dados['interesses'] = $this->interesses->searchTipoInteresse($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/interesses/list', $dados);
         $this->load->view('include/footer_admin');

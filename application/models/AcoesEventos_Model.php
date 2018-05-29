@@ -18,9 +18,9 @@ class AcoesEventos_Model extends CI_Model {
         return $this->db->get('acoesEventos')->result(); // retorna vetor
     }
 
-    public function searchAcao($idAcaoEvento) {
-        $this->db->like('idAcaoEvento', $idAcaoEvento);
-        $this->db->order_by('idAcaoEvento');
+    public function searchDescricao($descricao) {
+        $this->db->like('descricao', $descricao);
+        $this->db->order_by('descricao');
         return $this->db->get('acoesEventos')->result(); // retorna vetor
     }
 

@@ -17,9 +17,13 @@ class CliquesAnuncios_Model extends CI_Model {
     }
 
     public function searchId($id) {
-        $this->db->where('id', $id);
-        $this->db->order_by('id');
-        return $this->db->get('cliquesAnuncios')->result(); // retorna vetor
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, a.url AS url');
+        $this->db->from('cliquesAnuncios c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->join('anuncios a', 'c.idAnuncio = a.id', 'inner');
+        $this->db->where('c.id', $id);
+        $this->db->order_by('c.id DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchUsuario($usuario) {

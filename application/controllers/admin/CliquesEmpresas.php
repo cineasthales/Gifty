@@ -28,8 +28,8 @@ class CliquesEmpresas extends CI_Controller {
                 $dados['cliques'] = $this->cliquesempresas->searchUsuario($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/cliquesempresas/list', $dados);
         $this->load->view('include/footer_admin');

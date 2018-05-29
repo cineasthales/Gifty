@@ -24,8 +24,8 @@ class Anuncios extends CI_Controller {
                 $dados['anuncios'] = $this->anuncios->searchEmpresa($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/anuncios/list', $dados);
         $this->load->view('include/footer_admin');

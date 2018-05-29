@@ -6,8 +6,8 @@ class Dashboard extends CI_Controller {
 
     public function index() {
         $this->verificaSessao();
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/dashboard');
         $this->load->view('include/footer_admin');

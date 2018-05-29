@@ -21,11 +21,11 @@ class AcoesUsuarios extends CI_Controller {
             } else if ($this->input->post('filtro') == '1') {
                 $dados['acoesusuarios'] = $this->acoesusuarios->searchId($busca);
             } else {
-                $dados['acoesusuarios'] = $this->acoesusuarios->searchAcao($busca);
+                $dados['acoesusuarios'] = $this->acoesusuarios->searchDescricao($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/acoesusuarios/list', $dados);
         $this->load->view('include/footer_admin');

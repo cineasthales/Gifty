@@ -18,9 +18,9 @@ class AcoesUsuarios_Model extends CI_Model {
         return $this->db->get('acoesUsuarios')->result(); // retorna vetor
     }
 
-    public function searchAcao($idAcaoUsuario) {
-        $this->db->like('idAcaoUsuario', $idAcaoUsuario);
-        $this->db->order_by('idAcaoUsuario');
+    public function searchDescricao($descricao) {
+        $this->db->like('descricao', $descricao);
+        $this->db->order_by('descricao');
         return $this->db->get('acoesUsuarios')->result(); // retorna vetor
     }
 

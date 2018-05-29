@@ -16,9 +16,12 @@ class Anuncios_Model extends CI_Model {
     }
 
     public function searchId($id) {
-        $this->db->where('id', $id);
-        $this->db->order_by('id');
-        return $this->db->get('anuncios')->result(); // retorna vetor
+        $this->db->select('a.*, e.nomeFantasia AS empresa');
+        $this->db->from('anuncios a');
+        $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
+        $this->db->where('a.id', $id);
+        $this->db->order_by('a.id');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchEmpresa($empresa) {

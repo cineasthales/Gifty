@@ -26,8 +26,8 @@ class CliquesAnuncios extends CI_Controller {
                 $dados['cliques'] = $this->cliquesanuncios->searchUsuario($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/cliquesanuncios/list', $dados);
         $this->load->view('include/footer_admin');

@@ -20,14 +20,15 @@ class Telefones extends CI_Controller {
                 redirect('admin/telefones');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['telefones'] = $this->telefones->searchId($busca);
-            } else if ($this->input->post('filtro') == '1') {
+            } else if ($this->input->post('filtro') == '2') {
                 $dados['telefones'] = $this->telefones->searchDDD($busca);
             } else {
+                $busca = str_replace("-", "", $busca);
                 $dados['telefones'] = $this->telefones->searchNumero($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/telefones/list', $dados);
         $this->load->view('include/footer_admin');

@@ -23,11 +23,12 @@ class Amizades extends CI_Controller {
                 $busca = $aux[0];
                 $dados['amizades'] = $this->amizades->searchUsuario($busca);
             } else {
+                $busca = str_replace("/", "", $busca);
                 $dados['amizades'] = $this->amizades->searchData($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/amizades/list', $dados);
         $this->load->view('include/footer_admin');

@@ -21,11 +21,11 @@ class AcoesEventos extends CI_Controller {
             } else if ($this->input->post('filtro') == '1') {
                 $dados['acoeseventos'] = $this->acoeseventos->searchId($busca);
             } else {
-                $dados['acoeseventos'] = $this->acoeseventos->searchAcao($busca);
+                $dados['acoeseventos'] = $this->acoeseventos->searchDescricao($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');     
         $this->load->view('include/header_admin');
         $this->load->view('admin/acoeseventos/list', $dados);
         $this->load->view('include/footer_admin');

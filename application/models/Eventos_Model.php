@@ -19,27 +19,51 @@ class Eventos_Model extends CI_Model {
     }
 
     public function searchId($id) {
-        $this->db->where('id', $id);
-        $this->db->order_by('id');
-        return $this->db->get('eventos')->result(); // retorna vetor
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
+        $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
+        $this->db->from('eventos e');
+        $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
+        $this->db->where('e.id', $id);
+        $this->db->order_by('e.id');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchTitulo($titulo) {
-        $this->db->like('titulo', $titulo);
-        $this->db->order_by('titulo');
-        return $this->db->get('eventos')->result(); // retorna vetor
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
+        $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
+        $this->db->from('eventos e');
+        $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
+        $this->db->like('e.titulo', $titulo);
+        $this->db->order_by('e.titulo, e.data DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchData($data) {
-        $this->db->like('data', $data);
-        $this->db->order_by('data');
-        return $this->db->get('eventos')->result(); // retorna vetor
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
+        $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
+        $this->db->from('eventos e');
+        $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
+        $this->db->like('e.data', $data);
+        $this->db->order_by('e.data DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchLocal($local) {
-        $this->db->like('local', $local);
-        $this->db->order_by('local');
-        return $this->db->get('eventos')->result(); // retorna vetor
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
+        $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
+        $this->db->from('eventos e');
+        $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
+        $this->db->like('e.local', $local);
+        $this->db->order_by('e.local, e.data DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchUsuario($usuario) {

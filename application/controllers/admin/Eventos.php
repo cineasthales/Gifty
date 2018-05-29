@@ -23,6 +23,7 @@ class Eventos extends CI_Controller {
             } else if ($this->input->post('filtro') == '2') {
                 $dados['eventos'] = $this->eventos->searchTitulo($busca);
             } else if ($this->input->post('filtro') == '3') {
+                $busca = str_replace("/", "", $busca);
                 $dados['eventos'] = $this->eventos->searchData($busca);
             } else if ($this->input->post('filtro') == '4') {
                 $dados['eventos'] = $this->eventos->searchLocal($busca);
@@ -34,8 +35,8 @@ class Eventos extends CI_Controller {
                 $dados['eventos'] = $this->eventos->searchTipoEvento($busca);
             }
         }
-        $this->load->view('include/aside');
         $this->load->view('include/head');
+        $this->load->view('include/aside');
         $this->load->view('include/header_admin');
         $this->load->view('admin/eventos/list', $dados);
         $this->load->view('include/footer_admin');
