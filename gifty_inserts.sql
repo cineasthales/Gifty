@@ -143,7 +143,7 @@ VALUES
 ('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1992-01-01', 'Feminino', '3.jpg', 0, 1, 0, 3),
 ('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', '4.jpg', 0, 1, 0, 4),
 ('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', '5.jpg', 0, 0, 0, 5),
-('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'joaos@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', '6.jpg', 0, 1, 0, 6),
+('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', '6.jpg', 0, 1, 0, 6),
 ('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 1, '44444444444', '1996-01-01', 'Masculino', '7.jpg', 0, 1, 0, 7),
 ('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 1, '33333333333', '1997-01-01', 'Feminino', '8.jpg', 0, 1, 0, 8),
 ('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 1, '22222222222', '1998-01-01', 'Feminino', '9.jpg', 0, 1, 0, 9),

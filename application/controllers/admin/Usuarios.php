@@ -6,7 +6,6 @@ class Usuarios extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        // carrega a model
         $this->load->model('usuarios_model', 'usuarios');
     }
 
@@ -45,10 +44,95 @@ class Usuarios extends CI_Controller {
         }
     }
 
-    public function excluir($id) {
-        // verifica se usuário está logado
+    public function adicionar() {
         $this->verificaSessao();
-        // retorno para usuário em relação à exclusão ou não do dado no banco
+        $this->load->model('enderecos_model', 'enderecos');
+        $dados['enderecos'] = $this->enderecos->select();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/usuarios/create', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_adicao() {
+        $dados = $this->input->post();
+        $dados['senha'] = md5($dados['senha']);
+        $dados['imagem'] = 'x.jpg';
+        if ($this->input->post('ativo')) {
+            $dados['ativo'] = 1;
+        } else {
+            $dados['ativo'] = 0;
+        }
+        if ($this->input->post('notificaEmail')) {
+            $dados['notificaEmail'] = 1;
+        } else {
+            $dados['notificaEmail'] = 0;
+        }
+        if ($this->input->post('nivel')) {
+            $dados['nivel'] = 1;
+        } else {
+            $dados['nivel'] = 0;
+        }
+        $dados['tentaLogin'] = 0;
+        if ($this->usuarios->insert($dados)) {
+            $mensagem = "Usuário cadastrado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Usuário não foi cadastrado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/usuarios');
+    }
+
+    public function atualizar($id) {
+        $this->verificaSessao();
+        $dados['usuario'] = $this->usuarios->find($id);
+        $this->load->model('enderecos_model', 'enderecos');
+        $dados['enderecos'] = $this->enderecos->select();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/usuarios/update', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_atualizacao($id) {
+        $dados = $this->input->post();
+        $dados['senha'] = md5($dados['senha']);
+        $dados['imagem'] = $id . '.jpg';
+        if ($this->input->post('ativo')) {
+            $dados['ativo'] = 1;
+        } else {
+            $dados['ativo'] = 0;
+        }
+        if ($this->input->post('notificaEmail')) {
+            $dados['notificaEmail'] = 1;
+        } else {
+            $dados['notificaEmail'] = 0;
+        }
+        if ($this->input->post('nivel')) {
+            $dados['nivel'] = 1;
+        } else {
+            $dados['nivel'] = 0;
+        }
+        $dados['tentaLogin'] = 0;
+        if ($this->usuarios->update($dados, $id)) {
+            $mensagem = "Usuário atualizado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Usuário não foi atualizado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/usuarios');
+    }
+
+    public function excluir($id) {
+        $this->verificaSessao();
         if ($this->usuarios->delete($id)) {
             $mensagem = "Usuário excluído com êxito.";
             $tipo = 1;
@@ -56,10 +140,8 @@ class Usuarios extends CI_Controller {
             $mensagem = "Usuário não foi excluído.";
             $tipo = 0;
         }
-        // insere mensagem e tipo em dados flash
         $this->session->set_flashdata('mensagem', $mensagem);
         $this->session->set_flashdata('tipo', $tipo);
-        // redireciona para a página da lista de dados
         redirect('admin/usuarios');
     }
 
