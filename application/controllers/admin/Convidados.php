@@ -17,6 +17,10 @@ class Convidados extends CI_Controller {
             $dados['convidados'] = $this->convidados->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/convidados');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['convidados'] = $this->convidados->searchEvento($busca);

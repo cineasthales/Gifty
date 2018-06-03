@@ -17,6 +17,10 @@ class Interesses extends CI_Controller {
             $dados['interesses'] = $this->interesses->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/interesses');
             } else if ($this->input->post('filtro') == '1') {
                 $aux = explode(" ", $busca);

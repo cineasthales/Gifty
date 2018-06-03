@@ -1,11 +1,11 @@
 <aside id="sideNav">
     <div id="asideTitle">Menu Admin</div>
     <ul>
-        <li><a href="<?= base_url('admin/usuarios') ?>"><span class="recuo"><i class="fas fa-user"></i></span>Usuários</a></li>
-        <li><a href="<?= base_url('admin/enderecos') ?>"><span class="recuo"><i class="fas fa-map-marker-alt"></i></span>Endereços</a></li>
-        <li><a href="<?= base_url('admin/telefones') ?>"><span class="recuo"><i class="fas fa-phone"></i></span>Telefones</a></li>
+        <li><a href="<?= base_url('admin/usuarios') ?>"><span class="recuo"><i class="fas fa-user"></i></span>Usuários <i class="fas fa-check"></i></a></li>
+        <li><a href="<?= base_url('admin/enderecos') ?>"><span class="recuo"><i class="fas fa-map-marker-alt"></i></span>Endereços <i class="fas fa-check"></i></a></li>
+        <li><a href="<?= base_url('admin/telefones') ?>"><span class="recuo"><i class="fas fa-phone"></i></span>Telefones <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/interesses') ?>"><span class="recuo"><i class="fas fa-lightbulb"></i></span>Interesses</a></li>
-        <li><a href="<?= base_url('admin/tiposinteresses') ?>"><span class="recuo"><i class="fas fa-lightbulb"></i></span>Tipos de Interesses</a></li>
+        <li><a href="<?= base_url('admin/tiposinteresses') ?>"><span class="recuo"><i class="fas fa-lightbulb"></i></span>Tipos de Interesses <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/amizades') ?>"><span class="recuo"><i class="fas fa-users"></i></span>Amizades</a></li>
         <li><a href="<?= base_url('admin/eventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Eventos</a></li>
         <li><a href="<?= base_url('admin/tiposeventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Tipos de Eventos</a></li>

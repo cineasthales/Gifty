@@ -17,6 +17,10 @@ class Eventos extends CI_Controller {
             $dados['eventos'] = $this->eventos->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/eventos');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['eventos'] = $this->eventos->searchId($busca);

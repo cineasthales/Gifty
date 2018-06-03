@@ -17,6 +17,10 @@ class AcoesUsuarios extends CI_Controller {
             $dados['acoesusuarios'] = $this->acoesusuarios->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/acoesusuarios');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['acoesusuarios'] = $this->acoesusuarios->searchId($busca);

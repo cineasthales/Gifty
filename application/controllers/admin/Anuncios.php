@@ -17,6 +17,10 @@ class Anuncios extends CI_Controller {
             $dados['anuncios'] = $this->anuncios->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/anuncios');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['anuncios'] = $this->anuncios->searchId($busca);

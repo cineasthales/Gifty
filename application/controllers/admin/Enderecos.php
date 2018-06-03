@@ -6,7 +6,6 @@ class Enderecos extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        // carrega a model
         $this->load->model('enderecos_model', 'enderecos');
     }
 
@@ -17,6 +16,10 @@ class Enderecos extends CI_Controller {
             $dados['enderecos'] = $this->enderecos->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/enderecos');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['enderecos'] = $this->enderecos->searchId($busca);
@@ -43,10 +46,55 @@ class Enderecos extends CI_Controller {
         }
     }
 
-    public function excluir($id) {
-        // verifica se usuário está logado
+    public function adicionar() {
         $this->verificaSessao();
-        // retorno para usuário em relação à exclusão ou não do dado no banco
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/enderecos/create');
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_adicao() {
+        $dados = $this->input->post();
+        if ($this->enderecos->insert($dados)) {
+            $mensagem = "Endereço cadastrado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Endereço não foi cadastrado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/enderecos');
+    }
+
+    public function atualizar($id) {
+        $this->verificaSessao();
+        $dados['endereco'] = $this->enderecos->find($id);
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/enderecos/update', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_atualizacao($id) {
+        $dados = $this->input->post();
+        if ($this->enderecos->update($dados, $id)) {
+            $mensagem = "Endereço atualizado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Endereço não foi atualizado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/enderecos');
+    }
+
+    public function excluir($id) {
+        $this->verificaSessao();
         if ($this->enderecos->delete($id)) {
             $mensagem = "Endereço excluído com êxito.";
             $tipo = 1;
@@ -54,10 +102,8 @@ class Enderecos extends CI_Controller {
             $mensagem = "Endereço não foi excluído.";
             $tipo = 0;
         }
-        // insere mensagem e tipo em dados flash
         $this->session->set_flashdata('mensagem', $mensagem);
         $this->session->set_flashdata('tipo', $tipo);
-        // redireciona para a página da lista de dados
         redirect('admin/enderecos');
     }
 

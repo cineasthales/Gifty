@@ -17,6 +17,10 @@ class Itens extends CI_Controller {
             $dados['itens'] = $this->itens->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/itens');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['itens'] = $this->itens->searchId($busca);

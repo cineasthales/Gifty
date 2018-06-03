@@ -17,6 +17,10 @@ class CliquesAnuncios extends CI_Controller {
             $dados['cliques'] = $this->cliquesanuncios->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/cliquesanuncios');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['cliques'] = $this->cliquesanuncios->searchId($busca);

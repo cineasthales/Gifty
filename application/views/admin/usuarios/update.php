@@ -27,7 +27,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row-plus"> 
             <div class="col-12">
-                <h1>Adicionar Usuário</h1>
+                <h1>Atualizar Usuário</h1>
             </div>
             <form method="post" action="<?= base_url('admin/usuarios/grava_atualizacao/') . $usuario->id ?>">
                 <div class="col-6">

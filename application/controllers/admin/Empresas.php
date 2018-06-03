@@ -17,6 +17,10 @@ class Empresas extends CI_Controller {
             $dados['empresas'] = $this->empresas->select();
         } else {
             if ($this->input->post('filtro') == '0') {
+                $mensagem = "Selecione um filtro de busca.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
                 redirect('admin/empresas');
             } else if ($this->input->post('filtro') == '1') {
                 $dados['empresas'] = $this->empresas->searchId($busca);
