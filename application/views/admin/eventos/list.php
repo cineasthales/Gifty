@@ -128,7 +128,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <?= $evento->logradouro ?>, <?= $evento->numero ?>
                     <?php
                     if ($evento->complemento) {
-                        echo ' - $evento->complemento ?> ';
+                        echo ' - ' . $evento->complemento;
                     }
                     ?>
                     - <?= $evento->bairro ?> - <?=

@@ -7,7 +7,7 @@
         <li><a href="<?= base_url('admin/interesses') ?>"><span class="recuo"><i class="fas fa-lightbulb"></i></span>Interesses</a></li>
         <li><a href="<?= base_url('admin/tiposinteresses') ?>"><span class="recuo"><i class="fas fa-lightbulb"></i></span>Tipos de Interesses <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/amizades') ?>"><span class="recuo"><i class="fas fa-users"></i></span>Amizades</a></li>
-        <li><a href="<?= base_url('admin/eventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Eventos</a></li>
+        <li><a href="<?= base_url('admin/eventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Eventos <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/tiposeventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Tipos de Eventos</a></li>
         <li><a href="<?= base_url('admin/itens') ?>"><span class="recuo"><i class="fas fa-box-open"></i></span>Itens</a></li>
         <li><a href="<?= base_url('admin/listas') ?>"><span class="recuo"><i class="fas fa-gift"></i></span>Listas</a></li>
