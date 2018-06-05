@@ -27,12 +27,12 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row-plus"> 
             <div class="col-12">
-                <h1>Atualizar Tipo de Interesse</h1>
+                <h1>Adicionar Tipo de Evento</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/tiposinteresses/grava_atualizacao/') . $tipo->id ?>">
+            <form method="post" action="<?= base_url('admin/tiposeventos/grava_adicao') ?>">
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>
-                    <input type="text" id="descricao" name="descricao" required value="<?= $tipo->descricao ?>"
+                    <input type="text" id="descricao" name="descricao" required
                            pattern="[A-Za-z0-9]{,100}" maxlength="100"><br><br>
                 </div>
                 <div class="col-12">

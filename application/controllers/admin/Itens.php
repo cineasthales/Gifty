@@ -43,6 +43,53 @@ class Itens extends CI_Controller {
         }
     }
 
+    public function adicionar() {
+        $this->verificaSessao();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/itens/create');
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_adicao() {
+        $dados = $this->input->post();
+        if ($this->itens->insert($dados)) {
+            $mensagem = "Item cadastrado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Item não foi cadastrado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/itens');
+    }
+
+    public function atualizar($id) {
+        $this->verificaSessao();
+        $dados['item'] = $this->itens->find($id);
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/itens/update', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_atualizacao($id) {
+        $dados = $this->input->post();
+        if ($this->itens->update($dados, $id)) {
+            $mensagem = "Item atualizado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Item não foi atualizado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/itens');
+    }
+
     public function excluir($id) {
         // verifica se usuário está logado
         $this->verificaSessao();

@@ -93,18 +93,18 @@ VALUES
 INSERT INTO empresas
 (razaoSocial, nomeFantasia, cnpj, email, logomarca, site, ativa)
 VALUES
-('B2W - Companhia Digital', 'Americanas', '00.776.574/0006-60', 'atendimento.acom@americanas.com', '1.jpg', 'http://www.americanas.com.br', 0),
-('B2W - Companhia Digital', 'Submarino', '00.776.574/0006-60', 'atendimento.sub@americanas.com', '2.jpg', 'http://www.submarino.com.br', 0),
-('B2W - Companhia Digital', 'Shoptime', '00.776.574/0006-60', 'atendimento.shop@americanas.com', '3.jpg', 'http://www.shoptime.com.br', 0),
-('Via Varejo', 'Casas Bahia', '33.041.260/0652-90', 'email@casasbahia.com.br', '4.jpg', 'http://www.casasbahia.com.br', 0),
-('Saraiva e Siciliano S/A', 'Livraria Saraiva', '61.365.284/0001-04', 'email@saraiva.com.br', '5.jpg', 'http://www.saraiva.com.br', 0),
-('F. Brasil LTDA', 'Fnac', '02.634.926/0001-64', 'email@fnac.com.br', '6.jpg', 'http://www.fnac.com.br', 0),
-('Livraria Cultura S/A', 'Livraria Cultura', '62.410.352/0001-72', 'email@livrariacultura.com.br', '7.jpg', 'http://www.livrariacultura.com.br', 0),
-('CNOVA Comércio Eletrônico S/A', 'Ponto Frio', '07.170.938/0001-07', 'email@pontofrio.com.br', '8.jpg', 'http://www.pontofrio.com.br', 0),
-('CNOVA Comércio Eletrônico S/A', 'Extra', '07.170.938/0001-07', 'email@extra.com.br', '9.jpg', 'http://www.extra.com.br', 0),
-('Magazine Luiza S/A', 'Magazine Luiza', '47.960.950/0449-27', 'atendimento.site@magazineluiza.com.br', '10.jpg', 'http://www.magazineluiza.com.br', 0),
-('Fast Shop S/A', 'Fast Shop', '43.708.379/0001-00', 'email@fastshop.com.br', '11.jpg', 'https://www.fastshop.com.br', 0),
-('RN Comércio Varejista S/A', 'Ricardo Eletro', '13.481.309/0101-55', 'email@ricardoeletro.com.br', '12.jpg', 'http://www.ricardoeletro.com.br', 0);
+('B2W - Companhia Digital', 'Americanas', '00776574000660', 'atendimento.acom@americanas.com', '1.jpg', 'http://www.americanas.com.br', 1),
+('B2W - Companhia Digital', 'Submarino', '00776574000660', 'atendimento.sub@americanas.com', '2.jpg', 'http://www.submarino.com.br', 0),
+('B2W - Companhia Digital', 'Shoptime', '00776574000660', 'atendimento.shop@americanas.com', '3.jpg', 'http://www.shoptime.com.br', 0),
+('Via Varejo', 'Casas Bahia', '33041260065290', 'email@casasbahia.com.br', '4.jpg', 'http://www.casasbahia.com.br', 0),
+('Saraiva e Siciliano S/A', 'Livraria Saraiva', '61365284000104', 'email@saraiva.com.br', '5.jpg', 'http://www.saraiva.com.br', 0),
+('F. Brasil LTDA', 'Fnac', '02634926000164', 'email@fnac.com.br', '6.jpg', 'http://www.fnac.com.br', 0),
+('Livraria Cultura S/A', 'Livraria Cultura', '62410352000172', 'email@livrariacultura.com.br', '7.jpg', 'http://www.livrariacultura.com.br', 0),
+('CNOVA Comércio Eletrônico S/A', 'Ponto Frio', '07170938000107', 'email@pontofrio.com.br', '8.jpg', 'http://www.pontofrio.com.br', 0),
+('CNOVA Comércio Eletrônico S/A', 'Extra', '07170938000107', 'email@extra.com.br', '9.jpg', 'http://www.extra.com.br', 0),
+('Magazine Luiza S/A', 'Magazine Luiza', '47960950044927', 'atendimento.site@magazineluiza.com.br', '10.jpg', 'http://www.magazineluiza.com.br', 0),
+('Fast Shop S/A', 'Fast Shop', '43708379000100', 'email@fastshop.com.br', '11.jpg', 'https://www.fastshop.com.br', 0),
+('RN Comércio Varejista S/A', 'Ricardo Eletro', '13481309010155', 'email@ricardoeletro.com.br', '12.jpg', 'http://www.ricardoeletro.com.br', 0);
 
 INSERT INTO enderecos
 (cep, logradouro, numero, complemento, bairro, cidade, estado)

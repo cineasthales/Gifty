@@ -8,11 +8,11 @@
         <li><a href="<?= base_url('admin/tiposinteresses') ?>"><span class="recuo"><i class="fas fa-lightbulb"></i></span>Tipos de Interesses <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/amizades') ?>"><span class="recuo"><i class="fas fa-users"></i></span>Amizades</a></li>
         <li><a href="<?= base_url('admin/eventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Eventos <i class="fas fa-check"></i></a></li>
-        <li><a href="<?= base_url('admin/tiposeventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Tipos de Eventos</a></li>
-        <li><a href="<?= base_url('admin/itens') ?>"><span class="recuo"><i class="fas fa-box-open"></i></span>Itens</a></li>
+        <li><a href="<?= base_url('admin/tiposeventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Tipos de Eventos <i class="fas fa-check"></i></a></li>
+        <li><a href="<?= base_url('admin/itens') ?>"><span class="recuo"><i class="fas fa-box-open"></i></span>Itens <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/listas') ?>"><span class="recuo"><i class="fas fa-gift"></i></span>Listas</a></li>
         <li><a href="<?= base_url('admin/convidados') ?>"><span class="recuo"><i class="fas fa-address-card"></i></span>Convidados</a></li>
-        <li><a href="<?= base_url('admin/empresas') ?>"><span class="recuo"><i class="fas fa-building"></i></span>Empresas</a></li>
+        <li><a href="<?= base_url('admin/empresas') ?>"><span class="recuo"><i class="fas fa-building"></i></span>Empresas <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/anuncios') ?>"><span class="recuo"><i class="fas fa-money-bill-alt"></i></span>Anúncios</a></li>
         <li><a href="<?= base_url('admin/acoesusuarios') ?>"><span class="recuo"><i class="fas fa-exclamation-circle"></i></span>Ações de Usuários</a></li>
         <li><a href="<?= base_url('admin/acoeseventos') ?>"><span class="recuo"><i class="fas fa-exclamation-circle"></i></span>Ações de Eventos</a></li>

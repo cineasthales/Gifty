@@ -109,7 +109,11 @@ if ($this->session->has_userdata('mensagem')) {
                     <strong>CNPJ</strong>
                 </div>
                 <div class="col-6">
-                    <?= $empresa->cnpj ?>
+                    <?=
+                    substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.'
+                    . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-'
+                    . substr($empresa->cnpj, 12, 2)
+                    ?>
                 </div>
                 <div class="col-2">
                     <strong>Site</strong>

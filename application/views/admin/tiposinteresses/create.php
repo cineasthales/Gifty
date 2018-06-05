@@ -33,7 +33,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>
                     <input type="text" id="descricao" name="descricao" required
-                           pattern="[A-Za-z]{,100}" maxlength="100"><br><br>
+                           pattern="[A-Za-z0-9]{,100}" maxlength="100"><br><br>
                 </div>
                 <div class="col-12">
                     <br>
