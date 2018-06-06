@@ -40,6 +40,53 @@ class AcoesUsuarios extends CI_Controller {
             redirect();
         }
     }
+    
+    public function adicionar() {
+        $this->verificaSessao();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/acoesusuarios/create');
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_adicao() {
+        $dados = $this->input->post();
+        if ($this->acoesusuarios->insert($dados)) {
+            $mensagem = "Ação de usuário cadastrada com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Ação de usuário não foi cadastrada.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/acoesusuarios');
+    }
+
+    public function atualizar($id) {
+        $this->verificaSessao();
+        $dados['acao'] = $this->acoesusuarios->find($id);
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/acoesusuarios/update', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_atualizacao($id) {
+        $dados = $this->input->post();
+        if ($this->acoesusuarios->update($dados, $id)) {
+            $mensagem = "Ação de usuário atualizada com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Ação de usuário não foi atualizada.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/acoesusuarios');
+    }
 
     public function excluir($id) {
         // verifica se usuário está logado

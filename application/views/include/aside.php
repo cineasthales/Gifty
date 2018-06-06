@@ -13,9 +13,9 @@
         <li><a href="<?= base_url('admin/listas') ?>"><span class="recuo"><i class="fas fa-gift"></i></span>Listas</a></li>
         <li><a href="<?= base_url('admin/convidados') ?>"><span class="recuo"><i class="fas fa-address-card"></i></span>Convidados</a></li>
         <li><a href="<?= base_url('admin/empresas') ?>"><span class="recuo"><i class="fas fa-building"></i></span>Empresas <i class="fas fa-check"></i></a></li>
-        <li><a href="<?= base_url('admin/anuncios') ?>"><span class="recuo"><i class="fas fa-money-bill-alt"></i></span>Anúncios</a></li>
-        <li><a href="<?= base_url('admin/acoesusuarios') ?>"><span class="recuo"><i class="fas fa-exclamation-circle"></i></span>Ações de Usuários</a></li>
-        <li><a href="<?= base_url('admin/acoeseventos') ?>"><span class="recuo"><i class="fas fa-exclamation-circle"></i></span>Ações de Eventos</a></li>
+        <li><a href="<?= base_url('admin/anuncios') ?>"><span class="recuo"><i class="fas fa-money-bill-alt"></i></span>Anúncios <i class="fas fa-check"></i></a></li>
+        <li><a href="<?= base_url('admin/acoesusuarios') ?>"><span class="recuo"><i class="fas fa-exclamation-circle"></i></span>Ações de Usuários <i class="fas fa-check"></i></a></li>
+        <li><a href="<?= base_url('admin/acoeseventos') ?>"><span class="recuo"><i class="fas fa-exclamation-circle"></i></span>Ações de Eventos <i class="fas fa-check"></i></a></li>
         <li><a href="<?= base_url('admin/logusuarios') ?>"><span class="recuo"><i class="fas fa-history"></i></span>Logs de Usuários</a></li>
         <li><a href="<?= base_url('admin/logeventos') ?>"><span class="recuo"><i class="fas fa-history"></i></span>Logs de Eventos</a></li>
         <li><a href="<?= base_url('admin/cliquesanuncios') ?>"><span class="recuo"><i class="fas fa-mouse-pointer"></i></span>Cliques em Anúncios</a></li>
