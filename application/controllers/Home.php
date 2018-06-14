@@ -58,8 +58,8 @@ class Home extends CI_Controller {
 
     public function cadastrar() {
         $this->session->sess_destroy();
-        $this->load->model('tiposinteresses_model', 'tiposinteresses');
-        $dados['interesses'] = $this->tiposinteresses->selectByName();
+        $this->load->model('categorias_model', 'categorias');
+        $dados['categorias'] = $this->categorias->selectByName();
         $this->load->view('include/head');
         $this->load->view('include/header_ext');
         $this->load->view('cadastro', $dados);
@@ -99,8 +99,8 @@ class Home extends CI_Controller {
                 $registro['idUsuario'] = $this->usuarios->last()->id;
                 $this->load->model('interesses_model', 'interesses');
                 for ($i = 0; $i < 36; $i++) {
-                    if ($this->input->post('interesse_' . $i)) {
-                        $registro['idTipoInteresse'] = $i;
+                    if ($this->input->post('categoria_' . $i)) {
+                        $registro['idCategoria'] = $i;
                         $this->interesses->insert($registro);
                     }
                 }

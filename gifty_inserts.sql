@@ -20,45 +20,46 @@ VALUES
 ('Festa de Despedida'),
 ('Religioso');
 
-INSERT INTO tiposInteresses
+INSERT INTO categorias
 (descricao)
 VALUES
-('Bebidas Alcoólicas'),
-('Doces'),
-('Chás'),
-('Artesanato'),
-('Artes'),
+('Alimentos e Bebidas'),
+('Arte e Antiguidade'),
 ('Artigos Religiosos'),
-('Carros'),
-('Motocicletas'),
-('Artigos para Bebês'),
+('Assinaturas e Revistas'),
+('Bebês e Cia'),
+('Bluray'),
 ('Brinquedos'),
-('Games'),
-('Jogos de Tabuleiro / Cartas'),
-('Cama / Mesa / Banho'),
-('Esotéricos'),
-('Móveis'),
-('Decoração'),
-('Utensílios de Cozinha'),
+('Casa e Decoração'),
 ('CDs'),
-('DVDs / Bluray'),
+('Colecionáveis'),
 ('Construção e Ferramentas'),
-('Jardinagem'),
 ('Discos de Vinil'),
+('DVDs'),
 ('Eletrodomésticos'),
 ('Eletrônicos'),
-('Artigos Esportivos'),
-('Camping e Pesca'),
-('Bicicletas'),
-('Fotografia e Video'),
-('Joias e Relógios'),
-('Indústria, Comércio e Serviços'),
+('Esporte e Lazer'),
+('Flores, Cestas e Presentes'),
+('Fotografia'),
+('Games'),
+('Indústria, Comércio e Negócios'),
 ('Informática'),
-('Animais Domésticos'),
-('Perfumaria, Beleza e Higiene Pessoal'),
+('Instrumentos Musicais'),
+('Joias e Relógios'),
+('Livros'),
+('Moda e Acessórios'),
+('Música Digital'),
+('Natal'),
+('Papelaria e Escritório'),
+('Páscoa'),
+('Perfumaria e Cosméticos'),
+('Pet Shop'),
+('Saúde'),
 ('Sex Shop'),
 ('Tabacaria'),
-('Telefonia');
+('Telefonia'),
+('VHS');
+/* Nao estao incluidos: imoveis, servicos */
 
 INSERT INTO acoesEventos
 (descricao)
@@ -121,18 +122,18 @@ VALUES
 ('96020360', 'Rua Professor Doutor Araújo', 918,'', 'Centro', 'Pelotas', 'RS');
 
 INSERT INTO itens
-(nome, descricao, categoria, preco, imagem)
+(nome, descricao, preco, imagem, idCategoria)
 VALUES
-('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 'Telefonia', 3999.99, '1.jpg'),
-('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 'Telefonia', 3299.99, '2.jpg'),
-('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 'Eletrodomésticos', 2229.99, '3.jpg'),
-('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 'Eletrodomésticos', 1329.99, '4.jpg'),
-('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 'Informática', 939.99, '5.jpg'),
-('Smart TV LED 70” LG 4K/Ultra HD 70UJ6585 WebOS - Conversor Digital Wi-Fi 4 HDMI 2 USB Bluetooth HDR', 'A melhor TV já feita', 'Eletrônicos', 6839.99, '6.jpg'),
-('Sofá 3 Lugares Aruba - American Comfort', 'O melhor sofá já feito', 'Móveis', 569.99, '7.jpg'),
-('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 'Informática', 4274.05, '8.jpg'),
-('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 'Games', 1199.00, '9.jpg'),
-('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 'Games', 1430.90, '10.jpg');
+('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 3999.99, '1.jpg', 36),
+('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 3299.99, '2.jpg', 36),
+('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 2229.99, '3.jpg', 14),
+('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 1329.99, '4.jpg', 14),
+('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 939.99, '5.jpg', 21),
+('Smart TV LED 70” LG 4K/Ultra HD 70UJ6585 WebOS - Conversor Digital Wi-Fi 4 HDMI 2 USB Bluetooth HDR', 'A melhor TV já feita', 6839.99, '6.jpg', 15),
+('Sofá 3 Lugares Aruba - American Comfort', 'O melhor sofá já feito', 569.99, '7.jpg', 8),
+('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 4274.05, '8.jpg', 21),
+('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 1199.00, '9.jpg', 19),
+('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 1430.90, '10.jpg', 19);
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
@@ -185,18 +186,18 @@ VALUES
 (2, 2, '2018-01-05', '19:00');
 
 INSERT INTO interesses
-(idUsuario, idTipoInteresse)
+(idUsuario, idCategoria, peso)
 VALUES
-(2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(2, 5),
-(3, 6),
-(3, 7),
-(3, 8),
-(3, 9),
-(3, 10);
+(2, 1, 1),
+(2, 2, 2),
+(2, 3, 1),
+(2, 4, 3),
+(2, 5, 1),
+(3, 6, 1),
+(3, 7, 3),
+(3, 8, 2),
+(3, 9, 1),
+(3, 10, 1);
 
 INSERT INTO eventos
 (titulo, descricao, data, hora, local, ativo, maxItens, dataLimite,

@@ -126,17 +126,33 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `gifty`.`categorias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gifty`.`categorias` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `gifty`.`itens`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`itens` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(240) NOT NULL,
   `descricao` MEDIUMTEXT NOT NULL,
-  `categoria` VARCHAR(255) NOT NULL,
   `preco` DOUBLE NOT NULL,
   `imagem` VARCHAR(4094) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
+  `idCategoria` INT NOT NULL,
+  PRIMARY KEY (`id`, `idCategoria`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_itens_categorias1_idx` (`idCategoria` ASC),
+  CONSTRAINT `fk_itens_categorias1`
+    FOREIGN KEY (`idCategoria`)
+    REFERENCES `gifty`.`categorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -252,23 +268,14 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gifty`.`tiposInteresses`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gifty`.`tiposInteresses` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `descricao` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `gifty`.`interesses`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gifty`.`interesses` (
   `idUsuario` INT NOT NULL,
-  `idTipoInteresse` INT NOT NULL,
-  PRIMARY KEY (`idUsuario`, `idTipoInteresse`),
-  INDEX `fk_usuarios_has_interesses_interesses1_idx` (`idTipoInteresse` ASC),
+  `idCategoria` INT NOT NULL,
+  `peso` INT NOT NULL,
+  PRIMARY KEY (`idUsuario`, `idCategoria`),
+  INDEX `fk_usuarios_has_interesses_interesses1_idx` (`idCategoria` ASC),
   INDEX `fk_usuarios_has_interesses_usuarios1_idx` (`idUsuario` ASC),
   CONSTRAINT `fk_usuarios_has_interesses_usuarios1`
     FOREIGN KEY (`idUsuario`)
@@ -276,8 +283,8 @@ CREATE TABLE IF NOT EXISTS `gifty`.`interesses` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_usuarios_has_interesses_interesses1`
-    FOREIGN KEY (`idTipoInteresse`)
-    REFERENCES `gifty`.`tiposInteresses` (`id`)
+    FOREIGN KEY (`idCategoria`)
+    REFERENCES `gifty`.`categorias` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -111,28 +111,28 @@
                 </div>
                 <div class="col-4">
                     <?php
-                    $tam = count($interesses);
+                    $tam = count($categorias);
                     for ($i = 0; $i < $tam / 3; $i++) {
                         ?>
-                        <label for="<?= 'interesse_' . $interesses[$i]->id ?>">
-                            <input type="checkbox" id="<?= 'interesse_' . $interesses[$i]->id ?>" 
-                                   name="<?= 'interesse_' . $interesses[$i]->id ?>"> <?= $interesses[$i]->descricao ?>
+                        <label for="<?= 'categoria_' . $categorias[$i]->id ?>">
+                            <input type="checkbox" id="<?= 'categoria_' . $categorias[$i]->id ?>" 
+                                   name="<?= 'categoria_' . $categorias[$i]->id ?>"> <?= $categorias[$i]->descricao ?>
                         </label><br> 
                     <?php } ?>
                 </div>
                 <div class="col-4">
                     <?php for ($i = $tam / 3; $i < $tam * (2 / 3); $i++) { ?>
-                        <label for="<?= 'interesse_' . $interesses[$i]->id ?>">
-                            <input type="checkbox" id="<?= 'interesse_' . $interesses[$i]->id ?>" 
-                                   name="<?= 'interesse_' . $interesses[$i]->id ?>"> <?= $interesses[$i]->descricao ?>
+                        <label for="<?= 'categoria_' . $categorias[$i]->id ?>">
+                            <input type="checkbox" id="<?= 'categoria_' . $categorias[$i]->id ?>" 
+                                   name="<?= 'categoria_' . $categorias[$i]->id ?>"> <?= $categorias[$i]->descricao ?>
                         </label><br> 
                     <?php } ?>
                 </div>
                 <div class="col-4">
                     <?php for ($i = $tam * (2 / 3); $i < $tam; $i++) { ?>
-                        <label for="<?= 'interesse_' . $interesses[$i]->id ?>">
-                            <input type="checkbox" id="<?= 'interesse_' . $interesses[$i]->id ?>" 
-                                   name="<?= 'interesse_' . $interesses[$i]->id ?>"> <?= $interesses[$i]->descricao ?>
+                        <label for="<?= 'categoria_' . $categorias[$i]->id ?>">
+                            <input type="checkbox" id="<?= 'categoria_' . $categorias[$i]->id ?>" 
+                                   name="<?= 'categoria_' . $categorias[$i]->id ?>"> <?= $categorias[$i]->descricao ?>
                         </label><br> 
                     <?php } ?> 
                 </div>
