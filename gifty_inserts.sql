@@ -124,8 +124,8 @@ VALUES
 INSERT INTO itens
 (nome, descricao, preco, imagem, idCategoria)
 VALUES
-('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 3999.99, '1.jpg', 36),
-('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 3299.99, '2.jpg', 36),
+('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 3999.99, '1.jpg', 35),
+('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 3299.99, '2.jpg', 35),
 ('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 2229.99, '3.jpg', 14),
 ('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 1329.99, '4.jpg', 14),
 ('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 939.99, '5.jpg', 21),

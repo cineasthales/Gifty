@@ -27,7 +27,7 @@ class Interesses extends CI_Controller {
                 $busca = $aux[0];
                 $dados['interesses'] = $this->interesses->searchUsuario($busca);
             } else {
-                $dados['interesses'] = $this->interesses->searchTipoInteresse($busca);
+                $dados['interesses'] = $this->interesses->searchCategoria($busca);
             }
         }
         $this->load->view('include/head');
@@ -43,11 +43,11 @@ class Interesses extends CI_Controller {
         }
     }
 
-    public function excluir($idUsuario, $idTipoInteresse) {
+    public function excluir($idUsuario, $idCategoria) {
         // verifica se usuário está logado
         $this->verificaSessao();
         // retorno para usuário em relação à exclusão ou não do dado no banco
-        if ($this->interesses->delete($idUsuario, $idTipoInteresse)) {
+        if ($this->interesses->delete($idUsuario, $idCategoria)) {
             $mensagem = "Interesse excluído com êxito.";
             $tipo = 1;
         } else {

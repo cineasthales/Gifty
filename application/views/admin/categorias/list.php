@@ -27,9 +27,9 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row-plus"> 
             <div class="col-5">
-                <h1>Tipos de Interesses</h1>
+                <h1>Categorias</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/tiposinteresses') ?>">
+            <form method="post" action="<?= base_url('admin/categorias') ?>">
                 <div class="col-2">
                     <label for="filtro" hidden>Filtro</label>
                     <select id="filtro" name="filtro">
@@ -47,13 +47,13 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>
             </form>
             <div class="col-1">
-                <button class='bt'><a href="<?= base_url('admin/tiposinteresses/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
+                <button class='bt'><a href="<?= base_url('admin/categorias/adicionar/') ?>"><i class="fas fa-plus"></i></a></button>
             </div>
             <div class="col-12">
-                <?php if (count($tiposinteresses) > 1) { ?>
-                    <small><strong><?= count($tiposinteresses) ?> registros encontrados.</strong></small>
-                <?php } else if (count($tiposinteresses) == 1) { ?>
-                    <small><strong><?= count($tiposinteresses) ?> registro encontrado.</strong></small>
+                <?php if (count($categorias) > 1) { ?>
+                    <small><strong><?= count($categorias) ?> registros encontrados.</strong></small>
+                <?php } else if (count($categorias) == 1) { ?>
+                    <small><strong><?= count($categorias) ?> registro encontrado.</strong></small>
                 <?php } else { ?>
                     <small><strong>Nenhum registro encontrado.</strong></small>
                 <?php } ?>              
@@ -62,22 +62,22 @@ if ($this->session->has_userdata('mensagem')) {
                 <hr>
             </div>
             <?php
-            foreach ($tiposinteresses as $tipointeresse) {
+            foreach ($categorias as $categoria) {
                 ?>
                 <div class="col-12">
                     <br>
                 </div>
                 <div class="col-1">
-                    <h2># <?= $tipointeresse->id ?></h2>
+                    <h2># <?= $categoria->id ?></h2>
                 </div>            
                 <div class="col-9">
-                    <?= $tipointeresse->descricao ?>
+                    <?= $categoria->descricao ?>
                 </div>
                 <div class="col-2">
-                    <button class='bt' id='btdel'><a href="<?= base_url('admin/tiposinteresses/excluir/' . $tipointeresse->id) ?>"
-                                                     onclick="return confirm('Tem certeza que deseja excluir tipo de interesse de código <?= $tipointeresse->id ?>?')">
+                    <button class='bt' id='btdel'><a href="<?= base_url('admin/categorias/excluir/' . $categoria->id) ?>"
+                                                     onclick="return confirm('Tem certeza que deseja excluir tipo de interesse de código <?= $categoria->id ?>?')">
                             <i class="fas fa-trash-alt"></i></a></button>
-                    <button class='bt'><a href="<?= base_url('admin/tiposinteresses/atualizar/' . $tipointeresse->id) ?>">
+                    <button class='bt'><a href="<?= base_url('admin/categorias/atualizar/' . $categoria->id) ?>">
                             <i class="fas fa-edit"></i></a></button>
 
                 </div>

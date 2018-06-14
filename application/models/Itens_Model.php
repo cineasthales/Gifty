@@ -3,8 +3,11 @@
 class Itens_Model extends CI_Model {
 
     public function select() {
-        $this->db->order_by('id DESC');
-        return $this->db->get('itens')->result(); // retorna vetor
+        $this->db->select('i.*, c.descricao AS categoria');
+        $this->db->from('itens i');
+        $this->db->join('categorias c', 'i.idCategoria = c.id', 'inner');
+        $this->db->order_by('i.id DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function find($id) {
@@ -13,21 +16,30 @@ class Itens_Model extends CI_Model {
     }
 
     public function searchId($id) {
-        $this->db->where('id', $id);
-        $this->db->order_by('id');
-        return $this->db->get('itens')->result(); // retorna vetor
+        $this->db->select('i.*, c.descricao AS categoria');
+        $this->db->from('itens i');
+        $this->db->join('categorias c', 'i.idCategoria = c.id', 'inner');
+        $this->db->where('i.id', $id);
+        $this->db->order_by('i.id DESC');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchNome($nome) {
-        $this->db->like('nome', $nome);
-        $this->db->order_by('nome');
-        return $this->db->get('itens')->result(); // retorna vetor
+        $this->db->select('i.*, c.descricao AS categoria');
+        $this->db->from('itens i');
+        $this->db->join('categorias c', 'i.idCategoria = c.id', 'inner');
+        $this->db->like('i.nome', $nome);
+        $this->db->order_by('i.nome');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchCategoria($categoria) {
-        $this->db->like('categoria', $categoria);
-        $this->db->order_by('categoria');
-        return $this->db->get('itens')->result(); // retorna vetor
+        $this->db->select('i.*, c.descricao AS categoria');
+        $this->db->from('itens i');
+        $this->db->join('categorias c', 'i.idCategoria = c.id', 'inner');
+        $this->db->like('i.idCategoria', $categoria);
+        $this->db->order_by('i.idCategoria');
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function insert($registro) {

@@ -30,24 +30,28 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Adicionar Item</h1>
             </div>
             <form method="post" action="<?= base_url('admin/itens/grava_adicao') ?>">
-                <div class="col-12">
+                <div class="col-6">
                     <label for="nome">Nome</label><br>
                     <input type="text" id="nome" name="nome" required
                            pattern="[A-Za-z0-9]{,240}" maxlength="240"><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="categoria">Categoria</label><br>
-                    <input type="text" id="categoria" name="categoria" required
-                           pattern="[A-Za-z0-9]{,255}" maxlength="255"><br><br>
-                </div>
-                <div class="col-6">
                     <label for="preco">Preço</label><br>
-                    <input type="text" id="preco" name="preco" required
-                           pattern="[0-9]"><br><br>
+                    <input type="text" id="preco" name="preco" required><br><br>
                 </div>
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>
                     <textarea id="descricao" name="descricao" pattern="[A-Za-z0-9]" rows="5" required></textarea><br><br>
+                </div>
+                <div class="col-12">
+                    <label for="idCategoria">Categoria</label><br>
+                    <select id="idCategoria" name="idCategoria" size="5">
+                        <?php foreach ($categorias as $categoria) { ?>
+                            <option value="<?= $categoria->id ?>">                             
+                                # <?= $categoria->id ?> -  <?= $categoria->descricao ?>
+                            </option>
+                        <?php } ?>
+                    </select><br><br>
                 </div>
                 <div class="col-12">
                     <br>
