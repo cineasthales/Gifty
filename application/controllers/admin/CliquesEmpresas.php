@@ -45,6 +45,61 @@ class CliquesEmpresas extends CI_Controller {
         }
     }
 
+    public function adicionar() {
+        $this->verificaSessao();
+        $this->load->model('usuarios_model', 'usuarios');
+        $dados['usuarios'] = $this->usuarios->select();
+        $this->load->model('empresas_model', 'empresas');
+        $dados['empresas'] = $this->empresas->select();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/cliquesempresas/create', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_adicao() {
+        $dados = $this->input->post();
+        if ($this->cliquesempresas->insert($dados)) {
+            $mensagem = "Clique em empresa cadastrado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Clique em empresa não foi cadastrado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/cliquesempresas');
+    }
+
+    public function atualizar($id) {
+        $this->verificaSessao();
+        $dados['clique'] = $this->cliquesempresas->find($id);
+        $this->load->model('usuarios_model', 'usuarios');
+        $dados['usuarios'] = $this->usuarios->select();
+        $this->load->model('empresas_model', 'empresas');
+        $dados['empresas'] = $this->empresas->select();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/cliquesempresas/update', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_atualizacao($id) {
+        $dados = $this->input->post();
+        if ($this->cliquesempresas->update($dados, $id)) {
+            $mensagem = "Clique em empresa atualizado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Clique em empresa não foi atualizado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/cliquesempresas');
+    }
+
     public function excluir($id) {
         // verifica se usuário está logado
         $this->verificaSessao();

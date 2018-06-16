@@ -391,16 +391,15 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gifty`.`logEventos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `idEvento` INT NOT NULL,
-  `idUsuario` INT NOT NULL,
   `idAcaoEvento` INT NOT NULL,
   `data` DATE NOT NULL,
   `hora` TIME NOT NULL,
-  PRIMARY KEY (`id`, `idEvento`, `idUsuario`, `idAcaoEvento`),
+  PRIMARY KEY (`id`, `idEvento`, `idAcaoEvento`),
   INDEX `fk_eventos_has_acoesEventos_acoesEventos1_idx` (`idAcaoEvento` ASC),
-  INDEX `fk_eventos_has_acoesEventos_eventos1_idx` (`idEvento` ASC, `idUsuario` ASC),
+  INDEX `fk_eventos_has_acoesEventos_eventos1_idx` (`idEvento` ASC),
   CONSTRAINT `fk_eventos_has_acoesEventos_eventos1`
-    FOREIGN KEY (`idEvento` , `idUsuario`)
-    REFERENCES `gifty`.`eventos` (`id` , `idUsuario`)
+    FOREIGN KEY (`idEvento`)
+    REFERENCES `gifty`.`eventos` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_eventos_has_acoesEventos_acoesEventos1`

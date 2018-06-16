@@ -27,18 +27,16 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row-plus"> 
             <div class="col-12">
-                <h1>Adicionar Telefone</h1>
+                <h1>Adicionar Clique em Anúncio</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/telefones/grava_adicao') ?>">
-                <div class="col-3">
-                    <label for="numero">DDD</label><br>
-                    <input type="text" id="ddd" name="ddd" required
-                           pattern="[0-9]{,3}" maxlength="3"><br><br>
+            <form method="post" action="<?= base_url('admin/cliquesanuncios/grava_adicao') ?>">
+                <div class="col-6">
+                    <label for="data">Data</label><br>
+                    <input type="date" id="data" name="data" required><br><br>
                 </div>
-                <div class="col-9">
-                    <label for="numero">Número</label><br>
-                    <input type="text" id="numero" name="numero" required
-                           pattern="[0-9]{,20}" maxlength="20"><br><br>
+                <div class="col-6">
+                    <label for="hora">Hora</label><br>
+                    <input type="time" id="hora" name="hora" required><br><br>
                 </div>
                 <div class="col-12">
                     <label for="idUsuario">Usuário</label><br>
@@ -47,6 +45,16 @@ if ($this->session->has_userdata('mensagem')) {
                             <option value="<?= $usuario->id ?>">                             
                                 # <?= $usuario->id ?> - <?= $usuario->nome ?> <?= $usuario->sobrenome ?>
                                 - <?= $usuario->nomeUsuario ?> - <?= $usuario->email ?>
+                            </option>
+                        <?php } ?>
+                    </select><br><br>
+                </div>
+                <div class="col-12">
+                    <label for="idAnuncio">Anúncio</label><br>
+                    <select id="idAnuncio" name="idAnuncio" size="5">
+                        <?php foreach ($anuncios as $anuncio) { ?>
+                            <option value="<?= $anuncio->id ?>">                             
+                                # <?= $anuncio->id ?> - <?= $anuncio->url ?>
                             </option>
                         <?php } ?>
                     </select><br><br>

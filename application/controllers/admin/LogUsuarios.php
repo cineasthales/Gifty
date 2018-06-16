@@ -36,6 +36,61 @@ class LogUsuarios extends CI_Controller {
         $this->load->view('admin/logusuarios/list', $dados);
         $this->load->view('include/footer_admin');
     }
+    
+    public function adicionar() {
+        $this->verificaSessao();
+        $this->load->model('usuarios_model', 'usuarios');
+        $dados['usuarios'] = $this->usuarios->select();
+        $this->load->model('acoesusuarios_model', 'acoesusuarios');
+        $dados['acoes'] = $this->acoesusuarios->select();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/logusuarios/create', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_adicao() {
+        $dados = $this->input->post();
+        if ($this->logusuarios->insert($dados)) {
+            $mensagem = "Log de usuário cadastrado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Log de usuário não foi cadastrado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/logusuarios');
+    }
+
+    public function atualizar($id) {
+        $this->verificaSessao();
+        $dados['log'] = $this->logusuarios->find($id);
+        $this->load->model('usuarios_model', 'usuarios');
+        $dados['usuarios'] = $this->usuarios->select();
+        $this->load->model('acoesusuarios_model', 'acoesusuarios');
+        $dados['acoes'] = $this->acoesusuarios->select();
+        $this->load->view('include/head');
+        $this->load->view('include/aside');
+        $this->load->view('include/header_admin');
+        $this->load->view('admin/logusuarios/update', $dados);
+        $this->load->view('include/footer_admin');
+    }
+
+    public function grava_atualizacao($id) {
+        $dados = $this->input->post();
+        if ($this->logusuarios->update($dados, $id)) {
+            $mensagem = "Log de usuário atualizado com êxito.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Log de usuário não foi atualizado.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('admin/logusuarios');
+    }
 
     public function verificaSessao() {
         if (!$this->session->logado_admin) {
