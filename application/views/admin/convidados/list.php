@@ -73,12 +73,17 @@ if ($this->session->has_userdata('mensagem')) {
                         (# <?= $convidado->idUsuario ?>)</strong>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?=
+                    <button class='bt' id="btdel"><a href="<?=
                         base_url('admin/convidados/excluir/' . $convidado->idUsuario . '/'
                                 . $convidado->idEvento)
                         ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir este convidado?')">
                             <i class="fas fa-trash-alt"></i></a></button>
+                    <button class='bt'><a href="<?=
+                        base_url('admin/convidados/atualizar/' . $convidado->idUsuario . '/'
+                                . $convidado->idEvento)
+                        ?>">
+                            <i class="fas fa-edit"></i></a></button>
                 </div>
                 <div class="col-3">
                     <?php if (!$convidado->bloqueado) { ?>

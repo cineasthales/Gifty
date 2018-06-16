@@ -67,18 +67,22 @@ if ($this->session->has_userdata('mensagem')) {
                 <div class="col-12">
                     <br>
                 </div>
-                <div class="col-11">
+                <div class="col-10">
                     <strong><?= $amizade->nome1 ?> <?= $amizade->snome1 ?> (# <?= $amizade->idUsuario1 ?>)</strong>
                     é amigo(a) de <strong><?= $amizade->nome2 ?> <?= $amizade->snome2 ?> (# <?= $amizade->idUsuario2 ?>)</strong>
                     desde <?= date_format(date_create($amizade->data), 'd/m/Y') ?>
                 </div>
-                <div class="col-1">
-                    <button class='bt'><a href="<?=
+                <div class="col-2">
+                    <button class='bt' id="btdel"><a href="<?=
                         base_url('admin/amizades/excluir/' . $amizade->idUsuario1 . '/'
                                 . $amizade->idUsuario2)
                         ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir esta amizade?')">
                             <i class="fas fa-trash-alt"></i></a></button>
+                            <button class='bt'><a href="<?= base_url('admin/amizades/atualizar/' . $amizade->idUsuario1 . '/'
+                    . $amizade->idUsuario2)
+            ?>">
+                            <i class="fas fa-edit"></i></a></button>
                 </div>
                 <div class="col-2">
                     <?php if ($amizade->ativa) { ?>

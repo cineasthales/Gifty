@@ -74,19 +74,26 @@ if ($this->session->has_userdata('mensagem')) {
                     <?= $lista->evento ?> (# <?= $lista->idEvento ?>)
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?=
+                    <button class='bt' id="btdel"><a href="<?=
                         base_url('admin/listas/excluir/' . $lista->idEvento . '/'
                                 . $lista->idItem)
                         ?>"
-                                          onclick="return confirm('Tem certeza que deseja excluir este item da lista?')">
+                                                     onclick="return confirm('Tem certeza que deseja excluir este item da lista?')">
                             <i class="fas fa-trash-alt"></i></a></button>
+                    <button class='bt'><a href="<?=
+                        base_url('admin/listas/atualizar/' . $lista->idEvento . '/'
+                                . $lista->idItem)
+                        ?>">
+                            <i class="fas fa-edit"></i></a></button>
                 </div>
                 <div class="col-2">
                     <strong>Item</strong>
                 </div>
-                <div class="col-10">
+                <div class="col-8">
                     (<?= $lista->prioridade ?>º) <?= $lista->item ?>
-                </div>                
+                </div>
+                <div class="col-2">
+                </div>
                 <div class="col-12">
                     <br><hr>
                 </div>

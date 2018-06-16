@@ -65,19 +65,20 @@ if ($this->session->has_userdata('mensagem')) {
             foreach ($interesses as $interesse) {
                 ?>
                 <div class="col-12"> 
-                   <br>
+                    <br>
                 </div>
                 <div class="col-10">
                     <strong><?= $interesse->nome ?> <?= $interesse->snome ?> (# <?= $interesse->idUsuario ?>)</strong>
                     tem interesse de peso <strong><?= $interesse->peso ?></strong> em <strong><?= $interesse->categoria ?></strong>
                 </div>
                 <div class="col-2">
-                    <button class='bt'><a href="<?=
-                        base_url('admin/interesses/excluir/' . $interesse->idUsuario . '/'
-                                . $interesse->idCategoria)
-                        ?>"
+                    <button class='bt' id="btdel"><a href="<?= base_url('admin/interesses/excluir/' . $interesse->idUsuario . '/' . $interesse->idCategoria) ?>"
                                           onclick="return confirm('Tem certeza que deseja excluir este interesse?')">
                             <i class="fas fa-trash-alt"></i></a></button>
+                    <button class='bt'><a href="<?= base_url('admin/interesses/atualizar/' . $interesse->idUsuario . '/'
+                    . $interesse->idCategoria)
+            ?>">
+                            <i class="fas fa-edit"></i></a></button>
                 </div>
                 <div class="col-12">
                     <br><hr>
