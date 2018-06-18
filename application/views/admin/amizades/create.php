@@ -55,7 +55,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <span style='text-align: center'>
                     <div class="col-4"><br>
                         <label for="ativa">
-                            <input type="checkbox" id="ativo" name="ativo"> Ativo
+                            <input type="checkbox" id="ativa" name="ativa"> Ativo
                         </label><br><br>
                     </div>
                     <div class="col-4"><br>

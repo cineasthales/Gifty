@@ -90,10 +90,10 @@ class Categorias extends CI_Controller {
     public function excluir($id) {
         $this->verificaSessao();
         if ($this->categorias->delete($id)) {
-            $mensagem = "Categoria excluído com êxito.";
+            $mensagem = "Categoria excluída com êxito.";
             $tipo = 1;
         } else {
-            $mensagem = "Categoria não foi excluído.";
+            $mensagem = "Categoria não foi excluída.";
             $tipo = 0;
         }
         $this->session->set_flashdata('mensagem', $mensagem);

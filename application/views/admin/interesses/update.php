@@ -30,11 +30,10 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Atualizar Interesse</h1>
             </div>
             <div class="col-12">
-                <h2><strong>Usuário</strong>: # <?= $usuario->id ?> - <?= $usuario->nome ?> <?= $usuario->sobrenome ?>
-                    - <?= $usuario->nomeUsuario ?> - <?= $usuario->email ?></h2>
+                <h2><strong>Usuário</strong>: # <?= $interesse->idUsuario ?> - <?= $interesse->nome ?> <?= $interesse->snome ?></h2>
             </div>
             <div class="col-12">
-                <h2><strong>Categoria</strong>: # <?= $categoria->id ?> - <?= $categoria->descricao ?></h2>
+                <h2><strong>Categoria</strong>: # <?= $interesse->idCategoria ?> - <?= $interesse->categoria ?></h2>
             </div>
             <form method="post" action="<?= base_url('admin/interesses/grava_atualizacao/') . $interesse->idUsuario . '/' . $interesse->idCategoria ?>">                
                 <div class="col-12">

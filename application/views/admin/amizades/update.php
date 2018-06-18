@@ -30,12 +30,10 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Atualizar Amizade</h1>
             </div>
             <div class="col-12">
-                <h2><strong>Usuário 1</strong>: # <?= $usuario1->id ?> - <?= $usuario1->nome ?> <?= $usuario1->sobrenome ?>
-                    - <?= $usuario1->nomeUsuario ?> - <?= $usuario1->email ?></h2>
+                <h2><strong>Usuário 1</strong>: # <?= $amizade->idUsuario1 ?> - <?= $amizade->nome1 ?> <?= $amizade->snome1 ?></h2>
             </div>
             <div class="col-12">
-                <h2><strong>Usuário 2</strong>: # <?= $usuario2->id ?> - <?= $usuario2->nome ?> <?= $usuario2->sobrenome ?>
-                    - <?= $usuario2->nomeUsuario ?> - <?= $usuario2->email ?></h2>
+                <h2><strong>Usuário 2</strong>: # <?= $amizade->idUsuario2 ?> - <?= $amizade->nome2 ?> <?= $amizade->snome2 ?></h2>
             </div>
             <form method="post" action="<?= base_url('admin/amizades/grava_atualizacao/') . $amizade->idUsuario1 . '/' . $amizade->idUsuario2 ?>">
                 <span style='text-align: center'>

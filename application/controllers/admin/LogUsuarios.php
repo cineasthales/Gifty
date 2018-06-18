@@ -6,7 +6,6 @@ class LogUsuarios extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        // carrega a model
         $this->load->model('logusuarios_model', 'logusuarios');
     }
 
@@ -99,9 +98,7 @@ class LogUsuarios extends CI_Controller {
     }
 
     public function excluir($id) {
-        // verifica se usuário está logado
         $this->verificaSessao();
-        // retorno para usuário em relação à exclusão ou não do dado no banco
         if ($this->logusuarios->delete($id)) {
             $mensagem = "Log de usuário excluído com êxito.";
             $tipo = 1;
@@ -109,10 +106,8 @@ class LogUsuarios extends CI_Controller {
             $mensagem = "Log de usuário não foi excluído.";
             $tipo = 0;
         }
-        // insere mensagem e tipo em dados flash
         $this->session->set_flashdata('mensagem', $mensagem);
         $this->session->set_flashdata('tipo', $tipo);
-        // redireciona para a página da lista de dados
         redirect('admin/logusuarios');
     }
 

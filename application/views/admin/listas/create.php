@@ -29,7 +29,7 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-12">
                 <h1>Adicionar em Lista</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/convidados/grava_adicao') ?>">
+            <form method="post" action="<?= base_url('admin/listas/grava_adicao') ?>">
                 <div class="col-12">
                     <label for="idEvento">Evento</label><br>
                     <select id="idEvento" name="idEvento" size="5">

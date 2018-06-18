@@ -27,17 +27,15 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row-plus"> 
             <div class="col-12">
-                <h1>Atualizar Lista</h1>
+                <h1>Atualizar em Lista</h1>
             </div>
             <div class="col-12">
-                <h2><strong>Evento</strong>: # <?= $evento->id ?> - <?= $evento->titulo ?>
-                    - <?= date_format(date_create($evento->data), 'd/m/Y') ?>
-                    - <?= substr($evento->hora, 0, 5) ?></h2>
+                <h2><strong>Evento</strong>: # <?= $lista->idEvento ?> - <?= $lista->evento ?></h2>
             </div>
             <div class="col-12">
-                <h2><strong>Item</strong>: # <?= $item->id ?> - <?= $item->nome ?></h2>
+                <h2><strong>Item</strong>: # <?= $lista->idItem ?> - <?= $lista->item ?></h2>
             </div>            
-            <form method="post" action="<?= base_url('admin/convidados/grava_atualizacao/') . $lista->idEvento . '/' . $lista->idItem ?>">               
+            <form method="post" action="<?= base_url('admin/listas/grava_atualizacao/') . $lista->idEvento . '/' . $lista->idItem ?>">               
                 <div class="col-6">
                     <label for="prioridade">Prioridade</label><br>
                     <input type="number" id="prioridade" name="prioridade" required min="1" max="999" value="<?= $lista->prioridade ?>"><br><br>

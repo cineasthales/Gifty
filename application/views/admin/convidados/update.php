@@ -30,15 +30,12 @@ if ($this->session->has_userdata('mensagem')) {
                 <h1>Atualizar Convidado</h1>
             </div>
             <div class="col-12">
-                <h2><strong>Usuário</strong>: # <?= $usuario->id ?> - <?= $usuario->nome ?> <?= $usuario->sobrenome ?>
-                    - <?= $usuario->nomeUsuario ?> - <?= $usuario->email ?></h2>
+                <h2><strong>Usuário</strong>: # <?= $convidado->idUsuario ?> - <?= $convidado->nome ?> <?= $convidado->snome ?></h2>
             </div>
             <div class="col-12">
-                <h2><strong>Evento</strong>: # <?= $evento->id ?> - <?= $evento->titulo ?>
-                    - <?= date_format(date_create($evento->data), 'd/m/Y') ?>
-                    - <?= substr($evento->hora, 0, 5) ?></h2>
+                <h2><strong>Evento</strong>: # <?= $convidado->idEvento ?> - <?= $convidado->evento ?></h2>
             </div>
-            <form method="post" action="<?= base_url('admin/convidados/grava_atualizacao/') . $interesse->idUsuario . '/' . $interesse->idEvento ?>">
+            <form method="post" action="<?= base_url('admin/convidados/grava_atualizacao/') . $convidado->idUsuario . '/' . $convidado->idEvento ?>">
                 <span style='text-align: center'>
                     <div class="col-4"><br>
                         <label for="comparecera">

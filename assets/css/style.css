@@ -148,7 +148,8 @@ button[type="submit"]:hover, button[type="submit"]:active {
 }
 
 section input[type="text"], section input[type="password"], section input[type="email"], textarea,
-section input[type="date"], section input[type="time"], section input[type="search"], select {
+section input[type="date"], section input[type="time"], section input[type="search"], select,
+section input[type="number"]{
     width: 100%;
     border: 0.1em solid black;
     padding: 0.25em;
