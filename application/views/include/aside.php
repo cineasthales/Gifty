@@ -6,7 +6,7 @@
         <li><a href="<?= base_url('admin/telefones') ?>"><span class="recuo"><i class="fas fa-phone"></i></span>Telefones</a></li>
         <li><a href="<?= base_url('admin/interesses') ?>"><span class="recuo"><i class="fas fa-lightbulb"></i></span>Interesses</a></li>
         <li><a href="<?= base_url('admin/categorias') ?>"><span class="recuo"><i class="fas fa-tag"></i></span>Categorias</a></li>
-        <li><a href="<?= base_url('admin/amizades') ?>"><span class="recuo"><i class="fas fa-users"></i></span>Amizades <i class="fas fa-times"></i></a></li>
+        <li><a href="<?= base_url('admin/amizades') ?>"><span class="recuo"><i class="fas fa-users"></i></span>Amizades</a></li>
         <li><a href="<?= base_url('admin/eventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Eventos</a></li>
         <li><a href="<?= base_url('admin/tiposeventos') ?>"><span class="recuo"><i class="fas fa-calendar"></i></span>Tipos de Eventos</a></li>
         <li><a href="<?= base_url('admin/itens') ?>"><span class="recuo"><i class="fas fa-box-open"></i></span>Itens</a></li>
