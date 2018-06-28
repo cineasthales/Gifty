@@ -40,6 +40,10 @@ if ($this->session->has_userdata('mensagem')) {
                     <input type="text" id="preco" name="preco" required value="<?= $item->preco ?>"><br><br>
                 </div>
                 <div class="col-12">
+                    <label for="url">URL</label><br>
+                    <input type="text" id="url" name="url" required maxlength="240" value="<?= $item->url ?>"><br><br>
+                </div>
+                <div class="col-12">
                     <label for="descricao">Descrição</label><br>
                     <textarea id="descricao" name="descricao" pattern="[A-Za-z0-9]" rows="5" required><?= $item->descricao ?></textarea><br><br>
                 </div>

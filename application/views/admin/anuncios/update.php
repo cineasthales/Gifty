@@ -65,6 +65,22 @@ if ($this->session->has_userdata('mensagem')) {
                     </select><br><br>
                 </div>
                 <div class="col-12">
+                    <label for="idCategoria">Categoria</label><br>
+                    <select id="idCategoria" name="idCategoria" size="5">
+                        <?php foreach ($categorias as $categoria) { ?>
+                            <?php if ($categoria->id == $anuncio->idCategoria) { ?>
+                                <option selected value="<?= $categoria->id ?>">                             
+                                    # <?= $categoria->id ?> - <?= $categoria->descricao ?>                               
+                                </option>
+                            <?php } else { ?>
+                                <option value="<?= $categoria->id ?>">                             
+                                    # <?= $categoria->id ?> - <?= $categoria->descricao ?>                               
+                                </option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select><br><br>
+                </div>
+                <div class="col-12">
                     <br>
                     <input type="submit" value="Salvar"><br>
                 </div>

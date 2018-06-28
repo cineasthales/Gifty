@@ -3,9 +3,10 @@
 class Anuncios_Model extends CI_Model {
 
     public function select() {
-        $this->db->select('a.*, e.nomeFantasia AS empresa');
+        $this->db->select('a.*, e.nomeFantasia AS empresa, c.descricao AS categoria');
         $this->db->from('anuncios a');
         $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
+        $this->db->join('categorias c', 'a.idCategoria = c.id', 'inner');
         $this->db->order_by('id DESC');
         return $this->db->get()->result(); // retorna vetor
     }
@@ -16,18 +17,20 @@ class Anuncios_Model extends CI_Model {
     }
 
     public function searchId($id) {
-        $this->db->select('a.*, e.nomeFantasia AS empresa');
+        $this->db->select('a.*, e.nomeFantasia AS empresa, c.descricao AS categoria');
         $this->db->from('anuncios a');
         $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
+        $this->db->join('categorias c', 'a.idCategoria = c.id', 'inner');
         $this->db->where('a.id', $id);
         $this->db->order_by('a.id');
         return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchEmpresa($empresa) {
-        $this->db->select('a.*, e.nomeFantasia AS empresa');
+        $this->db->select('a.*, e.nomeFantasia AS empresa, c.descricao AS categoria');
         $this->db->from('anuncios a');
         $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
+        $this->db->join('categorias c', 'a.idCategoria = c.id', 'inner');
         $this->db->like('e.nomeFantasia', $empresa);
         $this->db->order_by('e.nomeFantasia');
         return $this->db->get()->result(); // retorna vetor

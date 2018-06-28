@@ -63,6 +63,7 @@ class Empresas extends CI_Controller {
         } else {
             $dados['ativa'] = 0;
         }
+        $dados['logomarca'] = 'generic-profile.jpg';
         if ($this->empresas->insert($dados)) {
             $mensagem = "Empresa cadastrada com êxito.";
             $tipo = 1;

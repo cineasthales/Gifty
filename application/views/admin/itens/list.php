@@ -105,6 +105,12 @@ if ($this->session->has_userdata('mensagem')) {
                     <?= number_format($item->preco, 2, ',', '.') ?>
                 </div>
                 <div class="col-2">
+                    <strong>URL</strong>
+                </div>
+                <div class="col-6">
+                    <a href="<?= $item->url ?>" target="_blank"><?= $item->url ?></a>
+                </div>
+                <div class="col-2">
                     <strong>Descrição</strong>
                 </div>
                 <div class="col-6">

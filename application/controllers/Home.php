@@ -91,7 +91,7 @@ class Home extends CI_Controller {
             $dadosUsuario['cpf'] = $this->input->post('cpf');
             $dadosUsuario['dataNasc'] = $this->input->post('dataNasc');
             $dadosUsuario['genero'] = $this->input->post('genero');
-            //$dadosUsuario['imagem'] = $this->input->post('imagem');
+            $dadosUsuario['imagem'] = 'generic-profile.jpg';
             $dadosUsuario['nivel'] = 0;
             $dadosUsuario['ativo'] = 1;
             $dadosUsuario['tentaLogin'] = 0;

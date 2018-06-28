@@ -143,6 +143,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`itens` (
   `nome` VARCHAR(240) NOT NULL,
   `descricao` MEDIUMTEXT NOT NULL,
   `preco` DOUBLE NOT NULL,
+  `url` VARCHAR(240) NOT NULL,
   `imagem` VARCHAR(4094) NOT NULL,
   `idCategoria` INT NOT NULL,
   PRIMARY KEY (`id`, `idCategoria`),
@@ -257,11 +258,18 @@ CREATE TABLE IF NOT EXISTS `gifty`.`anuncios` (
   `url` VARCHAR(100) NOT NULL,
   `ativo` TINYINT NOT NULL,
   `idEmpresa` INT NOT NULL,
-  PRIMARY KEY (`id`, `idEmpresa`),
+  `idCategoria` INT NOT NULL,
+  PRIMARY KEY (`id`, `idEmpresa`, `idCategoria`),
   INDEX `fk_banners_empresas1_idx` (`idEmpresa` ASC),
+  INDEX `fk_anuncios_categorias1_idx` (`idCategoria` ASC),
   CONSTRAINT `fk_banners_empresas1`
     FOREIGN KEY (`idEmpresa`)
     REFERENCES `gifty`.`empresas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_anuncios_categorias1`
+    FOREIGN KEY (`idCategoria`)
+    REFERENCES `gifty`.`categorias` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

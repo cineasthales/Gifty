@@ -96,7 +96,13 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>
                 <div class="col-6">
                     <a href="<?= $anuncio->url ?>" target="_blank"><?= $anuncio->url ?></a>
-                </div>                
+                </div>
+                <div class="col-2">
+                    <strong>Categoria</strong>
+                </div>
+                <div class="col-6">
+                    <?= $anuncio->categoria ?>
+                </div>
                 <div class="col-2">
                     <strong>Status</strong>
                 </div>

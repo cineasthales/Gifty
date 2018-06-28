@@ -55,6 +55,7 @@ class Itens extends CI_Controller {
 
     public function grava_adicao() {
         $dados = $this->input->post();
+        $dados['imagem'] = 'generic-profile.jpg';
         if ($this->itens->insert($dados)) {
             $mensagem = "Item cadastrado com êxito.";
             $tipo = 1;

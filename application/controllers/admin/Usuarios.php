@@ -79,6 +79,7 @@ class Usuarios extends CI_Controller {
             $dados['nivel'] = 0;
         }
         $dados['tentaLogin'] = 0;
+        $dados['imagem'] = 'generic-profile.jpg';
         if ($this->usuarios->insert($dados)) {
             $mensagem = "Usuário cadastrado com êxito.";
             $tipo = 1;

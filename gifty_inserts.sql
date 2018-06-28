@@ -122,18 +122,18 @@ VALUES
 ('96020360', 'Rua Professor Doutor Araújo', 918,'', 'Centro', 'Pelotas', 'RS');
 
 INSERT INTO itens
-(nome, descricao, preco, imagem, idCategoria)
+(nome, descricao, preco, url, imagem, idCategoria)
 VALUES
-('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 3999.99, '1.jpg', 35),
-('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 3299.99, '2.jpg', 35),
-('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 2229.99, '3.jpg', 14),
-('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 1329.99, '4.jpg', 14),
-('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 939.99, '5.jpg', 21),
-('Smart TV LED 70” LG 4K/Ultra HD 70UJ6585 WebOS - Conversor Digital Wi-Fi 4 HDMI 2 USB Bluetooth HDR', 'A melhor TV já feita', 6839.99, '6.jpg', 15),
-('Sofá 3 Lugares Aruba - American Comfort', 'O melhor sofá já feito', 569.99, '7.jpg', 8),
-('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 4274.05, '8.jpg', 21),
-('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 1199.00, '9.jpg', 19),
-('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 1430.90, '10.jpg', 19);
+('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 3999.99, 'http://www.google.com', '1.jpg', 35),
+('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 3299.99, 'http://www.google.com', '2.jpg', 35),
+('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 2229.99, 'http://www.google.com', '3.jpg', 14),
+('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 1329.99, 'http://www.google.com', '4.jpg', 14),
+('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 939.99, 'http://www.google.com', '5.jpg', 21),
+('Smart TV LED 70” LG 4K/Ultra HD 70UJ6585 WebOS - Conversor Digital Wi-Fi 4 HDMI 2 USB Bluetooth HDR', 'A melhor TV já feita', 6839.99, 'http://www.google.com', '6.jpg', 15),
+('Sofá 3 Lugares Aruba - American Comfort', 'O melhor sofá já feito', 569.99, 'http://www.google.com', '7.jpg', 8),
+('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 4274.05, 'http://www.google.com', '8.jpg', 21),
+('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 1199.00, 'http://www.google.com', '9.jpg', 19),
+('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 1430.90, 'http://www.google.com', '10.jpg', 19);
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
@@ -245,13 +245,13 @@ VALUES
 (1, 5, '2018-04-05', '14:18');
 
 INSERT INTO anuncios
-(imagem, url, ativo, idEmpresa)
+(imagem, url, ativo, idEmpresa, idCategoria)
 VALUES
-('1.jpg', 'http://www.americanas.com.br/produto/1', 1, 1),
-('2.jpg', 'http://www.submarino.com.br/produto/2', 0, 2),
-('3.jpg', 'http://www.shoptime.com.br/produto/3', 0, 3),
-('4.jpg', 'http://www.casasbahia.com.br/produto/4', 0, 4),
-('5.jpg', 'http://www.saraiva.com.br/produto/5', 0, 5);
+('1.jpg', 'http://www.americanas.com.br/produto/1', 1, 1, 1),
+('2.jpg', 'http://www.submarino.com.br/produto/2', 0, 2, 2),
+('3.jpg', 'http://www.shoptime.com.br/produto/3', 0, 3, 3),
+('4.jpg', 'http://www.casasbahia.com.br/produto/4', 0, 4, 4),
+('5.jpg', 'http://www.saraiva.com.br/produto/5', 0, 5, 5);
 
 INSERT INTO cliquesAnuncios
 (data, hora, idAnuncio, idUsuario)

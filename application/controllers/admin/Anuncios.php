@@ -44,6 +44,8 @@ class Anuncios extends CI_Controller {
         $this->verificaSessao();
         $this->load->model('empresas_model', 'empresas');
         $dados['empresas'] = $this->empresas->select();
+        $this->load->model('categorias_model', 'categorias');
+        $dados['categorias'] = $this->categorias->select();
         $this->load->view('include/head');
         $this->load->view('include/aside');
         $this->load->view('include/header_admin');
@@ -58,6 +60,7 @@ class Anuncios extends CI_Controller {
         } else {
             $dados['ativo'] = 0;
         }
+        $dados['imagem'] = 'generic-profile.jpg';
         if ($this->anuncios->insert($dados)) {
             $mensagem = "Anúncio cadastrado com êxito.";
             $tipo = 1;
@@ -75,6 +78,8 @@ class Anuncios extends CI_Controller {
         $dados['anuncio'] = $this->anuncios->find($id);
         $this->load->model('empresas_model', 'empresas');
         $dados['empresas'] = $this->empresas->select();
+        $this->load->model('categorias_model', 'categorias');
+        $dados['categorias'] = $this->categorias->select();
         $this->load->view('include/head');
         $this->load->view('include/aside');
         $this->load->view('include/header_admin');
