@@ -13,3 +13,9 @@ Desenvolvedor
 *************
 
 Thales Castro - https://github.com/cineasthales
+
+**********************
+Instruções para acesso
+**********************
+
+Sistema disponível em http://thalescastro.16mb.com/ em que é possível realizar cadastro de usuário e acesso da área restrita pós cadastro.
