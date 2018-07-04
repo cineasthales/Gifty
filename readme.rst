@@ -19,3 +19,4 @@ Instruções para acesso
 **********************
 
 Sistema disponível em http://thalescastro.16mb.com/ em que é possível realizar cadastro de usuário e acesso da área restrita pós cadastro.
+Login para administrador exemplo: joaos (nome de usuário), Banca123 (senha).
