@@ -1,6 +1,6 @@
 <?php
 
-class Listas_Model extends CI_Model {
+class Listas_model extends CI_Model {
 
     public function select() {
         $this->db->select('l.*, i.nome AS item, e.titulo AS evento');

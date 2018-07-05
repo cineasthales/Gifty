@@ -1,6 +1,6 @@
 <?php
 
-class Amizades_Model extends CI_Model {
+class Amizades_model extends CI_Model {
 
     public function select() {
         $this->db->select('a.*, u1.nome AS nome1, u1.sobrenome AS snome1, u2.nome AS nome2, u2.sobrenome AS snome2');

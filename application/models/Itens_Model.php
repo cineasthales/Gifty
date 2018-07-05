@@ -1,6 +1,6 @@
 <?php
 
-class Itens_Model extends CI_Model {
+class Itens_model extends CI_Model {
 
     public function select() {
         $this->db->select('i.*, c.descricao AS categoria');

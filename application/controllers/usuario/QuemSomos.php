@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class QuemSomos extends CI_Controller {
+class Quemsomos extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {

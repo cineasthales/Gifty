@@ -1,6 +1,6 @@
 <?php
 
-class Empresas_Model extends CI_Model {
+class Empresas_model extends CI_Model {
 
     public function select() {
         $this->db->order_by('id');

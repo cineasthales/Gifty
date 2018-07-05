@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AcoesEventos extends CI_Controller {
+class Acoeseventos extends CI_Controller {
 
     public function __construct() {
         parent::__construct();

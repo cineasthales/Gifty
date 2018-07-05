@@ -1,6 +1,6 @@
 <?php
 
-class Interesses_Model extends CI_Model {
+class Interesses_model extends CI_Model {
 
     public function select() {
         $this->db->select('i.*, c.descricao AS categoria, u.nome AS nome, u.sobrenome AS snome');

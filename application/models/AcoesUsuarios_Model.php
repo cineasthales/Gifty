@@ -1,6 +1,6 @@
 <?php
 
-class AcoesUsuarios_Model extends CI_Model {
+class Acoesusuarios_model extends CI_Model {
 
     public function select() {
         $this->db->order_by('id');

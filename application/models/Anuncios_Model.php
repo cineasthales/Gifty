@@ -1,6 +1,6 @@
 <?php
 
-class Anuncios_Model extends CI_Model {
+class Anuncios_model extends CI_Model {
 
     public function select() {
         $this->db->select('a.*, e.nomeFantasia AS empresa, c.descricao AS categoria');

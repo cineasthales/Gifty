@@ -1,6 +1,6 @@
 <?php
 
-class Categorias_Model extends CI_Model {
+class Categorias_model extends CI_Model {
 
     public function select() {
         $this->db->order_by('descricao');

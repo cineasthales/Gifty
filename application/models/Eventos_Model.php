@@ -1,6 +1,6 @@
 <?php
 
-class Eventos_Model extends CI_Model {
+class Eventos_model extends CI_Model {
 
     public function select() {
         $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');

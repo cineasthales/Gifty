@@ -1,6 +1,6 @@
 <?php
 
-class TiposEventos_Model extends CI_Model {
+class Tiposeventos_model extends CI_Model {
 
     public function select() {
         $this->db->order_by('descricao');

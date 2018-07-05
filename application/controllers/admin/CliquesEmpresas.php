@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CliquesEmpresas extends CI_Controller {
+class Cliquesempresas extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
