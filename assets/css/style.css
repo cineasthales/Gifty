@@ -278,6 +278,14 @@ section input[type="search"], #filtro {
     color: white;
 }
 
+#btCriarLista {
+    float: right;
+}
+
+#btCriarLista a {
+    font-size: 1.25em;
+}
+
 /* CABEÇALHO */
 
 header {    
