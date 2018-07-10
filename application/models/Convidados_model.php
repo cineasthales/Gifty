@@ -21,6 +21,15 @@ class Convidados_model extends CI_Model {
         return $this->db->get('convidados')->row(); // retorna registro obtido
     }
 
+    public function findIdUsuario($idUsuario) {
+        $this->db->select('c.*, e.titulo AS evento, e.data AS data, e.hora AS hora');
+        $this->db->from('convidados c');
+        $this->db->join('eventos e', 'c.idEvento = e.id', 'inner');
+        $this->db->like('c.idUsuario', $idUsuario);
+        $this->db->order_by('e.data DESC, e.hora DESC');
+        return $this->db->get()->result(); // retorna vetor
+    }
+
     public function searchEvento($evento) {
         $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, e.titulo AS evento, e.data AS data');
         $this->db->from('convidados c');

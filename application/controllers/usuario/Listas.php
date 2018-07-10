@@ -6,46 +6,34 @@ class Listas extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {
+            $this->load->model('eventos_model', 'eventos');
+            $dados['eventos'] = $this->eventos->findIdUsuario($this->session->id);
+            $this->load->model('convidados_model', 'convidados');
+            $dados['convidados'] = $this->convidados->findIdUsuario($this->session->id);
             $this->load->view('include/head');
             $this->load->view('include/header_user');
-            $this->load->view('user/listas');
+            $this->load->view('user/listas', $dados);
             $this->load->view('include/footer_user');
         } else {
             redirect();
         }
     }
 
-    public function criar_evento() {
+    public function novalista() {
         if ($this->session->logado == true) {
+            $this->load->model('tiposeventos_model', 'tiposeventos');
+            $dados['tiposeventos'] = $this->tiposeventos->select();
+            //$this->load->model('amizades_model', 'amizades');
+            //$dados['amizades'] = $this->amizades->findAll($this->session->id);
+            //$this->load->model('listas_model', 'listas');
+            //$dados['listas'] = $this->listas->find($this->session->id);
             $this->load->view('include/head');
             $this->load->view('include/header_user');
-            $this->load->view('user/criar/evento');
+            $this->load->view('user/criarlista', $dados);
             $this->load->view('include/footer_user');
         } else {
             redirect();
         }
     }
-
-    public function criar_convidados() {
-        if ($this->session->logado == true) {
-            $this->load->view('include/head');
-            $this->load->view('include/header_user');
-            $this->load->view('user/criar/convidados');
-            $this->load->view('include/footer_user');
-        } else {
-            redirect();
-        }
-    }
-
-    public function criar_lista() {
-        if ($this->session->logado == true) {
-            $this->load->view('include/head');
-            $this->load->view('include/header_user');
-            $this->load->view('user/criar/lista');
-            $this->load->view('include/footer_user');
-        } else {
-            redirect();
-        }
-    }
-
+    
 }

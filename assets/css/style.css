@@ -286,6 +286,15 @@ section input[type="search"], #filtro {
     font-size: 1.25em;
 }
 
+table, th, td {
+    padding: 0.5em;
+    border: 0.1em solid black;
+}
+
+table {
+    width: 100%;
+}
+
 /* CABEÇALHO */
 
 header {    
