@@ -18,6 +18,11 @@ class Eventos_model extends CI_Model {
         return $this->db->get('eventos')->row(); // retorna registro obtido
     }
 
+    public function last() {
+        $this->db->order_by('id DESC');
+        return $this->db->get('eventos', 1)->row(); // retorna registro obtido        
+    }
+
     public function findIdUsuario($idUsuario) {
         $this->db->select('e.*, t.descricao AS tipo');
         $this->db->from('eventos e');

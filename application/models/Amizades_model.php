@@ -13,9 +13,13 @@ class Amizades_model extends CI_Model {
 
     // busca todos os amigos de um usuário
     public function findAll($id) {
-        $this->db->where('idUsuario1', $id);
-        $this->db->or_where('idUsuario2', $id);
-        return $this->db->get('amizades')->result(); // retorna vetor
+        $this->db->select('a.*, u1.nome AS nome1, u1.sobrenome AS snome1, u2.nome AS nome2, u2.sobrenome AS snome2');
+        $this->db->from('amizades a');
+        $this->db->join('usuarios u1', 'a.idUsuario1 = u1.id', 'inner');
+        $this->db->join('usuarios u2', 'a.idUsuario2 = u2.id', 'inner');
+        $this->db->where('a.idUsuario1', $id);
+        $this->db->or_where('a.idUsuario2', $id);
+        return $this->db->get()->result(); // retorna vetor
     }
 
     // busca amizade entre dois usuários específicos

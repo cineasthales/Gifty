@@ -3,11 +3,11 @@
     <section>
         <div class="row"> 
             <div class="col-12">
-                <h1>Nova Lista</h1>
+                <h1>Criar Lista</h1>
             </div>
-            <form method="post" action="<?= base_url('admin/eventos/grava_adicao') ?>">
+            <form method="post" action="<?= base_url('usuario/criar/convidados') ?>">
                 <div class="col-12">
-                    <br><h2>Evento</h2>
+                    <h2>Etapa 1 de 3: descreva o evento que você está organizando! (:</h2><br>
                 </div>
                 <div class="col-7">
                     <label for="titulo">Título</label><br>
@@ -79,26 +79,10 @@
                 <div class="col-2">
                     <label for="estado">Estado</label><br>
                     <input type="text" id="estado" name="estado" readonly><br><br><br>
-                </div> 
-                <div class="col-12">
-                    <h2>Convidados</h2>
-                </div>
-                <?php foreach ($amizades as $amizade) { ?>
-                    <div class="col-3">
-                        <?php if ($this->session->id == $amizade->idUsuario1) { ?>
-                            <img style="width: 100%; height: 12em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario2 . '.jpg' ?>"><br>
-                        <?php } else { ?>
-                            <img style="width: 100%; height: 12em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario1 . '.jpg' ?>"><br>
-                        <?php } ?>
-                            <a href="#">Convidar</a><br><br>
-                    </div>
-                <?php } ?>
-                <div class="col-12">
-                    <br><h2>Lista de Presentes</h2>
-                </div>
+                </div>                
                 <div class="col-12">
                     <br>
-                    <input type="submit" value="Finalizar"><br>
+                    <input type="submit" value="Avançar"><br>
                 </div>
             </form>            
         </div>

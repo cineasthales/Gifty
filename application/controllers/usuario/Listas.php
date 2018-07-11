@@ -18,22 +18,5 @@ class Listas extends CI_Controller {
             redirect();
         }
     }
-
-    public function novalista() {
-        if ($this->session->logado == true) {
-            $this->load->model('tiposeventos_model', 'tiposeventos');
-            $dados['tiposeventos'] = $this->tiposeventos->select();
-            //$this->load->model('amizades_model', 'amizades');
-            //$dados['amizades'] = $this->amizades->findAll($this->session->id);
-            //$this->load->model('listas_model', 'listas');
-            //$dados['listas'] = $this->listas->find($this->session->id);
-            $this->load->view('include/head');
-            $this->load->view('include/header_user');
-            $this->load->view('user/criarlista', $dados);
-            $this->load->view('include/footer_user');
-        } else {
-            redirect();
-        }
-    }
     
 }

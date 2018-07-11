@@ -5,7 +5,7 @@
                 <h1>Listas</h1>
             </div>
             <div class="col-9">
-                <button id="btCriarLista"><a href="<?= base_url('usuario/listas/criar_evento') ?>">Nova Lista</a></button>
+                <button id="btCriarLista"><a href="<?= base_url('usuario/nova_lista') ?>">Nova Lista</a></button>
             </div>
             <div class="col-12">
                 <h2>Minhas Listas</h2>                
