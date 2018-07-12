@@ -82,7 +82,7 @@ class Criar extends CI_Controller {
                         $this->convidados->insert($dadosConvite);
                     }
                 }
-                $dados['itens'] = NULL;
+                $dados['itens'] = NULL; // NAO PODE SER SOH ISSO, TEM QUE VER SE JA TEM ITENS NA LISTA!
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');
                 $this->load->view('user/criar/lista', $dados);
@@ -95,8 +95,95 @@ class Criar extends CI_Controller {
         }
     }
 
+    public function busca() {
+        if ($this->session->logado == true) {
+            if (isset($this->session->idEvento)) {
+                $busca = $this->input->post("busca");
+                if (isset($busca)) {
+                    // obtém o id passado pelo form
+                    $consulta = str_replace(" ", "%20", htmlspecialchars($busca));
+                    // indica a url a ser carregada
+                    $url = "https://api.mercadolibre.com/sites/MLB/search?q=" . $consulta;
+                    // inicializa a biblioteca curl que permite que uma página seja carregada
+                    $pagina = curl_init();
+                    // define as configurações da chamada (basicamente que
+                    // o retorno seja transferido para uma variável)
+                    curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($pagina, CURLOPT_URL, $url);
+                    // atribui para a variável o conteúdo retornado pela chamada curl à url
+                    $resposta = curl_exec($pagina);
+                    curl_close($pagina);
+                    // converte a resposta json para um objeto
+                    $json = json_decode($resposta);
+                    $this->load->view('include/head');
+                    $this->load->view('include/header_user');
+                    $this->load->view('user/criar/busca', $json);
+                    $this->load->view('include/footer_user');
+                } else {
+                    redirect(base_url('usuario/criar/lista'));
+                }
+            } else {
+                redirect(base_url('usuario/criar/evento'));
+            }
+        } else {
+            redirect();
+        }
+    }
+
+    public function adicionar() {
+        if ($this->session->logado == true) {
+            if (isset($this->session->idEvento)) {
+                $dadosItem = $this->input->post();
+                $this->load->model('itens_model', 'itens');
+                $this->itens->insert($dadosItem);
+                $dadosLista['idItem'] = $this->itens->last()->id;
+                $dadosLista['idEvento'] = $this->session->idEvento;
+                $dadosLista['prioridade'] = 1;
+                $dadosLista['dataAdicao'] = date("y-m-d");
+                $this->load->model('listas_model', 'listas');
+                $this->listas->insert($dadosLista);
+                redirect(base_url('usuario/criar/lista'));
+            } else {
+                redirect(base_url('usuario/criar/evento'));
+            }
+        } else {
+            redirect();
+        }
+    }
+
+    public function incrementar($id) {
+        if ($this->session->logado == true) {
+            if (isset($this->session->idEvento)) {
+                // buscar prioridade do $id
+                // incrementar prioridade
+                // fazer update
+                redirect(base_url('usuario/criar/lista'));
+            } else {
+                redirect(base_url('usuario/criar/evento'));
+            }
+        } else {
+            redirect();
+        }
+    }
+
+    public function decrementar($id) {
+        if ($this->session->logado == true) {
+            if (isset($this->session->idEvento)) {
+                // buscar prioridade do $id
+                // decrementar prioridade
+                // fazer update
+                redirect(base_url('usuario/criar/lista'));
+            } else {
+                redirect(base_url('usuario/criar/evento'));
+            }
+        } else {
+            redirect();
+        }
+    }
+
     public function finalizar() {
-        // gravar os dados da lista
+        // mudar itens da lista como ativos
         $this->session->unset_userdata('idEvento');
         redirect(base_url('usuario/listas'));
     }

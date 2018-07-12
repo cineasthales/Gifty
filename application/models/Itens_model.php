@@ -15,6 +15,11 @@ class Itens_model extends CI_Model {
         return $this->db->get('itens')->row(); // retorna registro obtido
     }
 
+    public function last() {
+        $this->db->order_by('id DESC');
+        return $this->db->get('itens', 1)->row(); // retorna registro obtido        
+    }
+
     public function searchId($id) {
         $this->db->select('i.*, c.descricao AS categoria');
         $this->db->from('itens i');

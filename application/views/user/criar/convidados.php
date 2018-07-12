@@ -1,4 +1,3 @@
-<script src="<?= base_url('assets/js/ajax.js') ?>"></script>
 <main>
     <section>
         <div class="row"> 

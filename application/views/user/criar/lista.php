@@ -1,4 +1,3 @@
-<script src="<?= base_url('assets/js/ajax.js') ?>"></script>
 <main>
     <section>
         <div class="row"> 
@@ -7,7 +6,7 @@
             </div>
             <form method="post" action="<?= base_url('usuario/criar/finalizar') ?>">
                 <div class="col-10">
-                    <br><h2>Etapa 3 de 3: adicione os presentes na sua lista! (:</h2>
+                    <br><h2>Etapa 3 de 3: adicione os itens na sua lista de presentes! (:</h2>
                 </div>
                 <div class="col-2">
                     <br>
@@ -39,7 +38,7 @@
             <div class="col-4">
                 <h2>Itens Sugeridos</h2>
             </div>
-            <form method="post" action="<?= base_url('usuario/criar/buscar') ?>">
+            <form method="post" action="<?= base_url('usuario/criar/busca') ?>">
                 <div class="col-6">                    
                     <input type="text" id="busca" name="busca" pattern="[A-Za-z0-9]{,100}" 
                            maxlength="100" required>
