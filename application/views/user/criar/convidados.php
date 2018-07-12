@@ -14,11 +14,11 @@
                         <?php if ($this->session->id == $amizade->idUsuario1) { ?>
                             <label><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario2 . '.jpg' ?>"><br>
                                 <p><?= $amizade->nome2 ?> <?= $amizade->snome2 ?></p>
-                                <input type="checkbox" value="<?= $amizade->idUsuario2 ?>">Convidar</label><br><br>
+                                <input type="checkbox" id="<?= $amizade->idUsuario2 ?>" name="<?= $amizade->idUsuario2 ?>">Convidar</label><br><br>
                         <?php } else { ?>
                             <label><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario1 . '.jpg' ?>"><br>
                                 <p><?= $amizade->nome1 ?> <?= $amizade->snome1 ?></p>
-                                <input type="checkbox" value="<?= $amizade->idUsuario1 ?>">Convidar</label><br><br>
+                                <input type="checkbox" id="<?= $amizade->idUsuario1 ?>" name="<?= $amizade->idUsuario1 ?>">Convidar</label><br><br>
                         <?php } ?>                            
                     </div>
                 <?php } ?>                
