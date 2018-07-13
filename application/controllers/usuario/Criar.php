@@ -82,7 +82,8 @@ class Criar extends CI_Controller {
                         $this->convidados->insert($dadosConvite);
                     }
                 }
-                $dados['itens'] = NULL; // NAO PODE SER SOH ISSO, TEM QUE VER SE JA TEM ITENS NA LISTA!
+                $this->load->model('listas_model', 'listas');
+                $dados['itens'] = $this->listas->selectEvento($this->session->idEvento);
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');
                 $this->load->view('user/criar/lista', $dados);
@@ -115,10 +116,10 @@ class Criar extends CI_Controller {
                     $resposta = curl_exec($pagina);
                     curl_close($pagina);
                     // converte a resposta json para um objeto
-                    $json = json_decode($resposta);
+                    $dados['json'] = json_decode($resposta);
                     $this->load->view('include/head');
                     $this->load->view('include/header_user');
-                    $this->load->view('user/criar/busca', $json);
+                    $this->load->view('user/criar/busca', $dados);
                     $this->load->view('include/footer_user');
                 } else {
                     redirect(base_url('usuario/criar/lista'));
@@ -136,10 +137,11 @@ class Criar extends CI_Controller {
             if (isset($this->session->idEvento)) {
                 $dadosItem = $this->input->post();
                 $this->load->model('itens_model', 'itens');
+                $this->load->model('listas_model', 'listas');
                 $this->itens->insert($dadosItem);
                 $dadosLista['idItem'] = $this->itens->last()->id;
                 $dadosLista['idEvento'] = $this->session->idEvento;
-                $dadosLista['prioridade'] = 1;
+                $dadosLista['prioridade'] = $this->listas->count($this->session->idEvento) + 1;
                 $dadosLista['dataAdicao'] = date("y-m-d");
                 $this->load->model('listas_model', 'listas');
                 $this->listas->insert($dadosLista);
@@ -152,12 +154,18 @@ class Criar extends CI_Controller {
         }
     }
 
-    public function incrementar($id) {
+    public function descer($idItem) {
         if ($this->session->logado == true) {
             if (isset($this->session->idEvento)) {
-                // buscar prioridade do $id
-                // incrementar prioridade
-                // fazer update
+                $this->load->model('listas_model', 'listas');
+                $item = $this->listas->find($this->session->idEvento, $idItem);
+                $antiga = $item->prioridade;
+                $nova = $item->prioridade + 1;
+                $troca = $this->listas->findPrioridade($this->session->idEvento, $nova);
+                $item->prioridade = $nova;
+                $troca->prioridade = $antiga;                
+                $this->listas->update($item, $this->session->idEvento, $item->idItem);
+                $this->listas->update($troca, $this->session->idEvento, $troca->idItem);
                 redirect(base_url('usuario/criar/lista'));
             } else {
                 redirect(base_url('usuario/criar/evento'));
@@ -167,12 +175,18 @@ class Criar extends CI_Controller {
         }
     }
 
-    public function decrementar($id) {
+    public function subir($idItem) {
         if ($this->session->logado == true) {
             if (isset($this->session->idEvento)) {
-                // buscar prioridade do $id
-                // decrementar prioridade
-                // fazer update
+                $this->load->model('listas_model', 'listas');
+                $item = $this->listas->find($this->session->idEvento, $idItem);
+                $antiga = $item->prioridade;
+                $nova = $item->prioridade - 1;
+                $troca = $this->listas->findPrioridade($this->session->idEvento, $nova);
+                $item->prioridade = $nova;
+                $troca->prioridade = $antiga;                
+                $this->listas->update($item, $this->session->idEvento, $item->idItem);
+                $this->listas->update($troca, $this->session->idEvento, $troca->idItem);
                 redirect(base_url('usuario/criar/lista'));
             } else {
                 redirect(base_url('usuario/criar/evento'));

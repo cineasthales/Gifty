@@ -5,19 +5,21 @@
                 <h1>Criar Lista</h1>
             </div>
             <div class="col-12">
-                <br><h2>Resultados da Busca</h2>
+                <br><h2>Resultados da Busca</h2><br>
             </div>          
             <div class="col-4">
-                <p>Produto</p>
+                <p><strong>Produto</strong></p>
             </div>          
             <div class="col-2">
-                <p>Preço</p>
+                <p><strong>Preço</strong></p>
             </div>
             <div class="col-4">
-                <p>Imagem</p>
+                <p><strong>Imagem</strong></p>
             </div>
             <div class="col-2">
-                <p>Adicionar</p>
+            </div>
+            <div class="col-12">
+                <br>
             </div>
             <?php
             foreach ($json->results as $item) {

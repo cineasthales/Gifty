@@ -11,13 +11,30 @@ class Listas_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
-    public function find($idEvento, $idItem) {
-        $this->db->select('l.*, i.nome AS item, e.titulo AS evento');
+    public function selectEvento($idEvento) {
+        $this->db->select('l.*, i.nome AS nome');
         $this->db->from('listas l');
         $this->db->join('itens i', 'l.idItem = i.id', 'inner');
-        $this->db->join('eventos e', 'l.idEvento = e.id', 'inner');
         $this->db->where('l.idEvento', $idEvento);
-        $this->db->where('l.idItem', $idItem);
+        $this->db->order_by('l.prioridade');
+        return $this->db->get()->result(); // retorna vetor
+    }
+
+    public function count($idEvento) {
+        $this->db->from('listas');
+        $this->db->where('idEvento', $idEvento);
+        return $this->db->count_all_results(); // retorna registro obtido
+    }
+
+    public function find($idEvento, $idItem) {
+        $this->db->where('idEvento', $idEvento);
+        $this->db->where('idItem', $idItem);
+        return $this->db->get('listas')->row(); // retorna registro obtido
+    }
+
+    public function findPrioridade($idEvento, $prioridade) {
+        $this->db->where('idEvento', $idEvento);
+        $this->db->where('prioridade', $prioridade);
         return $this->db->get('listas')->row(); // retorna registro obtido
     }
 
