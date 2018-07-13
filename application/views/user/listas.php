@@ -23,7 +23,8 @@
                                 <a href="#"><i class="fas fa-info-circle"></i> Ver Detalhes</a><br>
                                 <a href="#"><i class="fas fa-gift"></i> Atualizar Lista de Presentes</a><br>
                                 <a href="#"><i class="far fa-id-card"></i> Atualizar Convidados</a><br>
-                                <a href="#"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a>
+                                <a href="#"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a><br>
+                                <a href="#"><i class="fas fa-times"></i> Cancelar Evento e Lista</a>
                             </td>
                         </tr>
                     <?php } ?>

@@ -32,7 +32,7 @@
                         <input hidden type="text" id="nome" name="nome" value="<?= $item->title ?>">
                         <input hidden type="text" id="url" name="url" value="<?= $item->permalink ?>">
                         <input hidden type="text" id="descricao" name="descricao" value="-">
-                        <input hidden type="text" id="idCategoria" name="idCategoria" value="1">
+                        <input hidden type="text" id="idCategoria" name="idCategoria" value="<?= $item->category_id ?>">
                     </div>
                     <div class="col-2">
                         <p>R$ <?= number_format($item->price, 2, ',', '.') ?></p>

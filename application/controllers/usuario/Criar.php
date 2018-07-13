@@ -82,6 +82,30 @@ class Criar extends CI_Controller {
                         $this->convidados->insert($dadosConvite);
                     }
                 }
+                // busca interesses do usuário
+                $this->load->model('interesses_model', 'interesses');
+                $interesses = $this->interesses->selectUsuario($this->session->id);
+                // verifica o interesse de maior peso
+                $maior = -1;
+                $idCategoria = 0;
+                foreach ($interesses as $interesse) {
+                    if ($interesse->peso > $maior){
+                        $maior = $interesse->peso;
+                        $idCategoria = $interesse->idCategoria;
+                    }
+                }
+                // busca categoria com interesse de maior peso
+                $this->load->model('categorias_model', 'categorias');
+                $categoria = $this->categorias->find($idCategoria);
+                // consulta da categoria na API, limite de 5 resultados e de lojas oficiais
+                $url = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=5&category=" . $categoria->idML;
+                $pagina = curl_init();
+                curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($pagina, CURLOPT_URL, $url);
+                $resposta = curl_exec($pagina);
+                curl_close($pagina);
+                $dados['json'] = json_decode($resposta);
                 $this->load->model('listas_model', 'listas');
                 $dados['itens'] = $this->listas->selectEvento($this->session->idEvento);
                 $this->load->view('include/head');
@@ -132,19 +156,45 @@ class Criar extends CI_Controller {
         }
     }
 
+    // BUG: TODOS CADASTRAM COMO "OUTROS CATEGORIAS"!
     public function adicionar() {
         if ($this->session->logado == true) {
             if (isset($this->session->idEvento)) {
+                // recupera dados do item escolhido
                 $dadosItem = $this->input->post();
+                // busca categoria no banco de dados
+                $this->load->model('categorias_model', 'categorias');
+                $retorno = $this->categorias->findIdML($dadosItem['idCategoria']);
+                // se a categoria existir no banco, coloca o id correspondente; senão, coloca o de "outras categorias"
+                if (isset($retorno)) {
+                    $dadosItem['idCategoria'] = $retorno->id;
+                } else {
+                    $dadosItem['idCategoria'] = 380;
+                }
+                // verifica se usuário tem interesse nesta categoria
+                $this->load->model('interesses_model', 'interesses');
+                $interesse = $this->interesses->find($this->session->id, $dadosItem['idCategoria']);
+                // se tiver, atualiza o peso; se não tiver, cria interesse com peso zero
+                if (isset($interesse) && $interesse->peso < 5) {
+                    $interesse->peso++;
+                    $this->interesses->update($interesse, $this->session->id, $dadosItem['idCategoria']);
+                } else {
+                    $insere['idUsuario'] = $this->session->id;
+                    $insere['idCategoria'] = $dadosItem['idCategoria'];
+                    $insere['peso'] = 0;
+                    $this->interesses->insert($insere);
+                }
+                // insere item no banco de dados
                 $this->load->model('itens_model', 'itens');
-                $this->load->model('listas_model', 'listas');
                 $this->itens->insert($dadosItem);
+                // insere item na lista no banco de dados
+                $this->load->model('listas_model', 'listas');
                 $dadosLista['idItem'] = $this->itens->last()->id;
                 $dadosLista['idEvento'] = $this->session->idEvento;
                 $dadosLista['prioridade'] = $this->listas->count($this->session->idEvento) + 1;
                 $dadosLista['dataAdicao'] = date("y-m-d");
-                $this->load->model('listas_model', 'listas');
                 $this->listas->insert($dadosLista);
+                // carrega lista de presentes
                 redirect(base_url('usuario/criar/lista'));
             } else {
                 redirect(base_url('usuario/criar/evento'));
@@ -163,7 +213,7 @@ class Criar extends CI_Controller {
                 $nova = $item->prioridade + 1;
                 $troca = $this->listas->findPrioridade($this->session->idEvento, $nova);
                 $item->prioridade = $nova;
-                $troca->prioridade = $antiga;                
+                $troca->prioridade = $antiga;
                 $this->listas->update($item, $this->session->idEvento, $item->idItem);
                 $this->listas->update($troca, $this->session->idEvento, $troca->idItem);
                 redirect(base_url('usuario/criar/lista'));
@@ -184,7 +234,7 @@ class Criar extends CI_Controller {
                 $nova = $item->prioridade - 1;
                 $troca = $this->listas->findPrioridade($this->session->idEvento, $nova);
                 $item->prioridade = $nova;
-                $troca->prioridade = $antiga;                
+                $troca->prioridade = $antiga;
                 $this->listas->update($item, $this->session->idEvento, $item->idItem);
                 $this->listas->update($troca, $this->session->idEvento, $troca->idItem);
                 redirect(base_url('usuario/criar/lista'));

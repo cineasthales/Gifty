@@ -17,6 +17,11 @@ class Categorias_model extends CI_Model {
         return $this->db->get('categorias')->row(); // retorna registro obtido
     }
 
+    public function findIdML($idML) {
+        $this->db->where('idML', $idML);
+        return $this->db->get('categorias')->row(); // retorna registro obtido
+    }
+
     public function searchId($id) {
         $this->db->where('id', $id);
         $this->db->order_by('id');

@@ -11,14 +11,15 @@ class Interesses_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function selectUsuario($idUsuario) {
+        $this->db->where('idUsuario', $idUsuario);
+        return $this->db->get('interesses')->result(); // retorna vetor
+    }
+
     public function find($idUsuario, $idCategoria) {
-        $this->db->select('i.*, c.descricao AS categoria, u.nome AS nome, u.sobrenome AS snome');
-        $this->db->from('interesses i');
-        $this->db->join('categorias c', 'i.idCategoria = c.id', 'inner');
-        $this->db->join('usuarios u', 'i.idUsuario = u.id', 'inner');
         $this->db->where('idUsuario', $idUsuario);
         $this->db->where('idCategoria', $idCategoria);
-        return $this->db->get()->row(); // retorna registro obtido
+        return $this->db->get('interesses')->row(); // retorna registro obtido
     }
 
     public function searchCategoria($categoria) {
@@ -44,7 +45,7 @@ class Interesses_model extends CI_Model {
     public function insert($registro) {
         return $this->db->insert('interesses', $registro);
     }
-    
+
     public function update($registro, $idUsuario, $idCategoria) {
         return $this->db->update('interesses', $registro, array('idUsuario' => $idUsuario, 'idCategoria' => $idCategoria));
     }

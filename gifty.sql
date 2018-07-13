@@ -131,6 +131,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gifty`.`categorias` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(255) NOT NULL,
+  `idML` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

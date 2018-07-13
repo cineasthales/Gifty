@@ -110,31 +110,109 @@
                         <a href="<?= base_url('sobre') ?>" target="_blank">Saiba mais</a></small><br><br>
                 </div>
                 <div class="col-4">
-                    <?php
-                    $tam = count($categorias);
-                    for ($i = 0; $i < $tam / 3; $i++) {
-                        ?>
-                        <label for="<?= 'categoria_' . $categorias[$i]->id ?>">
-                            <input type="checkbox" id="<?= 'categoria_' . $categorias[$i]->id ?>" 
-                                   name="<?= 'categoria_' . $categorias[$i]->id ?>"> <?= $categorias[$i]->descricao ?>
-                        </label><br> 
-                    <?php } ?>
+                    <label for="categoria_1">
+                        <input type="checkbox" id="categoria_1" name="categoria_1"> Acessórios para Veículos
+                    </label><br>
+                    <label for="categoria_29">
+                        <input type="checkbox" id="categoria_29" name="categoria_29"> Adultos
+                    </label><br>
+                    <label for="categoria_2">
+                        <input type="checkbox" id="categoria_2" name="categoria_2"> Agro, Indústria e Comércio 
+                    </label><br>
+                    <label for="categoria_3">
+                        <input type="checkbox" id="categoria_3" name="categoria_3"> Alimentos e Bebidas
+                    </label><br>
+                    <label for="categoria_4">
+                        <input type="checkbox" id="categoria_4" name="categoria_4"> Animais
+                    </label><br>
+                    <label for="categoria_5">
+                        <input type="checkbox" id="categoria_5" name="categoria_5"> Antiguidades
+                    </label><br>
+                    <label for="categoria_6">
+                        <input type="checkbox" id="categoria_6" name="categoria_6"> Arte e Artesanato
+                    </label><br>
+                    <label for="categoria_30">
+                        <input type="checkbox" id="categoria_30" name="categoria_30"> Artigos de Armarinho
+                    </label><br>
+                    <label for="categoria_7">
+                        <input type="checkbox" id="categoria_7" name="categoria_7"> Bebês
+                    </label><br>
+                    <label for="categoria_8">
+                        <input type="checkbox" id="categoria_8" name="categoria_8"> Beleza e Cuidado Pessoal 
+                    </label><br> 
+                    <label for="categoria_9">
+                        <input type="checkbox" id="categoria_9" name="categoria_9"> Brinquedos e Hobbies
+                    </label><br>
+                </div>
+                <div class="col-4">                    
+                    <label for="categoria_10">
+                        <input type="checkbox" id="categoria_10" name="categoria_10"> Calçados, Roupas e Bolsas
+                    </label><br>
+                    <label for="categoria_11">
+                        <input type="checkbox" id="categoria_11" name="categoria_11"> Construção e Ferramentas
+                    </label><br>
+                    <label for="categoria_12">
+                        <input type="checkbox" id="categoria_12" name="categoria_12"> Câmeras e Acessórios
+                    </label><br>
+                    <label for="categoria_13">
+                        <input type="checkbox" id="categoria_13" name="categoria_13"> Carros, Motos e Outros
+                    </label><br>
+                    <label for="categoria_14">
+                        <input type="checkbox" id="categoria_14" name="categoria_14"> Casa, Móveis e Decoração 
+                    </label><br>
+                    <label for="categoria_15">
+                        <input type="checkbox" id="categoria_15" name="categoria_15"> Celulares e Telefones
+                    </label><br>
+                    <label for="categoria_16">
+                        <input type="checkbox" id="categoria_16" name="categoria_16"> Coleções e Comics 
+                    </label><br>
+                    <label for="categoria_17">
+                        <input type="checkbox" id="categoria_17" name="categoria_17"> Eletrodomésticos 
+                    </label><br>
+                    <label for="categoria_18">
+                        <input type="checkbox" id="categoria_18" name="categoria_18"> Eletrônicos, Áudio e Vídeo 
+                    </label><br>
+                    <label for="categoria_31">
+                        <input type="checkbox" id="categoria_31" name="categoria_31"> Esoterismo e Ocultismo
+                    </label><br>
+                    <label for="categoria_19">
+                        <input type="checkbox" id="categoria_19" name="categoria_19"> Esportes e Fitness
+                    </label><br>                                                           
                 </div>
                 <div class="col-4">
-                    <?php for ($i = $tam / 3; $i < $tam * (2 / 3); $i++) { ?>
-                        <label for="<?= 'categoria_' . $categorias[$i]->id ?>">
-                            <input type="checkbox" id="<?= 'categoria_' . $categorias[$i]->id ?>" 
-                                   name="<?= 'categoria_' . $categorias[$i]->id ?>"> <?= $categorias[$i]->descricao ?>
-                        </label><br> 
-                    <?php } ?>
-                </div>
-                <div class="col-4">
-                    <?php for ($i = $tam * (2 / 3); $i < $tam; $i++) { ?>
-                        <label for="<?= 'categoria_' . $categorias[$i]->id ?>">
-                            <input type="checkbox" id="<?= 'categoria_' . $categorias[$i]->id ?>" 
-                                   name="<?= 'categoria_' . $categorias[$i]->id ?>"> <?= $categorias[$i]->descricao ?>
-                        </label><br> 
-                    <?php } ?> 
+                    <label for="categoria_20">
+                        <input type="checkbox" id="categoria_20" name="categoria_20"> Ferramentas e Construção
+                    </label><br>
+                    <label for="categoria_21">
+                        <input type="checkbox" id="categoria_21" name="categoria_21"> Filmes e Seriados 
+                    </label><br>
+                    <label for="categoria_22">
+                        <input type="checkbox" id="categoria_22" name="categoria_22"> Games
+                    </label><br> 
+                    <label for="categoria_23">
+                        <input type="checkbox" id="categoria_23" name="categoria_23"> Informática
+                    </label><br>
+                    <label for="categoria_24">
+                        <input type="checkbox" id="categoria_24" name="categoria_24"> Instrumentos Musicais
+                    </label><br>
+                    <label for="categoria_25">
+                        <input type="checkbox" id="categoria_25" name="categoria_25"> Joias e Relógios 
+                    </label><br>
+                    <label for="categoria_26">
+                        <input type="checkbox" id="categoria_26" name="categoria_26"> Livros
+                    </label><br>
+                    <label for="categoria_32">
+                        <input type="checkbox" id="categoria_32" name="categoria_32"> Materiais Escolares
+                    </label><br>
+                    <label for="categoria_27">
+                        <input type="checkbox" id="categoria_27" name="categoria_27"> Música 
+                    </label><br>
+                    <label for="categoria_28">
+                        <input type="checkbox" id="categoria_28" name="categoria_28"> Saúde 
+                    </label><br>
+                    <label for="categoria_33">
+                        <input type="checkbox" id="categoria_33" name="categoria_33"> Tabacaria
+                    </label><br>                  
                 </div>
                 <div class="col-12">
                     <br><br>
