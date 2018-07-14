@@ -465,6 +465,7 @@ VALUES
 ('96015440', 'Rua Marechal Floriano', 653, '', 'Centro', 'Pelotas', 'RS'),
 ('96020360', 'Rua Professor Doutor Araújo', 918,'', 'Centro', 'Pelotas', 'RS');
 
+/*
 INSERT INTO itens
 (nome, descricao, preco, url, imagem, idCategoria)
 VALUES
@@ -478,6 +479,7 @@ VALUES
 ('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 4274.05, 'http://www.google.com', '8.jpg', 21),
 ('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 1199.00, 'http://www.google.com', '9.jpg', 19),
 ('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 1430.90, 'http://www.google.com', '10.jpg', 19);
+*/
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
@@ -497,7 +499,7 @@ VALUES
 INSERT INTO telefones
 (ddd, numero, idUsuario)
 VALUES
-('53', '32281156', 1),
+('53', '939212332', 1),
 ('11', '981222222', 2),
 ('21', '992133114', 3),
 ('31', '993223352', 4),
@@ -546,17 +548,18 @@ VALUES
 INSERT INTO interesses
 (idUsuario, idCategoria, peso)
 VALUES
-(2, 1, 1),
-(2, 2, 2),
-(2, 3, 1),
-(2, 4, 3),
-(2, 5, 1),
-(3, 6, 1),
-(3, 7, 3),
-(3, 8, 2),
-(3, 9, 1),
-(3, 10, 1);
+(2, 150, 0),
+(2, 27, 0),
+(2, 254, 0),
+(2, 300, 0),
+(2, 190, 0),
+(3, 125, 0),
+(3, 212, 0),
+(3, 298, 0),
+(3, 264, 0),
+(3, 127, 0);
 
+/*
 INSERT INTO eventos
 (titulo, descricao, data, hora, local, ativo, maxItens, dataLimite,
    idUsuario, idEndereco, idTipoEvento)
@@ -628,3 +631,4 @@ VALUES
 ('2018-04-01', '14:13',1,2),
 ('2018-04-01', '14:15',1,2),
 ('2018-04-01', '14:15',1,2);
+*/

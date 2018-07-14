@@ -13,7 +13,8 @@ class Interesses_model extends CI_Model {
 
     public function selectUsuario($idUsuario) {
         $this->db->where('idUsuario', $idUsuario);
-        return $this->db->get('interesses')->result(); // retorna vetor
+        $this->db->order_by('peso DESC');
+        return $this->db->get('interesses', 2)->result(); // retorna vetor
     }
 
     public function find($idUsuario, $idCategoria) {

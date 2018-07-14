@@ -85,27 +85,37 @@ class Criar extends CI_Controller {
                 // busca interesses do usuário
                 $this->load->model('interesses_model', 'interesses');
                 $interesses = $this->interesses->selectUsuario($this->session->id);
-                // verifica o interesse de maior peso
-                $maior = -1;
-                $idCategoria = 0;
-                foreach ($interesses as $interesse) {
-                    if ($interesse->peso > $maior){
-                        $maior = $interesse->peso;
-                        $idCategoria = $interesse->idCategoria;
-                    }
+                if ($interesses != NULL) {
+                    // ids dos interesses de maior peso
+                    $idCategoria = $interesses[0]->idCategoria;
+                    $idCategoriaSeg = $interesses[1]->idCategoria;
+                    // busca categoria com interesse de maior peso
+                    $this->load->model('categorias_model', 'categorias');
+                    $categoria = $this->categorias->find($idCategoria)->idML;
+                    // consulta da categoria na API, limite de 4 resultados e de lojas oficiais
+                    $url = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=4&category=" . $categoria;
+                    $pagina = curl_init();
+                    curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($pagina, CURLOPT_URL, $url);
+                    $resposta = curl_exec($pagina);
+                    curl_close($pagina);
+                    $dados['json'] = json_decode($resposta);
+                    // busca categoria com interesse de segundo maior peso
+                    $categoria2 = $this->categorias->find($idCategoriaSeg)->idML;
+                    // consulta da categoria na API, limite de 4 resultados e de lojas oficiais
+                    $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=4&category=" . $categoria2;
+                    $pagina2 = curl_init();
+                    curl_setopt($pagina2, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($pagina2, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($pagina2, CURLOPT_URL, $url2);
+                    $resposta2 = curl_exec($pagina2);
+                    curl_close($pagina2);
+                    $dados['json2'] = json_decode($resposta2);
+                } else {
+                    $dados['json'] = NULL;
+                    $dados['json2'] = NULL;
                 }
-                // busca categoria com interesse de maior peso
-                $this->load->model('categorias_model', 'categorias');
-                $categoria = $this->categorias->find($idCategoria);
-                // consulta da categoria na API, limite de 5 resultados e de lojas oficiais
-                $url = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=5&category=" . $categoria->idML;
-                $pagina = curl_init();
-                curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($pagina, CURLOPT_URL, $url);
-                $resposta = curl_exec($pagina);
-                curl_close($pagina);
-                $dados['json'] = json_decode($resposta);
                 $this->load->model('listas_model', 'listas');
                 $dados['itens'] = $this->listas->selectEvento($this->session->idEvento);
                 $this->load->view('include/head');
@@ -156,17 +166,26 @@ class Criar extends CI_Controller {
         }
     }
 
-    // BUG: TODOS CADASTRAM COMO "OUTROS CATEGORIAS"!
     public function adicionar() {
         if ($this->session->logado == true) {
             if (isset($this->session->idEvento)) {
                 // recupera dados do item escolhido
                 $dadosItem = $this->input->post();
+                // busca idML do segundo nível de categorias do item                
+                $url = "https://api.mercadolibre.com/categories/" . $dadosItem['idCategoria'];
+                $pagina = curl_init();
+                curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($pagina, CURLOPT_URL, $url);
+                $resposta = curl_exec($pagina);
+                curl_close($pagina);
+                $json = json_decode($resposta);
+                $dadosItem['idCategoria'] = $json->path_from_root[1]->id;
                 // busca categoria no banco de dados
                 $this->load->model('categorias_model', 'categorias');
                 $retorno = $this->categorias->findIdML($dadosItem['idCategoria']);
                 // se a categoria existir no banco, coloca o id correspondente; senão, coloca o de "outras categorias"
-                if (isset($retorno)) {
+                if ($retorno != NULL) {
                     $dadosItem['idCategoria'] = $retorno->id;
                 } else {
                     $dadosItem['idCategoria'] = 380;
@@ -175,13 +194,15 @@ class Criar extends CI_Controller {
                 $this->load->model('interesses_model', 'interesses');
                 $interesse = $this->interesses->find($this->session->id, $dadosItem['idCategoria']);
                 // se tiver, atualiza o peso; se não tiver, cria interesse com peso zero
-                if (isset($interesse) && $interesse->peso < 5) {
-                    $interesse->peso++;
+                if ($interesse != NULL) {
+                    if ($interesse->peso < 5) {
+                        $interesse->peso++;
+                    }                    
                     $this->interesses->update($interesse, $this->session->id, $dadosItem['idCategoria']);
                 } else {
                     $insere['idUsuario'] = $this->session->id;
                     $insere['idCategoria'] = $dadosItem['idCategoria'];
-                    $insere['peso'] = 0;
+                    $insere['peso'] = 1;
                     $this->interesses->insert($insere);
                 }
                 // insere item no banco de dados

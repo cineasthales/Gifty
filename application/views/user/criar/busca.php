@@ -21,11 +21,7 @@
             <div class="col-12">
                 <br>
             </div>
-            <?php
-            foreach ($json->results as $item) {
-                $item->title = str_replace('%20', ' ', $item->title);
-                $item->title = preg_replace('/[^A-Za-z0-9\ ]/', ' ', $item->title);
-                ?>
+            <?php foreach ($json->results as $item) { ?>
                 <form method="post" action="<?= base_url('usuario/criar/adicionar') ?>">
                     <div class="col-4">
                         <p><a href="<?= $item->permalink ?>" target='_blank'><?= $item->title ?></a></p>

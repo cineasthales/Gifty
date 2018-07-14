@@ -98,7 +98,8 @@ class Home extends CI_Controller {
             if ($this->usuarios->insert($dadosUsuario)) {
                 $registro['idUsuario'] = $this->usuarios->last()->id;
                 $this->load->model('interesses_model', 'interesses');
-                for ($i = 0; $i < 36; $i++) {
+                // Isto precisa ser reformulado para as 380 possibilidades de subcategorias!
+                for ($i = 0; $i < 33; $i++) {
                     if ($this->input->post('categoria_' . $i)) {
                         $registro['idCategoria'] = $i;
                         $this->interesses->insert($registro);
