@@ -31,7 +31,7 @@
                 </table>
             <?php } else { ?>
                 <div class="col-12">
-                    <br><p>Você não tem listas ativas!</p><br>
+                    <br><p class="icon-big"><i class="fas fa-exclamation-triangle"></i></p><p>Você não tem listas ativas! Que tal <a href="<?= base_url('usuario/criar') ?>">criar uma</a>?</p><br>
                 </div>
             <?php } ?>
             <div class="col-12">
@@ -59,7 +59,9 @@
                 </table>
             <?php } else { ?>
                 <div class="col-12">
-                    <br><p>Você não tem nenhum convite no momento!</p><br>     
+                    <br><p><span class="icon-small"><i class="fas fa-exclamation-triangle"></i></span>
+                        Você não tem nenhum convite no momento!
+                        <span class="icon-small"><i class="fas fa-exclamation-triangle"></i></span></p><br>     
                 </div>                
             <?php } ?>
         </div>

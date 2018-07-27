@@ -34,6 +34,21 @@ class Home extends CI_Controller {
             $sessao['id'] = $verifica->id;
             $sessao['nome'] = $verifica->nome;
             $this->session->set_userdata($sessao);
+            // busca todos os interesses do usuario que logou
+            $this->load->model('interesses_model', 'interesses');
+            $interesses = $this->interesses->selectUsuarioAll($this->session->id);
+            // se houver interesses cadastrados
+            if (isset($interesses)) {
+                $hoje = date("y-m-d");
+                foreach ($interesses as $interesse) {
+                    // se o interesse foi atualizado em mais de 180 dias, diminui peso e atualiza data
+                    if (date_diff(date_create($interesse->data), date_create($hoje))->format('%d') > 90) {
+                        $interesse->peso--;
+                        $interesse->data = $hoje;
+                        $this->interesses->update($interesse, $this->session->id, $interesse->idCategoria);
+                    }               
+                }                
+            }
         } else {
             $mensagem = "Nome de usuário, e-mail e/ou senha incorretos.";
             $tipo = 0;
@@ -96,15 +111,97 @@ class Home extends CI_Controller {
             $dadosUsuario['ativo'] = 1;
             $dadosUsuario['tentaLogin'] = 0;
             if ($this->usuarios->insert($dadosUsuario)) {
-                $registro['idUsuario'] = $this->usuarios->last()->id;
-                $this->load->model('interesses_model', 'interesses');
-                // Isto precisa ser reformulado para as 380 possibilidades de subcategorias!
-                for ($i = 0; $i < 33; $i++) {
-                    if ($this->input->post('categoria_' . $i)) {
-                        $registro['idCategoria'] = $i;
-                        $this->interesses->insert($registro);
-                    }
+                $idUsuario = $this->usuarios->last()->id;                           
+                if ($this->input->post('categoria_1')) {
+                    $this->cadastrar_interesses(1, 13, $idUsuario);
                 }
+                if ($this->input->post('categoria_2')) {
+                    $this->cadastrar_interesses(14, 25, $idUsuario);
+                }
+                if ($this->input->post('categoria_3')) {
+                    $this->cadastrar_interesses(26, 55, $idUsuario);
+                }
+                if ($this->input->post('categoria_4')) {
+                    $this->cadastrar_interesses(56, 66, $idUsuario);
+                }
+                if ($this->input->post('categoria_5')) {
+                    $this->cadastrar_interesses(67, 86, $idUsuario);
+                }
+                if ($this->input->post('categoria_6')) {
+                    $this->cadastrar_interesses(87, 94, $idUsuario);
+                }
+                if ($this->input->post('categoria_7')) {
+                    $this->cadastrar_interesses(95, 106, $idUsuario);
+                }
+                if ($this->input->post('categoria_8')) {
+                    $this->cadastrar_interesses(107, 118, $idUsuario);
+                }
+                if ($this->input->post('categoria_9')) {
+                    $this->cadastrar_interesses(119, 134, $idUsuario);
+                }
+                if ($this->input->post('categoria_10')) {
+                    $this->cadastrar_interesses(135, 159, $idUsuario);
+                }
+                if ($this->input->post('categoria_11')) {
+                    $this->cadastrar_interesses(160, 167, $idUsuario);
+                }
+                if ($this->input->post('categoria_12')) {
+                    $this->cadastrar_interesses(168, 177, $idUsuario);
+                }
+                if ($this->input->post('categoria_13')) {
+                    $this->cadastrar_interesses(178, 190, $idUsuario);
+                }
+                if ($this->input->post('categoria_14')) {
+                    $this->cadastrar_interesses(191, 199, $idUsuario);
+                }
+                if ($this->input->post('categoria_15')) {
+                    $this->cadastrar_interesses(200, 218, $idUsuario);
+                }
+                if ($this->input->post('categoria_16')) {
+                    $this->cadastrar_interesses(219, 228, $idUsuario);
+                }
+                if ($this->input->post('categoria_17')) {
+                    $this->cadastrar_interesses(229, 252, $idUsuario);
+                }
+                if ($this->input->post('categoria_18')) {
+                    $this->cadastrar_interesses(253, 276, $idUsuario);
+                }
+                if ($this->input->post('categoria_19')) {
+                    $this->cadastrar_interesses(277, 284, $idUsuario);
+                }
+                if ($this->input->post('categoria_20')) {
+                    $this->cadastrar_interesses(285, 290, $idUsuario);
+                }
+                if ($this->input->post('categoria_21')) {
+                    $this->cadastrar_interesses(291, 299, $idUsuario);
+                }
+                if ($this->input->post('categoria_22')) {
+                    $this->cadastrar_interesses(300, 322, $idUsuario);
+                }
+                if ($this->input->post('categoria_23')) {
+                    $this->cadastrar_interesses(323, 340, $idUsuario);
+                }
+                if ($this->input->post('categoria_24')) {
+                    $this->cadastrar_interesses(341, 348, $idUsuario);
+                }
+                if ($this->input->post('categoria_25')) {
+                    $this->cadastrar_interesses(349, 358, $idUsuario);
+                }
+                if ($this->input->post('categoria_26')) {
+                    $this->cadastrar_interesses(359, 364, $idUsuario);
+                }
+                if ($this->input->post('categoria_27')) {
+                    $this->cadastrar_interesses(365, 374, $idUsuario);
+                }
+                if ($this->input->post('categoria_28')) {
+                    $this->cadastrar_interesses(376, 376, $idUsuario);
+                }
+                if ($this->input->post('categoria_29')) {
+                    $this->cadastrar_interesses(377, 377, $idUsuario);
+                }
+                if ($this->input->post('categoria_30')) {
+                    $this->cadastrar_interesses(378, 378, $idUsuario);
+                }                     
                 $mensagem = "Confirme seu cadastro no e-mail <strong>" . $dadosUsuario['email'] . "</strong>.";
                 $tipo = 1;
             } else {
@@ -118,6 +215,18 @@ class Home extends CI_Controller {
         $this->session->set_flashdata('mensagem', $mensagem);
         $this->session->set_flashdata('tipo', $tipo);
         redirect();
+    }
+    
+    public function cadastrar_interesses($inicio, $fim, $idUsuario) {
+        $this->load->model('interesses_model', 'interesses');
+        $i = 0;
+        for ($i = $inicio; $i <= $fim; $i++) {
+            $insere['idUsuario'] = $idUsuario;
+            $insere['idCategoria'] = $i;
+            $insere['peso'] = 0;
+            $insere['data'] = date("y-m-d");
+            $this->interesses->insert($insere, $idUsuario, $i);
+        }        
     }
 
 }

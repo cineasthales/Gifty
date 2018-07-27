@@ -295,6 +295,15 @@ table {
     width: 100%;
 }
 
+.icon-big {
+    color: #2D8000;
+    font-size: 5em;
+}
+
+.icon-small {
+    color: #2D8000;
+}
+
 /* CABEÇALHO */
 
 header {    

@@ -285,6 +285,7 @@ CREATE TABLE IF NOT EXISTS `gifty`.`interesses` (
   `idUsuario` INT NOT NULL,
   `idCategoria` INT NOT NULL,
   `peso` INT NOT NULL,
+  `data` DATE NOT NULL,
   PRIMARY KEY (`idUsuario`, `idCategoria`),
   INDEX `fk_usuarios_has_interesses_interesses1_idx` (`idCategoria` ASC),
   INDEX `fk_usuarios_has_interesses_usuarios1_idx` (`idUsuario` ASC),

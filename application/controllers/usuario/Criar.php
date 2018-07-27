@@ -89,6 +89,7 @@ class Criar extends CI_Controller {
                     // ids dos interesses de maior peso
                     $idCategoria = $interesses[0]->idCategoria;
                     $idCategoriaSeg = $interesses[1]->idCategoria;
+                    $idCategoriaTer = $interesses[2]->idCategoria;
                     // busca categoria com interesse de maior peso
                     $this->load->model('categorias_model', 'categorias');
                     $categoria = $this->categorias->find($idCategoria)->idML;
@@ -104,7 +105,7 @@ class Criar extends CI_Controller {
                     // busca categoria com interesse de segundo maior peso
                     $categoria2 = $this->categorias->find($idCategoriaSeg)->idML;
                     // consulta da categoria na API, limite de 4 resultados e de lojas oficiais
-                    $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=4&category=" . $categoria2;
+                    $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria2;
                     $pagina2 = curl_init();
                     curl_setopt($pagina2, CURLOPT_SSL_VERIFYPEER, false);
                     curl_setopt($pagina2, CURLOPT_RETURNTRANSFER, true);
@@ -112,9 +113,21 @@ class Criar extends CI_Controller {
                     $resposta2 = curl_exec($pagina2);
                     curl_close($pagina2);
                     $dados['json2'] = json_decode($resposta2);
+                    // busca categoria com interesse de terceiro maior peso
+                    $categoria3 = $this->categorias->find($idCategoriaTer)->idML;
+                    // consulta da categoria na API, limite de 4 resultados e de lojas oficiais
+                    $url3 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria3;
+                    $pagina3 = curl_init();
+                    curl_setopt($pagina3, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($pagina3, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($pagina3, CURLOPT_URL, $url3);
+                    $resposta3 = curl_exec($pagina3);
+                    curl_close($pagina3);
+                    $dados['json3'] = json_decode($resposta3);
                 } else {
                     $dados['json'] = NULL;
                     $dados['json2'] = NULL;
+                    $dados['json3'] = NULL;
                 }
                 $this->load->model('listas_model', 'listas');
                 $dados['itens'] = $this->listas->selectEvento($this->session->idEvento);
@@ -193,16 +206,18 @@ class Criar extends CI_Controller {
                 // verifica se usuário tem interesse nesta categoria
                 $this->load->model('interesses_model', 'interesses');
                 $interesse = $this->interesses->find($this->session->id, $dadosItem['idCategoria']);
-                // se tiver, atualiza o peso; se não tiver, cria interesse com peso zero
+                // se tiver, atualiza o peso e a data; se não tiver, cria interesse com peso 1
                 if ($interesse != NULL) {
                     if ($interesse->peso < 5) {
                         $interesse->peso++;
+                        $interesse->data = date("y-m-d");
                     }                    
                     $this->interesses->update($interesse, $this->session->id, $dadosItem['idCategoria']);
                 } else {
                     $insere['idUsuario'] = $this->session->id;
                     $insere['idCategoria'] = $dadosItem['idCategoria'];
                     $insere['peso'] = 1;
+                    $insere['data'] = date("y-m-d");
                     $this->interesses->insert($insere);
                 }
                 // insere item no banco de dados

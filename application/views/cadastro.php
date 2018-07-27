@@ -112,10 +112,7 @@
                 <div class="col-4">
                     <label for="categoria_1">
                         <input type="checkbox" id="categoria_1" name="categoria_1"> Acessórios para Veículos
-                    </label><br>
-                    <label for="categoria_29">
-                        <input type="checkbox" id="categoria_29" name="categoria_29"> Adultos
-                    </label><br>
+                    </label><br>                    
                     <label for="categoria_2">
                         <input type="checkbox" id="categoria_2" name="categoria_2"> Agro, Indústria e Comércio 
                     </label><br>
@@ -131,88 +128,87 @@
                     <label for="categoria_6">
                         <input type="checkbox" id="categoria_6" name="categoria_6"> Arte e Artesanato
                     </label><br>
-                    <label for="categoria_30">
-                        <input type="checkbox" id="categoria_30" name="categoria_30"> Artigos de Armarinho
+                    <label for="categoria_28">
+                        <input type="checkbox" id="categoria_28" name="categoria_28"> Artigos de Armarinho
                     </label><br>
                     <label for="categoria_7">
-                        <input type="checkbox" id="categoria_7" name="categoria_7"> Bebês
+                        <!-- Bebês -->
+                        <input type="checkbox" id="categoria_7" name="categoria_7"> Artigos para Bebês
                     </label><br>
                     <label for="categoria_8">
                         <input type="checkbox" id="categoria_8" name="categoria_8"> Beleza e Cuidado Pessoal 
-                    </label><br> 
+                    </label><br>
                     <label for="categoria_9">
                         <input type="checkbox" id="categoria_9" name="categoria_9"> Brinquedos e Hobbies
                     </label><br>
                 </div>
                 <div class="col-4">                    
                     <label for="categoria_10">
-                        <input type="checkbox" id="categoria_10" name="categoria_10"> Calçados, Roupas e Bolsas
+                        <!-- Calçados, Roupas e Bolsas -->
+                        <input type="checkbox" id="categoria_10" name="categoria_10"> Calçados, Roupas e Acessórios
                     </label><br>
                     <label for="categoria_11">
-                        <input type="checkbox" id="categoria_11" name="categoria_11"> Construção e Ferramentas
+                        <input type="checkbox" id="categoria_11" name="categoria_11"> Câmeras e Acessórios
                     </label><br>
                     <label for="categoria_12">
-                        <input type="checkbox" id="categoria_12" name="categoria_12"> Câmeras e Acessórios
+                        <!-- Carros, Motos e Outros -->
+                        <input type="checkbox" id="categoria_12" name="categoria_12"> Carros, Motos e Outros Veículos
                     </label><br>
                     <label for="categoria_13">
-                        <input type="checkbox" id="categoria_13" name="categoria_13"> Carros, Motos e Outros
-                    </label><br>
-                    <label for="categoria_14">
-                        <input type="checkbox" id="categoria_14" name="categoria_14"> Casa, Móveis e Decoração 
-                    </label><br>
+                        <input type="checkbox" id="categoria_13" name="categoria_13"> Casa, Móveis e Decoração 
+                    </label><br>                    
                     <label for="categoria_15">
-                        <input type="checkbox" id="categoria_15" name="categoria_15"> Celulares e Telefones
+                        <input type="checkbox" id="categoria_15" name="categoria_15"> Coleções e Comics 
                     </label><br>
                     <label for="categoria_16">
-                        <input type="checkbox" id="categoria_16" name="categoria_16"> Coleções e Comics 
+                        <input type="checkbox" id="categoria_16" name="categoria_16"> Eletrodomésticos 
                     </label><br>
                     <label for="categoria_17">
-                        <input type="checkbox" id="categoria_17" name="categoria_17"> Eletrodomésticos 
+                        <input type="checkbox" id="categoria_17" name="categoria_17"> Eletrônicos, Áudio e Vídeo 
+                    </label><br>
+                    <label for="categoria_29">
+                        <input type="checkbox" id="categoria_29" name="categoria_29"> Esoterismo e Ocultismo
                     </label><br>
                     <label for="categoria_18">
-                        <input type="checkbox" id="categoria_18" name="categoria_18"> Eletrônicos, Áudio e Vídeo 
-                    </label><br>
-                    <label for="categoria_31">
-                        <input type="checkbox" id="categoria_31" name="categoria_31"> Esoterismo e Ocultismo
+                        <input type="checkbox" id="categoria_18" name="categoria_18"> Esportes e Fitness
                     </label><br>
                     <label for="categoria_19">
-                        <input type="checkbox" id="categoria_19" name="categoria_19"> Esportes e Fitness
-                    </label><br>                                                           
+                        <input type="checkbox" id="categoria_19" name="categoria_19"> Ferramentas e Construção
+                    </label><br>                    
                 </div>
                 <div class="col-4">
                     <label for="categoria_20">
-                        <input type="checkbox" id="categoria_20" name="categoria_20"> Ferramentas e Construção
+                        <input type="checkbox" id="categoria_20" name="categoria_20"> Filmes e Seriados 
                     </label><br>
                     <label for="categoria_21">
-                        <input type="checkbox" id="categoria_21" name="categoria_21"> Filmes e Seriados 
-                    </label><br>
-                    <label for="categoria_22">
-                        <input type="checkbox" id="categoria_22" name="categoria_22"> Games
+                        <input type="checkbox" id="categoria_21" name="categoria_21"> Games
                     </label><br> 
-                    <label for="categoria_23">
-                        <input type="checkbox" id="categoria_23" name="categoria_23"> Informática
-                    </label><br>
-                    <label for="categoria_24">
-                        <input type="checkbox" id="categoria_24" name="categoria_24"> Instrumentos Musicais
-                    </label><br>
-                    <label for="categoria_25">
-                        <input type="checkbox" id="categoria_25" name="categoria_25"> Joias e Relógios 
-                    </label><br>
-                    <label for="categoria_26">
-                        <input type="checkbox" id="categoria_26" name="categoria_26"> Livros
-                    </label><br>
-                    <label for="categoria_32">
-                        <input type="checkbox" id="categoria_32" name="categoria_32"> Materiais Escolares
+                    <label for="categoria_22">
+                        <input type="checkbox" id="categoria_22" name="categoria_22"> Informática
                     </label><br>
                     <label for="categoria_27">
-                        <input type="checkbox" id="categoria_27" name="categoria_27"> Música 
+                        <!-- Saúde -->
+                        <input type="checkbox" id="categoria_27" name="categoria_27"> Instrumentos de Saúde 
                     </label><br>
-                    <label for="categoria_28">
-                        <input type="checkbox" id="categoria_28" name="categoria_28"> Saúde 
+                    <label for="categoria_23">
+                        <input type="checkbox" id="categoria_23" name="categoria_23"> Instrumentos Musicais
                     </label><br>
-                    <label for="categoria_33">
-                        <input type="checkbox" id="categoria_33" name="categoria_33"> Tabacaria
-                    </label><br>                  
+                    <label for="categoria_24">
+                        <input type="checkbox" id="categoria_24" name="categoria_24"> Joias e Relógios 
+                    </label><br>
+                    <label for="categoria_25">
+                        <input type="checkbox" id="categoria_25" name="categoria_25"> Livros
+                    </label><br>
+                    <label for="categoria_30">
+                        <input type="checkbox" id="categoria_30" name="categoria_30"> Materiais Escolares
+                    </label><br>
+                    <label for="categoria_26">
+                        <input type="checkbox" id="categoria_26" name="categoria_26"> Música 
+                    </label><br>             
+                    <label for="categoria_14">
+                        <!-- Celulares e Telefones -->
+                        <input type="checkbox" id="categoria_14" name="categoria_14"> Telefonia
+                    </label><br>
                 </div>
                 <div class="col-12">
                     <br><br>
