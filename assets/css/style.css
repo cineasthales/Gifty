@@ -61,6 +61,11 @@ h1 {
     font-size: 2em;
 }
 
+h3 {
+    color: black;
+    font-weight: normal;
+}
+
 input[readonly] {
     background-color: #e6e6e6;
     outline: none;
@@ -266,14 +271,23 @@ section input[type="search"], #filtro {
     text-align: right;
 }
 
-#btSaibaMais a {
+#btSaibaMais a, #btFinalizar a {
     border-color: #2D8000;
     color: #2D8000;
     font-size: 1.5em;
     padding: 0.5em;
 }
 
-#btSaibaMais a:hover, #btSaibaMais a:active {
+#btFinalizar a {
+    font-size: 1.25em;
+}
+
+#btFinalizar {
+    float: right;
+}
+
+#btSaibaMais a:hover, #btSaibaMais a:active,
+#btFinalizar a:hover, #btFinalizar a:active {
     background-color: #2D8000;
     color: white;
 }
@@ -284,6 +298,23 @@ section input[type="search"], #filtro {
 
 #btCriarLista a {
     font-size: 1.25em;
+}
+
+.btListas {
+    display: block;
+    margin: 0 0 0 auto;
+    width: 100%;
+}
+
+.btListas a {
+    font-size: 1em;
+}
+
+#btAd a, #btAd a:hover, #btAd:active {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
 }
 
 table, th, td {
@@ -302,6 +333,10 @@ table {
 
 .icon-small {
     color: #2D8000;
+}
+
+#msgCpf, #msgEmail, #msgNomeUsuario {
+    color: red;
 }
 
 /* CABEÇALHO */
@@ -451,6 +486,10 @@ footer ul li {
 .alerta_erro {
     background-color: #8D0707;
     color: white;
+}
+
+#msgCpf, #msgEmail, #msgNomeUsuario {
+    color: #8D0707;
 }
 
 /* Para dispositivos móveis */

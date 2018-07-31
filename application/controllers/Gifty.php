@@ -2,13 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Gifty extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {
             redirect('usuario/inicio');
-        } else
-        if ($this->session->logado_admin == true) {
+        } else if ($this->session->logado_admin == true) {
             redirect('admin/dashboard');
         } else {
             $this->load->view('include/head');
@@ -46,8 +45,8 @@ class Home extends CI_Controller {
                         $interesse->peso--;
                         $interesse->data = $hoje;
                         $this->interesses->update($interesse, $this->session->id, $interesse->idCategoria);
-                    }               
-                }                
+                    }
+                }
             }
         } else {
             $mensagem = "Nome de usuário, e-mail e/ou senha incorretos.";
@@ -111,7 +110,7 @@ class Home extends CI_Controller {
             $dadosUsuario['ativo'] = 1;
             $dadosUsuario['tentaLogin'] = 0;
             if ($this->usuarios->insert($dadosUsuario)) {
-                $idUsuario = $this->usuarios->last()->id;                           
+                $idUsuario = $this->usuarios->last()->id;
                 if ($this->input->post('categoria_1')) {
                     $this->cadastrar_interesses(1, 13, $idUsuario);
                 }
@@ -201,7 +200,7 @@ class Home extends CI_Controller {
                 }
                 if ($this->input->post('categoria_30')) {
                     $this->cadastrar_interesses(378, 378, $idUsuario);
-                }                     
+                }
                 $mensagem = "Confirme seu cadastro no e-mail <strong>" . $dadosUsuario['email'] . "</strong>.";
                 $tipo = 1;
             } else {
@@ -216,7 +215,7 @@ class Home extends CI_Controller {
         $this->session->set_flashdata('tipo', $tipo);
         redirect();
     }
-    
+
     public function cadastrar_interesses($inicio, $fim, $idUsuario) {
         $this->load->model('interesses_model', 'interesses');
         $i = 0;
@@ -226,7 +225,63 @@ class Home extends CI_Controller {
             $insere['peso'] = 0;
             $insere['data'] = date("y-m-d");
             $this->interesses->insert($insere, $idUsuario, $i);
-        }        
+        }
+    }
+
+    public function sobre() {
+        if ($this->session->has_userdata('idEvento')) {
+            $this->session->unset_userdata('idEvento');
+        }
+        $this->load->view('include/head');
+        if ($this->session->logado == true) {
+            $this->load->view('include/header_user');
+        } else {
+            $this->load->view('include/header_ext');
+        }
+        $this->load->view('sobre');
+        $this->load->view('include/footer');
+    }
+
+    public function novidades() {
+        if ($this->session->has_userdata('idEvento')) {
+            $this->session->unset_userdata('idEvento');
+        }
+        $this->load->view('include/head');
+        if ($this->session->logado == true) {
+            $this->load->view('include/header_user');
+        } else {
+            $this->load->view('include/header_ext');
+        }
+        $this->load->view('novidades');
+        $this->load->view('include/footer');
+    }
+
+    public function quemsomos() {
+        if ($this->session->has_userdata('idEvento')) {
+            $this->session->unset_userdata('idEvento');
+        }
+        $this->load->view('include/head');
+        if ($this->session->logado == true) {
+            $this->load->view('include/header_user');
+        } else {
+            $this->load->view('include/header_ext');
+        }
+        $this->load->view('quemsomos');
+        $this->load->view('include/footer');
+    }
+
+    public function contato() {
+        if ($this->session->has_userdata('idEvento')) {
+            $this->session->unset_userdata('idEvento');
+        }
+        $this->load->view('include/head');
+        if ($this->session->logado == true) {
+            $this->load->view('include/header_user');
+        } else {
+            $this->load->view('include/header_ext');
+        }
+        $this->load->view('contato');
+        $this->load->view('include/footer');
     }
 
 }

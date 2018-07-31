@@ -4,11 +4,13 @@
             <div class="col-12">
                 <h1>Criar Lista</h1>
             </div>
-            <div class="col-10">
+            <div class="col-8">
                 <br><h2>Etapa 3 de 3: adicione os itens na sua lista de presentes! (:</h2>
             </div>
-            <div class="col-2">
-                <br><a href="<?= base_url('usuario/criar/finalizar') ?>">Finalizar</a>
+            <div class="col-4">
+                <br><button id="btFinalizar">
+                    <a href="<?= base_url('usuario/criar/finalizar') ?>"
+                       onclick="return confirm('Tem certeza que deseja finalizar a criação de sua lista?')">Finalizar</a></button>
             </div>
             <div class="col-12">
                 <?php if (count($itens) > 0) { ?>
@@ -32,19 +34,18 @@
                                         <?php if ($i < count($itens) - 1) { ?>
                                             <a href="<?= base_url('usuario/criar/descer/') . $itens[$i]->idItem ?>"><i class="fas fa-chevron-circle-down"></i></i></a>
                                         <?php } ?>
-                                    <?php } ?>
-                                    <a href="<?= base_url('usuario/criar/apagar/') . $itens[$i]->idItem ?>"><i class="fas fa-minus-circle"></i></i></a>
+                                    <?php } ?>                                    
                                 </td>
                             </tr>
                         <?php } ?>
                     </table><br><br>
                 <?php } else { ?>
-                    <br><br><p class="icon-big"><i class="fas fa-exclamation-triangle"></i></p><p>Sua lista está vazia!</p><br>
+                    <br><br><p class="icon-big"><i class="fas fa-gift"></i></p><p>Sua lista ainda está vazia.<br>Você pode buscar itens ou adicionar nossas recomendações.</p><br>
                     <br><br>
                 <?php } ?>
             </div>
             <div class="col-6">
-                <h2>Itens Sugeridos Para Você</h2><br>
+                <h2>Itens Recomendados Para Você</h2><br>
             </div>
             <form method="post" action="<?= base_url('usuario/criar/busca') ?>">
                 <div class="col-5">                    
@@ -114,6 +115,11 @@
                         </div>
                     </form>
                 <?php } ?>
+            <?php } ?>
+            <?php if (!isset($json) && !isset($json2) && !isset($json3)) { ?>
+                <div class="col-12">
+                    <p class="icon-big"><i class="fas fa-tasks"></i></p><p>Por enquanto, não temos dados suficientes para recomendar itens a você.<br></p><br>
+                </div>
             <?php } ?>
         </div>
     </section>    

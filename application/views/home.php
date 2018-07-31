@@ -40,7 +40,7 @@ if ($this->session->has_userdata('mensagem')) {
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btCadastrar"><a href="<?= base_url('home/cadastrar') ?>">Cadastre-se</a></button>
+                <button id="btCadastrar"><a href="<?= base_url('gifty/cadastrar') ?>">Cadastre-se</a></button>
             </div>
         </div>
     </section>
@@ -74,7 +74,7 @@ if ($this->session->has_userdata('mensagem')) {
         </div>
         <div class="row">
             <div class="col-12">
-                <button id="btSaibaMais"><a href="<?= base_url('sobre') ?>">Saiba mais</a></button>
+                <button id="btSaibaMais"><a href="<?= base_url('gifty/sobre') ?>">Saiba mais</a></button>
             </div>
         </div>
     </section>
@@ -83,9 +83,9 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-12">
                 <h1 class="footerh">
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="<?= base_url() ?>"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="<?= base_url() ?>"><i class="fab fa-twitter-square"></i></a></li>
+                        <li><a href="<?= base_url() ?>"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </h1>
             </div>

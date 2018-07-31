@@ -7,7 +7,7 @@
         <div class="col-9">
             <nav>
                 <ul>
-                    <li><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    <li><a href="<?= base_url('gifty/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                     <li><a href="<?= base_url('admin/dashboard/backup') ?>"><i class="fas fa-download"></i> Backup</a></li>
                     <li><a href="<?= base_url('admin/dashboard') ?>"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 </ul>

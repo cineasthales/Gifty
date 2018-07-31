@@ -48,5 +48,16 @@ $(document).ready(function () {
             }
         });
     });
+    
+//    $('#confirmarsenha').blur(function () {
+//        $.get(path + 'ajax/validaSenha', {confirmarsenha: $('#confirmarsenha').val(), senha: $('#senha').val()}, function (data) {
+//            if (data) {
+//                $('#msgSenha').html(data);
+//                $('#confirmarSenha').focus();
+//            } else {
+//                $('#msgSenha').html('');
+//            }
+//        });
+//    });
 
 });

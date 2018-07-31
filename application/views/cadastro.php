@@ -5,7 +5,7 @@
             <div class="col-12">
                 <h1>Cadastrar</h1>
             </div>
-            <form method="post" action="<?= base_url('home/grava_cadastro') ?>">
+            <form method="post" action="<?= base_url('gifty/grava_cadastro') ?>">
                 <div class="col-12">
                     <br>
                     <h2>Seus Dados</h2>
@@ -42,32 +42,37 @@
                            maxlength="11" pattern="[0-9]{11}" required placeholder="99999999999"><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="email">E-mail</label> <span class="asterisco">*</span>
-                    <span id="msgEmail" name="msgEmail"></span><br>
-                    <input type="email" id="email" name="email" required
-                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br><br>
-                </div>
-                <div class="col-6">
                     <label for="nomeUsuario">Nome de Usuário</label> <span class="asterisco">*</span>
                     <span id="msgNomeUsuario" name="msgNomeUsuario"></span><br>
                     <input type="text" id="nomeUsuario" name="nomeUsuario" required
                            pattern="[A-Za-z0-9]{,20}" maxlength="20"><br><br>
                 </div>
                 <div class="col-6">
+                    <label for="email">E-mail</label> <span class="asterisco">*</span>
+                    <span id="msgEmail" name="msgEmail"></span><br>
+                    <input type="email" id="email" name="email" required
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br>
+                </div>
+                <div class="col-6">
                     <label for="senha">Senha</label> <span class="asterisco">*</span><br>
                     <input type="password" id="senha" name="senha" 
                            title="Mínimo 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula e um dígito." required
-                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}" maxlength="32"><br><br>
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}" maxlength="32"><br>
                 </div>
-                <div class="col-6"><br>
+<!--                <div class="col-6">
+                    <label for="confirmarsenha">Confirmar Senha</label> <span class="asterisco">*</span>
+                    <span id="msgSenha" name="msgSenha"></span><br>
+                    <input type="password" id="confirmarsenha" name="confirmarsenha" maxlength="32"><br><br>
+                </div>-->                
+                <div class="col-12"><br>
                     <label for="notificaEmail">
                         <input type="checkbox" id="notificaEmail" name="notificaEmail"> Receber notificações por e-mail
                     </label><br><br>
                 </div>
-                <div class="col-6">
+<!--                <div class="col-6">
                     <label for="imagem">Foto de Perfil</label><br>
                     <input type="file" id="imagem" name="imagem" accept=".gif, .jpg, .jpeg, .png"><br><br>
-                </div>
+                </div>-->
                 <div class="col-12">
                     <br><h2>Seu Endereço</h2>
                 </div>
@@ -107,7 +112,7 @@
                     <h2>Seus Interesses</h2>
                     <small>Marque quantas opções quiser. Isto ajudará nosso sistema
                         a recomendar itens mais adequados para você.
-                        <a href="<?= base_url('sobre') ?>" target="_blank">Saiba mais</a></small><br><br>
+                        <a href="<?= base_url('gifty/sobre') ?>" target="_blank">Saiba mais</a></small><br><br>
                 </div>
                 <div class="col-4">
                     <label for="categoria_1">

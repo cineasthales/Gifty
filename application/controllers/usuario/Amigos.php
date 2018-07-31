@@ -6,10 +6,13 @@ class Amigos extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {
+            if ($this->session->has_userdata('idEvento')) {
+                $this->session->unset_userdata('idEvento');
+            }
             $this->load->view('include/head');
             $this->load->view('include/header_user');
             $this->load->view('user/amigos');
-            $this->load->view('include/footer_user');
+            $this->load->view('include/footer');
         } else {
             redirect();
         }

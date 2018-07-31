@@ -1,10 +1,12 @@
 <main>
-    <article>
+    <section>
         <div class="row">
             <div class="col-12">
                 <h1>Contato</h1>
-                <p>Em breve.</p>
+            </div>
+            <div class="col-12">
+                <br><p class="icon-big"><i class="fas fa-exclamation-triangle"></i></p><p>Página em construção</p><br>
             </div>
         </div>
-    </article>
+    </section>
 </main>

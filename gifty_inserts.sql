@@ -604,16 +604,14 @@ VALUES
 (1, 3, '2018-04-03', '14:16'),
 (1, 4, '2018-04-04', '14:17'),
 (1, 5, '2018-04-05', '14:18');
+*/
 
 INSERT INTO anuncios
 (imagem, url, ativo, idEmpresa, idCategoria)
 VALUES
-('1.jpg', 'http://www.americanas.com.br/produto/1', 1, 1, 1),
-('2.jpg', 'http://www.submarino.com.br/produto/2', 0, 2, 2),
-('3.jpg', 'http://www.shoptime.com.br/produto/3', 0, 3, 3),
-('4.jpg', 'http://www.casasbahia.com.br/produto/4', 0, 4, 4),
-('5.jpg', 'http://www.saraiva.com.br/produto/5', 0, 5, 5);
+('ad1.jpg', 'http://www.americanas.com.br', 1, 1, 1);
 
+/*
 INSERT INTO cliquesAnuncios
 (data, hora, idAnuncio, idUsuario)
 VALUES

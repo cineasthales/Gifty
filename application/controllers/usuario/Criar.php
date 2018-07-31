@@ -6,6 +6,9 @@ class Criar extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {
+            if ($this->session->has_userdata('idEvento')) {
+                $this->session->unset_userdata('idEvento');
+            }
             redirect(base_url('usuario/criar/evento'));
         } else {
             redirect();
@@ -14,12 +17,15 @@ class Criar extends CI_Controller {
 
     public function evento() {
         if ($this->session->logado == true) {
+            if ($this->session->has_userdata('idEvento')) {
+                $this->session->unset_userdata('idEvento');
+            }
             $this->load->model('tiposeventos_model', 'tiposeventos');
             $dados['tiposeventos'] = $this->tiposeventos->select();
             $this->load->view('include/head');
             $this->load->view('include/header_user');
             $this->load->view('user/criar/evento', $dados);
-            $this->load->view('include/footer_user');
+            $this->load->view('include/footer');
         } else {
             redirect();
         }
@@ -28,6 +34,7 @@ class Criar extends CI_Controller {
     public function convidados() {
         if ($this->session->logado == true) {
             if ($this->input->post('cep') != NULL) {
+                // cadastra endereço do evento
                 $this->load->model('enderecos_model', 'enderecos');
                 $dadosEndereco['cep'] = $this->input->post('cep');
                 $dadosEndereco['logradouro'] = $this->input->post('logradouro');
@@ -37,6 +44,7 @@ class Criar extends CI_Controller {
                 $dadosEndereco['cidade'] = $this->input->post('cidade');
                 $dadosEndereco['estado'] = $this->input->post('estado');
                 if ($this->enderecos->insert($dadosEndereco)) {
+                    // cadastra evento
                     $this->load->model('eventos_model', 'eventos');
                     $dadosEvento['idEndereco'] = $this->enderecos->last()->id;
                     $dadosEvento['titulo'] = $this->input->post('titulo');
@@ -50,14 +58,16 @@ class Criar extends CI_Controller {
                     $dadosEvento['idUsuario'] = $this->session->id;
                     $dadosEvento['ativo'] = 1;
                     $this->eventos->insert($dadosEvento);
+                    // cria idEvento como variável de sessão
                     $sessao['idEvento'] = $this->eventos->last()->id;
                     $this->session->set_userdata($sessao);
+                    // busca amigos do usuário logado e carrega próxima página
                     $this->load->model('amizades_model', 'amizades');
                     $dados['amizades'] = $this->amizades->findAll($this->session->id);
                     $this->load->view('include/head');
                     $this->load->view('include/header_user');
                     $this->load->view('user/criar/convidados', $dados);
-                    $this->load->view('include/footer_user');
+                    $this->load->view('include/footer');
                 }
             } else {
                 redirect(base_url('usuario/criar/evento'));
@@ -72,6 +82,7 @@ class Criar extends CI_Controller {
             if (isset($this->session->idEvento)) {
                 $this->load->model('convidados_model', 'convidados');
                 $dados = $this->input->post();
+                // verifica amigos selecionados e cadastra seus convites
                 foreach ($dados as $id => $dado) {
                     if ($dado) {
                         $dadosConvite['comparecera'] = 0;
@@ -85,15 +96,13 @@ class Criar extends CI_Controller {
                 // busca interesses do usuário
                 $this->load->model('interesses_model', 'interesses');
                 $interesses = $this->interesses->selectUsuario($this->session->id);
-                if ($interesses != NULL) {
-                    // ids dos interesses de maior peso
+                if (count($interesses) > 0) {
+                    // ids dos interesses de maior peso                    
                     $idCategoria = $interesses[0]->idCategoria;
-                    $idCategoriaSeg = $interesses[1]->idCategoria;
-                    $idCategoriaTer = $interesses[2]->idCategoria;
                     // busca categoria com interesse de maior peso
                     $this->load->model('categorias_model', 'categorias');
                     $categoria = $this->categorias->find($idCategoria)->idML;
-                    // consulta da categoria na API, limite de 4 resultados e de lojas oficiais
+                    // consulta da categoria na API, limite de 4 resultados e apenas lojas oficiais
                     $url = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=4&category=" . $categoria;
                     $pagina = curl_init();
                     curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
@@ -102,39 +111,51 @@ class Criar extends CI_Controller {
                     $resposta = curl_exec($pagina);
                     curl_close($pagina);
                     $dados['json'] = json_decode($resposta);
-                    // busca categoria com interesse de segundo maior peso
-                    $categoria2 = $this->categorias->find($idCategoriaSeg)->idML;
-                    // consulta da categoria na API, limite de 4 resultados e de lojas oficiais
-                    $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria2;
-                    $pagina2 = curl_init();
-                    curl_setopt($pagina2, CURLOPT_SSL_VERIFYPEER, false);
-                    curl_setopt($pagina2, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($pagina2, CURLOPT_URL, $url2);
-                    $resposta2 = curl_exec($pagina2);
-                    curl_close($pagina2);
-                    $dados['json2'] = json_decode($resposta2);
-                    // busca categoria com interesse de terceiro maior peso
-                    $categoria3 = $this->categorias->find($idCategoriaTer)->idML;
-                    // consulta da categoria na API, limite de 4 resultados e de lojas oficiais
-                    $url3 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria3;
-                    $pagina3 = curl_init();
-                    curl_setopt($pagina3, CURLOPT_SSL_VERIFYPEER, false);
-                    curl_setopt($pagina3, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($pagina3, CURLOPT_URL, $url3);
-                    $resposta3 = curl_exec($pagina3);
-                    curl_close($pagina3);
-                    $dados['json3'] = json_decode($resposta3);
+                    if (count($interesses) > 1) {
+                        // busca categoria com interesse de segundo maior peso
+                        $idCategoriaSeg = $interesses[1]->idCategoria;
+                        $categoria2 = $this->categorias->find($idCategoriaSeg)->idML;
+                        // consulta da categoria na API, limite de 2 resultados e em lojas oficiais
+                        $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria2;
+                        $pagina2 = curl_init();
+                        curl_setopt($pagina2, CURLOPT_SSL_VERIFYPEER, false);
+                        curl_setopt($pagina2, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($pagina2, CURLOPT_URL, $url2);
+                        $resposta2 = curl_exec($pagina2);
+                        curl_close($pagina2);
+                        $dados['json2'] = json_decode($resposta2);
+                        if (count($interesses) > 2) {
+                            // busca categoria com interesse de terceiro maior peso
+                            $idCategoriaTer = $interesses[2]->idCategoria;
+                            $categoria3 = $this->categorias->find($idCategoriaTer)->idML;
+                            // consulta da categoria na API, limite de 2 resultados e em lojas oficiais
+                            $url3 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria3;
+                            $pagina3 = curl_init();
+                            curl_setopt($pagina3, CURLOPT_SSL_VERIFYPEER, false);
+                            curl_setopt($pagina3, CURLOPT_RETURNTRANSFER, true);
+                            curl_setopt($pagina3, CURLOPT_URL, $url3);
+                            $resposta3 = curl_exec($pagina3);
+                            curl_close($pagina3);
+                            $dados['json3'] = json_decode($resposta3);
+                        } else {
+                            $dados['json3'] = NULL;
+                        }
+                    } else {
+                        $dados['json2'] = NULL;
+                        $dados['json3'] = NULL;
+                    }
                 } else {
                     $dados['json'] = NULL;
                     $dados['json2'] = NULL;
                     $dados['json3'] = NULL;
                 }
+                // carrega lista do evento
                 $this->load->model('listas_model', 'listas');
                 $dados['itens'] = $this->listas->selectEvento($this->session->idEvento);
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');
                 $this->load->view('user/criar/lista', $dados);
-                $this->load->view('include/footer_user');
+                $this->load->view('include/footer');
             } else {
                 redirect(base_url('usuario/criar/evento'));
             }
@@ -167,7 +188,7 @@ class Criar extends CI_Controller {
                     $this->load->view('include/head');
                     $this->load->view('include/header_user');
                     $this->load->view('user/criar/busca', $dados);
-                    $this->load->view('include/footer_user');
+                    $this->load->view('include/footer');
                 } else {
                     redirect(base_url('usuario/criar/lista'));
                 }
@@ -206,12 +227,12 @@ class Criar extends CI_Controller {
                 // verifica se usuário tem interesse nesta categoria
                 $this->load->model('interesses_model', 'interesses');
                 $interesse = $this->interesses->find($this->session->id, $dadosItem['idCategoria']);
-                // se tiver, atualiza o peso e a data; se não tiver, cria interesse com peso 1
+                // se tiver, atualiza o peso; se não tiver, cria interesse com peso 1
                 if ($interesse != NULL) {
                     if ($interesse->peso < 5) {
                         $interesse->peso++;
-                        $interesse->data = date("y-m-d");
-                    }                    
+                    }
+                    $interesse->data = date("y-m-d");
                     $this->interesses->update($interesse, $this->session->id, $dadosItem['idCategoria']);
                 } else {
                     $insere['idUsuario'] = $this->session->id;
@@ -283,7 +304,7 @@ class Criar extends CI_Controller {
     }
 
     public function finalizar() {
-        // mudar itens da lista como ativos
+        // implementar: mudar itens da lista como ativos
         $this->session->unset_userdata('idEvento');
         redirect(base_url('usuario/listas'));
     }

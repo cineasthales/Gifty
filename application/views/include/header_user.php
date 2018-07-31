@@ -7,7 +7,7 @@
         <div class="col-9">
             <nav>
                 <ul>
-                    <li><a href="<?= base_url('home/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    <li><a href="<?= base_url('gifty/sair') ?>"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
                     <li><a href="<?= base_url('usuario/configuracoes') ?>"><i class="fas fa-cog"></i> Configurações</a></li>
                     <li><a href="<?= base_url('usuario/amigos') ?>"><i class="fas fa-users"></i> Amigos</a></li>                            
                     <li><a href="<?= base_url('usuario/listas') ?>"><i class="fas fa-gift"></i> Listas</a></li>

@@ -8,7 +8,7 @@
                 <button id="btCriarLista"><a href="<?= base_url('usuario/criar') ?>">Criar Lista</a></button>
             </div>
             <div class="col-12">
-                <h2>Notificações em breve!</h2>
+                <br><p class="icon-big"><i class="fas fa-exclamation-triangle"></i></p><p>Página em construção</p><br>
             </div>
         </div>
     </section>    

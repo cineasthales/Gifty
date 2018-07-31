@@ -1,13 +1,12 @@
 <main>
-    <article>
+    <section>
         <div class="row">
             <div class="col-12">
                 <h1>Quem Somos</h1>
-                <h2>História</h2>
-                <p>Em breve.</p><br>
-                <h2>Sobre o Autor</h2>
-                <p>Em breve.</p>
+            </div>
+            <div class="col-12">
+                <br><p class="icon-big"><i class="fas fa-exclamation-triangle"></i></p><p>Página em construção</p><br>
             </div>
         </div>
-    </article>
+    </section>
 </main>

@@ -4,7 +4,7 @@
             <a href="<?= base_url() ?>">
                 <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty" id="logo"></a>
         </div>
-        <form method="post" action="<?= base_url('home/logar') ?>">
+        <form method="post" action="<?= base_url('gifty/logar') ?>">
             <div class="col-4">
                 <label for="user" hidden><i class="fas fa-user"></i></label>
                 <input type="text" id="user" name="user"
@@ -22,10 +22,10 @@
             <div class="col-3">
             </div>
             <div class="col-4">
-                <small>Ainda não é membro? <a href="<?= base_url('home/cadastrar') ?>">Cadastre-se!</a></small>
+                <small>Ainda não é membro? <a href="<?= base_url('gifty/cadastrar') ?>">Cadastre-se!</a></small>
             </div>
             <div class="col-5">
-                <small><a href="<?= base_url('home/esquecisenha') ?>">Esqueceu a senha?</a></small>
+                <small><a href="<?= base_url('gifty/esquecisenha') ?>">Esqueceu a senha?</a></small>
             </div>
         </form>
     </div>

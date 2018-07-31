@@ -18,7 +18,7 @@ class Usuarios_model extends CI_Model {
     }
 
     public function findEmail($email) {
-        $this->db->where('nomeUsuario', $email);
+        $this->db->where('email', $email);
         return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
 
@@ -28,7 +28,7 @@ class Usuarios_model extends CI_Model {
     }
 
     public function findCpf($cpf) {
-        $this->db->where('nomeUsuario', $cpf);
+        $this->db->where('cpf', $cpf);
         return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
 
