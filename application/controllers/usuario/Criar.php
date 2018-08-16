@@ -102,8 +102,8 @@ class Criar extends CI_Controller {
                     // busca categoria com interesse de maior peso
                     $this->load->model('categorias_model', 'categorias');
                     $categoria = $this->categorias->find($idCategoria)->idML;
-                    // consulta da categoria na API, limite de 4 resultados e apenas lojas oficiais
-                    $url = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=4&category=" . $categoria;
+                    // consulta da categoria na API, apenas lojas oficiais
+                    $url = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&category=" . $categoria;
                     $pagina = curl_init();
                     curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
                     curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
@@ -115,8 +115,8 @@ class Criar extends CI_Controller {
                         // busca categoria com interesse de segundo maior peso
                         $idCategoriaSeg = $interesses[1]->idCategoria;
                         $categoria2 = $this->categorias->find($idCategoriaSeg)->idML;
-                        // consulta da categoria na API, limite de 2 resultados e em lojas oficiais
-                        $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria2;
+                        // consulta da categoria na API, apenas lojas oficiais
+                        $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&category=" . $categoria2;
                         $pagina2 = curl_init();
                         curl_setopt($pagina2, CURLOPT_SSL_VERIFYPEER, false);
                         curl_setopt($pagina2, CURLOPT_RETURNTRANSFER, true);
@@ -128,8 +128,8 @@ class Criar extends CI_Controller {
                             // busca categoria com interesse de terceiro maior peso
                             $idCategoriaTer = $interesses[2]->idCategoria;
                             $categoria3 = $this->categorias->find($idCategoriaTer)->idML;
-                            // consulta da categoria na API, limite de 2 resultados e em lojas oficiais
-                            $url3 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&limit=2&category=" . $categoria3;
+                            // consulta da categoria na API, apenas lojas oficiais
+                            $url3 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&category=" . $categoria3;
                             $pagina3 = curl_init();
                             curl_setopt($pagina3, CURLOPT_SSL_VERIFYPEER, false);
                             curl_setopt($pagina3, CURLOPT_RETURNTRANSFER, true);
