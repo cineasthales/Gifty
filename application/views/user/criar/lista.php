@@ -57,7 +57,7 @@
                 </div>
             </form>
             <?php if (isset($json)) { ?>                
-                <?php foreach ($json->results as $item) { ?>
+                <?php foreach ($json as $item) { ?>
                     <form method="post" action="<?= base_url('usuario/criar/adicionar') ?>">
                         <div class="col-3" style="height: 20em;">
                             <a href="<?= $item->permalink ?>" target='_blank'>
@@ -76,47 +76,7 @@
                     </form>
                 <?php } ?>
             <?php } ?>
-            <?php if (isset($json2)) { ?>                
-                <?php foreach ($json2->results as $item) { ?>
-                    <form method="post" action="<?= base_url('usuario/criar/adicionar') ?>">
-                        <div class="col-3" style="height: 20em;">
-                            <a href="<?= $item->permalink ?>" target='_blank'>
-                                <img style="display: block; margin: 0 auto" src="<?= $item->thumbnail ?>"><br>
-                                <p><?= $item->title ?></p><br>
-                            </a>
-                            <p>R$ <?= number_format($item->price, 2, ',', '.') ?></p><br>             
-                            <input hidden type="text" id="nome" name="nome" value="<?= $item->title ?>">
-                            <input hidden type="text" id="url" name="url" value="<?= $item->permalink ?>">
-                            <input hidden type="text" id="descricao" name="descricao" value="-">
-                            <input hidden type="text" id="idCategoria" name="idCategoria" value="<?= $item->category_id ?>">
-                            <input hidden type="text" id="preco" name="preco" value="<?= $item->price ?>">
-                            <input hidden type="text" id="imagem" name="imagem" value="<?= $item->thumbnail ?>">
-                            <input type="submit" value="Adicionar"><br><br>
-                        </div>
-                    </form>
-                <?php } ?>
-            <?php } ?>
-            <?php if (isset($json3)) { ?>                
-                <?php foreach ($json3->results as $item) { ?>
-                    <form method="post" action="<?= base_url('usuario/criar/adicionar') ?>">
-                        <div class="col-3" style="height: 20em;">
-                            <a href="<?= $item->permalink ?>" target='_blank'>
-                                <img style="display: block; margin: 0 auto" src="<?= $item->thumbnail ?>"><br>
-                                <p><?= $item->title ?></p><br>
-                            </a>
-                            <p>R$ <?= number_format($item->price, 2, ',', '.') ?></p><br>             
-                            <input hidden type="text" id="nome" name="nome" value="<?= $item->title ?>">
-                            <input hidden type="text" id="url" name="url" value="<?= $item->permalink ?>">
-                            <input hidden type="text" id="descricao" name="descricao" value="-">
-                            <input hidden type="text" id="idCategoria" name="idCategoria" value="<?= $item->category_id ?>">
-                            <input hidden type="text" id="preco" name="preco" value="<?= $item->price ?>">
-                            <input hidden type="text" id="imagem" name="imagem" value="<?= $item->thumbnail ?>">
-                            <input type="submit" value="Adicionar"><br><br>
-                        </div>
-                    </form>
-                <?php } ?>
-            <?php } ?>
-            <?php if (!isset($json) && !isset($json2) && !isset($json3)) { ?>
+            <?php if (!isset($json)) { ?>
                 <div class="col-12">
                     <p class="icon-big"><i class="fas fa-tasks"></i></p><p>Por enquanto, não temos dados suficientes para recomendar itens a você.<br></p><br>
                 </div>

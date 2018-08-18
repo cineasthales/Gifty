@@ -81,9 +81,9 @@ class Criar extends CI_Controller {
         if ($this->session->logado == true) {
             if (isset($this->session->idEvento)) {
                 $this->load->model('convidados_model', 'convidados');
-                $dados = $this->input->post();
+                $entradas = $this->input->post();
                 // verifica amigos selecionados e cadastra seus convites
-                foreach ($dados as $id => $dado) {
+                foreach ($entradas as $id => $dado) {
                     if ($dado) {
                         $dadosConvite['comparecera'] = 0;
                         $dadosConvite['compareceu'] = 0;
@@ -97,60 +97,59 @@ class Criar extends CI_Controller {
                 $this->load->model('interesses_model', 'interesses');
                 $interesses = $this->interesses->selectUsuario($this->session->id);
                 if (count($interesses) > 0) {
-                    // ids dos interesses de maior peso                    
+                    // id do interesse de maior peso                    
                     $idCategoria = $interesses[0]->idCategoria;
                     // busca categoria com interesse de maior peso
                     $this->load->model('categorias_model', 'categorias');
                     $categoria = $this->categorias->find($idCategoria)->idML;
-                    // consulta da categoria na API, apenas lojas oficiais
-                    $url = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&category=" . $categoria;
+                    // consulta da categoria na API
+                    $url = "https://api.mercadolibre.com/sites/MLB/search?&category=" . $categoria;
                     $pagina = curl_init();
                     curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
                     curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
                     curl_setopt($pagina, CURLOPT_URL, $url);
                     $resposta = curl_exec($pagina);
                     curl_close($pagina);
-                    $dados['json'] = json_decode($resposta);
-                    if (count($interesses) > 1) {
-                        // busca categoria com interesse de segundo maior peso
-                        $idCategoriaSeg = $interesses[1]->idCategoria;
-                        $categoria2 = $this->categorias->find($idCategoriaSeg)->idML;
-                        // consulta da categoria na API, apenas lojas oficiais
-                        $url2 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&category=" . $categoria2;
-                        $pagina2 = curl_init();
-                        curl_setopt($pagina2, CURLOPT_SSL_VERIFYPEER, false);
-                        curl_setopt($pagina2, CURLOPT_RETURNTRANSFER, true);
-                        curl_setopt($pagina2, CURLOPT_URL, $url2);
-                        $resposta2 = curl_exec($pagina2);
-                        curl_close($pagina2);
-                        $dados['json2'] = json_decode($resposta2);
-                        if (count($interesses) > 2) {
-                            // busca categoria com interesse de terceiro maior peso
-                            $idCategoriaTer = $interesses[2]->idCategoria;
-                            $categoria3 = $this->categorias->find($idCategoriaTer)->idML;
-                            // consulta da categoria na API, apenas lojas oficiais
-                            $url3 = "https://api.mercadolibre.com/sites/MLB/search?&official_store_id=all&category=" . $categoria3;
-                            $pagina3 = curl_init();
-                            curl_setopt($pagina3, CURLOPT_SSL_VERIFYPEER, false);
-                            curl_setopt($pagina3, CURLOPT_RETURNTRANSFER, true);
-                            curl_setopt($pagina3, CURLOPT_URL, $url3);
-                            $resposta3 = curl_exec($pagina3);
-                            curl_close($pagina3);
-                            $dados['json3'] = json_decode($resposta3);
-                        } else {
-                            $dados['json3'] = NULL;
+                    $json = json_decode($resposta);
+                    // recupera todos os itens da lista do evento
+                    $this->load->model('listas_model', 'listas');
+                    $itens = $this->listas->selectEvento($this->session->idEvento);
+                    if (count($itens) > 0) {
+                        // flag
+                        $adiciona = true;
+                        // contador de itens
+                        $qnt = 0;
+                        // inicializa porcentagem
+                        $percent = 0;
+                        // cria vetor de resultados
+                        $dados['json'] = array();
+                        // para cada resultado do json, percorre cada item ja na lista
+                        foreach ($json->results as $produto) {
+                            foreach ($itens as $item) {
+                                // verifica similaridade entre o titulo do item e do resultado; se parecidos, muda a flag
+                                similar_text($produto->title, $item->nome, $percent);
+                                if ($percent > 29.99) {
+                                    $adiciona = false;
+                                    break;
+                                }
+                            }
+                            // se nao encontrou itens parecidos na lista, adiciona nos itens sugeridos
+                            if ($adiciona && $qnt < 8) {
+                                array_push($dados['json'], $produto);
+                                ++$qnt;
+                            }
+                            // reinicia flag
+                            $adiciona = true;
                         }
+                        // tranforma vetor em objeto
+                        $dados['json'] = (object) $dados['json'];
                     } else {
-                        $dados['json2'] = NULL;
-                        $dados['json3'] = NULL;
+                        $dados['json'] = NULL;
                     }
                 } else {
                     $dados['json'] = NULL;
-                    $dados['json2'] = NULL;
-                    $dados['json3'] = NULL;
                 }
                 // carrega lista do evento
-                $this->load->model('listas_model', 'listas');
                 $dados['itens'] = $this->listas->selectEvento($this->session->idEvento);
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');
