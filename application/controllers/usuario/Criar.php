@@ -77,6 +77,36 @@ class Criar extends CI_Controller {
         }
     }
 
+    public function buscaAPI($idCategoria) {
+        // busca categoria do interesse
+        $this->load->model('categorias_model', 'categorias');
+        $categoria = $this->categorias->find($idCategoria)->idML;
+        // consulta da categoria na API
+        $url = "https://api.mercadolibre.com/sites/MLB/search?&category=" . $categoria;
+        $pagina = curl_init();
+        curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($pagina, CURLOPT_URL, $url);
+        $resposta = curl_exec($pagina);
+        curl_close($pagina);
+        return json_decode($resposta);
+    }
+
+    public function buscaLimiteAPI($idCategoria, $limite) {
+        // busca categoria do interesse
+        $this->load->model('categorias_model', 'categorias');
+        $categoria = $this->categorias->find($idCategoria)->idML;
+        // consulta da categoria na API com limite de resultados
+        $url = "https://api.mercadolibre.com/sites/MLB/search?&limit=" . $limite . "&category=" . $categoria;
+        $pagina = curl_init();
+        curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($pagina, CURLOPT_URL, $url);
+        $resposta = curl_exec($pagina);
+        curl_close($pagina);
+        return json_decode($resposta);
+    }
+
     public function lista() {
         if ($this->session->logado == true) {
             if (isset($this->session->idEvento)) {
@@ -96,33 +126,23 @@ class Criar extends CI_Controller {
                 // busca interesses do usuário
                 $this->load->model('interesses_model', 'interesses');
                 $interesses = $this->interesses->selectUsuario($this->session->id);
+                // se tiver pelo menos um interesse, recebera recomendacoes
                 if (count($interesses) > 0) {
-                    // id do interesse de maior peso                    
-                    $idCategoria = $interesses[0]->idCategoria;
-                    // busca categoria com interesse de maior peso
-                    $this->load->model('categorias_model', 'categorias');
-                    $categoria = $this->categorias->find($idCategoria)->idML;
-                    // consulta da categoria na API
-                    $url = "https://api.mercadolibre.com/sites/MLB/search?&category=" . $categoria;
-                    $pagina = curl_init();
-                    curl_setopt($pagina, CURLOPT_SSL_VERIFYPEER, false);
-                    curl_setopt($pagina, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($pagina, CURLOPT_URL, $url);
-                    $resposta = curl_exec($pagina);
-                    curl_close($pagina);
-                    $json = json_decode($resposta);
                     // recupera todos os itens da lista do evento
                     $this->load->model('listas_model', 'listas');
                     $itens = $this->listas->selectEvento($this->session->idEvento);
+                    // cria vetor de resultados
+                    $dados['json'] = array();
+                    // se tiver itens na lista, deve verificar similaridade
                     if (count($itens) > 0) {
-                        // flag
+                        // busca na API itens na categoria de maior peso
+                        $json = $this->buscaAPI($interesses[0]->idCategoria);
+                        // cria flag
                         $adiciona = true;
-                        // contador de itens
+                        // zera contador de itens
                         $qnt = 0;
                         // inicializa porcentagem
                         $percent = 0;
-                        // cria vetor de resultados
-                        $dados['json'] = array();
                         // para cada resultado do json, percorre cada item ja na lista
                         foreach ($json->results as $produto) {
                             foreach ($itens as $item) {
@@ -134,18 +154,90 @@ class Criar extends CI_Controller {
                                 }
                             }
                             // se nao encontrou itens parecidos na lista, adiciona nos itens sugeridos
-                            if ($adiciona && $qnt < 8) {
+                            if ($adiciona && $qnt < 4) {
                                 array_push($dados['json'], $produto);
                                 ++$qnt;
                             }
                             // reinicia flag
                             $adiciona = true;
                         }
-                        // tranforma vetor em objeto
-                        $dados['json'] = (object) $dados['json'];
+                        // se tiver pelo menos dois interesses
+                        if (count($interesses) > 1) {
+                            // busca na API itens na categoria de segundo maior peso
+                            $json = $this->buscaAPI($interesses[1]->idCategoria);
+                            // contador de itens
+                            $qnt = 0;
+                            // para cada resultado do json, percorre cada item ja na lista
+                            foreach ($json->results as $produto) {
+                                foreach ($itens as $item) {
+                                    // verifica similaridade entre o titulo do item e do resultado; se parecidos, muda a flag
+                                    similar_text($produto->title, $item->nome, $percent);
+                                    if ($percent > 29.99) {
+                                        $adiciona = false;
+                                        break;
+                                    }
+                                }
+                                // se nao encontrou itens parecidos na lista, adiciona nos itens sugeridos
+                                if ($adiciona && $qnt < 2) {
+                                    array_push($dados['json'], $produto);
+                                    ++$qnt;
+                                }
+                                // reinicia flag
+                                $adiciona = true;
+                            }
+                            // se tiver pelo menos três interesses
+                            if (count($interesses) > 2) {
+                                // busca na API itens na categoria de terceiro maior peso
+                                $json = $this->buscaAPI($interesses[2]->idCategoria);
+                                // contador de itens
+                                $qnt = 0;
+                                // para cada resultado do json, percorre cada item ja na lista
+                                foreach ($json->results as $produto) {
+                                    foreach ($itens as $item) {
+                                        // verifica similaridade entre o titulo do item e do resultado; se parecidos, muda a flag
+                                        similar_text($produto->title, $item->nome, $percent);
+                                        if ($percent > 29.99) {
+                                            $adiciona = false;
+                                            break;
+                                        }
+                                    }
+                                    // se nao encontrou itens parecidos na lista, adiciona nos itens sugeridos
+                                    if ($adiciona && $qnt < 2) {
+                                        array_push($dados['json'], $produto);
+                                        ++$qnt;
+                                    }
+                                    // reinicia flag
+                                    $adiciona = true;
+                                }
+                            }
+                        }
+                        // se nao tiver itens na lista, nao precisa verificar similaridades
                     } else {
-                        $dados['json'] = NULL;
+                        // busca na API itens na categoria de maior peso
+                        $json = $this->buscaLimiteAPI($interesses[0]->idCategoria, 4);
+                        foreach ($json->results as $produto) {
+                            array_push($dados['json'], $produto);
+                        }
+                        // se tiver pelo menos dois interesses
+                        if (count($interesses) > 1) {
+                            // busca na API itens na categoria de segundo maior peso
+                            $json = $this->buscaLimiteAPI($interesses[1]->idCategoria, 2);
+                            foreach ($json->results as $produto) {
+                                array_push($dados['json'], $produto);
+                            }
+                            if (count($interesses) > 2) {
+                                // busca na API itens na categoria de terceiro maior peso
+                                $json = $this->buscaLimiteAPI($interesses[2]->idCategoria, 2);
+                                foreach ($json->results as $produto) {
+                                    array_push($dados['json'], $produto);
+                                }
+                            }
+                        }
                     }
+                    // randomiza a ordem dos elementos no vetor
+                    shuffle($dados['json']);
+                    // tranforma vetor em objeto
+                    $dados['json'] = (object) $dados['json'];
                 } else {
                     $dados['json'] = NULL;
                 }
