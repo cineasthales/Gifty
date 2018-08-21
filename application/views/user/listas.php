@@ -12,16 +12,19 @@
             </div>            
             <?php if (count($eventos) > 0) { ?> 
                 <div class="col-12">
-                    <hr><br>
+                    <hr>
                 </div>
                 <?php foreach ($eventos as $evento) { ?>
+                    <div class="col-12">
+                        <br>
+                    </div>
                     <div class="col-9">
                         <h3><strong><?= $evento->titulo ?> - <i class="fas fa-calendar-alt"></i></strong>
                             <?= date_format(date_create($evento->data), 'd/m/Y') ?> - <i class="fas fa-clock"></i>
                             <?= substr($evento->hora, 0, 5) ?></h3>
                     </div>
                     <div class="col-3">
-                        <button class="btListas"><a href="#"><i class="fas fa-info-circle"></i> Ver Detalhes</a></button><br>
+                        <button class="btListas"><a href="<?= base_url('usuario/listas/detalhes/') . $evento->id ?>"><i class="fas fa-info-circle"></i> Ver Detalhes</a></button><br>
                     </div>
                     <div class="col-3">
                         <button class="btListas"><a href="#"><i class="fas fa-gift"></i> Atualizar Lista</a></button><br>
@@ -49,9 +52,12 @@
             </div>            
             <?php if (count($convidados) > 0) { ?>
                 <div class="col-12">
-                    <hr><br>
+                    <hr>
                 </div>
                 <?php foreach ($convidados as $convidado) { ?>
+                    <div class="col-12">
+                        <br>
+                    </div>
                     <div class="col-6">
                         <h3><strong><?= $convidado->evento ?> - <i class="fas fa-calendar-alt"></i></strong>
                             <?= date_format(date_create($convidado->data), 'd/m/Y') ?> - <i class="fas fa-clock"></i>
