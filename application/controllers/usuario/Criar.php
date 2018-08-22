@@ -157,6 +157,9 @@ class Criar extends CI_Controller {
                             if ($adiciona && $qnt < 4) {
                                 array_push($dados['json'], $produto);
                                 ++$qnt;
+                                if ($qnt == 4) {
+                                    break;
+                                }
                             }
                             // reinicia flag
                             $adiciona = true;
@@ -181,6 +184,9 @@ class Criar extends CI_Controller {
                                 if ($adiciona && $qnt < 2) {
                                     array_push($dados['json'], $produto);
                                     ++$qnt;
+                                    if ($qnt == 2) {
+                                        break;
+                                    }
                                 }
                                 // reinicia flag
                                 $adiciona = true;
@@ -205,6 +211,9 @@ class Criar extends CI_Controller {
                                     if ($adiciona && $qnt < 2) {
                                         array_push($dados['json'], $produto);
                                         ++$qnt;
+                                        if ($qnt == 2) {
+                                            break;
+                                        }
                                     }
                                     // reinicia flag
                                     $adiciona = true;
