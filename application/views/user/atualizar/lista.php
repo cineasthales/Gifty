@@ -25,10 +25,10 @@
                                 <td>
                                     <?php if (count($itens) > 1) { ?>
                                         <?php if ($i > 0) { ?>
-                                            <a href="<?= base_url('usuario/criar/subir/') . $itens[$i]->idItem ?>"><i class="fas fa-chevron-circle-up"></i></a>
+                                            <a href="<?= base_url('usuario/atualizar/subir/') . $itens[$i]->idItem . '/' . $idEvento ?>"><i class="fas fa-chevron-circle-up"></i></a>
                                         <?php } ?>                                            
                                         <?php if ($i < count($itens) - 1) { ?>
-                                            <a href="<?= base_url('usuario/criar/descer/') . $itens[$i]->idItem ?>"><i class="fas fa-chevron-circle-down"></i></i></a>
+                                            <a href="<?= base_url('usuario/atualizar/descer/') . $itens[$i]->idItem . '/' . $idEvento ?>"><i class="fas fa-chevron-circle-down"></i></i></a>
                                         <?php } ?>
                                     <?php } ?>                                    
                                 </td>
@@ -43,7 +43,7 @@
             <div class="col-6">
                 <h2>Itens Recomendados Para Você</h2><br>
             </div>
-            <form method="post" action="<?= base_url('usuario/criar/busca') ?>">
+            <form method="post" action="<?= base_url('usuario/atualizar/busca/' . $idEvento) ?>">
                 <div class="col-5">                    
                     <input type="text" id="busca" name="busca" pattern="[A-Za-z0-9]{,100}" 
                            maxlength="100" required placeholder="Buscar itens">
@@ -54,7 +54,7 @@
             </form>
             <?php if (isset($json)) { ?>                
                 <?php foreach ($json as $item) { ?>
-                    <form method="post" action="<?= base_url('usuario/criar/adicionar') ?>">
+                    <form method="post" action="<?= base_url('usuario/atualizar/adicionar/' . $idEvento) ?>">
                         <div class="col-3" style="height: 20em;">
                             <a href="<?= $item->permalink ?>" target='_blank'>
                                 <img style="display: block; margin: 0 auto" src="<?= $item->thumbnail ?>"><br>

@@ -8,7 +8,7 @@
                 <h2>Evento</h2><br>            
             </div>
             <div class="col-3">
-                <button class="btListas"><a href="#"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a></button><br>            
+                <button class="btListas"><a href="<?= base_url('usuario/atualizar/lista/') . $evento->id ?>"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a></button><br>            
             </div>
             <div class="col-12">
                 <h3><strong><?= $evento->titulo ?></strong></h3>
@@ -34,7 +34,7 @@
                 <br><br><h2>Lista de Presentes</h2><br>            
             </div>
             <div class="col-3">
-                <br><br><button class="btListas"><a href="#"><i class="fas fa-gift"></i> Atualizar Lista</a></button><br>           
+                <br><br><button class="btListas"><a href="<?= base_url('usuario/atualizar/lista/') . $evento->id ?>"><i class="fas fa-gift"></i> Atualizar Lista</a></button><br>           
             </div>
             <div class="col-12">
                 <ul>
@@ -47,7 +47,7 @@
                 <br><br><h2>Convidados</h2><br>            
             </div>
             <div class="col-3">
-                <br><br><button class="btListas"><a href="#"><i class="fas fa-id-card"></i> Atualizar Convites</a></button>            
+                <br><br><button class="btListas"><a href="<?= base_url('usuario/atualizar/convidados/') . $evento->id ?>"><i class="fas fa-id-card"></i> Atualizar Convites</a></button>            
             </div>
             <div class="col-12">
                 <ul>

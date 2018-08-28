@@ -8,74 +8,78 @@
             <form method="post" action="<?= base_url('usuario/atualizar/convidados/' . $idEvento) ?>">
                 <div class="col-7">
                     <label for="titulo">Título</label><br>
-                    <input type="text" id="titulo" name="titulo" pattern="[A-Za-z]{,100}" 
+                    <input type="text" id="titulo" name="titulo" pattern="[A-Za-z]{,100}" value="<?= $evento->titulo ?>"
                            maxlength="100" required><br><br>
                 </div>                
                 <div class="col-3">
                     <label for="data">Data</label><br>
-                    <input type="date" id="data" name="data" required><br><br>
+                    <input type="date" id="data" name="data" required value="<?= $evento->data ?>"><br><br>
                 </div>
                 <div class="col-2">
                     <label for="hora">Hora</label><br>
-                    <input type="time" id="hora" name="hora" required><br><br>
+                    <input type="time" id="hora" name="hora" required value="<?= $evento->hora ?>"><br><br>
                 </div>
                 <div class="col-5">
                     <label for="idTipoEvento">Tipo de Evento</label><br>
                     <select id="idTipoEvento" name="idTipoEvento">
                         <?php foreach ($tiposeventos as $tipoevento) { ?>
-                            <option value="<?= $tipoevento->id ?>"><?= $tipoevento->descricao ?></option>
+                            <?php if ($evento->idTipoEvento == $tipoevento->id) { ?>
+                                <option selected value="<?= $tipoevento->id ?>"><?= $tipoevento->descricao ?></option>
+                            <?php } else { ?>
+                                <option value="<?= $tipoevento->id ?>"><?= $tipoevento->descricao ?></option>
+                            <?php } ?>
                         <?php } ?>
                     </select><br><br>
                 </div>
                 <div class="col-4">
                     <label for="maxItens">Máximo de Itens Por Convidado</label><br>
-                    <input type="text" id="maxItens" name="maxItens" pattern="[0-9]{,2}" 
+                    <input type="text" id="maxItens" name="maxItens" pattern="[0-9]{,2}" value="<?= $evento->maxItens ?>"
                            maxlength="2" required><br><br>
                 </div>
                 <div class="col-3">
                     <label for="dataLimite">Data Limite de Confirmação</label><br>
-                    <input type="date" id="dataLimite" name="dataLimite" required><br><br>
+                    <input type="date" id="dataLimite" name="dataLimite" required value="<?= $evento->dataLimite ?>"><br><br>
                 </div>
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>
-                    <textarea id="descricao" name="descricao" pattern="[A-Za-z0-9]" rows="5" required></textarea><br><br>
+                    <textarea id="descricao" name="descricao" pattern="[A-Za-z0-9]" rows="5" required value="<?= $evento->descricao ?>"></textarea><br><br>
                 </div>
                 <div class="col-8">
                     <label for="local">Nome do Local</label><br>
-                    <input type="text" id="local" name="local" pattern="[A-Za-z0-9]{,100}" 
+                    <input type="text" id="local" name="local" pattern="[A-Za-z0-9]{,100}" value="<?= $evento->local ?>" 
                            maxlength="100" required><br><br>
                 </div>
                 <div class="col-4">
                     <label for="CEP">CEP</label>
-                    <input type="text" id="cep" name="cep" required title="Apenas os 8 números."
+                    <input type="text" id="cep" name="cep" required title="Apenas os 8 números." value="<?= $evento->cep ?>"
                            title="Apenas números." pattern="[0-9]{8}" maxlength="8"
                            placeholder="99999999"><br><br>
                 </div>
                 <div class="col-6">
                     <label for="logradouro">Logradouro</label><br>
-                    <input type="text" id="logradouro" name="logradouro" readonly><br><br>
+                    <input type="text" id="logradouro" name="logradouro" readonly value="<?= $evento->logradouro ?>"><br><br>
                 </div>
                 <div class="col-2">
                     <label for="numero">Número</label><br>
-                    <input type="text" id="numero" name="numero" required
+                    <input type="text" id="numero" name="numero" required value="<?= $evento->numero ?>"
                            pattern="[0-9]{,12}" maxlength="12"><br><br>
                 </div>
                 <div class="col-4">
                     <label for="complemento">Complemento</label><br>
-                    <input type="text" id="complemento" name="complemento"
+                    <input type="text" id="complemento" name="complemento" value="<?= $evento->complemento ?>"
                            pattern="[A-Za-z0-9]{,100}" maxlength="100"><br><br>
                 </div>
                 <div class="col-5">
                     <label for="bairro">Bairro</label><br>
-                    <input type="text" id="bairro" name="bairro" readonly><br><br><br>
+                    <input type="text" id="bairro" name="bairro" readonly value="<?= $evento->bairro ?>"><br><br><br>
                 </div>
                 <div class="col-5">
                     <label for="cidade">Cidade</label><br>
-                    <input type="text" id="cidade" name="cidade" readonly><br><br><br>
+                    <input type="text" id="cidade" name="cidade" readonly value="<?= $evento->cidade ?>"><br><br><br>
                 </div>
                 <div class="col-2">
                     <label for="estado">Estado</label><br>
-                    <input type="text" id="estado" name="estado" readonly><br><br><br>
+                    <input type="text" id="estado" name="estado" readonly value="<?= $evento->estado ?>"><br><br><br>
                 </div>                
                 <div class="col-12">
                     <br>

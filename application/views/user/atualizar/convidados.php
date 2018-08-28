@@ -4,6 +4,21 @@
             <div class="col-12">
                 <h1>Atualizar Convidados</h1>
             </div>
+            
+            
+            
+            
+            <div class="col-12">
+                <h2>Atuais Convidados</h2>
+            </div>
+            <div class="col-12">
+                <h2>Convites Desfeitos</h2>
+            </div>
+            <div class="col-12">
+                <h2>Outros Amigos</h2>
+            </div>
+            
+            
             <form method="post" action="<?= base_url('usuario/atualizar/lista/' . $idEvento) ?>">
                 <?php if (count($amizades) > 0) { ?>
                     <?php foreach ($amizades as $amizade) { ?>
