@@ -31,19 +31,6 @@
                 <p><strong>Data Limite de Confirmação</strong>: <?= date_format(date_create($evento->dataLimite), 'd/m/Y') ?></p>        
             </div>
             <div class="col-9">
-                <br><br><h2>Convidados</h2><br>            
-            </div>
-            <div class="col-3">
-                <br><br><button class="btListas"><a href="#"><i class="fas fa-id-card"></i> Atualizar Convites</a></button>            
-            </div>
-            <div class="col-12">
-                <ul>
-                    <?php foreach ($convidados as $convidado) { ?>
-                        <li><strong><?= $convidado->nome ?> <?= $convidado->snome ?></strong></li>
-                    <?php } ?>
-                </ul> 
-            </div>
-            <div class="col-9">
                 <br><br><h2>Lista de Presentes</h2><br>            
             </div>
             <div class="col-3">
@@ -53,6 +40,19 @@
                 <ul>
                     <?php foreach ($listas as $lista) { ?>
                         <li><strong><?= $lista->nome ?></strong></li>
+                    <?php } ?>
+                </ul> 
+            </div>
+            <div class="col-9">
+                <br><br><h2>Convidados</h2><br>            
+            </div>
+            <div class="col-3">
+                <br><br><button class="btListas"><a href="#"><i class="fas fa-id-card"></i> Atualizar Convites</a></button>            
+            </div>
+            <div class="col-12">
+                <ul>
+                    <?php foreach ($convidados as $convidado) { ?>
+                        <li><strong><?= $convidado->nome ?> <?= $convidado->snome ?></strong></li>
                     <?php } ?>
                 </ul> 
             </div>
