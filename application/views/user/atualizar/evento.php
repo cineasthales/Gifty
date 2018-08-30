@@ -5,7 +5,7 @@
             <div class="col-12">
                 <h1>Atualizar Evento</h1>
             </div>
-            <form method="post" action="<?= base_url('usuario/atualizar/convidados/' . $idEvento) ?>">
+            <form method="post" action="<?= base_url('usuario/atualizar/atualiza_evento/' . $evento->id . '/' . $evento->idEndereco) ?>">
                 <div class="col-7">
                     <label for="titulo">Título</label><br>
                     <input type="text" id="titulo" name="titulo" pattern="[A-Za-z]{,100}" value="<?= $evento->titulo ?>"
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>
-                    <textarea id="descricao" name="descricao" pattern="[A-Za-z0-9]" rows="5" required value="<?= $evento->descricao ?>"></textarea><br><br>
+                    <textarea id="descricao" name="descricao" pattern="[A-Za-z0-9]" rows="5" required><?= $evento->descricao ?></textarea><br><br>
                 </div>
                 <div class="col-8">
                     <label for="local">Nome do Local</label><br>

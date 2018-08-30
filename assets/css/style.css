@@ -310,6 +310,20 @@ section input[type="search"], #filtro {
     font-size: 1em;
 }
 
+.btBloq, .btExc {
+    display: inline-block;
+    width: 45%;
+    margin: 0;
+}
+
+.btBloq a, .btExc a {
+    font-size: 1em;
+}
+
+.btExc {
+    float: right;
+}
+
 #btAd a, #btAd a:hover, #btAd:active {
     border: 0;
     padding: 0;

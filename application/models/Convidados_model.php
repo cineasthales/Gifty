@@ -20,6 +20,26 @@ class Convidados_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function selectEventoNaoBloq($idEvento) {
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome');
+        $this->db->from('convidados c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->where('c.idEvento', $idEvento);
+        $this->db->where('c.bloqueado', 0);
+        $this->db->order_by('u.nome, u.sobrenome');
+        return $this->db->get()->result(); // retorna vetor
+    }
+
+    public function selectEventoBloq($idEvento) {
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome');
+        $this->db->from('convidados c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->where('c.idEvento', $idEvento);
+        $this->db->where('c.bloqueado', 1);
+        $this->db->order_by('u.nome, u.sobrenome');
+        return $this->db->get()->result(); // retorna vetor
+    }
+
     public function find($idUsuario, $idEvento) {
         $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, e.titulo AS evento, e.data AS data');
         $this->db->from('convidados c');
@@ -31,7 +51,7 @@ class Convidados_model extends CI_Model {
     }
 
     public function findIdUsuario($idUsuario) {
-        $this->db->select('c.*, e.titulo AS evento, e.data AS data, e.hora AS hora');
+        $this->db->select('c.*, e.titulo AS evento, e.data AS data, e.hora AS hora, e.idUsuario AS idAnf');
         $this->db->from('convidados c');
         $this->db->join('eventos e', 'c.idEvento = e.id', 'inner');
         $this->db->like('c.idUsuario', $idUsuario);

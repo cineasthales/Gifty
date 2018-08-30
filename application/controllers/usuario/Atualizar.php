@@ -17,7 +17,7 @@ class Atualizar extends CI_Controller {
             $this->load->model('tiposeventos_model', 'tiposeventos');
             $dados['tiposeventos'] = $this->tiposeventos->select();
             $this->load->model('eventos_model', 'eventos');
-            $dados['evento'] = $this->eventos->find($idEvento);
+            $dados['evento'] = $this->eventos->selectEvento($idEvento);
             $this->load->view('include/head');
             $this->load->view('include/header_user');
             $this->load->view('user/atualizar/evento', $dados);
@@ -61,74 +61,85 @@ class Atualizar extends CI_Controller {
         }
     }
 
-    public function convidados($idEvento) {
-        if ($this->session->logado == true) {
-            // carrega atuais convidados
-            $this->load->model('convidados_model', 'convidados');
-            $dados['convidados'] = $this->convidados->findEventoNaoBloq($idEvento);
-            // carrega convites desfeitos
-            $dados['convidadosBloq'] = $this->convidados->findEventoBloq($idEvento);
-            // carrega amigos que ainda não foram convidados
+//    public function convidados($idEvento) {
+//        if ($this->session->logado == true) {
+//            // carrega atuais convidados
+//            $this->load->model('convidados_model', 'convidados');
+//            $dados['convidados'] = $this->convidados->selectEventoNaoBloq($idEvento);
+//            // carrega convites desfeitos
+//            $dados['convidadosBloq'] = $this->convidados->selectEventoBloq($idEvento);
+//            // carrega amigos que ainda não foram convidados
 //            $this->load->model('amizades_model', 'amizades');
 //            $amigos = $this->amizades->findAll($this->session->id);
+//            $convidados = $this->convidados->selectEvento($idEvento);
+//            $adiciona = true;
 //            foreach ($amigos as $amigo) {
-//                foreach ($dados['convidados'] as $convidado) {
-//                    if ($amigo->idUsuario === $) {
-//                        
-//                    }                    
+//                foreach ($convidados as $convidado) {
+//                    if (($amigo->idUsuario1 == $convidado->idUsuario) || 
+//                            ($amigo->idUsuario2 == $convidado->idUsuario)) {
+//                        $adiciona = false;
+//                        break;
+//                    }
 //                }
-//            }          
-            $this->load->view('include/head');
-            $this->load->view('include/header_user');
-            $this->load->view('user/atualizar/convidados', $dados);
-            $this->load->view('include/footer');
-        } else {
-            redirect();
-        }
-    }
-
-    public function atualiza_convidados($idEvento) {
-        if ($this->session->logado == true) {
-            $this->load->model('convidados_model', 'convidados');
-            $entradas = $this->input->post();
-            // verifica novos amigos selecionados e cadastra seus convites
-            foreach ($entradas as $id => $dado) {
-                if ($dado) {
-                    $dadosConvite['comparecera'] = 0;
-                    $dadosConvite['compareceu'] = 0;
-                    $dadosConvite['bloqueado'] = 0;
-                    $dadosConvite['idEvento'] = $idEvento;
-                    $dadosConvite['idUsuario'] = $id;
-                    $this->convidados->insert($dadosConvite);
-                }
-            }
-            redirect(base_url('usuario/listas'));
-        } else {
-            redirect();
-        }
-    }
-
-    public function bloqueia_convite($idUsuario, $idEvento) {
-        if ($this->session->logado == true) {
-            $dadosConvite['bloqueado'] = 1;
-            $this->load->model('convidados_model', 'convidados');
-            $this->convidados->update($dadosConvite, $idUsuario, $idEvento);
-            redirect(base_url('usuario/atualizar/convidados/' . $idEvento));
-        } else {
-            redirect();
-        }
-    }
-
-    public function desbloqueia_convite($idUsuario, $idEvento) {
-        if ($this->session->logado == true) {
-            $dadosConvite['bloqueado'] = 0;
-            $this->load->model('convidados_model', 'convidados');
-            $this->convidados->update($dadosConvite, $idUsuario, $idEvento);
-            redirect(base_url('usuario/atualizar/convidados/' . $idEvento));
-        } else {
-            redirect();
-        }
-    }
+//                // se nao encontrou itens parecidos na lista, adiciona nos itens sugeridos
+//                if ($adiciona) {
+//                    array_push($dados['outros'], $amigo);
+//                }
+//                // reinicia flag
+//                $adiciona = true;
+//            }
+//            $dados['outros'] = (object) $dados['outros'];
+//            $this->load->view('include/head');
+//            $this->load->view('include/header_user');
+//            $this->load->view('user/atualizar/convidados', $dados);
+//            $this->load->view('include/footer');
+//        } else {
+//            redirect();
+//        }
+//    }
+//
+//    public function atualiza_convidados($idEvento) {
+//        if ($this->session->logado == true) {
+//            $this->load->model('convidados_model', 'convidados');
+//            $entradas = $this->input->post();
+//            // verifica novos amigos selecionados e cadastra seus convites
+//            foreach ($entradas as $id => $dado) {
+//                if ($dado) {
+//                    $dadosConvite['comparecera'] = 0;
+//                    $dadosConvite['compareceu'] = 0;
+//                    $dadosConvite['bloqueado'] = 0;
+//                    $dadosConvite['idEvento'] = $idEvento;
+//                    $dadosConvite['idUsuario'] = $id;
+//                    $this->convidados->insert($dadosConvite);
+//                }
+//            }
+//            redirect(base_url('usuario/listas'));
+//        } else {
+//            redirect();
+//        }
+//    }
+//
+//    public function bloqueia_convite($idUsuario, $idEvento) {
+//        if ($this->session->logado == true) {
+//            $dadosConvite['bloqueado'] = 1;
+//            $this->load->model('convidados_model', 'convidados');
+//            $this->convidados->update($dadosConvite, $idUsuario, $idEvento);
+//            redirect(base_url('usuario/atualizar/convidados/' . $idEvento));
+//        } else {
+//            redirect();
+//        }
+//    }
+//
+//    public function desbloqueia_convite($idUsuario, $idEvento) {
+//        if ($this->session->logado == true) {
+//            $dadosConvite['bloqueado'] = 0;
+//            $this->load->model('convidados_model', 'convidados');
+//            $this->convidados->update($dadosConvite, $idUsuario, $idEvento);
+//            redirect(base_url('usuario/atualizar/convidados/' . $idEvento));
+//        } else {
+//            redirect();
+//        }
+//    }
 
     public function buscaAPI($idCategoria) {
         // busca categoria do interesse
@@ -284,7 +295,7 @@ class Atualizar extends CI_Controller {
                 }
                 // randomiza a ordem dos elementos no vetor
                 shuffle($dados['json']);
-                // tranforma vetor em objeto
+                // transforma vetor em objeto
                 $dados['json'] = (object) $dados['json'];
             } else {
                 $dados['json'] = NULL;
@@ -401,7 +412,7 @@ class Atualizar extends CI_Controller {
             $troca->prioridade = $antiga;
             $this->listas->update($item, $idEvento, $item->idItem);
             $this->listas->update($troca, $idEvento, $troca->idItem);
-            redirect(base_url('usuario/atualizat/lista/' . $idEvento));
+            redirect(base_url('usuario/atualizar/lista/' . $idEvento));
         } else {
             redirect();
         }
@@ -418,7 +429,7 @@ class Atualizar extends CI_Controller {
             $troca->prioridade = $antiga;
             $this->listas->update($item, $idEvento, $item->idItem);
             $this->listas->update($troca, $idEvento, $troca->idItem);
-            redirect(base_url('usuario/criar/lista/' . $idEvento));
+            redirect(base_url('usuario/atualizar/lista/' . $idEvento));
         } else {
             redirect();
         }

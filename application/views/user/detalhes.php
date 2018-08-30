@@ -16,16 +16,16 @@
                 <p><i class="fas fa-calendar-alt"></i> <?= date_format(date_create($evento->data), 'd/m/Y') ?>
                     - <i class="fas fa-clock"></i> <?= substr($evento->hora, 0, 5) ?>
                     - <i class="fas fa-map-marker-alt"></i> <?= $evento->local ?><br>
-                    <?= $evento->logradouro ?>, <?= $evento->numero ?>
+                    <br><?= $evento->logradouro ?>, <?= $evento->numero ?>
                     <?php if ($evento->complemento != "") { ?>
                         - <?= $evento->complemento ?>
                     <?php } ?>
-                    - <?= $evento->bairro ?> - <?= $evento->numero ?>
+                    - <?= $evento->bairro ?>
                     - <?=
                     substr($evento->cep, 0, 2) . '.' . substr($evento->cep, 2, 3) . '-'
                     . substr($evento->cep, 5, 3)
                     ?>
-                    - <?= $evento->cidade ?>/<?= $evento->estado ?><br><br></p>
+                    - <?= $evento->cidade ?> / <?= $evento->estado ?><br><br></p>
                 <p><?= $evento->descricao ?><br><br></p>
                 <p><strong>Máximo de Itens por Convidados</strong>: <?= $evento->maxItens ?></p>
                 <p><strong>Data Limite de Confirmação</strong>: <?= date_format(date_create($evento->dataLimite), 'd/m/Y') ?></p>        
@@ -47,7 +47,7 @@
                 <br><br><h2>Convidados</h2><br>            
             </div>
             <div class="col-3">
-                <br><br><button class="btListas"><a href="<?= base_url('usuario/atualizar/convidados/') . $evento->id ?>"><i class="fas fa-id-card"></i> Atualizar Convites</a></button>            
+                <br><br><button class="btListas"><a href="#"><i class="fas fa-id-card"></i> Atualizar Convites</a></button>            
             </div>
             <div class="col-12">
                 <ul>

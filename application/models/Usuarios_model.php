@@ -12,6 +12,14 @@ class Usuarios_model extends CI_Model {
         return $this->db->get('usuarios', 1)->row(); // retorna registro obtido        
     }
 
+    public function findEndereco($idUsuario) {
+        $this->db->select('u.*, e.cidade AS cidade, e.estado AS estado');
+        $this->db->from('usuarios u');
+        $this->db->join('enderecos e', 'u.idEndereco = e.id', 'inner');     
+        $this->db->where('u.id', $idUsuario);
+        return $this->db->get()->row(); // retorna registro obtido
+    }
+
     public function find($id) {
         $this->db->where('id', $id);
         return $this->db->get('usuarios')->row(); // retorna registro obtido
