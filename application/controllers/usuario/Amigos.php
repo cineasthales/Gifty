@@ -44,4 +44,58 @@ class Amigos extends CI_Controller {
         }
     }
 
+    public function bloquear($idUsuario) {
+        if ($this->session->logado == true) {
+            $this->load->model('amizades_model', 'amizades');
+            $amizade = $this->amizades->find($this->session->id, $idUsuario);
+            $acao = false;
+            if ($amizade['idUsuario1'] == $this->session->id) {
+                $dados['bloqueado2'] = 1;
+                $acao = $this->amizades->update($dados, $this->session->id, $idUsuario);
+            } else {
+                $dados['bloqueado1'] = 1;
+                $acao = $this->amizades->update($dados, $idUsuario, $this->session->id);
+            }
+            if ($acao) {
+                $mensagem = "Amigo bloqueado.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Amigo não foi bloqueado.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/amigos');
+        } else {
+            redirect();
+        }
+    }
+
+    public function desbloquear($idUsuario) {
+        if ($this->session->logado == true) {
+            $this->load->model('amizades_model', 'amizades');
+            $amizade = $this->amizades->find($this->session->id, $idUsuario);
+            $acao = false;
+            if ($amizade['idUsuario1'] == $this->session->id) {
+                $dados['bloqueado2'] = 0;
+                $acao = $this->amizades->update($dados, $this->session->id, $idUsuario);
+            } else {
+                $dados['bloqueado1'] = 0;
+                $acao = $this->amizades->update($dados, $idUsuario, $this->session->id);
+            }
+            if ($acao) {
+                $mensagem = "Amigo bloqueado.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Amigo não foi bloqueado.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/amigos');
+        } else {
+            redirect();
+        }
+    }
+
 }

@@ -1,3 +1,28 @@
+<?php
+if ($this->session->has_userdata('mensagem')) {
+    $mensagem = $this->session->flashdata('mensagem');
+    $tipo = $this->session->flashdata('tipo');
+    if ($tipo) {
+        ?>
+        <section class="alerta_sucesso">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+    <?php } else { ?>
+        <section class="alerta_erro">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Erro.</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+        <?php
+    }
+}
+?>
 <main>
     <section>
         <div class="row"> 
@@ -36,7 +61,7 @@
                         <button class="btListas"><a href="<?= base_url('usuario/atualizar/evento/') . $evento->id ?>"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a></button><br>
                     </div>
                     <div class="col-3">
-                        <button class="btListas"><a href="<?= base_url('usuario/listas') ?>" onclick="return confirm('Tem certeza que deseja excluir <?= $evento->titulo ?>?')"><i class="fas fa-times"></i> Excluir Lista</a></button>
+                        <button class="btListas"><a href="<?= base_url('usuario/atualizar/excluir/') . $evento->id ?>" onclick="return confirm('Tem certeza que deseja excluir <?= $evento->titulo ?>?')"><i class="fas fa-times"></i> Excluir Lista</a></button>
                     </div>
                     <div class="col-12">
                         <hr>
@@ -69,10 +94,10 @@
                     </div>
                     <div class="col-4">
                         <button class="btListas"><a href="#"><i class="fas fa-gift"></i> Ver Lista</a></button><br>
-                        <?php if ($convidado->comparecera) { ?>
-                            <button class="btListas"><a href="#"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
+                        <?php if ($convidado->comparecera == 1) { ?>
+                            <button class="btListas"><a href="<?= base_url('usuario/atualizar/desconfirmar_presenca/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
                         <?php } else { ?>
-                            <button class="btListas"><a href="#"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
+                            <button class="btListas"><a href="<?= base_url('usuario/atualizar/confirmar_presenca/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
                         <?php } ?>
                     </div>
                     <div class="col-12">

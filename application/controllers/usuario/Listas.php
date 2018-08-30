@@ -10,7 +10,7 @@ class Listas extends CI_Controller {
                 $this->session->unset_userdata('idEvento');
             }
             $this->load->model('eventos_model', 'eventos');
-            $dados['eventos'] = $this->eventos->findIdUsuario($this->session->id);
+            $dados['eventos'] = $this->eventos->findIdUsuarioActive($this->session->id);
             $this->load->model('convidados_model', 'convidados');
             $dados['convidados'] = $this->convidados->findIdUsuario($this->session->id);
             $this->load->view('include/head');

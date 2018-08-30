@@ -440,4 +440,61 @@ class Atualizar extends CI_Controller {
         redirect(base_url('usuario/listas'));
     }
 
+    public function excluir($idEvento) {
+        if ($this->session->logado == true) {
+            $evento['ativo'] = 0;
+            $this->load->model('eventos_model', 'eventos');
+            if ($this->eventos->update($evento, $idEvento)) {
+                $mensagem = "Evento cancelado.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Evento não foi cancelado.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/listas');
+        } else {
+            redirect();
+        }
+    }
+
+    public function confirmar_presenca($idUsuario, $idEvento) {
+        if ($this->session->logado == true) {
+            $convite['comparecera'] = 1;
+            $this->load->model('convidados_model', 'convidados');
+            if ($this->convidados->update($convite, $idUsuario, $idEvento)) {
+                $mensagem = "Presença confirmada.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Confirmação de presença não foi registrada.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/listas');
+        } else {
+            redirect();
+        }
+    }
+
+    public function desconfirmar_presenca($idUsuario, $idEvento) {
+        if ($this->session->logado == true) {
+            $convite['comparecera'] = 0;
+            $this->load->model('convidados_model', 'convidados');
+            if ($this->convidados->update($convite, $idUsuario, $idEvento)) {
+                $mensagem = "Presença desconfirmada.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Desconfirmação de presença não foi registrada.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/listas');
+        } else {
+            redirect();
+        }
+    }
+
 }

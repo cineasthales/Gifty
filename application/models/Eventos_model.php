@@ -43,6 +43,16 @@ class Eventos_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function findIdUsuarioActive($idUsuario) {
+        $this->db->select('e.*, t.descricao AS tipo');
+        $this->db->from('eventos e');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->where('e.ativo', 1);
+        $this->db->like('e.idUsuario', $idUsuario);
+        $this->db->order_by('e.data DESC, e.hora DESC');
+        return $this->db->get()->result(); // retorna vetor
+    }
+
     public function searchId($id) {
         $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
         $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
