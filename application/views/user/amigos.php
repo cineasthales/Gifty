@@ -17,18 +17,18 @@
             </form>
             <?php if (count($amizades) > 0) { ?>
                 <?php foreach ($amizades as $amizade) { ?>
-                    <div class="col-2">
+                    <div class="col-3">
                         <?php if ($this->session->id == $amizade->idUsuario1) { ?>
-                            <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario2?>"><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario2 . '.jpg' ?>"><br>
-                                <p><?= $amizade->nome2 ?> <?= $amizade->snome2 ?></p></a>
+                            <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario2?>"><img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario2 . '.jpg' ?>"><br>
+                                <p><?= $amizade->nome2 ?><br><?= $amizade->snome2 ?></p></a>
                             <br><button class="btBloq"><a href="<?= base_url('usuario/amigos') ?>" onclick="return confirm('Tem certeza que deseja bloquear <?= $amizade->nome2 ?> <?= $amizade->snome2 ?>?')">
                                     <i class="fas fa-user-slash"></i></a></button>
                             <button class="btExc"><a href="<?= base_url('usuario/amigos') ?>" onclick="return confirm('Tem certeza que deseja excluir <?= $amizade->nome2 ?> <?= $amizade->snome2 ?>?')">
                                     <i class="fas fa-user-times"></i></a></button>
                             <br><br>
                         <?php } else { ?>
-                            <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario1?>"><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario1 . '.jpg' ?>"><br>
-                                <p><?= $amizade->nome1 ?> <?= $amizade->snome1 ?></p></a>
+                            <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario1?>"><img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario1 . '.jpg' ?>"><br>
+                                <p><?= $amizade->nome1 ?><br><?= $amizade->snome1 ?></p></a>
                             <br><button class="btBloq"><a href="<?= base_url('usuario/amigos') ?>" onclick="return confirm('Tem certeza que deseja bloquear <?= $amizade->nome1 ?> <?= $amizade->snome1 ?>?')">
                                     <i class="fas fa-user-slash"></i></a></button>
                             <button class="btExc"><a href="<?= base_url('usuario/amigos') ?>" onclick="return confirm('Tem certeza que deseja excluir <?= $amizade->nome1 ?> <?= $amizade->snome1 ?>?')">

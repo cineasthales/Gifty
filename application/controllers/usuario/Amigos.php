@@ -25,6 +25,8 @@ class Amigos extends CI_Controller {
             if (isset($idUsuario)) {
                 $this->load->model('usuarios_model', 'usuarios');
                 $dados['usuario'] = $this->usuarios->findEndereco($idUsuario);
+                $this->load->model('telefones_model', 'telefones');
+                $dados['telefones'] = $this->telefones->findUsuario($idUsuario);
                 if ($idUsuario != $this->session->id) {
                     $this->load->model('amizades_model', 'amizades');
                     // busca dados da amizade entre usuário e amigo

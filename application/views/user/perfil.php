@@ -39,17 +39,35 @@
                 <?= $usuario->cidade ?> / <?= $usuario->estado ?> 
             </div>
             <div class="col-2">
-                <strong>Nome de Usuário</strong>
-            </div>
-            <div class="col-6">
-                <?= $usuario->nomeUsuario ?>
-            </div>
-            <div class="col-2">
                 <strong>E-mail</strong>
             </div>
             <div class="col-6">
                 <?= $usuario->email ?>
             </div>
+            <?php if (count($telefones) > 0) { ?>
+                <?php if (count($telefones) == 1) { ?>
+                    <div class="col-2">
+                        <strong>Telefone</strong>
+                    </div>
+                <?php } else { ?>
+                    <div class="col-2">
+                        <strong>Telefones</strong>
+                    </div>
+                <?php } ?>
+                <div class="col-6">
+                    <?php foreach ($telefones as $telefone) { ?>
+                        (<?= $telefone->ddd ?>)
+                        <?php
+                        if (strlen($telefone->numero) == 9) {
+                            echo substr($telefone->numero, 0, 5) . '-' . substr($telefone->numero, 5);
+                        } else {
+                            echo substr($telefone->numero, 0, 4) . '-' . substr($telefone->numero, 4);
+                        }
+                        echo '  ';
+                        ?>
+                    <?php } ?>
+                </div>
+            <?php } ?>
             <div class="col-8">
                 <?php
                 $difA = floor(date('Y') - date_format(date_create($amizade->data), 'Y'));

@@ -12,6 +12,12 @@ class Telefones_model extends CI_Model {
         return $this->db->get('telefones')->row(); // retorna registro obtido
     }
 
+    public function findUsuario($idUsuario) {
+        $this->db->where('idUsuario', $idUsuario);
+        $this->db->order_by('id');
+        return $this->db->get('telefones')->result(); // retorna vetor
+    }
+
     public function searchId($id) {
         $this->db->where('id', $id);
         $this->db->order_by('id');
