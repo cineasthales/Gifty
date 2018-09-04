@@ -5,26 +5,20 @@
                 <h1>Configurações</h1>
             </div>
             <div class="col-12">
-                <h2>Seu Perfil</h2>
+                <br><h2>Seus Dados</h2>
             </div>
             <div class="col-4">
                 <img style="width: 100%;" src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
                      alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
             </div>
             <div class="col-8">
-                <h2><?= $usuario->nome ?> <?= $usuario->sobrenome ?></h2><br>
+                <h2><?= $usuario->nome ?> <?= $usuario->sobrenome ?> (<?= $usuario->nomeUsuario ?>)</h2><br>
             </div>
             <div class="col-2">
-                <strong>Idade</strong>
-            </div>
-            <div class="col-6">
-                <?= floor(date('Y') - date_format(date_create($usuario->dataNasc), 'Y')) ?> anos
-            </div>
-            <div class="col-2">
-                <strong>Aniversário</strong>
+                <strong>Nascimento</strong>
             </div>            
             <div class="col-6">
-                <?= date_format(date_create($usuario->dataNasc), 'd/m') ?>
+                <?= date_format(date_create($usuario->dataNasc), 'd/m/Y') ?>
             </div>
             <div class="col-2">
                 <strong>Gênero</strong>
@@ -33,10 +27,32 @@
                 <?= $usuario->genero ?>
             </div>
             <div class="col-2">
-                <strong>Cidade</strong>
+                <strong>CPF</strong>
             </div>
             <div class="col-6">
-                <?= $usuario->cidade ?> / <?= $usuario->estado ?> 
+                <?=
+                substr($usuario->cpf, 0, 3) . '.' . substr($usuario->cpf, 3, 3) . '.'
+                . substr($usuario->cpf, 6, 3) . '-' . substr($usuario->cpf, 9, 2)
+                ?>
+            </div>
+            <div class="col-8">
+                <br>
+            </div>
+            <div class="col-2">
+                <strong>Endereço</strong>
+            </div>
+            <div class="col-6">
+                <?= $usuario->logradouro ?>, <?= $usuario->numero ?>
+                <?php
+                if ($usuario->complemento) {
+                    echo ' - ' . $usuario->complemento;
+                }
+                ?>
+                - <?= $usuario->bairro ?> - <?=
+                substr($usuario->cep, 0, 2) . '.' . substr($usuario->cep, 2, 3) . '-'
+                . substr($usuario->cep, 5, 3)
+                ?> 
+                - <?= $usuario->cidade ?> / <?= $usuario->estado ?>
             </div>
             <div class="col-8">
                 <br>
@@ -46,6 +62,9 @@
             </div>
             <div class="col-6">
                 <?= $usuario->email ?>
+                <?php if ($usuario->notificaEmail) { 
+                    echo '<i>(recebe notificações)</i>';
+                } ?>
             </div>
             <?php if (count($telefones) > 0) { ?>
                 <?php if (count($telefones) == 1) { ?>
@@ -78,13 +97,14 @@
                 <br><button class="btListas"><a><i class="fas fa-user-cog"></i> Atualizar Seus Dados</a></button>
             </div>
             <div class="col-8">
-                <br><br><p>Atualize informações pessoais, dados de conta, endereço e telefones.</p><br>
+                <br><p><i>Atualize informações pessoais, dados de conta, endereço e telefones.</i></p><br><br>
             </div>
             <div class="col-4">
-                <br><button class="btListas"><a><i class="fas fa-user-times"></i> Desativar Sua Conta</a></button>
+                <br><button class="btListas"><a href="#" onclick="return confirm('ATENÇÃO! Tem certeza que deseja desativar sua conta no Gifty?')">
+                        <i class="fas fa-user-times"></i> Desativar Sua Conta</a></button>
             </div>
             <div class="col-8">
-                <br><br><p>Desativar sua conta impedirá seu acesso ao Gifty no futuro.</p><br>
+                <br><p><i>Desativar sua conta impedirá seu acesso ao Gifty no futuro.</i></p><br><br>
             </div>
         </div>
     </section>    

@@ -13,7 +13,8 @@ class Usuarios_model extends CI_Model {
     }
 
     public function findEndereco($idUsuario) {
-        $this->db->select('u.*, e.cidade AS cidade, e.estado AS estado');
+        $this->db->select('u.*, e.cidade AS cidade, e.estado AS estado, e.logradouro AS logradouro');
+        $this->db->select('e.numero AS numero, e.bairro AS bairro, e.cep AS cep, e.complemento AS complemento');
         $this->db->from('usuarios u');
         $this->db->join('enderecos e', 'u.idEndereco = e.id', 'inner');     
         $this->db->where('u.id', $idUsuario);

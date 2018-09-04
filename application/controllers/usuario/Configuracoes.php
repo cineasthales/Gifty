@@ -19,4 +19,35 @@ class Configuracoes extends CI_Controller {
         }
     }
 
+    public function desativar() {
+        $this->load->model('usuarios_model', 'usuarios');
+        $dados['ativo'] = 0;
+        if ($this->usuarios->update($dados, $this->session->id)) {
+            $mensagem = "Sua conta foi desativada.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Sua conta não foi desativada.";
+            $tipo = 0;
+        }
+        $this->session->sess_destroy();
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect();
+    }
+
+    public function reativar($idUsuario) {
+        $this->load->model('usuarios_model', 'usuarios');
+        $dados['ativo'] = 1;
+        if ($this->usuarios->update($dados, $idUsuario)) {
+            $mensagem = "Sua conta foi reativada.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Sua conta não foi reativada.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
+        redirect('usuario/inicio');
+    }
+
 }
