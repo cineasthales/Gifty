@@ -38,6 +38,9 @@
             <div class="col-6">
                 <?= $usuario->cidade ?> / <?= $usuario->estado ?> 
             </div>
+            <div class="col-8">
+                <br>
+            </div>
             <div class="col-2">
                 <strong>E-mail</strong>
             </div>

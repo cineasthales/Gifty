@@ -6,12 +6,13 @@ class Configuracoes extends CI_Controller {
 
     public function index() {
         if ($this->session->logado == true) {
-            if ($this->session->has_userdata('idEvento')) {
-                $this->session->unset_userdata('idEvento');
-            }
+            $this->load->model('usuarios_model', 'usuarios');
+            $dados['usuario'] = $this->usuarios->findEndereco($this->session->id);
+            $this->load->model('telefones_model', 'telefones');
+            $dados['telefones'] = $this->telefones->findUsuario($this->session->id);
             $this->load->view('include/head');
             $this->load->view('include/header_user');
-            $this->load->view('user/configuracoes');
+            $this->load->view('user/configuracoes', $dados);
             $this->load->view('include/footer');
         } else {
             redirect();
