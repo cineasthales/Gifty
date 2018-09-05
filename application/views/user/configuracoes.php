@@ -94,14 +94,26 @@
                 <br>
             </div>
             <div class="col-4">
-                <br><button class="btListas"><a><i class="fas fa-user-cog"></i> Atualizar Seus Dados</a></button>
+                <br><button class="btListas"><a><i class="fas fa-user-cog"></i> Atualizar Dados</a></button>
             </div>
             <div class="col-8">
-                <br><p><i>Atualize informações pessoais, dados de conta, endereço e telefones.</i></p><br><br>
+                <br><p><i>Atualize informações pessoais, endereço e telefones.</i></p><br><br>
+            </div>
+            <div class="col-4">
+                <br><button class="btListas"><a><i class="fas fa-lightbulb"></i> Atualizar Interesses</a></button>
+            </div>
+            <div class="col-8">
+                <br><p><i>Mantenha seus interesses atualizados para o nosso sistema de recomendação.</i></p><br><br>
+            </div>
+            <div class="col-4">
+                <br><button class="btListas"><a><i class="fas fa-key"></i> Trocar Senha</a></button>
+            </div>
+            <div class="col-8">
+                <br><p><i>Troque de senha regularmente para manter sua conta segura.</i></p><br><br>
             </div>
             <div class="col-4">
                 <br><button class="btListas"><a href="#" onclick="return confirm('ATENÇÃO! Tem certeza que deseja desativar sua conta no Gifty?')">
-                        <i class="fas fa-user-times"></i> Desativar Sua Conta</a></button>
+                        <i class="fas fa-minus-circle"></i> Desativar Conta</a></button>
             </div>
             <div class="col-8">
                 <br><p><i>Desativar sua conta impedirá seu acesso ao Gifty no futuro.</i></p><br><br>
