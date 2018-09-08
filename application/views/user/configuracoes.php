@@ -1,3 +1,28 @@
+<?php
+if ($this->session->has_userdata('mensagem')) {
+    $mensagem = $this->session->flashdata('mensagem');
+    $tipo = $this->session->flashdata('tipo');
+    if ($tipo) {
+        ?>
+        <section class="alerta_sucesso">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+    <?php } else { ?>
+        <section class="alerta_erro">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Erro.</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+        <?php
+    }
+}
+?>
 <main>
     <section>
         <div class="row"> 
@@ -85,7 +110,7 @@
                         } else {
                             echo substr($telefone->numero, 0, 4) . '-' . substr($telefone->numero, 4);
                         }
-                        echo '  ';
+                        echo '<br>';
                         ?>
                     <?php } ?>
                 </div>
@@ -94,10 +119,16 @@
                 <br>
             </div>
             <div class="col-4">
-                <br><button class="btListas"><a><i class="fas fa-user-cog"></i> Atualizar Dados</a></button>
+                <br><button class="btListas"><a href="<?= base_url('usuario/configuracoes/atualizar_dados') ?>"><i class="fas fa-user-cog"></i> Atualizar Dados</a></button>
             </div>
             <div class="col-8">
-                <br><p><i>Atualize informações pessoais, endereço e telefones.</i></p><br><br>
+                <br><p><i>Atualize informações pessoais e endereço.</i></p><br><br>
+            </div>
+            <div class="col-4">
+                <br><button class="btListas"><a href="<?= base_url('usuario/configuracoes/gerenciar_telefones') ?>"><i class="fas fa-phone"></i> Gerenciar Telefones</a></button>
+            </div>
+            <div class="col-8">
+                <br><p><i>Facilite o contato de seus convidados tendo os telefones atualizados.</i></p><br><br>
             </div>
             <div class="col-4">
                 <br><button class="btListas"><a><i class="fas fa-lightbulb"></i> Atualizar Interesses</a></button>
@@ -106,7 +137,7 @@
                 <br><p><i>Mantenha seus interesses atualizados para o nosso sistema de recomendação.</i></p><br><br>
             </div>
             <div class="col-4">
-                <br><button class="btListas"><a><i class="fas fa-key"></i> Trocar Senha</a></button>
+                <br><button class="btListas"><a href="<?= base_url('usuario/configuracoes/trocar_senha') ?>"><i class="fas fa-key"></i> Trocar Senha</a></button>
             </div>
             <div class="col-8">
                 <br><p><i>Troque de senha regularmente para manter sua conta segura.</i></p><br><br>

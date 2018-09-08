@@ -1,25 +1,25 @@
-<script src="<?= base_url('assets/js/ajax.js') ?>"></script>
+<script src="<?= base_url('assets/js/ajax2.js') ?>"></script>
 <main>
     <section>
         <div class="row"> 
             <div class="col-12">
                 <h1>Atualizar Cadastro</h1>
             </div>
-            <form method="post" action="<?= base_url('usuario/configuracoes/grava_atualizacao') ?>">
+            <form method="post" action="<?= base_url('usuario/configuracoes/grava_atualizacao_dados') ?>">
                 <div class="col-12">
                     <br>
                     <h2>Seus Dados</h2>
                 </div>
                 <div class="col-6">
-                    <label for="nome">Nome</label> <span class="asterisco">*</span><br>
+                    <label for="nome">Nome</label><br>
                     <input type="text" id="nome" name="nome" pattern="[A-Za-z]{,50}" 
-                           maxlength="50" required value="<?= $usuario->nome ?>"><br><br>
+                           maxlength="50" required readonly value="<?= $usuario->nome ?>"><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="sobrenome">Sobrenome</label> <span class="asterisco">*</span><br>
+                    <label for="sobrenome">Sobrenome</label><br>
                     <input type="text" id="sobrenome" name="sobrenome" 
                            maxlength="100" pattern="[A-Za-z]{,100}" required
-                           value="<?= $usuario->sobrenome ?>"><br><br>
+                           value="<?= $usuario->sobrenome ?>" readonly><br><br>
                 </div>
                 <div class="col-6">
                     <label for="genero">Gênero</label> <span class="asterisco">*</span><br>
@@ -59,23 +59,23 @@
                     </select><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="dataNasc">Data de Nascimento</label> <span class="asterisco">*</span><br>
+                    <label for="dataNasc">Data de Nascimento</label><br>
                     <input type="date" id="dataNasc" name="dataNasc" required
-                           value="<?= $usuario->dataNasc ?>"><br><br>
+                           value="<?= $usuario->dataNasc ?>" readonly><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="cpf">CPF</label> <span class="asterisco">*</span>
+                    <label for="cpf">CPF</label>
                     <span id="msgCpf" name="msgCpf"></span><br>
                     <input type="text" id="cpf" name="cpf" title="Apenas os 11 números."
                            maxlength="11" pattern="[0-9]{11}" required placeholder="99999999999"
-                           value="<?= $usuario->cpf ?>"><br><br>
+                           value="<?= $usuario->cpf ?>" readonly><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="nomeUsuario">Nome de Usuário</label> <span class="asterisco">*</span>
+                    <label for="nomeUsuario">Nome de Usuário</label>
                     <span id="msgNomeUsuario" name="msgNomeUsuario"></span><br>
                     <input type="text" id="nomeUsuario" name="nomeUsuario" required
                            pattern="[A-Za-z0-9]{,20}" maxlength="20"
-                           value="<?= $usuario->nomeUsuario ?>"><br><br>
+                           value="<?= $usuario->nomeUsuario ?>" readonly><br><br>
                 </div>
                 <div class="col-6">
                     <label for="email">E-mail</label> <span class="asterisco">*</span>
@@ -86,22 +86,26 @@
                 </div>            
                 <div class="col-12"><br>
                     <label for="notificaEmail">
-                            <?php
-                            if ($usuario->notificaEmail == 1) {
-                                echo '<input type="checkbox" id="notificaEmail" name="notificaEmail" checked> Notificações';
-                            } else {
-                                echo '<input type="checkbox" id="notificaEmail" name="notificaEmail"> Notificações';
-                            }
-                            ?>
-                        </label><br><br>
+                        <?php
+                        if ($usuario->notificaEmail == 1) {
+                            echo '<input type="checkbox" id="notificaEmail" name="notificaEmail" checked> Receber notificações por e-mail';
+                        } else {
+                            echo '<input type="checkbox" id="notificaEmail" name="notificaEmail"> Receber notificações por e-mail';
+                        }
+                        ?>
+                    </label><br><br>
                 </div>
                 <div class="col-12">
                     <br><h2>Seu Endereço</h2>
                 </div>
+                <div class="col-12" style="display: none">
+                    <input type="text" id="idEndereco" name="idEndereco"
+                           value="<?= $usuario->idEndereco ?>">
+                </div>
                 <div class="col-6">
                     <label for="CEP">CEP</label> <span class="asterisco">*</span><br>
                     <input type="text" id="cep" name="cep" required title="Apenas os 8 números."
-                           title="Apenas números." pattern="[0-9]{8}" maxlength="8"
+                           pattern="[0-9]{8}" maxlength="8"
                            placeholder="99999999" value="<?= $usuario->cep ?>"><br><br>
                 </div>
                 <div class="col-6">
