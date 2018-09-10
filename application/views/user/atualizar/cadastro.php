@@ -7,8 +7,11 @@
             </div>
             <form method="post" action="<?= base_url('usuario/configuracoes/grava_atualizacao_dados') ?>">
                 <div class="col-12">
-                    <br>
-                    <h2>Seus Dados</h2>
+                    <br><h2>Seus Dados</h2>
+                    <small>Para sua segurança, alguns dados não podem ser livremente atualizados.
+                        Na excepcionalidade de precisar atualizá-los, entre em
+                        <a href="<?= base_url('gifty/contato') ?>">contato</a>
+                        com nossa equipe.</small><br><br>
                 </div>
                 <div class="col-6">
                     <label for="nome">Nome</label><br>

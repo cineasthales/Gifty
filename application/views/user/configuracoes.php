@@ -128,13 +128,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <br><button class="btListas"><a href="<?= base_url('usuario/configuracoes/gerenciar_telefones') ?>"><i class="fas fa-phone"></i> Gerenciar Telefones</a></button>
             </div>
             <div class="col-8">
-                <br><p><i>Facilite o contato de seus convidados tendo os telefones atualizados.</i></p><br><br>
-            </div>
-            <div class="col-4">
-                <br><button class="btListas"><a><i class="fas fa-lightbulb"></i> Atualizar Interesses</a></button>
-            </div>
-            <div class="col-8">
-                <br><p><i>Mantenha seus interesses atualizados para o nosso sistema de recomendação.</i></p><br><br>
+                <br><p><i>Mantenha os números atualizados para facilitar o contato de convidados.</i></p><br><br>
             </div>
             <div class="col-4">
                 <br><button class="btListas"><a href="<?= base_url('usuario/configuracoes/trocar_senha') ?>"><i class="fas fa-key"></i> Trocar Senha</a></button>

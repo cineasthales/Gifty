@@ -118,4 +118,21 @@ class Amigos extends CI_Controller {
         }
     }
 
+    public function resultado($idUsuario) {
+        if ($this->session->logado == true) {
+            if (isset($idUsuario)) {
+                $this->load->model('usuarios_model', 'usuarios');
+                $dados['usuario'] = $this->usuarios->findEndereco($idUsuario);
+                $this->load->view('include/head');
+                $this->load->view('include/header_user');
+                $this->load->view('user/perfil_outros', $dados);
+                $this->load->view('include/footer');
+            } else {
+                redirect('usuario/amigos');
+            }
+        } else {
+            redirect();
+        }
+    }
+
 }
