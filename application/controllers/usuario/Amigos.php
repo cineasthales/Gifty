@@ -100,4 +100,22 @@ class Amigos extends CI_Controller {
         }
     }
 
+    public function buscar() {
+        if ($this->session->logado == true) {
+            $busca = $this->input->post('busca');
+            if (isset($busca)) {
+                $this->load->model('usuarios_model', 'usuarios');
+                $dados['usuarios'] = $this->usuarios->searchNome($busca);
+                $this->load->view('include/head');
+                $this->load->view('include/header_user');
+                $this->load->view('user/busca_amigos', $dados);
+                $this->load->view('include/footer');
+            } else {
+                redirect('usuario/amigos');
+            }
+        } else {
+            redirect();
+        }
+    }
+
 }

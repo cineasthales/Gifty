@@ -25,7 +25,7 @@
                 <small>Ainda não é membro? <a href="<?= base_url('gifty/cadastrar') ?>">Cadastre-se!</a></small>
             </div>
             <div class="col-5">
-                <small><a href="<?= base_url('gifty/esquecisenha') ?>">Esqueceu a senha?</a></small>
+                <small><a href="<?= base_url('gifty/esqueci_senha') ?>">Esqueceu a senha?</a></small>
             </div>
         </form>
     </div>

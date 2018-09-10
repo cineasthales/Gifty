@@ -4,7 +4,7 @@
             <div class="col-6">
                 <h1>Amigos</h1>
             </div>
-            <form method="post" action="<?= base_url('usuario/amigos/busca') ?>">
+            <form method="post" action="<?= base_url('usuario/amigos/buscar') ?>">
                 <div class="col-5">
                     <br>                    
                     <input type="text" id="busca" name="busca" pattern="[A-Za-z0-9]{,100}" 

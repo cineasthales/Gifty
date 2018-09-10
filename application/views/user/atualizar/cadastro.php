@@ -22,7 +22,7 @@
                            value="<?= $usuario->sobrenome ?>" readonly><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="genero">Gênero</label> <span class="asterisco">*</span><br>
+                    <label for="genero">Gênero</label>
                     <select id="genero" name="genero" required>
                         <?php
                         if ($usuario->genero == 'Feminino') {
@@ -78,7 +78,7 @@
                            value="<?= $usuario->nomeUsuario ?>" readonly><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="email">E-mail</label> <span class="asterisco">*</span>
+                    <label for="email">E-mail</label>
                     <span id="msgEmail" name="msgEmail"></span><br>
                     <input type="email" id="email" name="email" required
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
@@ -103,7 +103,7 @@
                            value="<?= $usuario->idEndereco ?>">
                 </div>
                 <div class="col-6">
-                    <label for="CEP">CEP</label> <span class="asterisco">*</span><br>
+                    <label for="CEP">CEP</label><br>
                     <input type="text" id="cep" name="cep" required title="Apenas os 8 números."
                            pattern="[0-9]{8}" maxlength="8"
                            placeholder="99999999" value="<?= $usuario->cep ?>"><br><br>
@@ -114,7 +114,7 @@
                            value="<?= $usuario->logradouro ?>"><br><br>
                 </div>
                 <div class="col-6">
-                    <label for="numero">Número</label> <span class="asterisco">*</span><br>
+                    <label for="numero">Número</label><br>
                     <input type="text" id="numero" name="numero" required
                            pattern="[0-9]{,12}" maxlength="12" value="<?= $usuario->numero ?>"><br><br>
                 </div>

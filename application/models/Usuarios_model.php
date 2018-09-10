@@ -44,10 +44,8 @@ class Usuarios_model extends CI_Model {
     public function check($user, $senha) {
         $this->db->where('nomeUsuario', $user);
         $this->db->where('senha', $senha);
-        $this->db->where('ativo', 1);
         $this->db->or_where('email', $user);
         $this->db->where('senha', $senha);
-        $this->db->where('ativo', 1);
         return $this->db->get('usuarios')->row(); // retorna registro obtido
     }
 

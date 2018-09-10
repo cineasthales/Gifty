@@ -23,37 +23,70 @@ class Gifty extends CI_Controller {
         $senha = $this->input->post('senha');
         $verifica = $this->usuarios->check($user, md5($senha));
         if (isset($verifica)) {
-            if ($verifica->nivel == 0) {
-                $sessao['logado'] = true;
-                $sessao['logado_admin'] = false;
-            } else {
-                $sessao['logado'] = false;
-                $sessao['logado_admin'] = true;
-            }
-            $sessao['id'] = $verifica->id;
-            $sessao['nome'] = $verifica->nome;
-            $this->session->set_userdata($sessao);
-            // busca todos os interesses do usuario que logou
-            $this->load->model('interesses_model', 'interesses');
-            $interesses = $this->interesses->selectUsuarioAll($this->session->id);
-            // se houver interesses cadastrados
-            if (isset($interesses)) {
-                $hoje = date("y-m-d");
-                foreach ($interesses as $interesse) {
-                    // se o interesse foi atualizado em mais de 180 dias, diminui peso e atualiza data
-                    if (date_diff(date_create($interesse->data), date_create($hoje))->format('%d') > 90) {
-                        $interesse->peso--;
-                        $interesse->data = $hoje;
-                        $this->interesses->update($interesse, $this->session->id, $interesse->idCategoria);
+            if ($verifica->ativo == 1) {
+                if ($verifica->nivel == 0) {
+                    $sessao['logado'] = true;
+                    $sessao['logado_admin'] = false;
+                } else {
+                    $sessao['logado'] = false;
+                    $sessao['logado_admin'] = true;
+                }
+                $sessao['id'] = $verifica->id;
+                $sessao['nome'] = $verifica->nome;
+                $this->session->set_userdata($sessao);
+                // busca todos os interesses do usuario que logou
+                $this->load->model('interesses_model', 'interesses');
+                $interesses = $this->interesses->selectUsuarioAll($this->session->id);
+                // se houver interesses cadastrados
+                if (isset($interesses)) {
+                    $hoje = date("y-m-d");
+                    foreach ($interesses as $interesse) {
+                        // se o interesse foi atualizado em mais de 90 dias, diminui peso e atualiza data
+                        if (date_diff(date_create($interesse->data), date_create($hoje))->format('%d') > 90) {
+                            $interesse->peso--;
+                            $interesse->data = $hoje;
+                            $this->interesses->update($interesse, $this->session->id, $interesse->idCategoria);
+                        }
                     }
                 }
+                redirect();
+            } else {
+                $sessao['id'] = $verifica->id;
+                $sessao['email'] = $verifica->email;
+                $this->session->set_userdata($sessao);
+                redirect('gifty/conta_desativada');
             }
         } else {
             $mensagem = "Nome de usuário, e-mail e/ou senha incorretos.";
             $tipo = 0;
             $this->session->set_flashdata('mensagem', $mensagem);
             $this->session->set_flashdata('tipo', $tipo);
+            redirect();
         }
+    }
+
+    public function conta_desativada() {
+        $dados['id'] = $this->session->id;
+        $dados['email'] = $this->session->email;
+        $this->session->sess_destroy();
+        $this->load->view('include/head');
+        $this->load->view('include/header_ext');
+        $this->load->view('desativada', $dados);
+        $this->load->view('include/footer');
+    }
+
+    public function reativar($idUsuario) {        
+        $this->load->model('usuarios_model', 'usuarios');
+        $dados['ativo'] = 1;
+        if ($this->usuarios->update($dados, $idUsuario)) {
+            $mensagem = "Sua conta foi reativada. Favor refazer o login.";
+            $tipo = 1;
+        } else {
+            $mensagem = "Sua conta não foi reativada.";
+            $tipo = 0;
+        }
+        $this->session->set_flashdata('mensagem', $mensagem);
+        $this->session->set_flashdata('tipo', $tipo);
         redirect();
     }
 
@@ -62,7 +95,7 @@ class Gifty extends CI_Controller {
         redirect();
     }
 
-    public function esqueciSenha() {
+    public function esqueci_senha() {
         $this->session->sess_destroy();
         $this->load->view('include/head');
         $this->load->view('include/header_ext');

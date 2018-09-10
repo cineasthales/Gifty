@@ -143,7 +143,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <br><p><i>Troque de senha regularmente para manter sua conta segura.</i></p><br><br>
             </div>
             <div class="col-4">
-                <br><button class="btListas"><a href="#" onclick="return confirm('ATENÇÃO! Tem certeza que deseja desativar sua conta no Gifty?')">
+                <br><button class="btListas"><a href="<?= base_url('usuario/configuracoes/desativar') ?>" onclick="return confirm('ATENÇÃO! Tem certeza que deseja desativar sua conta no Gifty?')">
                         <i class="fas fa-minus-circle"></i> Desativar Conta</a></button>
             </div>
             <div class="col-8">
