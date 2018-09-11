@@ -127,17 +127,27 @@ class Amigos extends CI_Controller {
         }
     }
 
-    // NAO ESTA PRONTO!!!!
     public function desfazer_amizade($idUsuario) {
         if ($this->session->logado == true) {
             $dados['ativa'] = 0;
-            $this->load->model('amizades_model', 'amizades');            
-            if ($this->amizades->update($dados, $this->session->id, $idUsuario)) {
-                $mensagem = "Amigo bloqueado.";
-                $tipo = 1;
+            $this->load->model('amizades_model', 'amizades');
+            $amizade = $this->amizades->find($this->session->id, $idUsuario);
+            if ($amizade->idUsuario1 == $this->session->id) {
+                if ($this->amizades->update($dados, $this->session->id, $idUsuario)) {
+                    $mensagem = "Amigo bloqueado.";
+                    $tipo = 1;
+                } else {
+                    $mensagem = "Amigo não foi bloqueado.";
+                    $tipo = 0;
+                }
             } else {
-                $mensagem = "Amigo não foi bloqueado.";
-                $tipo = 0;
+                if ($this->amizades->update($dados, $idUsuario, $this->session->id)) {
+                    $mensagem = "Amigo bloqueado.";
+                    $tipo = 1;
+                } else {
+                    $mensagem = "Amigo não foi bloqueado.";
+                    $tipo = 0;
+                }
             }
             $this->session->set_flashdata('mensagem', $mensagem);
             $this->session->set_flashdata('tipo', $tipo);
