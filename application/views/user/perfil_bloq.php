@@ -92,9 +92,9 @@
             </div>
             <div class="col-8">
                 <br><br><button class="btBloq"><a href="<?= base_url('usuario/amigos') ?>" onclick="return confirm('Tem certeza que deseja bloquear <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')">
-                        <i class="fas fa-user-slash"></i> Bloquear Amigo</a></button>      
+                        <i class="fas fa-user-check"></i> Desbloquear Amigo</a></button>      
                 <button class="btExc"><a href="<?= base_url('usuario/amigos') ?>" onclick="return confirm('Tem certeza que deseja excluir <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')">
-                        <i class="fas fa-user-times"></i> Excluir Amigo</a></button>
+                        <i class="fas fa-user-times"></i> Desfazer Amizade</a></button>
             </div>
         </div>
     </section>    

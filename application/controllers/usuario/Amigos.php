@@ -22,22 +22,49 @@ class Amigos extends CI_Controller {
 
     public function perfil($idUsuario) {
         if ($this->session->logado == true) {
-            if (isset($idUsuario)) {
+            if (isset($idUsuario) && $idUsuario != $this->session->id) {
+                // busco usuario no banco de dados
                 $this->load->model('usuarios_model', 'usuarios');
                 $dados['usuario'] = $this->usuarios->findEndereco($idUsuario);
-                $this->load->model('telefones_model', 'telefones');
-                $dados['telefones'] = $this->telefones->findUsuario($idUsuario);
-                if ($idUsuario != $this->session->id) {
-                    $this->load->model('amizades_model', 'amizades');
-                    // busca dados da amizade entre usuário e amigo
-                    $dados['amizade'] = $this->amizades->find($idUsuario, $this->session->id);
-                    // conta amigos do amigo
-                    $dados['numAmigos'] = count($this->amizades->findAll($idUsuario));
+                // busca dados da amizade entre usuário e amigo
+                $this->load->model('amizades_model', 'amizades');
+                $amizade = $this->amizades->find($idUsuario, $this->session->id);
+                // se forem amigos
+                if (isset($amizade)) {
+                    // se amizade não estiver sido desfeita
+                    if ($amizade->ativa == 1) {
+                        // conta amigos do amigo
+                        $dados['numAmigos'] = count($this->amizades->findAll($idUsuario));
+                        // resgata telefones do amigo
+                        $this->load->model('telefones_model', 'telefones');
+                        $dados['telefones'] = $this->telefones->findUsuario($idUsuario);
+                        // se o usuario logado bloqueou o outro
+                        if (($amizade->bloqueado1 && $amizade->idUsuario2 == $this->session->id) ||
+                                ($amizade->bloqueado2 && $amizade->idUsuario1 == $this->session->id)) {
+                            $dados['amizade'] = $amizade;
+                            $this->load->view('include/head');
+                            $this->load->view('include/header_user');
+                            $this->load->view('user/perfil_bloq', $dados);
+                            $this->load->view('include/footer');
+                        } else {
+                            $dados['amizade'] = $amizade;
+                            $this->load->view('include/head');
+                            $this->load->view('include/header_user');
+                            $this->load->view('user/perfil_amigo', $dados);
+                            $this->load->view('include/footer');
+                        }
+                    } else {
+                        $this->load->view('include/head');
+                        $this->load->view('include/header_user');
+                        $this->load->view('user/perfil_refaz', $dados);
+                        $this->load->view('include/footer');
+                    }
+                } else {
+                    $this->load->view('include/head');
+                    $this->load->view('include/header_user');
+                    $this->load->view('user/perfil_outros', $dados);
+                    $this->load->view('include/footer');
                 }
-                $this->load->view('include/head');
-                $this->load->view('include/header_user');
-                $this->load->view('user/perfil', $dados);
-                $this->load->view('include/footer');
             } else {
                 redirect('usuario/amigos');
             }
@@ -100,6 +127,26 @@ class Amigos extends CI_Controller {
         }
     }
 
+    // NAO ESTA PRONTO!!!!
+    public function desfazer_amizade($idUsuario) {
+        if ($this->session->logado == true) {
+            $dados['ativa'] = 0;
+            $this->load->model('amizades_model', 'amizades');            
+            if ($this->amizades->update($dados, $this->session->id, $idUsuario)) {
+                $mensagem = "Amigo bloqueado.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Amigo não foi bloqueado.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/amigos');
+        } else {
+            redirect();
+        }
+    }
+
     public function buscar() {
         if ($this->session->logado == true) {
             $busca = $this->input->post('busca');
@@ -109,23 +156,6 @@ class Amigos extends CI_Controller {
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');
                 $this->load->view('user/busca_amigos', $dados);
-                $this->load->view('include/footer');
-            } else {
-                redirect('usuario/amigos');
-            }
-        } else {
-            redirect();
-        }
-    }
-
-    public function resultado($idUsuario) {
-        if ($this->session->logado == true) {
-            if (isset($idUsuario)) {
-                $this->load->model('usuarios_model', 'usuarios');
-                $dados['usuario'] = $this->usuarios->findEndereco($idUsuario);
-                $this->load->view('include/head');
-                $this->load->view('include/header_user');
-                $this->load->view('user/perfil_outros', $dados);
                 $this->load->view('include/footer');
             } else {
                 redirect('usuario/amigos');
