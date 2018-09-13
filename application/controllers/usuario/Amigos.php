@@ -78,7 +78,7 @@ class Amigos extends CI_Controller {
             $this->load->model('amizades_model', 'amizades');
             $amizade = $this->amizades->find($this->session->id, $idUsuario);
             $acao = false;
-            if ($amizade['idUsuario1'] == $this->session->id) {
+            if ($amizade->idUsuario1 == $this->session->id) {
                 $dados['bloqueado2'] = 1;
                 $acao = $this->amizades->update($dados, $this->session->id, $idUsuario);
             } else {
@@ -105,7 +105,7 @@ class Amigos extends CI_Controller {
             $this->load->model('amizades_model', 'amizades');
             $amizade = $this->amizades->find($this->session->id, $idUsuario);
             $acao = false;
-            if ($amizade['idUsuario1'] == $this->session->id) {
+            if ($amizade->idUsuario1 == $this->session->id) {
                 $dados['bloqueado2'] = 0;
                 $acao = $this->amizades->update($dados, $this->session->id, $idUsuario);
             } else {
@@ -113,10 +113,10 @@ class Amigos extends CI_Controller {
                 $acao = $this->amizades->update($dados, $idUsuario, $this->session->id);
             }
             if ($acao) {
-                $mensagem = "Amigo bloqueado.";
+                $mensagem = "Amigo desbloqueado.";
                 $tipo = 1;
             } else {
-                $mensagem = "Amigo não foi bloqueado.";
+                $mensagem = "Amigo não foi desbloqueado.";
                 $tipo = 0;
             }
             $this->session->set_flashdata('mensagem', $mensagem);
@@ -134,18 +134,48 @@ class Amigos extends CI_Controller {
             $amizade = $this->amizades->find($this->session->id, $idUsuario);
             if ($amizade->idUsuario1 == $this->session->id) {
                 if ($this->amizades->update($dados, $this->session->id, $idUsuario)) {
-                    $mensagem = "Amigo bloqueado.";
+                    $mensagem = "Amizade desfeita.";
                     $tipo = 1;
                 } else {
-                    $mensagem = "Amigo não foi bloqueado.";
+                    $mensagem = "Amizade não foi desfeita.";
                     $tipo = 0;
                 }
             } else {
                 if ($this->amizades->update($dados, $idUsuario, $this->session->id)) {
-                    $mensagem = "Amigo bloqueado.";
+                    $mensagem = "Amizade desfeita.";
                     $tipo = 1;
                 } else {
-                    $mensagem = "Amigo não foi bloqueado.";
+                    $mensagem = "Amizade não foi desfeita.";
+                    $tipo = 0;
+                }
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/amigos');
+        } else {
+            redirect();
+        }
+    }
+
+    public function refazer_amizade($idUsuario) {
+        if ($this->session->logado == true) {
+            $dados['ativa'] = 1;
+            $this->load->model('amizades_model', 'amizades');
+            $amizade = $this->amizades->find($this->session->id, $idUsuario);
+            if ($amizade->idUsuario1 == $this->session->id) {
+                if ($this->amizades->update($dados, $this->session->id, $idUsuario)) {
+                    $mensagem = "Amizade refeita.";
+                    $tipo = 1;
+                } else {
+                    $mensagem = "Amizade não foi refeita.";
+                    $tipo = 0;
+                }
+            } else {
+                if ($this->amizades->update($dados, $idUsuario, $this->session->id)) {
+                    $mensagem = "Amizade refeita.";
+                    $tipo = 1;
+                } else {
+                    $mensagem = "Amizade não foi refeita.";
                     $tipo = 0;
                 }
             }

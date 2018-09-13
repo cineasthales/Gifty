@@ -33,7 +33,7 @@
                 <?= $usuario->cidade ?> / <?= $usuario->estado ?> 
             </div>
             <div class="col-8">
-                <br><br><button class="btBloq"><a href="<?= base_url('usuario/amigos') ?>">
+                <br><br><button class="btBloq"><a href="<?= base_url('usuario/amigos/adicionar/') . $usuario->id?>">
                         <i class="fas fa-user-plus"></i> Solicitar Amizade</a></button>
             </div>
         </div>

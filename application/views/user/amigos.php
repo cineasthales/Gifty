@@ -1,3 +1,28 @@
+<?php
+if ($this->session->has_userdata('mensagem')) {
+    $mensagem = $this->session->flashdata('mensagem');
+    $tipo = $this->session->flashdata('tipo');
+    if ($tipo) {
+        ?>
+        <section class="alerta_sucesso">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+    <?php } else { ?>
+        <section class="alerta_erro">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Erro.</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+        <?php
+    }
+}
+?>
 <main>
     <section>
         <div class="row"> 
