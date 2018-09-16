@@ -49,7 +49,7 @@
                            maxlength="100" required placeholder="Buscar itens">
                 </div>
                 <div class="col-1">
-                    <button id='btsearch' type="submit"><i class="fas fa-search"></i></button><br><br>
+                    <button id='btsearch' style="font-size: 0.75em;" type="submit"><i class="fas fa-search"></i></button><br><br>
                 </div>
             </form>
             <?php if (isset($json)) { ?>                

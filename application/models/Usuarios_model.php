@@ -62,9 +62,12 @@ class Usuarios_model extends CI_Model {
     }
 
     public function searchNome($nome) {
+        $this->db->select('u.*, e.cidade AS cidade, e.estado AS estado');
+        $this->db->from('usuarios u');
+        $this->db->join('enderecos e', 'u.idEndereco = e.id', 'inner');
         $this->db->like('nome', $nome);
         $this->db->order_by('nome, sobrenome');
-        return $this->db->get('usuarios')->result(); // retorna vetor
+        return $this->db->get()->result(); // retorna vetor
     }
 
     public function searchEmail($email) {

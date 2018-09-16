@@ -54,16 +54,10 @@ class Amigos extends CI_Controller {
                             $this->load->view('include/footer');
                         }
                     } else {
-                        $this->load->view('include/head');
-                        $this->load->view('include/header_user');
-                        $this->load->view('user/perfil_refaz', $dados);
-                        $this->load->view('include/footer');
+                        redirect('usuario/amigos');
                     }
                 } else {
-                    $this->load->view('include/head');
-                    $this->load->view('include/header_user');
-                    $this->load->view('user/perfil_outros', $dados);
-                    $this->load->view('include/footer');
+                    redirect('usuario/amigos');
                 }
             } else {
                 redirect('usuario/amigos');
@@ -157,25 +151,41 @@ class Amigos extends CI_Controller {
         }
     }
 
-    public function refazer_amizade($idUsuario) {
+    public function adicionar($idUsuario) {
         if ($this->session->logado == true) {
-            $dados['ativa'] = 1;
             $this->load->model('amizades_model', 'amizades');
             $amizade = $this->amizades->find($this->session->id, $idUsuario);
-            if ($amizade->idUsuario1 == $this->session->id) {
-                if ($this->amizades->update($dados, $this->session->id, $idUsuario)) {
-                    $mensagem = "Amizade refeita.";
-                    $tipo = 1;
+            if (isset($amizade)) {
+                $dados['ativa'] = 1;
+                if ($amizade->idUsuario1 == $this->session->id) {
+                    if ($this->amizades->update($dados, $this->session->id, $idUsuario)) {
+                        $mensagem = "Solicitação de amizade enviada.";
+                        $tipo = 1;
+                    } else {
+                        $mensagem = "Solicitação de amizade não foi enviada.";
+                        $tipo = 0;
+                    }
                 } else {
-                    $mensagem = "Amizade não foi refeita.";
-                    $tipo = 0;
+                    if ($this->amizades->update($dados, $idUsuario, $this->session->id)) {
+                        $mensagem = "Solicitação de amizade enviada.";
+                        $tipo = 1;
+                    } else {
+                        $mensagem = "Solicitação de amizade não foi enviada.";
+                        $tipo = 0;
+                    }
                 }
             } else {
-                if ($this->amizades->update($dados, $idUsuario, $this->session->id)) {
-                    $mensagem = "Amizade refeita.";
+                $dados['idUsuario1'] = $this->session->id;
+                $dados['idUsuario2'] = $idUsuario;
+                $dados['bloqueado1'] = 0;
+                $dados['bloqueado2'] = 0;
+                $dados['ativa'] = 2;
+                $dados['data'] = date();
+                if ($this->amizades->insert($dados)) {
+                    $mensagem = "Solicitação de amizade enviada.";
                     $tipo = 1;
                 } else {
-                    $mensagem = "Amizade não foi refeita.";
+                    $mensagem = "Solicitação de amizade não foi enviada.";
                     $tipo = 0;
                 }
             }
@@ -193,6 +203,7 @@ class Amigos extends CI_Controller {
             if (isset($busca)) {
                 $this->load->model('usuarios_model', 'usuarios');
                 $dados['usuarios'] = $this->usuarios->searchNome($busca);
+                $dados['busca'] = $busca;
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');
                 $this->load->view('user/busca_amigos', $dados);
