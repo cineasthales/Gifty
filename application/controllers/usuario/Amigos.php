@@ -202,7 +202,24 @@ class Amigos extends CI_Controller {
             $busca = $this->input->post('busca');
             if (isset($busca)) {
                 $this->load->model('usuarios_model', 'usuarios');
-                $dados['usuarios'] = $this->usuarios->searchNome($busca);
+                $usuarios = $this->usuarios->searchNome($busca);
+                $this->load->model('amizades_model', 'amizades');
+                $amizades = $this->amizades->findAll($this->session->id);
+                $amigo = 0;
+                $dados['usuarios'] = array();
+                // verifica se usuarios ja sao amigos
+                foreach ($usuarios as $usuario) {
+                    foreach ($amizades as $amizade) {
+                        if ($usuario->id == $amizade->idUsuario1 || $usuario->id == $amizade->idUsuario2) {
+                            $amigo = 1;
+                            break;
+                        }
+                    }
+                    if (!$amigo) {
+                        array_push($dados['usuarios'], $usuario);
+                    }
+                    $amigo = 0;
+                }                            
                 $dados['busca'] = $busca;
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');

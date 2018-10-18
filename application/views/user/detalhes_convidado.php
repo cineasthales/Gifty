@@ -2,7 +2,7 @@
     <section>
         <div class="row"> 
             <div class="col-12">
-                <h1>Detalhes da Lista</h1><br>
+                <h1>Ver Lista</h1><br>
             </div>
             <div class="col-9">
                 <h2>Evento</h2><br>            
@@ -51,22 +51,13 @@
                             <td>
                                 <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
                             </td>
+                            <td>
+                                <button type="button">Marcar Compra</button>
+                            </td>
                         </tr>
                     <?php } ?>
                 </table> 
             </div>
-            <div class="col-9">
-                <br><br><h2>Convidados</h2><br>            
-            </div>
-            <div class="col-3">
-                <br><br><button class="btListas"><a href="#"><i class="fas fa-id-card"></i> Atualizar Convites</a></button><br>        
-            </div>
-            <?php foreach ($convidados as $convidado) { ?>
-                <div class="col-3">
-                    <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>">
-                    <p><br><strong><?= $convidado->nome ?> <?= $convidado->snome ?></strong><br></p>
-                </div>
-            <?php } ?>
         </div>
         </div>
     </section>    

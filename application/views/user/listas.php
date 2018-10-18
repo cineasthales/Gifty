@@ -46,7 +46,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <div class="col-9">
                         <h3><strong><?= $evento->titulo ?> - <i class="fas fa-calendar-alt"></i></strong>
                             <?= date_format(date_create($evento->data), 'd/m/Y') ?> - <i class="fas fa-clock"></i>
-                            <?= substr($evento->hora, 0, 5) ?></h3>
+                            <?= substr($evento->hora, 0, 5) ?> - <i class="fas fa-map-marker-alt"></i> <?= $evento->local ?></h3>
                     </div>
                     <div class="col-3">
                         <button class="btListas"><a href="<?= base_url('usuario/listas/detalhes/') . $evento->id ?>"><i class="fas fa-info-circle"></i> Ver Detalhes</a></button><br>

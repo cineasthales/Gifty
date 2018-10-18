@@ -16,25 +16,27 @@
                 </div>
             </form>
             <div class="col-12">
-                <?php if (count($usuarios) > 1) { ?>
-                    <h2>A busca ' <?= $busca ?> ' retornou <?= count($usuarios) ?> resultados.</h2><br>
-                <?php } else if (count($usuarios) == 1) { ?>
-                    <h2>A busca ' <?= $busca ?> ' retornou 1 resultado.</h2><br>
+                <?php if (count($usuarios) > 0) { ?>
+                    <?php if (count($usuarios) > 1) { ?>
+                        <h2>A busca ' <?= $busca ?> ' retornou <?= count($usuarios) ?> resultados.</h2><br>
+                    <?php } else if (count($usuarios) == 1) { ?>
+                        <h2>A busca ' <?= $busca ?> ' retornou 1 resultado.</h2><br>
+                    <?php } ?>
+                    <?php foreach ($usuarios as $usuario) { ?>
+                        <div class="col-3">                    
+                            <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $usuario->id . '.jpg' ?>">
+                            <p><br><strong><?= $usuario->nome ?> <?= $usuario->sobrenome ?></strong></p>
+                            <p><?= $usuario->genero ?></p>
+                            <p><?= floor(date('Y') - date_format(date_create($usuario->dataNasc), 'Y')) ?> anos</p>
+                            <p><?= $usuario->cidade ?> / <?= $usuario->estado ?></p>
+                            <br><button class="btListas"><a href="<?= base_url('usuario/amigos/adicionar/') . $usuario->id ?>">
+                                    <i class="fas fa-user-plus"></i> Solicitar Amizade</a></button>
+                        </div>
+                    <?php } ?>
                 <?php } else { ?>
                     <h2>A busca ' <?= $busca ?> ' não retornou resultados.</h2><br>
-                <?php } ?>               
-            </div>
-            <?php foreach ($usuarios as $usuario) { ?>
-                <div class="col-3">                    
-                    <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $usuario->id . '.jpg' ?>">
-                    <p><br><strong><?= $usuario->nome ?> <?= $usuario->sobrenome ?></strong></p>
-                    <p><?= $usuario->genero ?></p>
-                    <p><?= floor(date('Y') - date_format(date_create($usuario->dataNasc), 'Y')) ?> anos</p>
-                    <p><?= $usuario->cidade ?> / <?= $usuario->estado ?></p>
-                    <br><button class="btListas"><a href="<?= base_url('usuario/amigos/adicionar/') . $usuario->id ?>">
-                            <i class="fas fa-user-plus"></i> Solicitar Amizade</a></button>
-                </div>
-            <?php } ?>
+                <?php } ?>         
+            </div>            
         </div>
     </section>    
 </main>

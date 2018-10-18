@@ -77,7 +77,7 @@ if ($this->session->has_userdata('mensagem')) {
                 substr($usuario->cep, 0, 2) . '.' . substr($usuario->cep, 2, 3) . '-'
                 . substr($usuario->cep, 5, 3)
                 ?> 
-                - <?= $usuario->cidade ?> / <?= $usuario->estado ?>
+                <br><?= $usuario->cidade ?> / <?= $usuario->estado ?>
             </div>
             <div class="col-8">
                 <br>

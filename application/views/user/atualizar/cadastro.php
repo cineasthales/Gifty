@@ -87,7 +87,7 @@
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                            value="<?= $usuario->email ?>"><br>
                 </div>            
-                <div class="col-12"><br>
+                <div class="col-6"><br>
                     <label for="notificaEmail">
                         <?php
                         if ($usuario->notificaEmail == 1) {
@@ -105,23 +105,23 @@
                     <input type="text" id="idEndereco" name="idEndereco"
                            value="<?= $usuario->idEndereco ?>">
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <label for="CEP">CEP</label><br>
                     <input type="text" id="cep" name="cep" required title="Apenas os 8 números."
                            pattern="[0-9]{8}" maxlength="8"
                            placeholder="99999999" value="<?= $usuario->cep ?>"><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <label for="logradouro">Logradouro</label><br>
                     <input type="text" id="logradouro" name="logradouro" readonly
                            value="<?= $usuario->logradouro ?>"><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <label for="numero">Número</label><br>
                     <input type="text" id="numero" name="numero" required
                            pattern="[0-9]{,12}" maxlength="12" value="<?= $usuario->numero ?>"><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <label for="complemento">Complemento</label><br>
                     <input type="text" id="complemento" name="complemento"
                            pattern="[A-Za-z0-9]{,100}" maxlength="100" value="<?= $usuario->complemento ?>"><br><br>
@@ -139,7 +139,7 @@
                     <input type="text" id="estado" name="estado" readonly value="<?= $usuario->estado ?>"><br><br><br>
                 </div>
                 <div class="col-12">
-                    <br><br>
+                    <br>
                     <input type="submit" value="Atualizar"><br>
                 </div>
             </form>

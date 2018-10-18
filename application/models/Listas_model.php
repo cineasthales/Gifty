@@ -12,7 +12,7 @@ class Listas_model extends CI_Model {
     }
 
     public function selectEvento($idEvento) {
-        $this->db->select('l.*, i.nome AS nome, i.url AS url');
+        $this->db->select('l.*, i.nome AS nome, i.url AS url, i.imagem AS imagem');
         $this->db->from('listas l');
         $this->db->join('itens i', 'l.idItem = i.id', 'inner');
         $this->db->where('l.idEvento', $idEvento);

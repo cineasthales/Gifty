@@ -78,20 +78,20 @@
                     $difM = abs(floor(date('m') - date_format(date_create($amizade->data), 'm')));
                     if ($difM == 0) {
                         ?>
-                        <br><br><strong>Vocês são amigos há menos de 1 mês</strong>
+                        <br><strong>Vocês são amigos há menos de 1 mês</strong>
                     <?php } else if ($difM == 1) { ?>
-                        <br><br><strong>Vocês são amigos há 1 mês</strong>
+                        <br><strong>Vocês são amigos há 1 mês</strong>
                     <?php } else { ?>
-                        <br><br><strong>Vocês são amigos há <?= $difM ?> meses</strong>
+                        <br><strong>Vocês são amigos há <?= $difM ?> meses</strong>
                     <?php } ?>                    
                 <?php } else if ($difA == 1) { ?>
-                    <br><br><strong>Vocês são amigos há 1 ano</strong>
+                    <br><strong>Vocês são amigos há 1 ano</strong>
                 <?php } else { ?>       
-                    <br><br><strong>Vocês são amigos há <?= $difA ?> anos</strong>
+                    <br><strong>Vocês são amigos há <?= $difA ?> anos</strong>
                 <?php } ?>                
             </div>
             <div class="col-8">
-                <br><br><button class="btBloq"><a href="<?= base_url('usuario/amigos/bloquear/') . $usuario->id ?>" onclick="return confirm('Tem certeza que deseja bloquear <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')">
+                <br><button class="btBloq"><a href="<?= base_url('usuario/amigos/bloquear/') . $usuario->id ?>" onclick="return confirm('Tem certeza que deseja bloquear <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')">
                         <i class="fas fa-user-slash"></i> Bloquear</a></button>      
                 <button class="btExc"><a href="<?= base_url('usuario/amigos/desfazer_amizade/') . $usuario->id ?>" onclick="return confirm('Tem certeza que deseja excluir <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')">
                         <i class="fas fa-user-times"></i> Desfazer Amizade</a></button>
