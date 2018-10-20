@@ -93,7 +93,7 @@ if ($this->session->has_userdata('mensagem')) {
                             <br><br><strong><i class="fas fa-clock"></i></strong> <?= substr($convidado->hora, 0, 5) ?></h3>
                     </div>
                     <div class="col-4">
-                        <button class="btListas"><a href="#"><i class="fas fa-gift"></i> Ver Lista</a></button><br>
+                        <button class="btListas"><a href="<?= base_url('usuario/listas/ver/') . $convidado->idEvento ?>"><i class="fas fa-gift"></i> Ver Lista</a></button><br>
                         <?php if ($convidado->comparecera == 1) { ?>
                             <button class="btListas"><a href="<?= base_url('usuario/atualizar/desconfirmar_presenca/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
                         <?php } else { ?>

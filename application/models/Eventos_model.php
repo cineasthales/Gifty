@@ -14,7 +14,7 @@ class Eventos_model extends CI_Model {
     }
 
     public function selectEvento($id) {
-        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, t.descricao AS tipo');
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, u.imagem AS imagem, t.descricao AS tipo');
         $this->db->select('end.logradouro, end.numero, end.complemento, end.bairro, end.cep, end.cidade, end.estado');
         $this->db->from('eventos e');
         $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');

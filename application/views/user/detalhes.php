@@ -10,7 +10,10 @@
             <div class="col-3">
                 <button class="btListas"><a href="<?= base_url('usuario/atualizar/evento/') . $evento->id ?>"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a></button><br>            
             </div>
-            <div class="col-12">
+            <div class="col-4">
+                <img style="width: 100%" src="<?= base_url('assets/img/profiles/') . $evento->imagem ?>"><br>
+            </div>
+            <div class="col-8">
                 <h3 style="font-size: 2em"><strong><?= $evento->titulo ?></strong></h3>
                 <h4 style="color: black"><?= $evento->tipo ?> de <?= $evento->nome ?> <?= $evento->snome ?></h4><br>
                 <p style="text-align: left">
@@ -31,7 +34,7 @@
                     <br><strong>Data Limite de Confirmação</strong>: <?= date_format(date_create($evento->dataLimite), 'd/m/Y') ?>
                     <br><br><strong>Descrição</strong>:<br><?= $evento->descricao ?><br><br>
                 </p>
-            </div>
+            </div>            
             <div class="col-9">
                 <br><br><h2>Lista de Presentes</h2><br>            
             </div>
@@ -50,6 +53,9 @@
                             </td>
                             <td>
                                 <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
+                            </td>
+                            <td>
+                                <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
                             </td>
                         </tr>
                     <?php } ?>

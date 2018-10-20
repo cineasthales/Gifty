@@ -497,4 +497,50 @@ class Atualizar extends CI_Controller {
         }
     }
 
+    public function marcar($idEvento, $idItem) {
+        if ($this->session->logado == true) {
+            $this->load->model('listas_model', 'listas');
+            $numeroItens = $this->listas->countUsuario($idEvento, $this->session->id);
+            $this->load->model('eventos_model', 'eventos');
+            $maxItens = $this->eventos->find($idEvento)->maxItens;
+            if ($numeroItens < $maxItens) {
+                $convite['idComprador'] = $this->session->id;
+                if ($this->listas->update($convite, $idEvento, $idItem)) {
+                    $mensagem = "Você marcou o item como comprado.";
+                    $tipo = 1;
+                } else {
+                    $mensagem = "Não foi possível marcar o item como comprado.";
+                    $tipo = 0;
+                }
+            } else {
+                $mensagem = "Você já marcou o número máximo de itens por convidado.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/listas/ver/' . $idEvento);
+        } else {
+            redirect();
+        }
+    }
+
+    public function desmarcar($idEvento, $idItem) {
+        if ($this->session->logado == true) {
+            $convite['idComprador'] = 0;
+            $this->load->model('listas_model', 'listas');
+            if ($this->listas->update($convite, $idEvento, $idItem)) {
+                $mensagem = "Você desmarcou a compra do item.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Não foi possível desmarcar a compra do item.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/listas/ver/' . $idEvento);
+        } else {
+            redirect();
+        }
+    }
+
 }

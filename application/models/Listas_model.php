@@ -12,7 +12,7 @@ class Listas_model extends CI_Model {
     }
 
     public function selectEvento($idEvento) {
-        $this->db->select('l.*, i.nome AS nome, i.url AS url, i.imagem AS imagem');
+        $this->db->select('l.*, i.nome AS nome, i.url AS url, i.imagem AS imagem, i.preco AS preco');
         $this->db->from('listas l');
         $this->db->join('itens i', 'l.idItem = i.id', 'inner');
         $this->db->where('l.idEvento', $idEvento);
@@ -23,6 +23,13 @@ class Listas_model extends CI_Model {
     public function count($idEvento) {
         $this->db->from('listas');
         $this->db->where('idEvento', $idEvento);
+        return $this->db->count_all_results(); // retorna registro obtido
+    }
+
+    public function countUsuario($idEvento, $idComprador) {
+        $this->db->from('listas');
+        $this->db->where('idEvento', $idEvento);
+        $this->db->where('idComprador', $idComprador);
         return $this->db->count_all_results(); // retorna registro obtido
     }
 

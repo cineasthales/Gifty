@@ -1,16 +1,38 @@
+<?php
+if ($this->session->has_userdata('mensagem')) {
+    $mensagem = $this->session->flashdata('mensagem');
+    $tipo = $this->session->flashdata('tipo');
+    if ($tipo) {
+        ?>
+        <section class="alerta_sucesso">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Sucesso!</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+    <?php } else { ?>
+        <section class="alerta_erro">
+            <div class="row">
+                <div class="col-12">
+                    <small><strong>Erro.</strong> <?= $mensagem ?></small>
+                </div>
+            </div>
+        </section>
+        <?php
+    }
+}
+?>
 <main>
     <section>
         <div class="row"> 
             <div class="col-12">
                 <h1>Ver Lista</h1><br>
             </div>
-            <div class="col-9">
+            <div class="col-12">
                 <h2>Evento</h2><br>            
             </div>
-            <div class="col-3">
-                <button class="btListas"><a href="<?= base_url('usuario/atualizar/evento/') . $evento->id ?>"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a></button><br>            
-            </div>
-            <div class="col-12">
+            <div class="col-8">
                 <h3 style="font-size: 2em"><strong><?= $evento->titulo ?></strong></h3>
                 <h4 style="color: black"><?= $evento->tipo ?> de <?= $evento->nome ?> <?= $evento->snome ?></h4><br>
                 <p style="text-align: left">
@@ -32,11 +54,11 @@
                     <br><br><strong>Descrição</strong>:<br><?= $evento->descricao ?><br><br>
                 </p>
             </div>
-            <div class="col-9">
-                <br><br><h2>Lista de Presentes</h2><br>            
+            <div class="col-4">
+                <img style="width: 100%" src="<?= base_url('assets/img/profiles/') . $evento->imagem ?>"><br>
             </div>
-            <div class="col-3">
-                <br><br><button class="btListas"><a href="<?= base_url('usuario/atualizar/lista/') . $evento->id ?>"><i class="fas fa-gift"></i> Atualizar Lista</a></button><br>           
+            <div class="col-12">
+                <br><br><h2>Lista de Presentes</h2><br>            
             </div>
             <div class="col-12">
                 <table>
@@ -52,7 +74,16 @@
                                 <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
                             </td>
                             <td>
-                                <button type="button">Marcar Compra</button>
+                                <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
+                            </td>
+                            <td>
+                                <?php if ($lista->idComprador == 0) { ?>
+                                    <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/marcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="fas fa-check-circle"></i></p><p>Marcar Compra</a></p>
+                                <?php } else if ($lista->idComprador == $this->session->id) { ?>
+                                    <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/desmarcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="far fa-minus-square"></i></p><p>Desmarcar Compra</a></p>
+                                        <?php } else { ?>
+                                    <p>Outro convidado já comprou.</p>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php } ?>
