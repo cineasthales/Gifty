@@ -27,7 +27,7 @@ if ($this->session->has_userdata('mensagem')) {
     <section>
         <div class="row"> 
             <div class="col-12">
-                <h1>Ver Lista</h1><br>
+                <h1>Ver Lista e Evento</h1><br>
             </div>
             <div class="col-12">
                 <h2>Evento</h2><br>            
@@ -51,44 +51,55 @@ if ($this->session->has_userdata('mensagem')) {
                     - <?= $evento->cidade ?> / <?= $evento->estado ?>)<br><br>                
                     <strong>Máximo de Itens por Convidados</strong>: <?= $evento->maxItens ?>
                     <br><strong>Data Limite de Confirmação</strong>: <?= date_format(date_create($evento->dataLimite), 'd/m/Y') ?>
-                    <br><br><strong>Descrição</strong>:<br><?= $evento->descricao ?><br><br>
+                    <br><br><strong>Descrição</strong>:<br><?= $evento->descricao ?><br>
                 </p>
-            </div>
+            </div>            
             <div class="col-4">
-                <img style="width: 100%" src="<?= base_url('assets/img/profiles/') . $evento->imagem ?>"><br>
+                <img style="width: 100%" src="<?= base_url('assets/img/profiles/') . $evento->imagem ?>"><br><br>
+                <?php if ($convidado->comparecera == 1) { ?>
+                    <button class="btListas"><a href="<?= base_url('usuario/atualizar/desconfirmar_presenca_lista/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
+                <?php } else { ?>
+                    <button class="btListas"><a href="<?= base_url('usuario/atualizar/confirmar_presenca_lista/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
+                <?php } ?>
             </div>
             <div class="col-12">
                 <br><br><h2>Lista de Presentes</h2><br>            
             </div>
-            <div class="col-12">
-                <table>
-                    <?php foreach ($listas as $lista) { ?>
-                        <tr>
-                            <td>
-                                <p style="font-size: 2em"><b><?= $lista->prioridade ?></b></p>
-                            </td>
-                            <td>
-                                <img src="<?= $lista->imagem ?>" style="display: block; margin: 0 auto;">
-                            </td>
-                            <td>
-                                <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
-                            </td>
-                            <td>
-                                <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
-                            </td>
-                            <td>
-                                <?php if ($lista->idComprador == 0) { ?>
-                                    <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/marcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="fas fa-check-circle"></i></p><p>Marcar Compra</a></p>
-                                <?php } else if ($lista->idComprador == $this->session->id) { ?>
-                                    <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/desmarcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="far fa-minus-square"></i></p><p>Desmarcar Compra</a></p>
-                                        <?php } else { ?>
-                                    <p>Outro convidado já comprou.</p>
-                                <?php } ?>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </table> 
-            </div>
+            <?php if ($convidado->comparecera == 1) { ?>
+                <div class="col-12">
+                    <table>
+                        <?php foreach ($listas as $lista) { ?>
+                            <tr>
+                                <td>
+                                    <p style="font-size: 2em"><b><?= $lista->prioridade ?></b></p>
+                                </td>
+                                <td>
+                                    <img src="<?= $lista->imagem ?>" style="display: block; margin: 0 auto;">
+                                </td>
+                                <td>
+                                    <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
+                                </td>
+                                <td>
+                                    <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
+                                </td>
+                                <td>
+                                    <?php if ($lista->idComprador == 0) { ?>
+                                        <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/marcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="fas fa-check-circle"></i></p><p>Marcar Compra</a></p>
+                                    <?php } else if ($lista->idComprador == $this->session->id) { ?>
+                                        <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/desmarcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="far fa-minus-square"></i></p><p>Desmarcar Compra</a></p>
+                                    <?php } else { ?>
+                                        <p>Outro convidado já comprou.</p>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </table> 
+                </div>
+            <?php } else { ?>
+                <div class="col-12">
+                    <p>Você só tem acesso à lista de presentes após confirmar presença no evento.</p>
+                </div>
+            <?php } ?>
         </div>
         </div>
     </section>    

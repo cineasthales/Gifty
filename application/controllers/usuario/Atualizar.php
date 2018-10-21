@@ -483,6 +483,12 @@ class Atualizar extends CI_Controller {
             $convite['comparecera'] = 0;
             $this->load->model('convidados_model', 'convidados');
             if ($this->convidados->update($convite, $idUsuario, $idEvento)) {
+                $this->load->model('listas_model', 'listas');
+                $itens = $this->listas->selectEvento($idEvento);
+                $dados['idComprador'] = 0;
+                foreach ($itens as $item) {
+                    $this->listas->update($dados, $idEvento, $item->idItem);
+                }
                 $mensagem = "Presença desconfirmada.";
                 $tipo = 1;
             } else {
@@ -492,6 +498,50 @@ class Atualizar extends CI_Controller {
             $this->session->set_flashdata('mensagem', $mensagem);
             $this->session->set_flashdata('tipo', $tipo);
             redirect('usuario/listas');
+        } else {
+            redirect();
+        }
+    }
+
+    public function confirmar_presenca_lista($idUsuario, $idEvento) {
+        if ($this->session->logado == true) {
+            $convite['comparecera'] = 1;
+            $this->load->model('convidados_model', 'convidados');
+            if ($this->convidados->update($convite, $idUsuario, $idEvento)) {
+                $mensagem = "Presença confirmada.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Confirmação de presença não foi registrada.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/listas/ver/' . $idEvento);
+        } else {
+            redirect();
+        }
+    }
+
+    public function desconfirmar_presenca_lista($idUsuario, $idEvento) {
+        if ($this->session->logado == true) {
+            $convite['comparecera'] = 0;
+            $this->load->model('convidados_model', 'convidados');
+            if ($this->convidados->update($convite, $idUsuario, $idEvento)) {
+                $this->load->model('listas_model', 'listas');
+                $itens = $this->listas->selectEvento($idEvento);
+                $dados['idComprador'] = 0;
+                foreach ($itens as $item) {
+                    $this->listas->update($dados, $idEvento, $item->idItem);
+                }
+                $mensagem = "Presença desconfirmada.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Desconfirmação de presença não foi registrada.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/listas/ver/' . $idEvento);
         } else {
             redirect();
         }
