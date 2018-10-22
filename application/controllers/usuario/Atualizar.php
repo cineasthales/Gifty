@@ -39,9 +39,22 @@ class Atualizar extends CI_Controller {
                 $dadosEndereco['bairro'] = $this->input->post('bairro');
                 $dadosEndereco['cidade'] = $this->input->post('cidade');
                 $dadosEndereco['estado'] = $this->input->post('estado');
+                $confere = $this->enderecos->find($idEndereco);
+                $this->load->model('logeventos_model', 'logeventos');
+                if (($dadosEndereco['cep'] != $confere->cep) ||
+                        ($dadosEndereco['numero'] != $confere->numero) ||
+                        ($dadosEndereco['complemento'] != $confere->complemento)) {
+                    // registra log de eventos                    
+                    $dadosLog['idEvento'] = $idEvento;
+                    $dadosLog['idAcaoEvento'] = 5;
+                    $dadosLog['data'] = date("Y-m-d");
+                    $dadosLog['hora'] = date("h:i:s");
+                    $this->logeventos->insert($dadosLog);
+                }
                 if ($this->enderecos->update($dadosEndereco, $idEndereco)) {
                     // atualiza evento
                     $this->load->model('eventos_model', 'eventos');
+                    $confereEvento = $this->eventos->find($idEvento);
                     $dadosEvento['titulo'] = $this->input->post('titulo');
                     $dadosEvento['data'] = $this->input->post('data');
                     $dadosEvento['hora'] = $this->input->post('hora');
@@ -50,6 +63,70 @@ class Atualizar extends CI_Controller {
                     $dadosEvento['dataLimite'] = $this->input->post('dataLimite');
                     $dadosEvento['descricao'] = $this->input->post('descricao');
                     $dadosEvento['local'] = $this->input->post('local');
+                    if ($dadosEvento['titulo'] != $confereEvento->titulo) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 11;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
+                    if ($dadosEvento['data'] != $confereEvento->data) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 2;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
+                    if ($dadosEvento['hora'] != $confereEvento->hora) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 3;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
+                    if ($dadosEvento['idTipoEvento'] != $confereEvento->idTipoEvento) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 12;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
+                    if ($dadosEvento['maxItens'] != $confereEvento->maxItens) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 7;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
+                    if ($dadosEvento['dataLimite'] != $confereEvento->dataLimite) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 6;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
+                    if ($dadosEvento['descricao'] != $confereEvento->descricao) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 13;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
+                    if ($dadosEvento['local'] != $confereEvento->local) {
+                        // registra log de eventos
+                        $dadosLog['idEvento'] = $idEvento;
+                        $dadosLog['idAcaoEvento'] = 4;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog); 
+                    }
                     $this->eventos->update($dadosEvento, $idEvento);
                     redirect(base_url('usuario/listas'));
                 }
@@ -117,50 +194,6 @@ class Atualizar extends CI_Controller {
             redirect();
         }
     }
-
-//
-//    public function atualiza_convidados($idEvento) {
-//        if ($this->session->logado == true) {
-//            $this->load->model('convidados_model', 'convidados');
-//            $entradas = $this->input->post();
-//            // verifica novos amigos selecionados e cadastra seus convites
-//            foreach ($entradas as $id => $dado) {
-//                if ($dado) {
-//                    $dadosConvite['comparecera'] = 0;
-//                    $dadosConvite['compareceu'] = 0;
-//                    $dadosConvite['bloqueado'] = 0;
-//                    $dadosConvite['idEvento'] = $idEvento;
-//                    $dadosConvite['idUsuario'] = $id;
-//                    $this->convidados->insert($dadosConvite);
-//                }
-//            }
-//            redirect(base_url('usuario/listas'));
-//        } else {
-//            redirect();
-//        }
-//    }
-//
-//    public function bloqueia_convite($idUsuario, $idEvento) {
-//        if ($this->session->logado == true) {
-//            $dadosConvite['bloqueado'] = 1;
-//            $this->load->model('convidados_model', 'convidados');
-//            $this->convidados->update($dadosConvite, $idUsuario, $idEvento);
-//            redirect(base_url('usuario/atualizar/convidados/' . $idEvento));
-//        } else {
-//            redirect();
-//        }
-//    }
-//
-//    public function desbloqueia_convite($idUsuario, $idEvento) {
-//        if ($this->session->logado == true) {
-//            $dadosConvite['bloqueado'] = 0;
-//            $this->load->model('convidados_model', 'convidados');
-//            $this->convidados->update($dadosConvite, $idUsuario, $idEvento);
-//            redirect(base_url('usuario/atualizar/convidados/' . $idEvento));
-//        } else {
-//            redirect();
-//        }
-//    }
 
     public function buscaAPI($idCategoria) {
         // busca categoria do interesse
@@ -466,8 +499,16 @@ class Atualizar extends CI_Controller {
             $evento['ativo'] = 0;
             $this->load->model('eventos_model', 'eventos');
             if ($this->eventos->update($evento, $idEvento)) {
-                $mensagem = "Evento cancelado.";
-                $tipo = 1;
+                // registra log de eventos
+                $this->load->model('logeventos_model', 'logeventos');
+                $dadosLog['idEvento'] = $idEvento;
+                $dadosLog['idAcaoEvento'] = 10;
+                $dadosLog['data'] = date("Y-m-d");
+                $dadosLog['hora'] = date("h:i:s");
+                if ($this->logeventos->insert($dadosLog)) {
+                    $mensagem = "Evento cancelado.";
+                    $tipo = 1;
+                }
             } else {
                 $mensagem = "Evento não foi cancelado.";
                 $tipo = 0;

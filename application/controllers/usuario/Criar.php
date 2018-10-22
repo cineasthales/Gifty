@@ -57,17 +57,25 @@ class Criar extends CI_Controller {
                     $dadosEvento['local'] = $this->input->post('local');
                     $dadosEvento['idUsuario'] = $this->session->id;
                     $dadosEvento['ativo'] = 1;
-                    $this->eventos->insert($dadosEvento);
-                    // cria idEvento como variável de sessão
-                    $sessao['idEvento'] = $this->eventos->last()->id;
-                    $this->session->set_userdata($sessao);
-                    // busca amigos do usuário logado e carrega próxima página
-                    $this->load->model('amizades_model', 'amizades');
-                    $dados['amizades'] = $this->amizades->findAll($this->session->id);
-                    $this->load->view('include/head');
-                    $this->load->view('include/header_user');
-                    $this->load->view('user/criar/convidados', $dados);
-                    $this->load->view('include/footer');
+                    if ($this->eventos->insert($dadosEvento)) {
+                        // registra log de eventos
+                        $this->load->model('logeventos_model', 'logeventos');
+                        $dadosLog['idEvento'] = $this->eventos->last()->id;
+                        $dadosLog['idAcaoEvento'] = 1;
+                        $dadosLog['data'] = date("Y-m-d");
+                        $dadosLog['hora'] = date("h:i:s");
+                        $this->logeventos->insert($dadosLog);
+                        // cria idEvento como variável de sessão
+                        $sessao['idEvento'] = $this->eventos->last()->id;
+                        $this->session->set_userdata($sessao);
+                        // busca amigos do usuário logado e carrega próxima página
+                        $this->load->model('amizades_model', 'amizades');
+                        $dados['amizades'] = $this->amizades->findAll($this->session->id);
+                        $this->load->view('include/head');
+                        $this->load->view('include/header_user');
+                        $this->load->view('user/criar/convidados', $dados);
+                        $this->load->view('include/footer');
+                    }
                 }
             } else {
                 redirect(base_url('usuario/criar/evento'));

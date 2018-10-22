@@ -417,7 +417,10 @@ VALUES
 ('teve o limite de itens por convidado atualizado'),
 ('teve a lista de presentes atualizada'),
 ('teve os convidados atualizados'),
-('foi cancelado');
+('foi cancelado'),
+('teve o título atualizado'),
+('teve o tipo atualizado'),
+('teve a descrição atualizada');
 
 INSERT INTO acoesUsuarios
 (descricao)
