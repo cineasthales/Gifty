@@ -61,42 +61,63 @@ class Atualizar extends CI_Controller {
         }
     }
 
-//    public function convidados($idEvento) {
-//        if ($this->session->logado == true) {
-//            // carrega atuais convidados
-//            $this->load->model('convidados_model', 'convidados');
-//            $dados['convidados'] = $this->convidados->selectEventoNaoBloq($idEvento);
-//            // carrega convites desfeitos
-//            $dados['convidadosBloq'] = $this->convidados->selectEventoBloq($idEvento);
-//            // carrega amigos que ainda não foram convidados
-//            $this->load->model('amizades_model', 'amizades');
-//            $amigos = $this->amizades->findAll($this->session->id);
-//            $convidados = $this->convidados->selectEvento($idEvento);
-//            $adiciona = true;
-//            foreach ($amigos as $amigo) {
-//                foreach ($convidados as $convidado) {
-//                    if (($amigo->idUsuario1 == $convidado->idUsuario) || 
-//                            ($amigo->idUsuario2 == $convidado->idUsuario)) {
-//                        $adiciona = false;
-//                        break;
-//                    }
-//                }
-//                // se nao encontrou itens parecidos na lista, adiciona nos itens sugeridos
-//                if ($adiciona) {
-//                    array_push($dados['outros'], $amigo);
-//                }
-//                // reinicia flag
-//                $adiciona = true;
-//            }
-//            $dados['outros'] = (object) $dados['outros'];
-//            $this->load->view('include/head');
-//            $this->load->view('include/header_user');
-//            $this->load->view('user/atualizar/convidados', $dados);
-//            $this->load->view('include/footer');
-//        } else {
-//            redirect();
-//        }
-//    }
+    public function convidados($idEvento) {
+        if ($this->session->logado == true) {
+            $this->load->model('convidados_model', 'convidados');
+            $dados['convidados'] = $this->convidados->selectEventoNaoBloq($idEvento);
+            $this->load->model('amizades_model', 'amizades');
+            $dados['amizades'] = $this->amizades->findAll($this->session->id);
+            $dados['idEvento'] = $idEvento;
+            $this->load->view('include/head');
+            $this->load->view('include/header_user');
+            $this->load->view('user/atualizar/convidados', $dados);
+            $this->load->view('include/footer');
+        } else {
+            redirect();
+        }
+    }
+
+    public function convidar($idEvento, $idUsuario) {
+        if ($this->session->logado == true) {
+            $dados['idEvento'] = $idEvento;
+            $dados['idUsuario'] = $idUsuario;
+            $dados['comparecera'] = 0;
+            $dados['compareceu'] = 0;
+            $dados['bloqueado'] = 0;
+            $this->load->model('convidados_model', 'convidados');
+            if ($this->convidados->insert($dados)) {
+                $mensagem = "Convite enviado.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Convite não foi enviado.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/atualizar/convidados/' . $idEvento);
+        } else {
+            redirect();
+        }
+    }
+
+    public function desfazer_convite($idEvento, $idUsuario) {
+        if ($this->session->logado == true) {
+            $this->load->model('convidados_model', 'convidados');
+            if ($this->convidados->delete($idUsuario, $idEvento)) {
+                $mensagem = "Convite desfeito.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Convite não foi desfeito.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect('usuario/atualizar/convidados/' . $idEvento);
+        } else {
+            redirect();
+        }
+    }
+
 //
 //    public function atualiza_convidados($idEvento) {
 //        if ($this->session->logado == true) {

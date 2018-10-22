@@ -55,7 +55,7 @@ if ($this->session->has_userdata('mensagem')) {
                         <button class="btListas"><a href="<?= base_url('usuario/atualizar/lista/') . $evento->id ?>"><i class="fas fa-gift"></i> Atualizar Lista</a></button><br>
                     </div>
                     <div class="col-3">
-                        <button class="btListas"><a href="#"><i class="fas fa-id-card"></i> Atualizar Convites</a></button><br>
+                        <button class="btListas"><a href="<?= base_url('usuario/atualizar/convidados/') . $evento->id ?>"><i class="fas fa-id-card"></i> Atualizar Convites</a></button><br>
                     </div>
                     <div class="col-3">
                         <button class="btListas"><a href="<?= base_url('usuario/atualizar/evento/') . $evento->id ?>"><i class="fas fa-calendar-alt"></i> Atualizar Evento</a></button><br>

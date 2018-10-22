@@ -65,7 +65,7 @@
                 <br><br><h2>Convidados</h2><br>            
             </div>
             <div class="col-3">
-                <br><br><button class="btListas"><a href="#"><i class="fas fa-id-card"></i> Atualizar Convites</a></button><br>        
+                <br><br><button class="btListas"><a href="<?= base_url('usuario/atualizar/convidados/') . $evento->id ?>"><i class="fas fa-id-card"></i> Atualizar Convites</a></button><br>       
             </div>
             <?php foreach ($convidados as $convidado) { ?>
                 <div class="col-3">
