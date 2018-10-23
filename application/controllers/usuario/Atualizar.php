@@ -69,7 +69,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 11;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     if ($dadosEvento['data'] != $confereEvento->data) {
                         // registra log de eventos
@@ -77,7 +77,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 2;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     if ($dadosEvento['hora'] != $confereEvento->hora) {
                         // registra log de eventos
@@ -85,7 +85,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 3;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     if ($dadosEvento['idTipoEvento'] != $confereEvento->idTipoEvento) {
                         // registra log de eventos
@@ -93,7 +93,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 12;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     if ($dadosEvento['maxItens'] != $confereEvento->maxItens) {
                         // registra log de eventos
@@ -101,7 +101,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 7;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     if ($dadosEvento['dataLimite'] != $confereEvento->dataLimite) {
                         // registra log de eventos
@@ -109,7 +109,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 6;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     if ($dadosEvento['descricao'] != $confereEvento->descricao) {
                         // registra log de eventos
@@ -117,7 +117,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 13;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     if ($dadosEvento['local'] != $confereEvento->local) {
                         // registra log de eventos
@@ -125,7 +125,7 @@ class Atualizar extends CI_Controller {
                         $dadosLog['idAcaoEvento'] = 4;
                         $dadosLog['data'] = date("Y-m-d");
                         $dadosLog['hora'] = date("h:i:s");
-                        $this->logeventos->insert($dadosLog); 
+                        $this->logeventos->insert($dadosLog);
                     }
                     $this->eventos->update($dadosEvento, $idEvento);
                     redirect(base_url('usuario/listas'));
@@ -163,6 +163,13 @@ class Atualizar extends CI_Controller {
             $dados['bloqueado'] = 0;
             $this->load->model('convidados_model', 'convidados');
             if ($this->convidados->insert($dados)) {
+                // registra log de eventos
+                $this->load->model('logeventos_model', 'logeventos');
+                $dadosLog['idEvento'] = $idEvento;
+                $dadosLog['idAcaoEvento'] = 9;
+                $dadosLog['data'] = date("Y-m-d");
+                $dadosLog['hora'] = date("h:i:s");
+                $this->logeventos->insert($dadosLog);
                 $mensagem = "Convite enviado.";
                 $tipo = 1;
             } else {
@@ -181,6 +188,13 @@ class Atualizar extends CI_Controller {
         if ($this->session->logado == true) {
             $this->load->model('convidados_model', 'convidados');
             if ($this->convidados->delete($idUsuario, $idEvento)) {
+                // registra log de eventos
+                $this->load->model('logeventos_model', 'logeventos');
+                $dadosLog['idEvento'] = $idEvento;
+                $dadosLog['idAcaoEvento'] = 9;
+                $dadosLog['data'] = date("Y-m-d");
+                $dadosLog['hora'] = date("h:i:s");
+                $this->logeventos->insert($dadosLog);
                 $mensagem = "Convite desfeito.";
                 $tipo = 1;
             } else {
@@ -441,6 +455,13 @@ class Atualizar extends CI_Controller {
             // insere item no banco de dados
             $this->load->model('itens_model', 'itens');
             $this->itens->insert($dadosItem);
+            // registra log de eventos
+            $this->load->model('logeventos_model', 'logeventos');
+            $dadosLog['idEvento'] = $idEvento;
+            $dadosLog['idAcaoEvento'] = 8;
+            $dadosLog['data'] = date("Y-m-d");
+            $dadosLog['hora'] = date("h:i:s");
+            $this->logeventos->insert($dadosLog);
             // insere item na lista no banco de dados
             $this->load->model('listas_model', 'listas');
             $dadosLista['idItem'] = $this->itens->last()->id;
@@ -490,7 +511,6 @@ class Atualizar extends CI_Controller {
     }
 
     public function finalizar() {
-        // implementar: mudar itens da lista como ativos
         redirect(base_url('usuario/listas'));
     }
 
