@@ -25,7 +25,7 @@
                                 <td>
                                     <?php if (count($itens) > 1) { ?>
                                         <?php if ($i > 0) { ?>
-                                            <a href="<?= base_url('usuario/atualizar/subir/') . $itens[$i]->idItem . '/' . $itens[$i]->idEvento ?>"><i class="fas fa-chevron-circle-up"></i></a>
+                                            <a href="<?= base_url('usuario/atualizar/subir/') . $itens[$i]->idItem . '/' . $itens[$i]->idEvento?>"><i class="fas fa-chevron-circle-up"></i></a>
                                         <?php } ?>                                            
                                         <?php if ($i < count($itens) - 1) { ?>
                                             <a href="<?= base_url('usuario/atualizar/descer/') . $itens[$i]->idItem . '/' . $itens[$i]->idEvento ?>"><i class="fas fa-chevron-circle-down"></i></i></a>
@@ -71,8 +71,7 @@
                         </div>
                     </form>
                 <?php } ?>
-            <?php } ?>
-            <?php if (!isset($json)) { ?>
+            <?php } else { ?>
                 <div class="col-12">
                     <p class="icon-big"><i class="fas fa-tasks"></i></p><p>Por enquanto, não temos dados suficientes para recomendar itens a você.<br></p><br>
                 </div>

@@ -9,14 +9,22 @@ class Inicio extends CI_Controller {
             if ($this->session->has_userdata('idEvento')) {
                 $this->session->unset_userdata('idEvento');
             }
+            // carrega notificacoes
+            $this->load->model('eventos_model', 'eventos');
+            $this->load->model('acoeseventos_model', 'acoes');
+            $array = $this->eventos->notify($this->session->id);
+            for ($i = 0; $i < count($array); $i++) {
+                $array[$i]->acao = $this->acoes->find($array[$i]->idAcaoEvento);
+            }           
+            $dados['logs'] = $array;
             // carrega anuncio
             $this->load->model('anuncios_model', 'anuncios');
-            $dados['anuncio'] = $this->anuncios->find(1);
+            $dadosAd['anuncio'] = $this->anuncios->find(1);
             // carrega views com anuncio
             $this->load->view('include/head');
             $this->load->view('include/header_user');         
-            $this->load->view('user/inicio');
-            $this->load->view('include/footer_ad', $dados);
+            $this->load->view('user/inicio', $dados);
+            $this->load->view('include/footer_ad', $dadosAd);
         } else {
             redirect();
         }

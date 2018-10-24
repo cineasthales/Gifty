@@ -27,6 +27,13 @@ class Configuracoes extends CI_Controller {
         $this->load->model('usuarios_model', 'usuarios');
         $dados['ativo'] = 0;
         if ($this->usuarios->update($dados, $this->session->id)) {
+            // registra log de usuarios
+            $this->load->model('logusuarios_model', 'logusuarios');
+            $dadosLog['idUsuario'] = $this->session->id;
+            $dadosLog['idAcaoUsuario'] = 4;
+            $dadosLog['data'] = date("Y-m-d");
+            $dadosLog['hora'] = date("h:i:s");
+            $this->logusuarios->insert($dadosLog);
             $mensagem = "Sua conta foi desativada.";
             $tipo = 1;
         } else {
@@ -60,6 +67,18 @@ class Configuracoes extends CI_Controller {
         $dadosEndereco['bairro'] = $this->input->post('bairro');
         $dadosEndereco['cidade'] = $this->input->post('cidade');
         $dadosEndereco['estado'] = $this->input->post('estado');
+        $confereEnd = $this->enderecos->find($idEndereco);
+        if (($dadosEndereco['cep'] != $confereEnd->cep) ||
+                ($dadosEndereco['numero'] != $confereEnd->numero) ||
+                ($dadosEndereco['complemento'] != $confereEnd->complemento)) {
+            // registra log de usuarios
+            $this->load->model('logusuarios_model', 'logusuarios');
+            $dadosLog['idUsuario'] = $this->session->id;
+            $dadosLog['idAcaoUsuario'] = 10;
+            $dadosLog['data'] = date("Y-m-d");
+            $dadosLog['hora'] = date("h:i:s");
+            $this->logusuarios->insert($dadosLog);
+        }
         if ($this->enderecos->update($dadosEndereco, $idEndereco)) {
             $this->load->model('usuarios_model', 'usuarios');
             $dadosUsuario['idEndereco'] = $idEndereco;
@@ -67,10 +86,39 @@ class Configuracoes extends CI_Controller {
             $dadosUsuario['nome'] = $this->input->post('nome');
             $dadosUsuario['sobrenome'] = $this->input->post('sobrenome');
             $dadosUsuario['email'] = $this->input->post('email');
+            $confere = $this->usuarios->find($this->session->id);
+            if ($dadosUsuario['email'] != $confere->email) {
+                // registra log de usuarios
+                $this->load->model('logusuarios_model', 'logusuarios');
+                $dadosLog['idUsuario'] = $this->session->id;
+                $dadosLog['idAcaoUsuario'] = 7;
+                $dadosLog['data'] = date("Y-m-d");
+                $dadosLog['hora'] = date("h:i:s");
+                $this->logusuarios->insert($dadosLog);
+            }
             if ($this->input->post('notificaEmail')) {
                 $dadosUsuario['notificaEmail'] = 1;
             } else {
                 $dadosUsuario['notificaEmail'] = 0;
+            }
+            if ($dadosUsuario['notificaEmail'] != $confere->notificaEmail) {
+                if ($dadosUsuario['notificaEmail'] == 1) {
+                    // registra log de usuarios
+                    $this->load->model('logusuarios_model', 'logusuarios');
+                    $dadosLog['idUsuario'] = $this->session->id;
+                    $dadosLog['idAcaoUsuario'] = 8;
+                    $dadosLog['data'] = date("Y-m-d");
+                    $dadosLog['hora'] = date("h:i:s");
+                    $this->logusuarios->insert($dadosLog);
+                } else {
+                    // registra log de usuarios
+                    $this->load->model('logusuarios_model', 'logusuarios');
+                    $dadosLog['idUsuario'] = $this->session->id;
+                    $dadosLog['idAcaoUsuario'] = 9;
+                    $dadosLog['data'] = date("Y-m-d");
+                    $dadosLog['hora'] = date("h:i:s");
+                    $this->logusuarios->insert($dadosLog);
+                }
             }
             $dadosUsuario['cpf'] = $this->input->post('cpf');
             $dadosUsuario['dataNasc'] = $this->input->post('dataNasc');
@@ -108,6 +156,13 @@ class Configuracoes extends CI_Controller {
         $dados = $this->input->post();
         $dados['idUsuario'] = $this->session->id;
         if ($this->telefones->insert($dados)) {
+            // registra log de usuarios
+            $this->load->model('logusuarios_model', 'logusuarios');
+            $dadosLog['idUsuario'] = $this->session->id;
+            $dadosLog['idAcaoUsuario'] = 11;
+            $dadosLog['data'] = date("Y-m-d");
+            $dadosLog['hora'] = date("h:i:s");
+            $this->logusuarios->insert($dadosLog);
             $mensagem = "Telefone adicionado.";
             $tipo = 1;
         } else {
@@ -123,6 +178,13 @@ class Configuracoes extends CI_Controller {
         $this->verificaSessao();
         $this->load->model('telefones_model', 'telefones');
         if ($this->telefones->delete($id)) {
+            // registra log de usuarios
+            $this->load->model('logusuarios_model', 'logusuarios');
+            $dadosLog['idUsuario'] = $this->session->id;
+            $dadosLog['idAcaoUsuario'] = 11;
+            $dadosLog['data'] = date("Y-m-d");
+            $dadosLog['hora'] = date("h:i:s");
+            $this->logusuarios->insert($dadosLog);
             $mensagem = "Telefone excluído.";
             $tipo = 1;
         } else {
@@ -151,6 +213,13 @@ class Configuracoes extends CI_Controller {
             if ($dados['senha'] == $dados['senhaRep']) {
                 $dadosUsuario['senha'] = md5($dados['senha']);
                 if ($this->usuarios->update($dadosUsuario, $this->session->id)) {
+                    // registra log de usuarios
+                    $this->load->model('logusuarios_model', 'logusuarios');
+                    $dadosLog['idUsuario'] = $this->session->id;
+                    $dadosLog['idAcaoUsuario'] = 3;
+                    $dadosLog['data'] = date("Y-m-d");
+                    $dadosLog['hora'] = date("h:i:s");
+                    $this->logusuarios->insert($dadosLog);
                     $mensagem = "Senha atualizada.";
                     $tipo = 1;
                 } else {

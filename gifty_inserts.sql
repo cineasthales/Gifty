@@ -435,8 +435,7 @@ VALUES
 ('ativou as notificações por e-mail'),
 ('desativou as notificações por e-mail'),
 ('atualizou o endereço'),
-('atualizou os telefones'),
-('atualizou os interesses');
+('atualizou os telefones');
 
 INSERT INTO empresas
 (razaoSocial, nomeFantasia, cnpj, email, logomarca, site, ativa)

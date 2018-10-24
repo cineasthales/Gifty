@@ -75,8 +75,7 @@
                         </div>
                     </form>
                 <?php } ?>
-            <?php } ?>
-            <?php if (!isset($json)) { ?>
+            <?php } else { ?>
                 <div class="col-12">
                     <p class="icon-big"><i class="fas fa-tasks"></i></p><p>Por enquanto, não temos dados suficientes para recomendar itens a você.<br></p><br>
                 </div>

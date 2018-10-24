@@ -27,6 +27,13 @@ class Gifty extends CI_Controller {
                 if ($verifica->nivel == 0) {
                     $sessao['logado'] = true;
                     $sessao['logado_admin'] = false;
+                    // registra log de usuarios
+                    $this->load->model('logusuarios_model', 'logusuarios');
+                    $dadosLog['idUsuario'] = $verifica->id;
+                    $dadosLog['idAcaoUsuario'] = 1;
+                    $dadosLog['data'] = date("Y-m-d");
+                    $dadosLog['hora'] = date("h:i:s");
+                    $this->logusuarios->insert($dadosLog);
                 } else {
                     $sessao['logado'] = false;
                     $sessao['logado_admin'] = true;
@@ -75,7 +82,7 @@ class Gifty extends CI_Controller {
         $this->load->view('include/footer');
     }
 
-    public function reativar($idUsuario) {        
+    public function reativar($idUsuario) {
         $this->load->model('usuarios_model', 'usuarios');
         $dados['ativo'] = 1;
         if ($this->usuarios->update($dados, $idUsuario)) {
@@ -91,6 +98,13 @@ class Gifty extends CI_Controller {
     }
 
     public function sair() {
+        // registra log de usuarios
+        $this->load->model('logusuarios_model', 'logusuarios');
+        $dadosLog['idUsuario'] = $this->session->id;
+        $dadosLog['idAcaoUsuario'] = 2;
+        $dadosLog['data'] = date("Y-m-d");
+        $dadosLog['hora'] = date("h:i:s");
+        $this->logusuarios->insert($dadosLog);
         $this->session->sess_destroy();
         redirect();
     }

@@ -34,6 +34,18 @@ class Eventos_model extends CI_Model {
         return $this->db->get('eventos', 1)->row(); // retorna registro obtido        
     }
 
+    public function notify($idUsuario) {
+        $this->db->select('e.*, u.nome AS nome, u.sobrenome AS snome, l.data AS logData');
+        $this->db->select('l.hora AS logHora, l.idAcaoEvento AS idAcaoEvento');
+        $this->db->from('eventos e');
+        $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
+        $this->db->join('logEventos l', 'l.idEvento = e.id', 'inner');
+        $this->db->join('convidados c', 'c.idEvento = e.id', 'inner');
+        $this->db->where('c.idUsuario', $idUsuario);
+        $this->db->order_by('l.data DESC, l.hora DESC');
+        return $this->db->get()->result(); // retorna vetor
+    }
+
     public function findIdUsuario($idUsuario) {
         $this->db->select('e.*, t.descricao AS tipo');
         $this->db->from('eventos e');
@@ -42,7 +54,7 @@ class Eventos_model extends CI_Model {
         $this->db->order_by('e.data DESC, e.hora DESC');
         return $this->db->get()->result(); // retorna vetor
     }
-    
+
     public function findConvites($idConvidado) {
         $this->db->select('e.*, t.descricao AS tipo, c.idUsuario AS idConvidado');
         $this->db->select('c.comparecera AS comparecera, u.nome AS nome, u.sobrenome AS snome');
@@ -51,6 +63,7 @@ class Eventos_model extends CI_Model {
         $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');
         $this->db->join('convidados c', 'e.id = c.idEvento', 'inner');
         $this->db->where('c.idUsuario', $idConvidado);
+        $this->db->where('e.ativo', 1);
         $this->db->order_by('e.data DESC, e.hora DESC');
         return $this->db->get()->result(); // retorna vetor
     }
