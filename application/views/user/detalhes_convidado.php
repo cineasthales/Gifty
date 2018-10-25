@@ -97,7 +97,7 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>
             <?php } else { ?>
                 <div class="col-12">
-                    <p>Você só tem acesso à lista de presentes após confirmar presença no evento.</p>
+                    <p class="icon-big"><i class="fas fa-list-ol"></i></p><p>Você só tem acesso à lista de presentes após confirmar presença no evento.</p>
                 </div>
             <?php } ?>
         </div>

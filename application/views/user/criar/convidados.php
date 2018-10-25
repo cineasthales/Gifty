@@ -12,11 +12,15 @@
                     <?php foreach ($amizades as $amizade) { ?>
                         <div class="col-2">
                             <?php if ($this->session->id == $amizade->idUsuario1) { ?>
-                                <label><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario2 . '.jpg' ?>"><br>
-                                    <p><input type="checkbox" id="<?= $amizade->idUsuario2 ?>" name="<?= $amizade->idUsuario2 ?>"> <?= $amizade->nome2 ?> <?= $amizade->snome2 ?></p></label><br><br>
+                                <?php if ($amizade->bloqueado2 == 0) { ?>
+                                    <label><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario2 . '.jpg' ?>"><br>
+                                        <p><input type="checkbox" id="<?= $amizade->idUsuario2 ?>" name="<?= $amizade->idUsuario2 ?>"> <?= $amizade->nome2 ?> <?= $amizade->snome2 ?></p></label><br><br>
+                                <?php } ?>   
                             <?php } else { ?>
-                                <label><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario1 . '.jpg' ?>"><br>
-                                    <p><input type="checkbox" id="<?= $amizade->idUsuario1 ?>" name="<?= $amizade->idUsuario1 ?>"> <?= $amizade->nome1 ?> <?= $amizade->snome1 ?></p></label><br><br>
+                                <?php if ($amizade->bloqueado1 == 0) { ?>
+                                    <label><img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->idUsuario1 . '.jpg' ?>"><br>
+                                        <p><input type="checkbox" id="<?= $amizade->idUsuario1 ?>" name="<?= $amizade->idUsuario1 ?>"> <?= $amizade->nome1 ?> <?= $amizade->snome1 ?></p></label><br><br>
+                                <?php } ?> 
                             <?php } ?>                            
                         </div>
                     <?php } ?>

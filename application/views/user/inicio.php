@@ -8,6 +8,9 @@
                 <button id="btCriarLista"><a href="<?= base_url('usuario/criar') ?>"><i class="fas fa-th-list"></i> Criar Lista de Presentes</a></button>
             </div>
             <div class="col-12">
+                <br><p style="font-size: 2em"><strong>Bem-vind@ ao Gifty, <?= $this->session->nome ?>! :)</strong></p>
+            </div>
+            <div class="col-12">
                 <br><h2>Notificações</h2>
             </div>
             <?php if (count($logs) > 0) { ?>

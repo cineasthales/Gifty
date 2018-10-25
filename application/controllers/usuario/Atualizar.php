@@ -569,7 +569,9 @@ class Atualizar extends CI_Controller {
                 $itens = $this->listas->selectEvento($idEvento);
                 $dados['idComprador'] = 0;
                 foreach ($itens as $item) {
-                    $this->listas->update($dados, $idEvento, $item->idItem);
+                    if ($item->idComprador == $this->session->id) {
+                        $this->listas->update($dados, $idEvento, $item->idItem);
+                    }                    
                 }
                 $mensagem = "Presença desconfirmada.";
                 $tipo = 1;
@@ -611,9 +613,11 @@ class Atualizar extends CI_Controller {
             if ($this->convidados->update($convite, $idUsuario, $idEvento)) {
                 $this->load->model('listas_model', 'listas');
                 $itens = $this->listas->selectEvento($idEvento);
-                $dados['idComprador'] = 0;
+                $dados['idComprador'] = NULL;
                 foreach ($itens as $item) {
-                    $this->listas->update($dados, $idEvento, $item->idItem);
+                    if ($item->idComprador == $this->session->id) {
+                        $this->listas->update($dados, $idEvento, $item->idItem);
+                    }                    
                 }
                 $mensagem = "Presença desconfirmada.";
                 $tipo = 1;
