@@ -1,4 +1,21 @@
 <script src="<?= base_url('assets/js/ajax2.js') ?>"></script>
+<script>
+    function previewFile() {
+        var preview = document.getElementById('foto');
+        var file = document.getElementById('imagem').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }
+</script>
 <main>
     <section>
         <div class="row"> 
@@ -13,89 +30,103 @@
                         <a href="<?= base_url('gifty/contato') ?>">contato</a>
                         com nossa equipe.</small><br><br>
                 </div>
-                <div class="col-6">
+                <?php
+                // OBS: public_path() e base_url() nao funcionam
+                if (file_exists('assets/img/profiles/' . $usuario->imagem)) {
+                    $foto = base_url('assets/img/profiles/' . $usuario->imagem);
+                } else {
+                    $foto = base_url('assets/img/profiles/generic-profile.jpg');
+                }
+                ?>
+                <div class="col-5">
+                    <label for="imagem">Foto de Perfil</label><br>
+                    <input type="file" id="imagem" name="imagem" 
+                           onchange="previewFile()" accept=".jpg"><br>
+                    <img src="<?= $foto ?>" id="foto" style="width: 100%; height: 18em" alt="Foto"><br><br>
+                </div>
+                <div class="col-7">
                     <label for="nome">Nome</label><br>
                     <input type="text" id="nome" name="nome" pattern="[A-Za-z]{,50}" 
                            maxlength="50" required readonly value="<?= $usuario->nome ?>"><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <label for="sobrenome">Sobrenome</label><br>
                     <input type="text" id="sobrenome" name="sobrenome" 
                            maxlength="100" pattern="[A-Za-z]{,100}" required
                            value="<?= $usuario->sobrenome ?>" readonly><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <label for="genero">Gênero</label>
                     <select id="genero" name="genero" required>
-                        <?php
-                        if ($usuario->genero == 'Feminino') {
-                            echo '<option selected value="Feminino">Feminino</option>';
-                        } else {
-                            echo '<option value="Feminino">Feminino</option>';
-                        }
-                        if ($usuario->genero == 'Masculino') {
-                            echo '<option selected value="Masculino">Masculino</option>';
-                        } else {
-                            echo '<option value="Masculino">Masculino</option>';
-                        }
-                        if ($usuario->genero == 'Transexual') {
-                            echo '<option selected value="Transexual">Transexual</option>';
-                        } else {
-                            echo '<option value="Transexual">Transexual</option>';
-                        }
-                        if ($usuario->genero == 'Travesti') {
-                            echo '<option selected value="Travesti">Travesti</option>';
-                        } else {
-                            echo '<option value="Travesti">Travesti</option>';
-                        }
-                        if ($usuario->genero == 'Não-Binário') {
-                            echo '<option selected value="Não-Binário">Não-Binário</option>';
-                        } else {
-                            echo '<option value="Não-Binário">Não-Binário</option>';
-                        }
-                        if ($usuario->genero == 'Outro') {
-                            echo '<option selected value="Outro">Outro</option>';
-                        } else {
-                            echo '<option value="Outro">Outro</option>';
-                        }
-                        ?>
+<?php
+if ($usuario->genero == 'Feminino') {
+    echo '<option selected value="Feminino">Feminino</option>';
+} else {
+    echo '<option value="Feminino">Feminino</option>';
+}
+if ($usuario->genero == 'Masculino') {
+    echo '<option selected value="Masculino">Masculino</option>';
+} else {
+    echo '<option value="Masculino">Masculino</option>';
+}
+if ($usuario->genero == 'Transexual') {
+    echo '<option selected value="Transexual">Transexual</option>';
+} else {
+    echo '<option value="Transexual">Transexual</option>';
+}
+if ($usuario->genero == 'Travesti') {
+    echo '<option selected value="Travesti">Travesti</option>';
+} else {
+    echo '<option value="Travesti">Travesti</option>';
+}
+if ($usuario->genero == 'Não-Binário') {
+    echo '<option selected value="Não-Binário">Não-Binário</option>';
+} else {
+    echo '<option value="Não-Binário">Não-Binário</option>';
+}
+if ($usuario->genero == 'Outro') {
+    echo '<option selected value="Outro">Outro</option>';
+} else {
+    echo '<option value="Outro">Outro</option>';
+}
+?>
                     </select><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <label for="dataNasc">Data de Nascimento</label><br>
                     <input type="date" id="dataNasc" name="dataNasc" required
                            value="<?= $usuario->dataNasc ?>" readonly><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <label for="cpf">CPF</label>
                     <span id="msgCpf" name="msgCpf"></span><br>
                     <input type="text" id="cpf" name="cpf" title="Apenas os 11 números."
                            maxlength="11" pattern="[0-9]{11}" required placeholder="99999999999"
-                           value="<?= $usuario->cpf ?>" readonly><br><br>
+                           value="<?= $usuario->cpf ?>" readonly><br><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <label for="nomeUsuario">Nome de Usuário</label>
                     <span id="msgNomeUsuario" name="msgNomeUsuario"></span><br>
                     <input type="text" id="nomeUsuario" name="nomeUsuario" required
                            pattern="[A-Za-z0-9]{,20}" maxlength="20"
                            value="<?= $usuario->nomeUsuario ?>" readonly><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <label for="email">E-mail</label>
                     <span id="msgEmail" name="msgEmail"></span><br>
                     <input type="email" id="email" name="email" required
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                            value="<?= $usuario->email ?>"><br>
                 </div>            
-                <div class="col-6"><br>
+                <div class="col-4"><br>
                     <label for="notificaEmail">
-                        <?php
-                        if ($usuario->notificaEmail == 1) {
-                            echo '<input type="checkbox" id="notificaEmail" name="notificaEmail" checked> Receber notificações por e-mail';
-                        } else {
-                            echo '<input type="checkbox" id="notificaEmail" name="notificaEmail"> Receber notificações por e-mail';
-                        }
-                        ?>
+<?php
+if ($usuario->notificaEmail == 1) {
+    echo '<input type="checkbox" id="notificaEmail" name="notificaEmail" checked> Receber notificações por e-mail';
+} else {
+    echo '<input type="checkbox" id="notificaEmail" name="notificaEmail"> Receber notificações por e-mail';
+}
+?>
                     </label><br><br>
                 </div>
                 <div class="col-12">
