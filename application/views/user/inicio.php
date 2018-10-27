@@ -1,17 +1,20 @@
 <main>
     <section>
         <div class="row"> 
-            <div class="col-3">
-                <h1>Início</h1>
+            <div class="col-7">
+                <?php if ($this->session->genero == "Feminino") { ?>
+                    <h1><strong>Bem-vinda, <?= $this->session->nome ?>! :)</strong></h1>
+                <?php } else if ($this->session->genero == "Masculino") { ?>
+                    <h1><strong>Bem-vindo, <?= $this->session->nome ?>! :)</strong></h1>
+                <?php } else { ?>
+                    <h1><strong>Bem-vind@, <?= $this->session->nome ?>! :)</strong></h1>
+                <?php } ?>               
             </div>
-            <div class="col-9">
+            <div class="col-5">
                 <button id="btCriarLista"><a href="<?= base_url('usuario/criar') ?>"><i class="fas fa-th-list"></i> Criar Lista de Presentes</a></button>
-            </div>
+            </div>            
             <div class="col-12">
-                <br><p style="font-size: 2em"><strong>Bem-vind@ ao Gifty, <?= $this->session->nome ?>! :)</strong></p>
-            </div>
-            <div class="col-12">
-                <br><h2>Notificações</h2>
+                <br><br><h2>Notificações</h2>
             </div>
             <?php if (count($logs) > 0) { ?>
                 <div class="col-12">

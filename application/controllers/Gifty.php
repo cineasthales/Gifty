@@ -40,6 +40,7 @@ class Gifty extends CI_Controller {
                 }
                 $sessao['id'] = $verifica->id;
                 $sessao['nome'] = $verifica->nome;
+                $sessao['genero'] = $verifica->genero;
                 $this->session->set_userdata($sessao);
                 // busca todos os interesses do usuario que logou
                 $this->load->model('interesses_model', 'interesses');
@@ -137,121 +138,135 @@ class Gifty extends CI_Controller {
         $dadosEndereco['cidade'] = $this->input->post('cidade');
         $dadosEndereco['estado'] = $this->input->post('estado');
         if ($this->enderecos->insert($dadosEndereco)) {
-            $this->load->model('usuarios_model', 'usuarios');
-            $dadosUsuario['idEndereco'] = $this->enderecos->last()->id;
-            $dadosUsuario['nomeUsuario'] = $this->input->post('nomeUsuario');
-            $dadosUsuario['senha'] = md5($this->input->post('senha'));
-            $dadosUsuario['nome'] = $this->input->post('nome');
-            $dadosUsuario['sobrenome'] = $this->input->post('sobrenome');
-            $dadosUsuario['email'] = $this->input->post('email');
-            if ($this->input->post('notificaEmail')) {
-                $dadosUsuario['notificaEmail'] = 1;
+            // faz upload da imagem
+            $config['upload_path'] = './assets/img/profiles/';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['max_size'] = 10000;
+            $config['max_width'] = 10000;
+            $config['max_height'] = 10000;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('imagem')) {
+                $arquivo = $this->upload->data();
+                $dadosUsuario['imagem'] = $arquivo['file_name'];
+                $this->load->model('usuarios_model', 'usuarios');
+                $dadosUsuario['idEndereco'] = $this->enderecos->last()->id;
+                $dadosUsuario['nomeUsuario'] = $this->input->post('nomeUsuario');
+                $dadosUsuario['senha'] = md5($this->input->post('senha'));
+                $dadosUsuario['nome'] = $this->input->post('nome');
+                $dadosUsuario['sobrenome'] = $this->input->post('sobrenome');
+                $dadosUsuario['email'] = $this->input->post('email');
+                if ($this->input->post('notificaEmail')) {
+                    $dadosUsuario['notificaEmail'] = 1;
+                } else {
+                    $dadosUsuario['notificaEmail'] = 0;
+                }
+                $dadosUsuario['cpf'] = $this->input->post('cpf');
+                $dadosUsuario['dataNasc'] = $this->input->post('dataNasc');
+                $dadosUsuario['genero'] = $this->input->post('genero');
+                $dadosUsuario['nivel'] = 0;
+                $dadosUsuario['ativo'] = 1;
+                $dadosUsuario['tentaLogin'] = 0;
+                if ($this->usuarios->insert($dadosUsuario)) {
+                    $idUsuario = $this->usuarios->last()->id;
+                    if ($this->input->post('categoria_1')) {
+                        $this->cadastrar_interesses(1, 13, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_2')) {
+                        $this->cadastrar_interesses(14, 25, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_3')) {
+                        $this->cadastrar_interesses(26, 55, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_4')) {
+                        $this->cadastrar_interesses(56, 66, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_5')) {
+                        $this->cadastrar_interesses(67, 86, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_6')) {
+                        $this->cadastrar_interesses(87, 94, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_7')) {
+                        $this->cadastrar_interesses(95, 106, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_8')) {
+                        $this->cadastrar_interesses(107, 118, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_9')) {
+                        $this->cadastrar_interesses(119, 134, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_10')) {
+                        $this->cadastrar_interesses(135, 159, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_11')) {
+                        $this->cadastrar_interesses(160, 167, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_12')) {
+                        $this->cadastrar_interesses(168, 177, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_13')) {
+                        $this->cadastrar_interesses(178, 190, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_14')) {
+                        $this->cadastrar_interesses(191, 199, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_15')) {
+                        $this->cadastrar_interesses(200, 218, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_16')) {
+                        $this->cadastrar_interesses(219, 228, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_17')) {
+                        $this->cadastrar_interesses(229, 252, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_18')) {
+                        $this->cadastrar_interesses(253, 276, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_19')) {
+                        $this->cadastrar_interesses(277, 284, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_20')) {
+                        $this->cadastrar_interesses(285, 290, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_21')) {
+                        $this->cadastrar_interesses(291, 299, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_22')) {
+                        $this->cadastrar_interesses(300, 322, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_23')) {
+                        $this->cadastrar_interesses(323, 340, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_24')) {
+                        $this->cadastrar_interesses(341, 348, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_25')) {
+                        $this->cadastrar_interesses(349, 358, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_26')) {
+                        $this->cadastrar_interesses(359, 364, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_27')) {
+                        $this->cadastrar_interesses(365, 374, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_28')) {
+                        $this->cadastrar_interesses(376, 376, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_29')) {
+                        $this->cadastrar_interesses(377, 377, $idUsuario);
+                    }
+                    if ($this->input->post('categoria_30')) {
+                        $this->cadastrar_interesses(378, 378, $idUsuario);
+                    }
+                    $mensagem = "Confirme seu cadastro no e-mail <strong>" . $dadosUsuario['email'] . "</strong>.";
+                    $tipo = 1;
+                } else {
+                    $mensagem = "Dados de usuário não foram cadastrados.";
+                    $tipo = 0;
+                }
             } else {
-                $dadosUsuario['notificaEmail'] = 0;
-            }
-            $dadosUsuario['cpf'] = $this->input->post('cpf');
-            $dadosUsuario['dataNasc'] = $this->input->post('dataNasc');
-            $dadosUsuario['genero'] = $this->input->post('genero');
-            $dadosUsuario['imagem'] = 'generic-profile.jpg';
-            $dadosUsuario['nivel'] = 0;
-            $dadosUsuario['ativo'] = 1;
-            $dadosUsuario['tentaLogin'] = 0;
-            if ($this->usuarios->insert($dadosUsuario)) {
-                $idUsuario = $this->usuarios->last()->id;
-                if ($this->input->post('categoria_1')) {
-                    $this->cadastrar_interesses(1, 13, $idUsuario);
-                }
-                if ($this->input->post('categoria_2')) {
-                    $this->cadastrar_interesses(14, 25, $idUsuario);
-                }
-                if ($this->input->post('categoria_3')) {
-                    $this->cadastrar_interesses(26, 55, $idUsuario);
-                }
-                if ($this->input->post('categoria_4')) {
-                    $this->cadastrar_interesses(56, 66, $idUsuario);
-                }
-                if ($this->input->post('categoria_5')) {
-                    $this->cadastrar_interesses(67, 86, $idUsuario);
-                }
-                if ($this->input->post('categoria_6')) {
-                    $this->cadastrar_interesses(87, 94, $idUsuario);
-                }
-                if ($this->input->post('categoria_7')) {
-                    $this->cadastrar_interesses(95, 106, $idUsuario);
-                }
-                if ($this->input->post('categoria_8')) {
-                    $this->cadastrar_interesses(107, 118, $idUsuario);
-                }
-                if ($this->input->post('categoria_9')) {
-                    $this->cadastrar_interesses(119, 134, $idUsuario);
-                }
-                if ($this->input->post('categoria_10')) {
-                    $this->cadastrar_interesses(135, 159, $idUsuario);
-                }
-                if ($this->input->post('categoria_11')) {
-                    $this->cadastrar_interesses(160, 167, $idUsuario);
-                }
-                if ($this->input->post('categoria_12')) {
-                    $this->cadastrar_interesses(168, 177, $idUsuario);
-                }
-                if ($this->input->post('categoria_13')) {
-                    $this->cadastrar_interesses(178, 190, $idUsuario);
-                }
-                if ($this->input->post('categoria_14')) {
-                    $this->cadastrar_interesses(191, 199, $idUsuario);
-                }
-                if ($this->input->post('categoria_15')) {
-                    $this->cadastrar_interesses(200, 218, $idUsuario);
-                }
-                if ($this->input->post('categoria_16')) {
-                    $this->cadastrar_interesses(219, 228, $idUsuario);
-                }
-                if ($this->input->post('categoria_17')) {
-                    $this->cadastrar_interesses(229, 252, $idUsuario);
-                }
-                if ($this->input->post('categoria_18')) {
-                    $this->cadastrar_interesses(253, 276, $idUsuario);
-                }
-                if ($this->input->post('categoria_19')) {
-                    $this->cadastrar_interesses(277, 284, $idUsuario);
-                }
-                if ($this->input->post('categoria_20')) {
-                    $this->cadastrar_interesses(285, 290, $idUsuario);
-                }
-                if ($this->input->post('categoria_21')) {
-                    $this->cadastrar_interesses(291, 299, $idUsuario);
-                }
-                if ($this->input->post('categoria_22')) {
-                    $this->cadastrar_interesses(300, 322, $idUsuario);
-                }
-                if ($this->input->post('categoria_23')) {
-                    $this->cadastrar_interesses(323, 340, $idUsuario);
-                }
-                if ($this->input->post('categoria_24')) {
-                    $this->cadastrar_interesses(341, 348, $idUsuario);
-                }
-                if ($this->input->post('categoria_25')) {
-                    $this->cadastrar_interesses(349, 358, $idUsuario);
-                }
-                if ($this->input->post('categoria_26')) {
-                    $this->cadastrar_interesses(359, 364, $idUsuario);
-                }
-                if ($this->input->post('categoria_27')) {
-                    $this->cadastrar_interesses(365, 374, $idUsuario);
-                }
-                if ($this->input->post('categoria_28')) {
-                    $this->cadastrar_interesses(376, 376, $idUsuario);
-                }
-                if ($this->input->post('categoria_29')) {
-                    $this->cadastrar_interesses(377, 377, $idUsuario);
-                }
-                if ($this->input->post('categoria_30')) {
-                    $this->cadastrar_interesses(378, 378, $idUsuario);
-                }
-                $mensagem = "Confirme seu cadastro no e-mail <strong>" . $dadosUsuario['email'] . "</strong>.";
-                $tipo = 1;
-            } else {
-                $mensagem = "Dados de usuário não foram cadastrados.";
+                $mensagem = "Imagem não foi enviada.";
                 $tipo = 0;
             }
         } else {

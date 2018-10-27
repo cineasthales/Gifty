@@ -24,7 +24,7 @@
                     <?php } ?>
                     <?php foreach ($usuarios as $usuario) { ?>
                         <div class="col-3">                    
-                            <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $usuario->id . '.jpg' ?>">
+                            <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $usuario->imagem ?>">
                             <p><br><strong><?= $usuario->nome ?> <?= $usuario->sobrenome ?></strong></p>
                             <p><?= $usuario->genero ?></p>
                             <p><?= floor(date('Y') - date_format(date_create($usuario->dataNasc), 'Y')) ?> anos</p>

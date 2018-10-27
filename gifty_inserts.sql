@@ -18,7 +18,7 @@ VALUES
 ('Despedida de Solteiro(a)'),
 ('Festa de Despedida'),
 ('Religioso'),
-('Outra Data Comemorativa');
+('Data Comemorativa Diversa');
 
 INSERT INTO categorias
 (descricao, idML)
@@ -467,36 +467,20 @@ VALUES
 ('96015440', 'Rua Marechal Floriano', 653, '', 'Centro', 'Pelotas', 'RS'),
 ('96020360', 'Rua Professor Doutor Araújo', 918,'', 'Centro', 'Pelotas', 'RS');
 
-/*
-INSERT INTO itens
-(nome, descricao, preco, url, imagem, idCategoria)
-VALUES
-('Smartphone Apple iPhone X 32Gb', 'O melhor iPhone já feito', 3999.99, 'http://www.google.com', '1.jpg', 35),
-('Smartphone Samsung Galaxy S9', 'O melhor Samsung Galaxy já feito', 3299.99, 'http://www.google.com', '2.jpg', 35),
-('Refrigerador Electrolux DC51X 475 Litros Inox', 'O melhor refrigerador já feito', 2229.99, 'http://www.google.com', '3.jpg', 14),
-('Brastemp BWJ11AB Superior 11 Kg Branco', 'A melhor lavadora já feita', 1329.99, 'http://www.google.com', '4.jpg', 14),
-('Impressora HP Office Jet 7110 Wide Format Eprinter 6914024', 'A melhor impressora já feita', 939.99, 'http://www.google.com', '5.jpg', 21),
-('Smart TV LED 70” LG 4K/Ultra HD 70UJ6585 WebOS - Conversor Digital Wi-Fi 4 HDMI 2 USB Bluetooth HDR', 'A melhor TV já feita', 6839.99, 'http://www.google.com', '6.jpg', 15),
-('Sofá 3 Lugares Aruba - American Comfort', 'O melhor sofá já feito', 569.99, 'http://www.google.com', '7.jpg', 8),
-('Notebook Dell Inspiron i14-7472-A30S Intel Core i7 - 16GB 1TB LCD 14” Placa de Vídeo 4GB Windows 10', 'O melhor notebook já feito', 4274.05, 'http://www.google.com', '8.jpg', 21),
-('Microsoft Xbox One S 500 Gb', 'O melhor Xbox já feito', 1199.00, 'http://www.google.com', '9.jpg', 19),
-('Sony PS4 Playstation 4 Slim 500 Gb', 'O melhor Playstation já feito', 1430.90, 'http://www.google.com', '10.jpg', 19);
-*/
-
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
    cpf, dataNasc, genero, imagem, nivel, ativo, tentaLogin, idEndereco)
 VALUES
-('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '1.jpg', 1, 1, 0, 1),
-('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1991-01-01', 'Feminino', '2.jpg', 0, 1, 0, 2),
-('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1992-01-01', 'Feminino', '3.jpg', 0, 1, 0, 3),
-('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', '4.jpg', 0, 1, 0, 4),
-('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', '5.jpg', 0, 0, 0, 5),
-('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', '6.jpg', 0, 1, 0, 6),
-('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 1, '44444444444', '1996-01-01', 'Masculino', '7.jpg', 0, 1, 0, 7),
-('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 1, '33333333333', '1997-01-01', 'Feminino', '8.jpg', 0, 1, 0, 8),
-('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 1, '22222222222', '1998-01-01', 'Feminino', '9.jpg', 0, 1, 0, 9),
-('patriciag', '8c6cd3b74652e166638f9a672ca12171', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 1, '11111111111', '1999-01-01', 'Feminino', '10.jpg', 0, 1, 0, 10);
+('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '875a476a42f1cbd71abc355293bb5220.jpg', 1, 1, 0, 1),
+('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1991-01-01', 'Feminino', '39b5128d6a1a5842f8658468ba6b36d4.jpg', 0, 1, 0, 2),
+('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1992-01-01', 'Feminino', '79a57653e98ead754a6970d5dc9870d9.jpg', 0, 1, 0, 3),
+('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', 'd7494662b636bcf361544a19566f0001.jpg', 0, 1, 0, 4),
+('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', 'b38fff87ccf7ddca3ed14690538f4b26.jpg', 0, 0, 0, 5),
+('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', 'efe493e636936dff7c1dbfc8ff05a32a.jpg', 0, 1, 0, 6),
+('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 1, '44444444444', '1996-01-01', 'Masculino', '778d25cbfb4cc30a303ac4e9fd5458a6.jpg', 0, 1, 0, 7),
+('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 1, '33333333333', '1997-01-01', 'Feminino', '0bce44d5f41540800a69cd9b0c2b543e.jpg', 0, 1, 0, 8),
+('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 1, '22222222222', '1998-01-01', 'Feminino', '33385e26d467dbff6a4a37557c97c747.jpg', 0, 1, 0, 9),
+('patriciag', '8c6cd3b74652e166638f9a672ca12171', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 1, '11111111111', '1999-01-01', 'Feminino', '40470017a05e3999dfc9d49ecccb1fda.jpg', 0, 1, 0, 10);
 
 INSERT INTO telefones
 (ddd, numero, idUsuario)
@@ -537,16 +521,6 @@ VALUES
 (6, 8, 1, 0, 0, '2018-07-05'),
 (7, 8, 1, 0, 0, '2018-07-05');
 
-INSERT INTO logUsuarios
-(idUsuario, idAcaoUsuario, data, hora)
-VALUES
-(2, 1, '2018-01-05', '14:00'),
-(2, 2, '2018-01-05', '15:00'),
-(2, 1, '2018-01-05', '16:00'),
-(2, 2, '2018-01-05', '17:00'),
-(2, 1, '2018-01-05', '18:00'),
-(2, 2, '2018-01-05', '19:00');
-
 INSERT INTO interesses
 (idUsuario, idCategoria, peso, data)
 VALUES
@@ -561,74 +535,7 @@ VALUES
 (3, 264, 0, '2018-07-26'),
 (3, 127, 0, '2018-07-26');
 
-/*
-INSERT INTO eventos
-(titulo, descricao, data, hora, local, ativo, maxItens, dataLimite,
-   idUsuario, idEndereco, idTipoEvento)
-VALUES
-('Aniversário de 25 anos', 'Muitas gostosuras e bebidas geladas!', '2018-06-06', '20:00', 'Casa da Alice', 1, 2, '2018-06-01', 2, 2, 1),
-('Festa de Natal Família Moreira', 'Vai ser uma festa muito divertida! Venham!', '2018-12-25', '21:00', 'Casa da Alice', 1, 3, '2018-11-25', 2, 2, 6),
-('Casamento da Alice com Paulo', 'Um evento marcante em nossas vidas e contamos com a presença de vocês.', '2018-11-30', '16:00', 'Igreja do Porto', 1, 4, '2018-10-30', 2, 10, 4),
-('Chá de Casa Nova da Alice', 'Querem ajudar a mobiliar minha casa?', '2018-04-17', '18:00', 'Casa da Alice', 1, 2,'2018-04-10', 2, 2, 13),
-('Formatura da Alice', 'Minha formatura está chegando e quero comemorar essa vitória!', '2019-01-10', '19:00', 'Theatro Guarany', 0, 3, '2019-01-10', 2, 9, 5);
-
-INSERT INTO convidados
-(idUsuario, idEvento, comparecera, compareceu, bloqueado)
-VALUES
-(3, 1, 0, 0, 0),
-(4, 1, 1, 0, 0),
-(5, 2, 1, 0, 0),
-(6, 3, 1, 0, 1),
-(7, 3, 0, 0, 0),
-(8, 3, 1, 0, 0),
-(9, 4, 1, 1, 0),
-(3, 4, 1, 0, 0),
-(4, 5, 1, 0, 0);
-
-INSERT INTO listas
-(idEvento, idItem, prioridade, dataAdicao, idComprador)
-VALUES
-(1, 1, 1, '2018-04-01', 3),
-(1, 2, 2, '2018-04-02', 0),
-(2, 3, 1, '2018-04-03', 0),
-(3, 4, 3, '2018-04-04', 5),
-(3, 5, 1, '2018-04-05', 6),
-(3, 6, 2, '2018-04-06', 0),
-(4, 7, 1, '2018-04-07', 9),
-(5, 8, 2, '2018-04-08', 0),
-(5, 9, 1, '2018-04-09', 0);
-
-INSERT INTO logEventos
-(idEvento, idAcaoEvento, data, hora)
-VALUES
-(1, 1, '2018-04-01', '14:10'),
-(1, 2, '2018-04-02', '14:15'),
-(1, 3, '2018-04-03', '14:16'),
-(1, 4, '2018-04-04', '14:17'),
-(1, 5, '2018-04-05', '14:18');
-*/
-
 INSERT INTO anuncios
 (imagem, url, ativo, idEmpresa, idCategoria)
 VALUES
 ('ad1.jpg', 'http://www.americanas.com.br', 1, 1, 1);
-
-/*
-INSERT INTO cliquesAnuncios
-(data, hora, idAnuncio, idUsuario)
-VALUES
-('2018-04-01', '14:00', 1, 2),
-('2018-04-01', '14:01', 1, 2),
-('2018-04-01', '14:02', 1, 2),
-('2018-04-01', '14:03', 1, 2),
-('2018-04-01', '14:04', 1, 2);
-
-INSERT INTO cliquesEmpresas
-(data, hora, idEmpresa, idUsuario)
-VALUES
-('2018-04-01', '14:11',1,2),
-('2018-04-01', '14:12',1,2),
-('2018-04-01', '14:13',1,2),
-('2018-04-01', '14:15',1,2),
-('2018-04-01', '14:15',1,2);
-*/

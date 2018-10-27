@@ -22,7 +22,7 @@
             <div class="col-12">
                 <h1>Cadastrar</h1>
             </div>
-            <form method="post" action="<?= base_url('gifty/grava_cadastro') ?>">
+            <form method="post" enctype="multipart/form-data" action="<?= base_url('gifty/grava_cadastro') ?>">
                 <div class="col-12">
                     <br>
                     <h2>Seus Dados</h2>
@@ -33,7 +33,7 @@
                 <div class="col-5">
                     <label for="imagem">Foto de Perfil</label><br>
                     <input type="file" id="imagem" name="imagem" 
-                           onchange="previewFile()" accept=".jpg"><br>
+                           onchange="previewFile()" accept=".jpg, .jpeg, .png" required><br>
                     <img src="<?= $foto ?>" id="foto" style="width: 100%; height: 18em" alt="Foto"><br><br>
                 </div>
                 <div class="col-7">

@@ -22,7 +22,7 @@
             <div class="col-12">
                 <h1>Atualizar Cadastro</h1>
             </div>
-            <form method="post" action="<?= base_url('usuario/configuracoes/grava_atualizacao_dados') ?>">
+            <form method="post" enctype="multipart/form-data" action="<?= base_url('usuario/configuracoes/grava_atualizacao_dados') ?>">
                 <div class="col-12">
                     <br><h2>Seus Dados</h2>
                     <small>Para sua segurança, alguns dados não podem ser livremente atualizados.
