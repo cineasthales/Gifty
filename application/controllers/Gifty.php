@@ -144,7 +144,7 @@ class Gifty extends CI_Controller {
             $config['max_size'] = 10000;
             $config['max_width'] = 10000;
             $config['max_height'] = 10000;
-            $config['encrypt_name'] = true;
+            $config['encrypt_name'] = TRUE;
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('imagem')) {
                 $arquivo = $this->upload->data();

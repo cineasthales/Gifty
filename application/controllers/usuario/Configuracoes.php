@@ -80,64 +80,58 @@ class Configuracoes extends CI_Controller {
             $this->logusuarios->insert($dadosLog);
         }
         if ($this->enderecos->update($dadosEndereco, $idEndereco)) {
-            $dadosUsuario = null;
+            $dadosUsuario = array();
             $this->load->model('usuarios_model', 'usuarios');
             $confere = $this->usuarios->find($this->session->id);
-            if (!empty($this->input->post('imagem'))) {
-                // faz upload da imagem
-                $config['upload_path'] = './assets/img/profiles/';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = 10000;
-                $config['max_width'] = 10000;
-                $config['max_height'] = 10000;
-                $config['encrypt_name'] = true;
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('imagem')) {
-                    $arquivo = $this->upload->data();
-                    $this->load->library('image_lib');
-                    $this->image_lib->clear();
-                    $config['image_library'] = 'gd2';
-                    $config['source_image'] = './assets/img/profiles/' . $arquivo['file_name'];
-                    $config['create_thumb'] = FALSE;
-                    $config['maintain_ratio'] = FALSE;
-                    $config['quality'] = 100;
-                    // se nao for quadrada a imagem, corta o excesso
-                    if ($arquivo['image_width'] > $arquivo['image_height']) {
-                        $config['width'] = $arquivo['image_height'];
-                        $config['height'] = $arquivo['image_height'];
-                        $config['x_axis'] = ($arquivo['image_width'] - $arquivo['image_height']) / 2;
-                        $config['y_axis'] = 0;
-                        $this->image_lib->initialize($config);
-                        $this->image_lib->crop();
-                        $this->image_lib->clear();
-                    } else if ($arquivo['image_height'] > $arquivo['image_width']) {
-                        $config['width'] = $arquivo['image_width'];
-                        $config['height'] = $arquivo['image_width'];
-                        $config['y_axis'] = ($arquivo['image_height'] - $arquivo['image_width']) / 2;
-                        $config['x_axis'] = 0;
-                        $this->image_lib->initialize($config);
-                        $this->image_lib->crop();
-                        $this->image_lib->clear();
-                    }
-                    // redimensiona
-                    $config['width'] = 300;
-                    $config['height'] = 300;
+            $config['upload_path'] = './assets/img/profiles/';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['max_size'] = 10000;
+            $config['max_width'] = 10000;
+            $config['max_height'] = 10000;
+            $config['encrypt_name'] = TRUE;
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('imagem')) {
+                $arquivo = $this->upload->data();
+                $this->load->library('image_lib');
+                $this->image_lib->clear();
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = './assets/img/profiles/' . $arquivo['file_name'];
+                $config['create_thumb'] = FALSE;
+                $config['maintain_ratio'] = FALSE;
+                $config['quality'] = 100;
+                // se nao for quadrada a imagem, corta o excesso
+                if ($arquivo['image_width'] > $arquivo['image_height']) {
+                    $config['width'] = $arquivo['image_height'];
+                    $config['height'] = $arquivo['image_height'];
+                    $config['x_axis'] = ($arquivo['image_width'] - $arquivo['image_height']) / 2;
+                    $config['y_axis'] = 0;
                     $this->image_lib->initialize($config);
-                    $this->image_lib->resize();
-                    $dadosUsuario['imagem'] = $arquivo['file_name'];
-                    // apaga imagem anterior
-                    unlink('./assets/img/profiles/' . $confere->imagem);
-                    // registra log de usuarios
-                    $this->load->model('logusuarios_model', 'logusuarios');
-                    $dadosLog['idUsuario'] = $this->session->id;
-                    $dadosLog['idAcaoUsuario'] = 6;
-                    $dadosLog['data'] = date("Y-m-d");
-                    $dadosLog['hora'] = date("h:i:s");
-                    $this->logusuarios->insert($dadosLog);
-                } else {
-                    $mensagem = "Imagem não foi atualizada.";
-                    $tipo = 0;
+                    $this->image_lib->crop();
+                    $this->image_lib->clear();
+                } else if ($arquivo['image_height'] > $arquivo['image_width']) {
+                    $config['width'] = $arquivo['image_width'];
+                    $config['height'] = $arquivo['image_width'];
+                    $config['y_axis'] = ($arquivo['image_height'] - $arquivo['image_width']) / 2;
+                    $config['x_axis'] = 0;
+                    $this->image_lib->initialize($config);
+                    $this->image_lib->crop();
+                    $this->image_lib->clear();
                 }
+                // redimensiona
+                $config['width'] = 300;
+                $config['height'] = 300;
+                $this->image_lib->initialize($config);
+                $this->image_lib->resize();
+                $dadosUsuario['imagem'] = $arquivo['file_name'];
+                // apaga imagem anterior
+                unlink('./assets/img/profiles/' . $confere->imagem);
+                // registra log de usuarios
+                $this->load->model('logusuarios_model', 'logusuarios');
+                $dadosLog['idUsuario'] = $this->session->id;
+                $dadosLog['idAcaoUsuario'] = 6;
+                $dadosLog['data'] = date("Y-m-d");
+                $dadosLog['hora'] = date("h:i:s");
+                $this->logusuarios->insert($dadosLog);
             } else {
                 $dadosUsuario['imagem'] = $confere->imagem;
             }
