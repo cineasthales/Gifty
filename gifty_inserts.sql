@@ -474,7 +474,7 @@ VALUES
 ('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '875a476a42f1cbd71abc355293bb5220.jpg', 1, 1, 0, 1),
 ('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1991-01-01', 'Feminino', '39b5128d6a1a5842f8658468ba6b36d4.jpg', 0, 1, 0, 2),
 ('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1992-01-01', 'Feminino', '79a57653e98ead754a6970d5dc9870d9.jpg', 0, 1, 0, 3),
-('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', 'd7494662b636bcf361544a19566f0001.jpg', 0, 1, 0, 4),
+('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', 'ff9bccd51f8371164124edd9cb3a2555.jpg', 0, 1, 0, 4),
 ('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', 'b38fff87ccf7ddca3ed14690538f4b26.jpg', 0, 0, 0, 5),
 ('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', 'efe493e636936dff7c1dbfc8ff05a32a.jpg', 0, 1, 0, 6),
 ('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 1, '44444444444', '1996-01-01', 'Masculino', '778d25cbfb4cc30a303ac4e9fd5458a6.jpg', 0, 1, 0, 7),

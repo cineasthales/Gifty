@@ -80,25 +80,51 @@ class Configuracoes extends CI_Controller {
             $this->logusuarios->insert($dadosLog);
         }
         if ($this->enderecos->update($dadosEndereco, $idEndereco)) {
-            // faz upload da imagem
-            $config['upload_path'] = './assets/img/profiles/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 10000;
-            $config['max_width'] = 10000;
-            $config['max_height'] = 10000;
-            $config['encrypt_name'] = true;
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('imagem')) {
-                $arquivo = $this->upload->data();
-                $dadosUsuario['imagem'] = $arquivo['file_name'];
-                $this->load->model('usuarios_model', 'usuarios');
-                $dadosUsuario['idEndereco'] = $idEndereco;
-                $dadosUsuario['nomeUsuario'] = $this->input->post('nomeUsuario');
-                $dadosUsuario['nome'] = $this->input->post('nome');
-                $dadosUsuario['sobrenome'] = $this->input->post('sobrenome');
-                $dadosUsuario['email'] = $this->input->post('email');
-                $confere = $this->usuarios->find($this->session->id);
-                if ($dadosUsuario['imagem'] != $confere->imagem) {
+            $dadosUsuario = null;
+            $this->load->model('usuarios_model', 'usuarios');
+            $confere = $this->usuarios->find($this->session->id);
+            if (!empty($this->input->post('imagem'))) {
+                // faz upload da imagem
+                $config['upload_path'] = './assets/img/profiles/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = 10000;
+                $config['max_width'] = 10000;
+                $config['max_height'] = 10000;
+                $config['encrypt_name'] = true;
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('imagem')) {
+                    $arquivo = $this->upload->data();
+                    $this->load->library('image_lib');
+                    $this->image_lib->clear();
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = './assets/img/profiles/' . $arquivo['file_name'];
+                    $config['create_thumb'] = FALSE;
+                    $config['maintain_ratio'] = FALSE;
+                    $config['quality'] = 100;
+                    // se nao for quadrada a imagem, corta o excesso
+                    if ($arquivo['image_width'] > $arquivo['image_height']) {
+                        $config['width'] = $arquivo['image_height'];
+                        $config['height'] = $arquivo['image_height'];
+                        $config['x_axis'] = ($arquivo['image_width'] - $arquivo['image_height']) / 2;
+                        $config['y_axis'] = 0;
+                        $this->image_lib->initialize($config);
+                        $this->image_lib->crop();
+                        $this->image_lib->clear();
+                    } else if ($arquivo['image_height'] > $arquivo['image_width']) {
+                        $config['width'] = $arquivo['image_width'];
+                        $config['height'] = $arquivo['image_width'];
+                        $config['y_axis'] = ($arquivo['image_height'] - $arquivo['image_width']) / 2;
+                        $config['x_axis'] = 0;
+                        $this->image_lib->initialize($config);
+                        $this->image_lib->crop();
+                        $this->image_lib->clear();
+                    }
+                    // redimensiona
+                    $config['width'] = 300;
+                    $config['height'] = 300;
+                    $this->image_lib->initialize($config);
+                    $this->image_lib->resize();
+                    $dadosUsuario['imagem'] = $arquivo['file_name'];
                     // apaga imagem anterior
                     unlink('./assets/img/profiles/' . $confere->imagem);
                     // registra log de usuarios
@@ -108,52 +134,59 @@ class Configuracoes extends CI_Controller {
                     $dadosLog['data'] = date("Y-m-d");
                     $dadosLog['hora'] = date("h:i:s");
                     $this->logusuarios->insert($dadosLog);
+                } else {
+                    $mensagem = "Imagem não foi atualizada.";
+                    $tipo = 0;
                 }
-                if ($dadosUsuario['email'] != $confere->email) {
+            } else {
+                $dadosUsuario['imagem'] = $confere->imagem;
+            }
+            $dadosUsuario['idEndereco'] = $idEndereco;
+            $dadosUsuario['nomeUsuario'] = $this->input->post('nomeUsuario');
+            $dadosUsuario['nome'] = $this->input->post('nome');
+            $dadosUsuario['sobrenome'] = $this->input->post('sobrenome');
+            $dadosUsuario['email'] = $this->input->post('email');
+            if ($dadosUsuario['email'] != $confere->email) {
+                // registra log de usuarios
+                $this->load->model('logusuarios_model', 'logusuarios');
+                $dadosLog['idUsuario'] = $this->session->id;
+                $dadosLog['idAcaoUsuario'] = 7;
+                $dadosLog['data'] = date("Y-m-d");
+                $dadosLog['hora'] = date("h:i:s");
+                $this->logusuarios->insert($dadosLog);
+            }
+            if ($this->input->post('notificaEmail')) {
+                $dadosUsuario['notificaEmail'] = 1;
+            } else {
+                $dadosUsuario['notificaEmail'] = 0;
+            }
+            if ($dadosUsuario['notificaEmail'] != $confere->notificaEmail) {
+                if ($dadosUsuario['notificaEmail'] == 1) {
                     // registra log de usuarios
                     $this->load->model('logusuarios_model', 'logusuarios');
                     $dadosLog['idUsuario'] = $this->session->id;
-                    $dadosLog['idAcaoUsuario'] = 7;
+                    $dadosLog['idAcaoUsuario'] = 8;
+                    $dadosLog['data'] = date("Y-m-d");
+                    $dadosLog['hora'] = date("h:i:s");
+                    $this->logusuarios->insert($dadosLog);
+                } else {
+                    // registra log de usuarios
+                    $this->load->model('logusuarios_model', 'logusuarios');
+                    $dadosLog['idUsuario'] = $this->session->id;
+                    $dadosLog['idAcaoUsuario'] = 9;
                     $dadosLog['data'] = date("Y-m-d");
                     $dadosLog['hora'] = date("h:i:s");
                     $this->logusuarios->insert($dadosLog);
                 }
-                if ($this->input->post('notificaEmail')) {
-                    $dadosUsuario['notificaEmail'] = 1;
-                } else {
-                    $dadosUsuario['notificaEmail'] = 0;
-                }
-                if ($dadosUsuario['notificaEmail'] != $confere->notificaEmail) {
-                    if ($dadosUsuario['notificaEmail'] == 1) {
-                        // registra log de usuarios
-                        $this->load->model('logusuarios_model', 'logusuarios');
-                        $dadosLog['idUsuario'] = $this->session->id;
-                        $dadosLog['idAcaoUsuario'] = 8;
-                        $dadosLog['data'] = date("Y-m-d");
-                        $dadosLog['hora'] = date("h:i:s");
-                        $this->logusuarios->insert($dadosLog);
-                    } else {
-                        // registra log de usuarios
-                        $this->load->model('logusuarios_model', 'logusuarios');
-                        $dadosLog['idUsuario'] = $this->session->id;
-                        $dadosLog['idAcaoUsuario'] = 9;
-                        $dadosLog['data'] = date("Y-m-d");
-                        $dadosLog['hora'] = date("h:i:s");
-                        $this->logusuarios->insert($dadosLog);
-                    }
-                }
-                $dadosUsuario['cpf'] = $this->input->post('cpf');
-                $dadosUsuario['dataNasc'] = $this->input->post('dataNasc');
-                $dadosUsuario['genero'] = $this->input->post('genero');
-                if ($this->usuarios->update($dadosUsuario, $this->session->id)) {
-                    $mensagem = "Seus dados foram atualizados.";
-                    $tipo = 1;
-                } else {
-                    $mensagem = "Seus dados não foram atualizados.";
-                    $tipo = 0;
-                }
+            }
+            $dadosUsuario['cpf'] = $this->input->post('cpf');
+            $dadosUsuario['dataNasc'] = $this->input->post('dataNasc');
+            $dadosUsuario['genero'] = $this->input->post('genero');
+            if ($this->usuarios->update($dadosUsuario, $this->session->id)) {
+                $mensagem = "Seus dados foram atualizados.";
+                $tipo = 1;
             } else {
-                $mensagem = "A imagem não foi atualizada.";
+                $mensagem = "Seus dados não foram atualizados.";
                 $tipo = 0;
             }
         } else {

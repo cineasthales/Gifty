@@ -28,13 +28,13 @@
                     <h2>Seus Dados</h2>
                 </div>
                 <?php
-                $foto = base_url('assets/img/profiles/generic-profile.jpg');
+                $foto = base_url('assets/img/misc/generic-profile.jpg');
                 ?>
                 <div class="col-5">
                     <label for="imagem">Foto de Perfil</label><br>
                     <input type="file" id="imagem" name="imagem" 
                            onchange="previewFile()" accept=".jpg, .jpeg, .png" required><br>
-                    <img src="<?= $foto ?>" id="foto" style="width: 100%; height: 18em" alt="Foto"><br><br>
+                    <img src="<?= $foto ?>" id="foto" style="width: 100%;" alt="Foto"><br><br>
                 </div>
                 <div class="col-7">
                     <label for="nome">Nome</label> <span class="asterisco">*</span><br>
@@ -46,7 +46,7 @@
                     <input type="text" id="sobrenome" name="sobrenome" 
                            maxlength="100" pattern="[A-Za-z]{,100}" required><br><br>
                 </div>
-                <div class="col-7">
+                <div class="col-4">
                     <label for="genero">Gênero</label> <span class="asterisco">*</span><br>
                     <select id="genero" name="genero">
                         <option value="Feminino">Feminino</option>
@@ -57,40 +57,40 @@
                         <option value="Outro">Outro</option>
                     </select><br><br>
                 </div>
-                <div class="col-7">
+                <div class="col-3">
                     <label for="dataNasc">Data de Nascimento</label> <span class="asterisco">*</span><br>
                     <input type="date" id="dataNasc" name="dataNasc" required><br><br>
                 </div>
-                <div class="col-7">
+                <div class="col-3">
                     <label for="cpf">CPF</label> <span class="asterisco">*</span>
                     <span id="msgCpf" name="msgCpf"></span><br>
                     <input type="text" id="cpf" name="cpf" title="Apenas os 11 números."
-                           maxlength="11" pattern="[0-9]{11}" required placeholder="99999999999"><br><br><br>
+                           maxlength="11" pattern="[0-9]{11}" required placeholder="99999999999"><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <label for="nomeUsuario">Nome de Usuário</label> <span class="asterisco">*</span>
                     <span id="msgNomeUsuario" name="msgNomeUsuario"></span><br>
                     <input type="text" id="nomeUsuario" name="nomeUsuario" required
                            pattern="[A-Za-z0-9]{,20}" maxlength="20"><br><br>
                 </div>
-                <div class="col-6">
+                <div class="col-7">
                     <label for="senha">Senha</label> <span class="asterisco">*</span><br>
                     <input type="password" id="senha" name="senha" 
                            title="Mínimo 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula e um dígito." required
-                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}" maxlength="32"><br>
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}" maxlength="32"><br><br>
                     <!--                <div class="col-6">
                                         <label for="confirmarsenha">Confirmar Senha</label> <span class="asterisco">*</span>
                                         <span id="msgSenha" name="msgSenha"></span><br>
                                         <input type="password" id="confirmarsenha" name="confirmarsenha" maxlength="32"><br><br>
                                     </div>-->                
                 </div>
-                <div class="col-8">
+                <div class="col-7">
                     <label for="email">E-mail</label> <span class="asterisco">*</span>
                     <span id="msgEmail" name="msgEmail"></span><br>
                     <input type="email" id="email" name="email" required
-                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br><br>
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br>
                 </div>                
-                <div class="col-4"><br>
+                <div class="col-7"><br>
                     <label for="notificaEmail">
                         <input type="checkbox" id="notificaEmail" name="notificaEmail"> Receber notificações por e-mail
                     </label><br><br>

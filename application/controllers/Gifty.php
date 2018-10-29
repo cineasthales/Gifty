@@ -148,6 +148,36 @@ class Gifty extends CI_Controller {
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('imagem')) {
                 $arquivo = $this->upload->data();
+                $this->load->library('image_lib');
+                $this->image_lib->clear();
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = './assets/img/profiles/' . $arquivo['file_name'];
+                $config['create_thumb'] = FALSE;
+                $config['maintain_ratio'] = FALSE;
+                $config['quality'] = 100;
+                // se nao for quadrada a imagem, corta o excesso
+                if ($arquivo['image_width'] > $arquivo['image_height']) {
+                    $config['width'] = $arquivo['image_height'];
+                    $config['height'] = $arquivo['image_height'];
+                    $config['x_axis'] = ($arquivo['image_width'] - $arquivo['image_height']) / 2;
+                    $config['y_axis'] = 0;
+                    $this->image_lib->initialize($config);
+                    $this->image_lib->crop();
+                    $this->image_lib->clear();
+                } else if ($arquivo['image_height'] > $arquivo['image_width']) {
+                    $config['width'] = $arquivo['image_width'];
+                    $config['height'] = $arquivo['image_width'];
+                    $config['y_axis'] = ($arquivo['image_height'] - $arquivo['image_width']) / 2;
+                    $config['x_axis'] = 0;
+                    $this->image_lib->initialize($config);
+                    $this->image_lib->crop();
+                    $this->image_lib->clear();
+                }
+                // redimensiona
+                $config['width'] = 300;
+                $config['height'] = 300;
+                $this->image_lib->initialize($config);
+                $this->image_lib->resize();
                 $dadosUsuario['imagem'] = $arquivo['file_name'];
                 $this->load->model('usuarios_model', 'usuarios');
                 $dadosUsuario['idEndereco'] = $this->enderecos->last()->id;
