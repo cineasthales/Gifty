@@ -1,3 +1,0 @@
-SINAL DE MENOS DAS LISTAS
-
-<!<a href="<?= base_url('usuario/criar/apagar/') . $itens[$i]->idItem ?>"><i class="fas fa-minus-circle"></i></i></a>

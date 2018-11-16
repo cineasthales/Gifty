@@ -471,16 +471,16 @@ INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
    cpf, dataNasc, genero, imagem, nivel, ativo, tentaLogin, idEndereco)
 VALUES
-('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '875a476a42f1cbd71abc355293bb5220.jpg', 1, 1, 0, 1),
-('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1991-01-01', 'Feminino', '39b5128d6a1a5842f8658468ba6b36d4.jpg', 0, 1, 0, 2),
-('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1992-01-01', 'Feminino', '79a57653e98ead754a6970d5dc9870d9.jpg', 0, 1, 0, 3),
-('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', 'ff9bccd51f8371164124edd9cb3a2555.jpg', 0, 1, 0, 4),
-('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', 'b38fff87ccf7ddca3ed14690538f4b26.jpg', 0, 0, 0, 5),
-('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', 'efe493e636936dff7c1dbfc8ff05a32a.jpg', 0, 1, 0, 6),
-('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 1, '44444444444', '1996-01-01', 'Masculino', '778d25cbfb4cc30a303ac4e9fd5458a6.jpg', 0, 1, 0, 7),
-('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 1, '33333333333', '1997-01-01', 'Feminino', '0bce44d5f41540800a69cd9b0c2b543e.jpg', 0, 1, 0, 8),
-('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 1, '22222222222', '1998-01-01', 'Feminino', '33385e26d467dbff6a4a37557c97c747.jpg', 0, 1, 0, 9),
-('patriciag', '8c6cd3b74652e166638f9a672ca12171', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 1, '11111111111', '1999-01-01', 'Feminino', '40470017a05e3999dfc9d49ecccb1fda.jpg', 0, 1, 0, 10);
+('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '47a3061adc82e0bae5b3beae9ec0515e.jpg', 1, 1, 0, 1),
+('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1991-01-01', 'Feminino', '608255509c8c6bd0d65c5e0c0f47ba91.jpg', 0, 1, 0, 2),
+('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1992-01-01', 'Feminino', '2c175141d8ddef0471451234fb25f19b.jpg', 0, 1, 0, 3),
+('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', '1a43a0a6e5de487dcfc45a7f0c629890.jpg', 0, 1, 0, 4),
+('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', 'f0f8b7ac703d7255be45c89b0edf8ab2.jpg', 0, 0, 0, 5),
+('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', '1e6aed455f586675511b3812e31b09c5.jpg', 0, 1, 0, 6),
+('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 1, '44444444444', '1996-01-01', 'Masculino', '7d68546cb3a899bddf494fdfdfd13232.jpg', 0, 1, 0, 7),
+('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 1, '33333333333', '1997-01-01', 'Feminino', '0a07174d6384f701271497bece575c7f.jpg', 0, 1, 0, 8),
+('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 1, '22222222222', '1998-01-01', 'Feminino', 'fb8638f246d111bda7480b0dcca4296e.jpg', 0, 1, 0, 9),
+('patriciag', '8c6cd3b74652e166638f9a672ca12171', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 1, '11111111111', '1999-01-01', 'Feminino', '340a5ec5d48b25fad384ee349be416f3.jpg', 0, 1, 0, 10);
 
 INSERT INTO telefones
 (ddd, numero, idUsuario)

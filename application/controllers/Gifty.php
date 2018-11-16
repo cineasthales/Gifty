@@ -376,4 +376,25 @@ class Gifty extends CI_Controller {
         $this->load->view('include/footer');
     }
 
+    public function ws_login() {
+        $this->load->model('usuarios_model', 'usuarios');
+        // $usuario = $this->input->post('usuario');
+        // $senha = $this->input->post('senha');
+        // $verifica = $this->usuarios->check($usuario, md5($senha));
+        $verifica = $this->usuarios->check("joaos", "8c6cd3b74652e166638f9a672ca12171");
+        // gera o json com os dados a serem enviados
+        if (isset($verifica) && $verifica->ativo == 1) {
+            $this->load->model('eventos_model', 'eventos');
+            // eventos que o usuario for anfitriao
+            $dados['jsonAnf'] = $this->eventos->findIdUsuarioActive($this->session->id);
+            // eventos que o usuario for convidado
+            $dados['jsonConv'] = $this->eventos->findConvites($verifica->id);
+            $this->load->view('json_android', $dados);
+        } else {
+            $dados['jsonAnf'] = "";
+            $dados['jsonConv'] = "";
+            $this->load->view('json_android', $dados);
+        }
+    }
+
 }
