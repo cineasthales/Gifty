@@ -13,11 +13,11 @@
                 </div>                
                 <div class="col-3">
                     <label for="data">Data</label><br>
-                    <input type="date" id="data" name="data" required value="<?= $evento->data ?>"><br><br>
+                    <input type="date" id="data" name="data" required value="<?= $evento->data ?>" onblur="maximoDataLimite()"><br><br>
                 </div>
                 <div class="col-2">
                     <label for="hora">Hora</label><br>
-                    <input type="time" id="hora" name="hora" required value="<?= $evento->hora ?>"><br><br>
+                    <input type="time" id="hora" name="hora" required value="<?= $evento->hora ?>" onfocus="focoHora()"><br><br>
                 </div>
                 <div class="col-5">
                     <label for="idTipoEvento">Tipo de Evento</label><br>

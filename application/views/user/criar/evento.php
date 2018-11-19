@@ -16,11 +16,11 @@
                 </div>                
                 <div class="col-3">
                     <label for="data">Data</label><br>
-                    <input type="date" id="data" name="data" required><br><br>
+                    <input type="date" id="data" name="data" required onblur="maximoDataLimite()"><br><br>
                 </div>
                 <div class="col-2">
                     <label for="hora">Hora</label><br>
-                    <input type="time" id="hora" name="hora" required><br><br>
+                    <input type="time" id="hora" name="hora" required onfocus="focoHora()"><br><br>
                 </div>
                 <div class="col-5">
                     <label for="idTipoEvento">Tipo de Evento</label><br>
@@ -61,7 +61,7 @@
                 <div class="col-2">
                     <label for="numero">Número</label><br>
                     <input type="text" id="numero" name="numero" required
-                           pattern="[0-9]{,12}" maxlength="12"><br><br>
+                           pattern="[0-9]{,12}" maxlength="12" onfocus="focoHora()"><br><br>
                 </div>
                 <div class="col-4">
                     <label for="complemento">Complemento</label><br>

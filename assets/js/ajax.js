@@ -49,6 +49,31 @@ $(document).ready(function () {
         });
     });
 
+    $('#data').blur(function () {
+        $.ajax({
+            url: 'http://cep.republicavirtual.com.br/web_cep.php?cep=' + $('#cep').val() + '&formato=json',
+            datatype: 'json',
+            success: function (data) {
+                $('#logradouro').val(data.tipo_logradouro + ' ' + data.logradouro);
+                $('#bairro').val(data.bairro);
+                $('#cidade').val(data.cidade);
+                $('#estado').val(data.uf);
+                $('#numero').focus();
+            }
+        });
+    });
+});
+
+function maximoDataLimite() {
+    var data = document.getElementById("data").value;
+    document.getElementById("dataLimite").max = data;
+    document.getElementById("dataLimite").value = data;    
+}
+
+function focoHora() {
+    document.getElementById("hora").focus();
+}
+
 //    $('#confirmarsenha').blur(function () {
 //        $.get(path + 'ajax/validaSenha', {confirmarsenha: $('#confirmarsenha').val(), senha: $('#senha').val()}, function (data) {
 //            if (data) {
@@ -60,4 +85,3 @@ $(document).ready(function () {
 //        });
 //    });
 
-});
