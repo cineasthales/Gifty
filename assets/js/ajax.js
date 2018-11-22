@@ -70,10 +70,6 @@ function maximoDataLimite() {
     document.getElementById("dataLimite").value = data;    
 }
 
-function focoHora() {
-    document.getElementById("hora").focus();
-}
-
 //    $('#confirmarsenha').blur(function () {
 //        $.get(path + 'ajax/validaSenha', {confirmarsenha: $('#confirmarsenha').val(), senha: $('#senha').val()}, function (data) {
 //            if (data) {

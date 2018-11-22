@@ -160,7 +160,7 @@ if ($this->session->has_userdata('mensagem')) {
                 </div>
                 <?php
             }
-            ?>
-        </div>
+            ?>            
+        </div>        
     </section>    
 </main>

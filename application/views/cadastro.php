@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-3">
                     <label for="dataNasc">Data de Nascimento</label> <span class="asterisco">*</span><br>
-                    <input type="date" id="dataNasc" name="dataNasc" required><br><br>
+                    <input type="date" id="dataNasc" name="dataNasc" required max="<?= date("Y-m-d") ?>"><br><br>
                 </div>
                 <div class="col-3">
                     <label for="cpf">CPF</label> <span class="asterisco">*</span>

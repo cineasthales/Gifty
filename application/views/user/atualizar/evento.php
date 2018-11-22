@@ -4,6 +4,7 @@
         <div class="row"> 
             <div class="col-12">
                 <h1>Atualizar Evento</h1>
+                <?php $hoje = date("Y-m-d") ?>
             </div>
             <form method="post" action="<?= base_url('usuario/atualizar/atualiza_evento/' . $evento->id . '/' . $evento->idEndereco) ?>">
                 <div class="col-7">
@@ -13,11 +14,11 @@
                 </div>                
                 <div class="col-3">
                     <label for="data">Data</label><br>
-                    <input type="date" id="data" name="data" required value="<?= $evento->data ?>" onblur="maximoDataLimite()"><br><br>
+                    <input type="date" id="data" name="data" required min="<?= $hoje ?>" value="<?= $evento->data ?>" onblur="maximoDataLimite()"><br><br>
                 </div>
                 <div class="col-2">
                     <label for="hora">Hora</label><br>
-                    <input type="time" id="hora" name="hora" required value="<?= $evento->hora ?>" onfocus="focoHora()"><br><br>
+                    <input type="time" id="hora" name="hora" required value="<?= $evento->hora ?>"><br><br>
                 </div>
                 <div class="col-5">
                     <label for="idTipoEvento">Tipo de Evento</label><br>
@@ -38,7 +39,7 @@
                 </div>
                 <div class="col-3">
                     <label for="dataLimite">Data Limite de Confirmação</label><br>
-                    <input type="date" id="dataLimite" name="dataLimite" required value="<?= $evento->dataLimite ?>"><br><br>
+                    <input type="date" id="dataLimite" name="dataLimite" required min="<?= $hoje ?>" value="<?= $evento->dataLimite ?>"><br><br>
                 </div>
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>

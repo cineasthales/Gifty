@@ -4,6 +4,7 @@
         <div class="row"> 
             <div class="col-12">
                 <h1>Criar Lista</h1>
+                <?php $hoje = date("Y-m-d") ?>
             </div>
             <form method="post" action="<?= base_url('usuario/criar/convidados') ?>">
                 <div class="col-12">
@@ -16,11 +17,11 @@
                 </div>                
                 <div class="col-3">
                     <label for="data">Data</label><br>
-                    <input type="date" id="data" name="data" required onblur="maximoDataLimite()"><br><br>
+                    <input type="date" id="data" name="data" required min="<?= $hoje ?>" value="<?= $hoje ?>" onblur="maximoDataLimite()"><br><br>
                 </div>
                 <div class="col-2">
                     <label for="hora">Hora</label><br>
-                    <input type="time" id="hora" name="hora" required onfocus="focoHora()"><br><br>
+                    <input type="time" id="hora" name="hora" required><br><br>
                 </div>
                 <div class="col-5">
                     <label for="idTipoEvento">Tipo de Evento</label><br>
@@ -37,7 +38,7 @@
                 </div>
                 <div class="col-3">
                     <label for="dataLimite">Data Limite de Confirmação</label><br>
-                    <input type="date" id="dataLimite" name="dataLimite" required><br><br>
+                    <input type="date" id="dataLimite" min="<?= $hoje ?>" value="<?= $hoje ?>" name="dataLimite" required><br><br>
                 </div>
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>
@@ -61,7 +62,7 @@
                 <div class="col-2">
                     <label for="numero">Número</label><br>
                     <input type="text" id="numero" name="numero" required
-                           pattern="[0-9]{,12}" maxlength="12" onfocus="focoHora()"><br><br>
+                           pattern="[0-9]{,12}" maxlength="12"><br><br>
                 </div>
                 <div class="col-4">
                     <label for="complemento">Complemento</label><br>

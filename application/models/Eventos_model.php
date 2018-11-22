@@ -150,6 +150,17 @@ class Eventos_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function ws($id) {
+        $this->db->select('e.titulo AS titulo, e.data AS data, e.hora AS hora');
+        $this->db->select('count(c.idUsuario) AS numConvites');
+        $this->db->from('eventos e');
+        $this->db->join('convidados c', 'c.idEvento = e.id', 'inner');
+        $this->db->where('e.idUsuario', $id);
+        $this->db->where('e.ativo', 1);
+        $this->db->order_by('e.data DESC, e.hora DESC');
+        return $this->db->get()->result(); // retorna vetor
+    }
+
     public function insert($registro) {
         return $this->db->insert('eventos', $registro);
     }

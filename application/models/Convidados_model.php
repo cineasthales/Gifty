@@ -68,6 +68,18 @@ class Convidados_model extends CI_Model {
         $this->db->order_by('u.nome, u.sobrenome, e.data DESC');
         return $this->db->get()->result(); // retorna vetor
     }
+    
+    public function ws($id) {
+        $this->db->select('c.comparecera AS comparecera, e.titulo AS titulo, e.data AS data');
+        $this->db->select('e.hora AS hora, e.dataLimite AS dataLimite');
+        $this->db->from('convidados c');
+        $this->db->join('eventos e', 'c.idEvento = e.id', 'inner');
+        $this->db->where('c.idUsuario', $id);
+        $this->db->where('e.ativo', 1);
+        $this->db->where('c.bloqueado', 0);
+        $this->db->order_by('e.data DESC, e.hora DESC');
+        return $this->db->get()->result(); // retorna vetor
+    }
 
     public function insert($registro) {
         return $this->db->insert('convidados', $registro);

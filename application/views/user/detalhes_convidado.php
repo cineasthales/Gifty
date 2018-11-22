@@ -62,9 +62,17 @@ if ($this->session->has_userdata('mensagem')) {
                     <button class="btListas"><a href="<?= base_url('usuario/atualizar/confirmar_presenca_lista/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
                 <?php } ?>
             </div>
-            <div class="col-12">
+            <div class="col-8">
                 <br><br><h2>Lista de Presentes</h2><br>            
             </div>
+            <form method="post" action="<?= base_url('') ?>">                
+                <div class="col-4">
+                    <br><br>
+                    <select id="organizar" name="organizar">
+                        <option value="0">------</option>
+                    </select>
+                </div>
+            </form>
             <?php if ($convidado->comparecera == 1) { ?>
                 <div class="col-12">
                     <table>

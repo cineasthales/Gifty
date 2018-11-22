@@ -378,23 +378,28 @@ class Gifty extends CI_Controller {
 
     public function ws_login() {
         $this->load->model('usuarios_model', 'usuarios');
-        // $usuario = $this->input->post('usuario');
-        // $senha = $this->input->post('senha');
-        // $verifica = $this->usuarios->check($usuario, md5($senha));
-        $verifica = $this->usuarios->check("joaos", "8c6cd3b74652e166638f9a672ca12171");
-        // gera o json com os dados a serem enviados
+        //$usuario = $this->input->post('usuario');
+        //$senha = $this->input->post('senha');
+        //$verifica = $this->usuarios->check($usuario, md5($senha));
+        $verifica = $this->usuarios->check('joaos', '8c6cd3b74652e166638f9a672ca12171');        
         if (isset($verifica) && $verifica->ativo == 1) {
-            $this->load->model('eventos_model', 'eventos');
-            // eventos que o usuario for anfitriao
-            $dados['jsonAnf'] = $this->eventos->findIdUsuarioActive($this->session->id);
-            // eventos que o usuario for convidado
-            $dados['jsonConv'] = $this->eventos->findConvites($verifica->id);
-            $this->load->view('json_android', $dados);
+            $dados['login'] = (int) $verifica->id;
+            $this->load->view('json_login', $dados);
         } else {
-            $dados['jsonAnf'] = "";
-            $dados['jsonConv'] = "";
-            $this->load->view('json_android', $dados);
+            $dados['login'] = 0;
+            $this->load->view('json_login', $dados);
         }
     }
 
+    public function ws_convites($id) {
+        $this->load->model('convidados_model', 'convites');
+        $dados['convites'] = $this->convites->ws($id);
+        $this->load->view('json_convites', $dados);
+    }
+
+    public function ws_eventos($id) {
+        $this->load->model('eventos_model', 'eventos');
+        $dados['eventos'] = $this->eventos->ws($id);
+        $this->load->view('json_eventos', $dados);
+    }
 }
