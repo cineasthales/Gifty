@@ -1,4 +1,17 @@
 <?php
 
-header("Content-type application/json");
-printf("<pre>%s</pre>", json_encode($convites, JSON_PRETTY_PRINT));
+$num = count($convites);
+$vazio = false;
+if ($num == 0) {
+    $vazio = true;
+    echo "null;null;null;null;0";
+}
+if (!$vazio) {
+    for ($i = 0; $i < $num; ++$i) {
+        echo $convites[$i]->data . ";" . $convites[$i]->hora . ";" . $convites[$i]->titulo . ";" . 
+                $convites[$i]->dataLimite . ";" . $convites[$i]->comparecera;
+        if ($i < $num - 1) {
+            echo ";|;";
+        }
+    }
+}

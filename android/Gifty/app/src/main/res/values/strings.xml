@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Gifty</string>
+    <string name="entrar">Entrar</string>
+    <string name="nomeEmail">Nome de Usuário ou E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="meusEventos">Meus Eventos</string>
+    <string name="convitesMim">Convites Para Mim</string>
+</resources>

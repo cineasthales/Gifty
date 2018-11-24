@@ -81,6 +81,13 @@ class Usuarios_model extends CI_Model {
         $this->db->order_by('cpf');
         return $this->db->get('usuarios')->result(); // retorna vetor
     }
+    
+    public function ws($id){
+        $this->db->select('u.id AS id, u.nome AS nome');
+        $this->db->from('usuarios u');
+        $this->db->where('u.id', $id);
+        return $this->db->get()->row(); // retorna registro obtido
+    }
 
     public function insert($registro) {
         return $this->db->insert('usuarios', $registro);

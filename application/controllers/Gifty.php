@@ -376,14 +376,14 @@ class Gifty extends CI_Controller {
         $this->load->view('include/footer');
     }
 
-    public function ws_login() {
-        $this->load->model('usuarios_model', 'usuarios');
+    public function ws_login($usuario, $senha) {
         //$usuario = $this->input->post('usuario');
         //$senha = $this->input->post('senha');
-        //$verifica = $this->usuarios->check($usuario, md5($senha));
-        $verifica = $this->usuarios->check('joaos', '8c6cd3b74652e166638f9a672ca12171');        
+        $this->load->model('usuarios_model', 'usuarios');        
+        $verifica = $this->usuarios->check($usuario, md5($senha));
+        //$verifica = $this->usuarios->check('joaos', '8c6cd3b74652e166638f9a672ca12171');
         if (isset($verifica) && $verifica->ativo == 1) {
-            $dados['login'] = (int) $verifica->id;
+            $dados['login'] = $verifica->id;
             $this->load->view('json_login', $dados);
         } else {
             $dados['login'] = 0;
@@ -392,12 +392,14 @@ class Gifty extends CI_Controller {
     }
 
     public function ws_convites($id) {
+        //$id = $this->input->post('id');
         $this->load->model('convidados_model', 'convites');
         $dados['convites'] = $this->convites->ws($id);
         $this->load->view('json_convites', $dados);
     }
 
     public function ws_eventos($id) {
+        //$id = $this->input->post('id');
         $this->load->model('eventos_model', 'eventos');
         $dados['eventos'] = $this->eventos->ws($id);
         $this->load->view('json_eventos', $dados);
