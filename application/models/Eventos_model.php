@@ -161,6 +161,32 @@ class Eventos_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function graphTipoEvento() {
+        $this->db->select('count(e.id) AS num, t.descricao AS tipo');
+        $this->db->from('eventos e');
+        $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
+        $this->db->where('e.ativo', 1);
+        $this->db->group_by('t.descricao');
+        return $this->db->get()->result();
+    }
+
+    public function graphEstadoEvento() {
+        $this->db->select('count(e.id) AS num, end.estado AS estado');
+        $this->db->from('eventos e');
+        $this->db->join('enderecos end', 'e.idEndereco = end.id', 'inner');
+        $this->db->where('e.ativo', 1);
+        $this->db->group_by('end.estado');
+        return $this->db->get()->result();
+    }
+
+    public function relatorio() {
+        $this->db->select('ev.id AS id, ev.local AS local, e.cidade AS cidade, e.estado AS estado');
+        $this->db->from('eventos ev');
+        $this->db->join('enderecos e', 'ev.idEndereco = e.id', 'inner');
+        $this->db->order_by('e.estado, e.cidade, ev.local');
+        return $this->db->get()->result();
+    }
+
     public function insert($registro) {
         return $this->db->insert('eventos', $registro);
     }

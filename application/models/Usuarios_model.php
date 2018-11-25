@@ -81,12 +81,28 @@ class Usuarios_model extends CI_Model {
         $this->db->order_by('cpf');
         return $this->db->get('usuarios')->result(); // retorna vetor
     }
-    
-    public function ws($id){
+
+    public function ws($id) {
         $this->db->select('u.id AS id, u.nome AS nome');
         $this->db->from('usuarios u');
         $this->db->where('u.id', $id);
         return $this->db->get()->row(); // retorna registro obtido
+    }
+
+    public function graphGenero() {
+        $this->db->select('genero, count(id) AS num');
+        $this->db->where('ativo', 1);
+        $this->db->group_by('genero');
+        return $this->db->get('usuarios')->result();
+    }
+    
+    public function relatorio() {
+        $this->db->select('u.id AS id, u.dataNasc AS dataNasc, e.cidade AS cidade, e.estado AS estado, e.bairro AS bairro');
+        $this->db->from('usuarios u');
+        $this->db->join('enderecos e', 'u.idEndereco = e.id', 'inner');
+        $this->db->where('u.ativo', 1);
+        $this->db->order_by('e.estado, e.cidade, e.bairro, u.dataNasc DESC');
+        return $this->db->get()->result();
     }
 
     public function insert($registro) {

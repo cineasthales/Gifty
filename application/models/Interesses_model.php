@@ -10,7 +10,12 @@ class Interesses_model extends CI_Model {
         $this->db->order_by('idUsuario DESC');
         return $this->db->get()->result(); // retorna vetor
     }
-    
+
+    public function selectCategoria($categoria) {
+        $this->db->where('idCategoria', $categoria);
+        return $this->db->get('interesses')->result(); // retorna vetor
+    }
+
     public function selectUsuarioAll($idUsuario) {
         $this->db->where('idUsuario', $idUsuario);
         $this->db->order_by('idCategoria');

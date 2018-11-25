@@ -36,6 +36,16 @@ class Cliquesanuncios_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function relatorio() {
+        $this->db->select('c.idAnuncio AS idAnuncio, c.data AS data, c.hora AS hora');
+        $this->db->select('u.dataNasc AS dataNasc, u.genero AS genero, a.url AS url');
+        $this->db->from('cliquesAnuncios c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->join('anuncios a', 'c.idAnuncio = a.id', 'inner');
+        $this->db->order_by('a.url, c.data DESC, c.hora DESC');
+        return $this->db->get()->result();
+    }
+
     public function insert($registro) {
         return $this->db->insert('cliquesAnuncios', $registro);
     }

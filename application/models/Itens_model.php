@@ -10,6 +10,11 @@ class Itens_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function selectCategoria($categoria) {
+        $this->db->where('idCategoria', $categoria);
+        return $this->db->get('itens')->result(); // retorna vetor
+    }
+
     public function find($id) {
         $this->db->where('id', $id);
         return $this->db->get('itens')->row(); // retorna registro obtido

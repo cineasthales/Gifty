@@ -36,6 +36,16 @@ class Anuncios_model extends CI_Model {
         return $this->db->get()->result(); // retorna vetor
     }
 
+    public function graphCliques() {
+        $this->db->select('e.nomeFantasia AS empresa, count(c.id) AS num');
+        $this->db->from('anuncios a');
+        $this->db->join('empresas e', 'a.idEmpresa = e.id', 'inner');
+        $this->db->join('cliquesAnuncios c', 'c.idAnuncio = a.id', 'inner');
+        $this->db->where('a.ativo', 1);
+        $this->db->group_by('e.nomeFantasia');
+        return $this->db->get()->result();
+    }
+
     public function insert($registro) {
         return $this->db->insert('anuncios', $registro);
     }
