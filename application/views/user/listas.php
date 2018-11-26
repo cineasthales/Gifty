@@ -80,35 +80,37 @@ if ($this->session->has_userdata('mensagem')) {
                     <hr>
                 </div>
                 <?php foreach ($convidados as $convidado) { ?>
-                    <div class="col-12">
-                        <br>
-                    </div>
-                    <div class="col-2">
-                        <img style="width: 100%; max-height: 8em" src="<?= base_url('assets/img/profiles/') . $convidado->idUsuario . '.jpg' ?>"><br>
-                    </div>
-                    <div class="col-6">
-                        <h3>
-                            <strong><?= $convidado->titulo ?></strong>
-                            <br><?= $convidado->tipo ?> de <?= $convidado->nome ?> <?= $convidado->snome ?></strong>
-                            <br><br><strong><i class="fas fa-calendar-alt"></i></strong>
-                            <?= date_format(date_create($convidado->data), 'd/m/Y') ?>
-                            <br><strong><i class="fas fa-clock"></i></strong> <?= substr($convidado->hora, 0, 5) ?>
-                            <?php if ($convidado->comparecera == 0) { ?>
-                            <br><strong>Confirme presença até <?= date_format(date_create($convidado->dataLimite), 'd/m/Y') ?></strong>
+                    <?php if ((date('Y-m-d') <= $convidado->dataLimite) || ((date('Y-m-d') > $convidado->dataLimite) && $convidado->comparecera == 1)) { ?>            
+                        <div class="col-12">
+                            <br>
+                        </div>
+                        <div class="col-2">
+                            <img style="width: 100%; max-height: 8em" src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>"><br>
+                        </div>
+                        <div class="col-6">
+                            <h3>
+                                <strong><?= $convidado->titulo ?></strong>
+                                <br><?= $convidado->tipo ?> de <?= $convidado->nome ?> <?= $convidado->snome ?></strong>
+                                <br><br><strong><i class="fas fa-calendar-alt"></i></strong>
+                                <?= date_format(date_create($convidado->data), 'd/m/Y') ?>
+                                <br><strong><i class="fas fa-clock"></i></strong> <?= substr($convidado->hora, 0, 5) ?>
+                                <?php if ($convidado->comparecera == 0) { ?>
+                                    <br><strong>Confirme presença até <?= date_format(date_create($convidado->dataLimite), 'd/m/Y') ?></strong>
+                                <?php } ?>
+                            </h3>
+                        </div>
+                        <div class="col-4">
+                            <button class="btListas"><a href="<?= base_url('usuario/listas/ver/') . $convidado->id ?>"><i class="fas fa-gift"></i> Ver Lista e Evento</a></button><br>
+                            <?php if ($convidado->comparecera == 1) { ?>
+                                <button class="btListas"><a onclick="return confirm('Tem certeza que deseja desconfirmar presença neste evento?')" href="<?= base_url('usuario/atualizar/desconfirmar_presenca/') . $this->session->id . '/' . $convidado->id ?>"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
+                            <?php } else { ?>
+                                <button class="btListas"><a onclick="return confirm('Confirmar presença neste evento?')" href="<?= base_url('usuario/atualizar/confirmar_presenca/') . $this->session->id . '/' . $convidado->id ?>"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
                             <?php } ?>
-                        </h3>
-                    </div>
-                    <div class="col-4">
-                        <button class="btListas"><a href="<?= base_url('usuario/listas/ver/') . $convidado->id ?>"><i class="fas fa-gift"></i> Ver Lista e Evento</a></button><br>
-                        <?php if ($convidado->comparecera == 1) { ?>
-                            <button class="btListas"><a href="<?= base_url('usuario/atualizar/desconfirmar_presenca/') . $this->session->id . '/' . $convidado->id ?>"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
-                        <?php } else { ?>
-                            <button class="btListas"><a href="<?= base_url('usuario/atualizar/confirmar_presenca/') . $this->session->id . '/' . $convidado->id ?>"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
-                        <?php } ?>
-                    </div>
-                    <div class="col-12">
-                        <br><hr>
-                    </div>
+                        </div>
+                        <div class="col-12">
+                            <br><hr>
+                        </div>
+                    <?php } ?>
                 <?php } ?>
             <?php } else { ?>
                 <div class="col-12">

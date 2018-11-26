@@ -69,19 +69,19 @@
                 <h2>Relatórios</h2><br>
             </div>
             <div class="col-3">
-                <button class="btListas"><a href="<?= base_url('admin/dashboard/relatorio_usuarios') ?>">
-                        Usuários</a></button><br><br>
+                <button class="btListas"><a target="_blank" href="<?= base_url('admin/dashboard/relatorio_usuarios') ?>">
+                    Usuários</a></button><br><br>
             </div>
             <div class="col-3">
-                <button class="btListas"><a href="<?= base_url('admin/dashboard/relatorio_eventos') ?>">
+                <button class="btListas"><a target="_blank" href="<?= base_url('admin/dashboard/relatorio_eventos') ?>">
                     Eventos</a></button><br><br>
             </div>
             <div class="col-3">
-                <button class="btListas"><a href="<?= base_url('admin/dashboard/relatorio_categorias') ?>">
+                <button class="btListas"><a target="_blank" href="<?= base_url('admin/dashboard/relatorio_categorias') ?>">
                     Categorias</a></button><br><br>
             </div>
             <div class="col-3">
-                <button class="btListas"><a href="<?= base_url('admin/dashboard/relatorio_cliques') ?>">
+                <button class="btListas"><a target="_blank" href="<?= base_url('admin/dashboard/relatorio_cliques') ?>">
                     Cliques em Anúncios</a></button><br><br>
             </div>
             <div class="col-12">

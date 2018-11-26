@@ -57,7 +57,7 @@ class Eventos_model extends CI_Model {
 
     public function findConvites($idConvidado) {
         $this->db->select('e.*, t.descricao AS tipo, c.idUsuario AS idConvidado');
-        $this->db->select('c.comparecera AS comparecera, u.nome AS nome, u.sobrenome AS snome');
+        $this->db->select('c.comparecera AS comparecera, u.nome AS nome, u.sobrenome AS snome, u.imagem AS imagem');
         $this->db->from('eventos e');
         $this->db->join('tiposEventos t', 'e.idTipoEvento = t.id', 'inner');
         $this->db->join('usuarios u', 'e.idUsuario = u.id', 'inner');

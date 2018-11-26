@@ -42,24 +42,32 @@
                 <br><br><button class="btListas"><a href="<?= base_url('usuario/atualizar/lista/') . $evento->id ?>"><i class="fas fa-gift"></i> Atualizar Lista</a></button><br>           
             </div>
             <div class="col-12">
-                <table>
-                    <?php foreach ($listas as $lista) { ?>
-                        <tr>
-                            <td>
-                                <p style="font-size: 2em"><b><?= $lista->prioridade ?></b></p>
-                            </td>
-                            <td>
-                                <img src="<?= $lista->imagem ?>" style="display: block; margin: 0 auto;">
-                            </td>
-                            <td>
-                                <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
-                            </td>
-                            <td>
-                                <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </table> 
+                <?php if (count($listas) > 0) { ?>                
+                    <table>
+                        <?php foreach ($listas as $lista) { ?>
+                            <tr>
+                                <td>
+                                    <p style="font-size: 2em"><b><?= $lista->prioridade ?></b></p>
+                                </td>
+                                <td>
+                                    <img src="<?= $lista->imagem ?>" style="display: block; margin: 0 auto;">
+                                </td>
+                                <td>
+                                    <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
+                                </td>
+                                <td>
+                                    <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
+                                </td>
+                                <td>
+                                    <p>Adicionado em<br><?= date_format(date_create($lista->dataAdicao), 'd/m/Y') ?></p>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </table>                 
+                <?php } else { ?>
+                    <br><br><p class="icon-big"><i class="fas fa-gift"></i></p><p>Sua lista ainda está vazia.<br></p><br>
+                    <br><br>
+                <?php } ?>
             </div>
             <div class="col-9">
                 <br><br><h2>Convidados</h2><br>            
@@ -67,10 +75,16 @@
             <div class="col-3">
                 <br><br><button class="btListas"><a href="<?= base_url('usuario/atualizar/convidados/') . $evento->id ?>"><i class="fas fa-id-card"></i> Atualizar Convites</a></button><br>       
             </div>
-            <?php foreach ($convidados as $convidado) { ?>
-                <div class="col-3">
-                    <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>">
-                    <p><br><strong><?= $convidado->nome ?> <?= $convidado->snome ?></strong><br></p>
+            <?php if (count($convidados) > 0) { ?> 
+                <?php foreach ($convidados as $convidado) { ?>
+                    <div class="col-3">
+                        <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>">
+                        <p><br><strong><?= $convidado->nome ?> <?= $convidado->snome ?></strong><br></p>
+                    </div>
+                <?php } ?>
+            <?php } else { ?>
+                <div class="col-12">
+                    <p class="icon-big"><i class="fas fa-users"></i></p><p>Você ainda não tem convidados.<br></p><br>
                 </div>
             <?php } ?>
         </div>

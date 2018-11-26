@@ -27,7 +27,7 @@
                     <br><h2>Seus Dados</h2>
                     <small>Para sua segurança, alguns dados não podem ser livremente atualizados.
                         Na excepcionalidade de precisar atualizá-los, entre em
-                        <a href="<?= base_url('gifty/contato') ?>">contato</a>
+                        <a href="mailto:cineasthales@gmail.com">contato</a>
                         com nossa equipe.</small><br><br>
                 </div>
                 <?php

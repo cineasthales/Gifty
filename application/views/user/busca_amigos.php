@@ -29,7 +29,8 @@
                             <p><?= $usuario->genero ?></p>
                             <p><?= floor(date('Y') - date_format(date_create($usuario->dataNasc), 'Y')) ?> anos</p>
                             <p><?= $usuario->cidade ?> / <?= $usuario->estado ?></p>
-                            <br><button class="btListas"><a href="<?= base_url('usuario/amigos/adicionar/') . $usuario->id ?>">
+                            <br><button class="btListas"><a onclick="return confirm('Adicionar <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')"
+                                                            href="<?= base_url('usuario/amigos/adicionar/') . $usuario->id ?>">
                                     <i class="fas fa-user-plus"></i> Solicitar Amizade</a></button>
                         </div>
                     <?php } ?>

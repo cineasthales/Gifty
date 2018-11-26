@@ -91,7 +91,7 @@
                 <?php } ?>                
             </div>
             <div class="col-8">
-                <br><button class="btBloq"><a href="<?= base_url('usuario/amigos/desbloquear/') . $usuario->id ?>">
+                <br><button class="btBloq"><a href="<?= base_url('usuario/amigos/desbloquear/') . $usuario->id ?>" onclick="return confirm('Desbloquear <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')">
                         <i class="fas fa-user-check"></i> Desbloquear</a></button>      
                 <button class="btExc"><a href="<?= base_url('usuario/amigos/desfazer_amizade/') . $usuario->id ?>" onclick="return confirm('Tem certeza que deseja excluir <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')">
                         <i class="fas fa-user-times"></i> Desfazer Amizade</a></button>

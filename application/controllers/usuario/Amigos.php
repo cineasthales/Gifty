@@ -179,8 +179,8 @@ class Amigos extends CI_Controller {
                 $dados['idUsuario2'] = $idUsuario;
                 $dados['bloqueado1'] = 0;
                 $dados['bloqueado2'] = 0;
-                $dados['ativa'] = 2;
-                $dados['data'] = date();
+                $dados['ativa'] = 1;
+                $dados['data'] = date('Y-m-d');
                 if ($this->amizades->insert($dados)) {
                     $mensagem = "Solicitação de amizade enviada.";
                     $tipo = 1;

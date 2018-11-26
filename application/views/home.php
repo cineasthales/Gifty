@@ -52,24 +52,22 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-6">
                 <h2 class="homeh"><i class="fas fa-gift"></i><br><br>Nunca mais erre o presente</h2><br>
                 <p>Gifty foi projetado para que você saiba exatamente que presentes
-                    escolher. Sem constrangimentos, sem repetições.</p>
+                    escolher. Sem constrangimentos, sem repetições.</p><br><br>
             </div>
             <div class="col-6">
                 <h2 class="homeh"><i class="fas fa-user-secret"></i><br><br>O que você ganhar ainda será um segredo</h2><br>
                 <p>Os seus convidados marcam os itens comprados, mas você não fica
-                    sabendo quem comprou e o que foi comprado.</p>
+                    sabendo quem comprou e o que foi comprado.</p><br><br>
             </div>
-        </div>
-        <div class="row">
             <div class="col-6">
                 <h2 class="homeh"><i class="fas fa-search"></i><br><br>Pesquise e economize</h2><br>
                 <p>Você e seus convidados não precisam mais ficar
-                    sujeitos às opções e aos preços de uma mesma loja.</p>
+                    sujeitos às opções e aos preços de uma mesma loja.</p><br><br>
             </div>
             <div class="col-6">
                 <h2 class="homeh"><i class="fas fa-calendar-check"></i><br><br>Para qualquer ocasião particular</h2><br>
                 <p>Utilize o Gifty para casamentos, formaturas, aniversários ou quaisquer
-                    outros eventos particulares.</p>
+                    outros eventos particulares.</p><br><br>
             </div>
         </div>
         <div class="row">

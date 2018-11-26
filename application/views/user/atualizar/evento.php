@@ -34,8 +34,8 @@
                 </div>
                 <div class="col-4">
                     <label for="maxItens">Máximo de Itens Por Convidado</label><br>
-                    <input type="text" id="maxItens" name="maxItens" pattern="[0-9]{,2}" value="<?= $evento->maxItens ?>"
-                           maxlength="2" required><br><br>
+                    <input type="number" id="maxItens" name="maxItens" value="<?= $evento->maxItens ?>"
+                           min="1" max="99" required><br><br>
                 </div>
                 <div class="col-3">
                     <label for="dataLimite">Data Limite de Confirmação</label><br>
@@ -62,8 +62,8 @@
                 </div>
                 <div class="col-2">
                     <label for="numero">Número</label><br>
-                    <input type="text" id="numero" name="numero" required value="<?= $evento->numero ?>"
-                           pattern="[0-9]{,12}" maxlength="12"><br><br>
+                    <input type="number" id="numero" name="numero" required value="<?= $evento->numero ?>"
+                           min="1" maxlength="12"><br><br>
                 </div>
                 <div class="col-4">
                     <label for="complemento">Complemento</label><br>

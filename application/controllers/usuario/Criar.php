@@ -9,7 +9,17 @@ class Criar extends CI_Controller {
             if ($this->session->has_userdata('idEvento')) {
                 $this->session->unset_userdata('idEvento');
             }
-            redirect(base_url('usuario/criar/evento'));
+            $this->load->model('eventos_model', 'eventos');
+            $verifica = count($this->eventos->findIdUsuarioActive($this->session->id));
+            if ($verifica < 11) {
+                redirect(base_url('usuario/criar/evento'));
+            } else {
+                $mensagem = "Você está no limite de eventos ativos.";
+                $tipo = 0;
+                $this->session->set_flashdata('mensagem', $mensagem);
+                $this->session->set_flashdata('tipo', $tipo);
+                redirect(base_url('usuario/listas'));
+            }
         } else {
             redirect();
         }
@@ -259,6 +269,7 @@ class Criar extends CI_Controller {
                     $dados['json'] = NULL;
                 }
                 // carrega lista do evento
+                $this->load->model('listas_model', 'listas');
                 $dados['itens'] = $this->listas->selectEvento($this->session->idEvento);
                 $this->load->view('include/head');
                 $this->load->view('include/header_user');
@@ -405,6 +416,30 @@ class Criar extends CI_Controller {
                 redirect(base_url('usuario/criar/lista'));
             } else {
                 redirect(base_url('usuario/criar/evento'));
+            }
+        } else {
+            redirect();
+        }
+    }
+
+    public function excluir_item($idEvento, $idItem) {
+        if ($this->session->logado == true) {
+            // verifica se for anfitriao do evento
+            $this->load->model('eventos_model', 'eventos');
+            $verifica = $this->eventos->find($idEvento);
+            if ($verifica->idUsuario == $this->session->id) {
+                $this->load->model('listas_model', 'listas');
+                $this->listas->delete($idEvento, $idItem);
+                $lista = $this->listas->selectEvento($idEvento);
+                $i = 1;                
+                foreach ($lista as $item) {
+                    $dados['prioridade'] = $i;
+                    $this->listas->update($dados, $idEvento, $item->idItem);
+                    ++$i;
+                }                
+                redirect('usuario/criar/lista/' . $idEvento);
+            } else {
+                redirect('usuario/listas');
             }
         } else {
             redirect();

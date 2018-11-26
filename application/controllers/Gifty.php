@@ -45,7 +45,7 @@ class Gifty extends CI_Controller {
                 // busca todos os interesses do usuario que logou
                 $this->load->model('interesses_model', 'interesses');
                 $interesses = $this->interesses->selectUsuarioAll($this->session->id);
-                // se houver interesses cadastrados
+                // se houver interesses cadastrados                
                 if (isset($interesses)) {
                     $hoje = date("y-m-d");
                     foreach ($interesses as $interesse) {
@@ -54,6 +54,18 @@ class Gifty extends CI_Controller {
                             $interesse->peso--;
                             $interesse->data = $hoje;
                             $this->interesses->update($interesse, $this->session->id, $interesse->idCategoria);
+                        }
+                    }
+                }
+                // busca todos os eventos ativos que o usuario for anfitriao
+                $this->load->model('eventos_model', 'eventos');
+                $eventos = $this->eventos->findIdUsuarioActive($this->session->id);
+                // se houver eventos ativos que ja passaram, desativa-os
+                if (isset($eventos)) {
+                    foreach ($eventos as $evento) {
+                        if (date('Y-m-d') > $evento->data) {
+                            $up['ativo'] = 0;
+                            $this->eventos->update($up, $evento->id);
                         }
                     }
                 }
@@ -116,6 +128,63 @@ class Gifty extends CI_Controller {
         $this->load->view('include/header_ext');
         $this->load->view('esquecisenha');
         $this->load->view('include/footer');
+    }
+
+    public function recuperar_senha() {
+        $email = $this->input->post('email');
+        $this->load->model('usuarios_model', 'usuarios');
+        $verifica = $this->usuarios->findEmail($email);
+        if (isset($verifica)) {
+            $this->load->helper('string');
+            $senhaTemp = random_string('alnum', 8);
+            $dados['senha'] = md5($senhaTemp);
+            $this->usuarios->update($dados, $verifica->id);
+            $this->load->library('email');
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'cineasthales@gmail.com',
+                'smtp_pass' => 'fnaccm666',
+                'mailtype' => 'html',
+                'charset' => 'utf-8'
+            );
+            $this->email->initialize($config);
+            $this->email->set_mailtype("html");
+            $this->email->set_newline("\r\n");
+            $htmlContent = '<h1>Recuperação de conta</h1>';
+            $htmlContent .= '<p>Você realizou um pedido de recuperação de sua conta do Gifty.</p>';
+            $htmlContent .= '<p>Para sua segurança, atualizamos sua senha para uma temporária.</p>';
+            $htmlContent .= '<p>A sua senha temporária é: <b>' . $senhaTemp . '</b></p>';
+            $htmlContent .= '<p>Recomendamos fortemente que altere para uma nova senha na próxima vez que'
+                    . ' realizar o login no <a href="thalescastro.16mb.com">Gifty</a>.</p>'
+                    . ' <p>Para fazer a troca, vá em "Configurações > Trocar Senha" e'
+                    . ' coloque a senha temporária como a senha atual.</p>';
+            $htmlContent .= '<p>Atenciosamente,</p>';
+            $htmlContent .= '<p><b>Equipe do Gifty</b></p>';
+            $htmlContent .= '<small>Esta é uma mensagem automática. Favor não responder.</small>';
+            $this->email->to($email);
+            $this->email->from('cineasthales@gmail.com', 'Equipe do Gifty');
+            $this->email->subject('Recuperação de conta');
+            $this->email->message($htmlContent);
+            if ($this->email->send()) {
+                $mensagem = "Mensagem com instruções de recuperação enviada para <strong>" . $email . "</strong>."
+                        . " Caso não tenha recebido-a, verifique a caixa de spam.";
+                $tipo = 1;
+            } else {
+                $mensagem = "Mensagem com instruções de recuperação não foi enviada.";
+                $tipo = 0;
+            }
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect();
+        } else {
+            $mensagem = "E-mail não encontrado.";
+            $tipo = 0;
+            $this->session->set_flashdata('mensagem', $mensagem);
+            $this->session->set_flashdata('tipo', $tipo);
+            redirect();
+        }
     }
 
     public function cadastrar() {
@@ -289,7 +358,7 @@ class Gifty extends CI_Controller {
                     if ($this->input->post('categoria_30')) {
                         $this->cadastrar_interesses(378, 378, $idUsuario);
                     }
-                    $mensagem = "Confirme seu cadastro no e-mail <strong>" . $dadosUsuario['email'] . "</strong>.";
+                    $mensagem = "Cadastro realizado com êxito.";
                     $tipo = 1;
                 } else {
                     $mensagem = "Dados de usuário não foram cadastrados.";
@@ -379,7 +448,7 @@ class Gifty extends CI_Controller {
     public function ws_login($usuario, $senha) {
         //$usuario = $this->input->post('usuario');
         //$senha = $this->input->post('senha');
-        $this->load->model('usuarios_model', 'usuarios');        
+        $this->load->model('usuarios_model', 'usuarios');
         $verifica = $this->usuarios->check($usuario, md5($senha));
         //$verifica = $this->usuarios->check('joaos', '8c6cd3b74652e166638f9a672ca12171');
         if (isset($verifica) && $verifica->ativo == 1) {
@@ -404,4 +473,5 @@ class Gifty extends CI_Controller {
         $dados['eventos'] = $this->eventos->ws($id);
         $this->load->view('json_eventos', $dados);
     }
+
 }

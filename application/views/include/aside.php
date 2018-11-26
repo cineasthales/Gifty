@@ -18,7 +18,6 @@
         <li><a href="<?= base_url('admin/acoeseventos') ?>"><span class="recuo"><i class="fas fa-exclamation-circle"></i></span>Ações de Eventos</a></li>
         <li><a href="<?= base_url('admin/logusuarios') ?>"><span class="recuo"><i class="fas fa-history"></i></span>Logs de Usuários</a></li>
         <li><a href="<?= base_url('admin/logeventos') ?>"><span class="recuo"><i class="fas fa-history"></i></span>Logs de Eventos</a></li>
-        <li><a href="<?= base_url('admin/cliquesanuncios') ?>"><span class="recuo"><i class="fas fa-mouse-pointer"></i></span>Cliques em Anúncios</a></li>
-        <li><a href="<?= base_url('admin/cliquesempresas') ?>"><span class="recuo"><i class="fas fa-mouse-pointer"></i></span>Cliques em Empresas</a></li>     
+        <li><a href="<?= base_url('admin/cliquesanuncios') ?>"><span class="recuo"><i class="fas fa-mouse-pointer"></i></span>Cliques em Anúncios</a></li>   
     </ul>
 </aside>

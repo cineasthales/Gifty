@@ -13,7 +13,7 @@ class Listas extends CI_Controller {
             // eventos que o usuario for anfitriao
             $dados['eventos'] = $this->eventos->findIdUsuarioActive($this->session->id);
             // eventos que o usuario for convidado
-            $dados['convidados'] = $this->eventos->findConvites($this->session->id);                   
+            $dados['convidados'] = $this->eventos->findConvites($this->session->id);          
             $this->load->view('include/head');
             $this->load->view('include/header_user');
             $this->load->view('user/listas', $dados);
@@ -42,16 +42,21 @@ class Listas extends CI_Controller {
 
     public function ver($idEvento) {
         if ($this->session->logado == true) {
-            $this->load->model('eventos_model', 'eventos');
-            $dados['evento'] = $this->eventos->selectEvento($idEvento);
-            $this->load->model('listas_model', 'listas');
-            $dados['listas'] = $this->listas->selectEvento($idEvento);
             $this->load->model('convidados_model', 'convidados');
-            $dados['convidado'] = $this->convidados->find($this->session->id, $idEvento);            
-            $this->load->view('include/head');
-            $this->load->view('include/header_user');
-            $this->load->view('user/detalhes_convidado', $dados);
-            $this->load->view('include/footer');
+            $dados['convidado'] = $this->convidados->find($this->session->id, $idEvento);
+            if (isset($dados['convidado'])) {
+                $this->load->model('eventos_model', 'eventos');
+                $dados['evento'] = $this->eventos->selectEvento($idEvento);
+                $this->load->model('listas_model', 'listas');
+                $dados['listas'] = $this->listas->selectEvento($idEvento);
+
+                $this->load->view('include/head');
+                $this->load->view('include/header_user');
+                $this->load->view('user/detalhes_convidado', $dados);
+                $this->load->view('include/footer');
+            } else {
+                redirect('usuario/listas');
+            }
         } else {
             redirect();
         }

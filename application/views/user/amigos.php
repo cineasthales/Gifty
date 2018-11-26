@@ -48,7 +48,7 @@ if ($this->session->has_userdata('mensagem')) {
                                 <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario2 ?>"><img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $amizade->imagem2 ?>"><br>
                                     <p style="font-size: 1.2em; font-weight: bold"><?= $amizade->nome2 ?><br><?= $amizade->snome2 ?></p></a>
                                 <?php if ($amizade->bloqueado2) { ?>
-                                    <br><button class="btListas"><a href="<?= base_url('usuario/amigos/desbloquear/') . $amizade->idUsuario2 ?>">
+                                    <br><button class="btListas"><a href="<?= base_url('usuario/amigos/desbloquear/') . $amizade->idUsuario2 ?>" onclick="return confirm('Desbloquear <?= $amizade->nome2 ?> <?= $amizade->snome2 ?>?')">
                                             <i class="fas fa-user-check"></i> Desbloquear</a></button>
                                 <?php } else { ?>
                                     <br><button class="btListas"><a href="<?= base_url('usuario/amigos/bloquear/') . $amizade->idUsuario2 ?>" onclick="return confirm('Tem certeza que deseja bloquear <?= $amizade->nome2 ?> <?= $amizade->snome2 ?>?')">
@@ -61,7 +61,7 @@ if ($this->session->has_userdata('mensagem')) {
                                 <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario1 ?>"><img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $amizade->imagem1 ?>"><br>
                                     <p style="font-size: 1.2em; font-weight: bold"><?= $amizade->nome1 ?><br><?= $amizade->snome1 ?></p></a>
                                 <?php if ($amizade->bloqueado1) { ?>
-                                    <br><button class="btListas"><a href="<?= base_url('usuario/amigos/desbloquear/') . $amizade->idUsuario1 ?>">
+                                    <br><button class="btListas"><a href="<?= base_url('usuario/amigos/desbloquear/') . $amizade->idUsuario1 ?>" onclick="return confirm('Desbloquear <?= $amizade->nome1 ?> <?= $amizade->snome1 ?>?')">
                                             <i class="fas fa-user-check"></i> Desbloquear</a></button>
                                 <?php } else { ?>
                                     <br><button class="btListas"><a href="<?= base_url('usuario/amigos/bloquear/') . $amizade->idUsuario1 ?>" onclick="return confirm('Tem certeza que deseja bloquear <?= $amizade->nome1 ?> <?= $amizade->snome1 ?>?')">

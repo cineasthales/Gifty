@@ -57,51 +57,51 @@ if ($this->session->has_userdata('mensagem')) {
             <div class="col-4">
                 <img style="width: 100%" src="<?= base_url('assets/img/profiles/') . $evento->imagem ?>"><br><br>
                 <?php if ($convidado->comparecera == 1) { ?>
-                    <button class="btListas"><a href="<?= base_url('usuario/atualizar/desconfirmar_presenca_lista/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
+                    <button class="btListas"><a onclick="return confirm('Tem certeza que deseja desconfirmar presença neste evento?')" href="<?= base_url('usuario/atualizar/desconfirmar_presenca_lista/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-times-circle"></i> Desconfirmar Presença</a></button><br>
                 <?php } else { ?>
-                    <button class="btListas"><a href="<?= base_url('usuario/atualizar/confirmar_presenca_lista/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
+                    <button class="btListas"><a onclick="return confirm('Confirmar presença neste evento?')" href="<?= base_url('usuario/atualizar/confirmar_presenca_lista/') . $this->session->id . '/' . $convidado->idEvento ?>"><i class="fas fa-check-circle"></i> Confirmar Presença</a></button><br>
                 <?php } ?>
             </div>
             <div class="col-8">
                 <br><br><h2>Lista de Presentes</h2><br>            
-            </div>
-            <form method="post" action="<?= base_url('') ?>">                
-                <div class="col-4">
-                    <br><br>
-                    <select id="organizar" name="organizar">
-                        <option value="0">------</option>
-                    </select>
-                </div>
-            </form>
+            </div>            
             <?php if ($convidado->comparecera == 1) { ?>
                 <div class="col-12">
-                    <table>
-                        <?php foreach ($listas as $lista) { ?>
-                            <tr>
-                                <td>
-                                    <p style="font-size: 2em"><b><?= $lista->prioridade ?></b></p>
-                                </td>
-                                <td>
-                                    <img src="<?= $lista->imagem ?>" style="display: block; margin: 0 auto;">
-                                </td>
-                                <td>
-                                    <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
-                                </td>
-                                <td>
-                                    <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
-                                </td>
-                                <td>
-                                    <?php if ($lista->idComprador == 0) { ?>
-                                        <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/marcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="fas fa-check-circle"></i></p><p>Marcar Compra</a></p>
-                                    <?php } else if ($lista->idComprador == $this->session->id) { ?>
-                                        <p style="font-size: 2em"><a href="<?= base_url('usuario/atualizar/desmarcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="far fa-minus-square"></i></p><p>Desmarcar Compra</a></p>
-                                    <?php } else { ?>
-                                        <p>Outro convidado já comprou.</p>
-                                    <?php } ?>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </table> 
+                    <?php if (count($listas) > 0) { ?>                        
+                        <table>
+                            <?php foreach ($listas as $lista) { ?>
+                                <tr>
+                                    <td>
+                                        <p style="font-size: 2em"><b><?= $lista->prioridade ?></b></p>
+                                    </td>
+                                    <td>
+                                        <img src="<?= $lista->imagem ?>" style="display: block; margin: 0 auto;">
+                                    </td>
+                                    <td>
+                                        <a href="<?= $lista->url ?>" target="_blank"><?= $lista->nome ?></a>
+                                    </td>
+                                    <td>
+                                        <p>R$ <?= number_format($lista->preco, 2, ',', '.') ?></p>
+                                    </td>
+                                    <td>
+                                        <p>Adicionado em<br><?= date_format(date_create($lista->dataAdicao), 'd/m/Y') ?></p>
+                                    </td>
+                                    <td>
+                                        <?php if ($lista->idComprador == 0) { ?>
+                                            <p style="font-size: 1.25em"><a onclick="return confirm('Marcar compra deste item?')" href="<?= base_url('usuario/atualizar/marcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="fas fa-check-circle"></i><br>Marcar<br>Compra</a></p>
+                                        <?php } else if ($lista->idComprador == $this->session->id) { ?>
+                                            <p style="font-size: 1.25em"><a onclick="return confirm('Tem certeza que deseja desmarcar compra deste item?')" href="<?= base_url('usuario/atualizar/desmarcar/') . $lista->idEvento . '/' . $lista->idItem ?>"><i class="far fa-minus-square"></i><br>Desmarcar<br>Compra</a></p>
+                                        <?php } else { ?>
+                                            <p>Outro convidado já comprou.</p>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </table>
+                    <?php } else { ?>
+                        <br><br><p class="icon-big"><i class="fas fa-gift"></i></p><p>Esta lista ainda está vazia. Volte novamente mais tarde. :)<br></p><br>
+                        <br><br>
+                    <?php } ?>
                 </div>
             <?php } else { ?>
                 <div class="col-12">

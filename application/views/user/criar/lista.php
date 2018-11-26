@@ -33,9 +33,9 @@
                                         <?php } ?>                                            
                                         <?php if ($i < count($itens) - 1) { ?>
                                             <a href="<?= base_url('usuario/criar/descer/') . $itens[$i]->idItem ?>"><i class="fas fa-chevron-circle-down"></i></i></a>
-                                        <?php } ?>
-                                        <a href="#"><i class="fas fa-minus-circle"></i></a>
-                                    <?php } ?>                                    
+                                        <?php } ?>                                        
+                                    <?php } ?>
+                                    <a href="<?= base_url('usuario/criar/excluir_item/') . $itens[$i]->idEvento . '/' . $itens[$i]->idItem ?>"><i class="fas fa-minus-circle"></i></a>
                                 </td>
                             </tr>
                         <?php } ?>

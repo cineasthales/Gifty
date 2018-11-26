@@ -10,6 +10,15 @@ class Convidados_model extends CI_Model {
         $this->db->order_by('c.idEvento DESC');
         return $this->db->get()->result(); // retorna vetor
     }
+    
+    public function notifyEmail($idEvento) {
+        $this->db->select('u.email AS email');
+        $this->db->from('convidados c');
+        $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
+        $this->db->where('c.idEvento', $idEvento);
+        $this->db->where('u.notificaEmail', 1);
+        return $this->db->get()->result(); // retorna vetor
+    }
 
     public function selectEvento($idEvento) {
         $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, u.imagem AS imagem');
@@ -21,7 +30,7 @@ class Convidados_model extends CI_Model {
     }
 
     public function selectEventoNaoBloq($idEvento) {
-        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome');
+        $this->db->select('c.*, u.nome AS nome, u.sobrenome AS snome, u.imagem AS imagem');
         $this->db->from('convidados c');
         $this->db->join('usuarios u', 'c.idUsuario = u.id', 'inner');
         $this->db->where('c.idEvento', $idEvento);
