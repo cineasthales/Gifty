@@ -1,10 +1,10 @@
 <header>
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <a href="<?= base_url() ?>">
                 <img src="<?= base_url('assets/img/misc/logo.png') ?>" alt="Logo Gifty" id="logo"></a>
         </div>
-        <div class="col-8">
+        <div class="col-9">
             <nav>
                 <ul>
                     <li><a href="<?= base_url('usuario/inicio') ?>"><i class="fas fa-home"></i> Início</a></li>
