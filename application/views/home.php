@@ -69,8 +69,6 @@ if ($this->session->has_userdata('mensagem')) {
                 <p>Utilize o Gifty para casamentos, formaturas, aniversários ou quaisquer
                     outros eventos particulares.</p><br><br>
             </div>
-        </div>
-        <div class="row">
             <div class="col-12">
                 <button id="btSaibaMais"><a href="<?= base_url('gifty/sobre') ?>">Saiba mais</a></button>
             </div>

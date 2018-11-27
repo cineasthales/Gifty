@@ -456,31 +456,51 @@ VALUES
 INSERT INTO enderecos
 (cep, logradouro, numero, complemento, bairro, cidade, estado)
 VALUES
-('96077010', 'Rua Alberto Pimentel', 317, '', 'Areal', 'Pelotas', 'RS'),
-('96020000', 'Rua General Osório', 1125, '', 'Centro', 'Pelotas','RS'),
-('96015560', 'Rua Gonçalves Chaves', 2250, '', 'Centro', 'Pelotas','RS'),
-('96015140', 'Avenida Bento Gonçalves', 3500, '', 'Centro', 'Pelotas','RS'),
-('96085000', 'Avenida Ferreira Viana', 4750, '', 'Areal', 'Pelotas','RS'),
-('96015590', 'Rua Princesa Isabel', 531, '', 'Centro', 'Pelotas', 'RS'),
-('96085470', 'Avenida Domingos de Almeida', 3511, '', 'Areal', 'Pelotas', 'RS'),
-('96010496', 'Avenida Presidente Juscelino Kubitschek de Oliveira', 241, '', 'Centro', 'Pelotas', 'RS'),
-('96015440', 'Rua Marechal Floriano', 653, '', 'Centro', 'Pelotas', 'RS'),
-('96020360', 'Rua Professor Doutor Araújo', 918,'', 'Centro', 'Pelotas', 'RS');
+('96077010', 'Rua Alberto Pimentel', 100, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 200, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 300, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 400, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 500, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 600, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 700, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 800, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 900, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1000, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1100, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1200, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1300, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1400, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1500, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1600, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1700, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1800, '', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 1900, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('96077010', 'Rua Alberto Pimentel', 2000, '', 'Areal', 'Pelotas', 'RS');
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
    cpf, dataNasc, genero, imagem, nivel, ativo, tentaLogin, idEndereco)
 VALUES
-('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-06-24', 'Masculino', '47a3061adc82e0bae5b3beae9ec0515e.jpg', 1, 1, 0, 1),
-('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'alicem@gmail.com', 1, '99999999999', '1991-01-01', 'Feminino', '608255509c8c6bd0d65c5e0c0f47ba91.jpg', 0, 1, 0, 2),
-('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 1, '88888888888', '1992-01-01', 'Feminino', '2c175141d8ddef0471451234fb25f19b.jpg', 0, 1, 0, 3),
-('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'joaos@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', '1a43a0a6e5de487dcfc45a7f0c629890.jpg', 0, 1, 0, 4),
-('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 1, '66666666666', '1994-01-01', 'Masculino', 'f0f8b7ac703d7255be45c89b0edf8ab2.jpg', 0, 0, 0, 5),
-('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 1, '55555555555', '1995-01-01', 'Masculino', '1e6aed455f586675511b3812e31b09c5.jpg', 0, 1, 0, 6),
-('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 1, '44444444444', '1996-01-01', 'Masculino', '7d68546cb3a899bddf494fdfdfd13232.jpg', 0, 1, 0, 7),
-('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 1, '33333333333', '1997-01-01', 'Feminino', '0a07174d6384f701271497bece575c7f.jpg', 0, 1, 0, 8),
-('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 1, '22222222222', '1998-01-01', 'Feminino', 'fb8638f246d111bda7480b0dcca4296e.jpg', 0, 1, 0, 9),
-('patriciag', '8c6cd3b74652e166638f9a672ca12171', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 1, '11111111111', '1999-01-01', 'Feminino', '340a5ec5d48b25fad384ee349be416f3.jpg', 0, 1, 0, 10);
+('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-01-01', 'Masculino', '47a3061adc82e0bae5b3beae9ec0515e.jpg', 1, 1, 0, 1),
+('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'tccastro@inf.ufpel.edu.br', 1, '99999999999', '1991-01-01', 'Feminino', '608255509c8c6bd0d65c5e0c0f47ba91.jpg', 0, 1, 0, 2),
+('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'petcomputacaoufpel@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', '1a43a0a6e5de487dcfc45a7f0c629890.jpg', 0, 1, 0, 3),
+('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 0, '88888888888', '1992-01-01', 'Feminino', '2c175141d8ddef0471451234fb25f19b.jpg', 0, 1, 0, 4),
+('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 0, '66666666666', '1994-01-01', 'Masculino', 'f0f8b7ac703d7255be45c89b0edf8ab2.jpg', 0, 0, 0, 5),
+('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 0, '55555555555', '1995-01-01', 'Masculino', '1e6aed455f586675511b3812e31b09c5.jpg', 0, 1, 0, 6),
+('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 0, '44444444444', '1996-01-01', 'Masculino', '7d68546cb3a899bddf494fdfdfd13232.jpg', 0, 1, 0, 7),
+('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 0, '33333333333', '1997-01-01', 'Feminino', '0a07174d6384f701271497bece575c7f.jpg', 0, 1, 0, 8),
+('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 0, '22222222222', '1998-01-01', 'Feminino', 'fb8638f246d111bda7480b0dcca4296e.jpg', 0, 1, 0, 9),
+('patriciag', '8c6cd3b74652e166638f9a672ca12171', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 0, '11111111111', '1999-01-01', 'Feminino', '340a5ec5d48b25fad384ee349be416f3.jpg', 0, 1, 0, 10),
+('remonas', '8c6cd3b74652e166638f9a672ca12171', 'Remona', 'Scott', 'remonas@gmail.com', 0, '00000000000', '1988-01-01', 'Feminino', '37f324b4ed00b90c02f49afafd59ccf8.jpg', 0, 1, 0, 11),
+('sandrag', '8c6cd3b74652e166638f9a672ca12171', 'Sandra', 'Guerra', 'sandrag@gmail.com', 0, '11111111112', '1987-01-01', 'Feminino', 'd8d8f13416fb9827a76eec1043b4e956.jpg', 0, 1, 0, 12),
+('irmaw', '8c6cd3b74652e166638f9a672ca12171', 'Irma', 'Weeks', 'irmaw@gmail.com', 0, '11111111113', '1986-01-01', 'Feminino', 'dd9654bfdb84456a591deba17bef91fc.jpg', 0, 1, 0, 13),
+('erikac', '8c6cd3b74652e166638f9a672ca12171', 'Erika', 'Clarcs', 'erikac@gmail.com', 0, '11111111114', '1985-01-01', 'Feminino', '29bc5533c994296861fdeefd06bacfaa.jpg', 0, 1, 0, 14),
+('paulj', '8c6cd3b74652e166638f9a672ca12171', 'Paul', 'James', 'paulj@gmail.com', 0, '11111111115', '1984-01-01', 'Masculino', '19f32ef64de3f48833254032bd3caa03.jpg', 0, 1, 0, 15),
+('larrya', '8c6cd3b74652e166638f9a672ca12171', 'Larry', 'Adams', 'larrya@gmail.com', 0, '11111111116', '1983-01-01', 'Masculino', 'c2a1691e6edc8e7a76fe7b55403491c0.jpg', 0, 1, 0, 16),
+('maryw', '8c6cd3b74652e166638f9a672ca12171', 'Mary', 'White', 'maryw@gmail.com', 0, '11111111117', '1982-01-01', 'Travesti', '35954157d7f7f81fd24ec98fa575db39.jpg', 0, 1, 0, 17),
+('cristinar', '8c6cd3b74652e166638f9a672ca12171', 'Cristina', 'Rivera', 'cristinar@gmail.com', 0, '11111111118', '1981-01-01', 'Não-Binário', '88d8f697438d9dbf7f84eb6a4a71dcd5.jpg', 0, 1, 0, 18),
+('francesl', '8c6cd3b74652e166638f9a672ca12171', 'Frances', 'Lough', 'francesl@gmail.com', 0, '11111111119', '1980-01-01', 'Travesti', '20f45a2bc7cfe25d43e62d8e3c5dd876.jpg', 0, 1, 0, 19),
+('jenniferl', '8c6cd3b74652e166638f9a672ca12171', 'Jennifer', 'Lim', 'jenniferl@gmail.com', 0, '11111111110', '1990-01-01', 'Transexual', '05ec04013d4f3e58a90d37ff9c7d73d0.jpg', 0, 1, 0, 20);
 
 INSERT INTO telefones
 (ddd, numero, idUsuario)
@@ -499,43 +519,73 @@ VALUES
 INSERT INTO amizades
 (idUsuario1, idUsuario2, ativa, bloqueado1, bloqueado2, data)
 VALUES
-(2, 3, 1, 0, 0, '2018-02-05'),
-(2, 4, 1, 0, 0, '2018-03-05'),
-/*(2, 5, 1, 0, 0, '2018-04-05'),*/
-(2, 6, 1, 0, 0, '2018-05-05'),
-/*(2, 7, 1, 0, 0, '2018-06-05'),*/
-/*(2, 8, 1, 0, 0, '2018-07-05'),*/
-(3, 4, 1, 0, 0, '2018-03-05'),
-(3, 5, 1, 0, 0, '2018-04-05'),
-(3, 6, 1, 0, 0, '2018-05-05'),
-/*(3, 7, 1, 0, 0, '2018-06-05'),*/
-/*(3, 8, 1, 0, 0, '2018-07-05'),*/
-(4, 5, 1, 1, 0, '2018-04-05'),
-(4, 6, 1, 0, 1, '2018-05-05'),
-(4, 7, 1, 1, 1, '2018-06-05'),
-(4, 8, 1, 0, 0, '2018-07-05'),
-/*(5, 6, 1, 0, 0, '2018-05-05'),*/
-(5, 7, 1, 0, 0, '2018-06-05'),
-(5, 8, 1, 0, 0, '2018-07-05'),
-/*(6, 7, 1, 0, 0, '2018-06-05'),*/
-(6, 8, 1, 0, 0, '2018-07-05'),
-(7, 8, 1, 0, 0, '2018-07-05');
+(2, 3, 1, 0, 0, '2018-01-05'),
+(2, 4, 1, 0, 0, '2018-02-05'),
+(2, 6, 1, 0, 0, '2018-03-05'),
+(2, 7, 1, 0, 0, '2018-04-05'),
+(2, 9, 1, 0, 0, '2018-05-05'),
+(2, 13, 1, 0, 0, '2018-06-05'),
+(3, 4, 1, 0, 0, '2018-07-05'),
+(3, 5, 1, 0, 0, '2018-08-05'),
+(3, 10, 1, 0, 0, '2018-09-05'),
+(3, 11, 1, 0, 0, '2018-10-05'),
+(3, 17, 1, 0, 0, '2018-11-05'),
+(3, 19, 1, 0, 0, '2017-01-05'),
+(4, 6, 1, 0, 0, '2017-02-05'),
+(4, 7, 1, 0, 0, '2017-03-05'),
+(4, 8, 1, 0, 0, '2017-04-05'),
+(4, 14, 1, 0, 0, '2017-05-05'),
+(4, 18, 1, 0, 0, '2017-06-05'),
+(4, 20, 1, 0, 0, '2017-07-05');
 
 INSERT INTO interesses
 (idUsuario, idCategoria, peso, data)
 VALUES
-(2, 150, 0, '2018-07-26'),
-(2, 27, 0, '2018-07-26'),
-(2, 254, 0, '2018-07-26'),
-(2, 300, 0, '2018-07-26'),
-(2, 190, 0, '2018-07-26'),
-(3, 125, 0, '2018-07-26'),
-(3, 212, 0, '2018-07-26'),
-(3, 298, 0, '2018-07-26'),
-(3, 264, 0, '2018-07-26'),
-(3, 127, 0, '2018-07-26');
+(2, 150, 0, '2018-09-26'),
+(2, 27, 0, '2018-09-26'),
+(2, 254, 0, '2018-09-26'),
+(2, 300, 0, '2018-09-26'),
+(2, 190, 0, '2018-09-26'),
+(3, 125, 0, '2018-09-26'),
+(3, 212, 0, '2018-09-26'),
+(3, 298, 0, '2018-09-26'),
+(3, 264, 0, '2018-09-26'),
+(3, 127, 0, '2018-09-26');
 
 INSERT INTO anuncios
 (imagem, url, ativo, idEmpresa, idCategoria)
 VALUES
-('ad1.jpg', 'http://www.americanas.com.br', 1, 1, 1);
+('ad1.jpg', 'http://www.americanas.com.br', 1, 1, 1),
+('ad1.jpg', 'http://www.shoptime.com.br', 1, 2, 50),
+('ad1.jpg', 'http://www.casasbahia.com.br', 1, 3, 100),
+('ad1.jpg', 'http://www.saraiva.com.br', 1, 4, 150),
+('ad1.jpg', 'http://www.fnac.com.br', 1, 5, 200),
+('ad1.jpg', 'http://www.livrariacultura.com.br', 1, 6, 170),
+('ad1.jpg', 'http://www.pontofrio.com.br', 1, 7, 140),
+('ad1.jpg', 'http://www.extra.com.br', 1, 8, 110),
+('ad1.jpg', 'http://www.magazineluiza.com.br', 1, 9, 90),
+('ad1.jpg', 'https://www.fastshop.com.br', 1, 10, 60);
+
+INSERT INTO cliquesAnuncios
+(data, hora, idAnuncio, idUsuario)
+VALUES
+('2018-07-01', '01:00:00', 1, 1),
+('2018-07-02', '02:00:00', 2, 2),
+('2018-07-03', '03:00:00', 3, 3),
+('2018-07-04', '04:00:00', 4, 4),
+('2018-07-05', '05:00:00', 5, 5),
+('2018-07-06', '06:00:00', 6, 6),
+('2018-07-07', '07:00:00', 7, 7),
+('2018-07-08', '08:00:00', 8, 8),
+('2018-07-09', '09:00:00', 9, 9),
+('2018-07-10', '10:00:00', 10, 10),
+('2018-07-11', '11:00:00', 1, 11),
+('2018-07-12', '12:00:00', 2, 12),
+('2018-07-13', '13:00:00', 3, 13),
+('2018-07-14', '14:00:00', 4, 14),
+('2018-07-15', '15:00:00', 5, 15),
+('2018-07-16', '16:00:00', 6, 16),
+('2018-07-17', '17:00:00', 7, 17),
+('2018-07-18', '18:00:00', 8, 18),
+('2018-07-19', '19:00:00', 9, 19),
+('2018-07-20', '20:00:00', 10, 20);

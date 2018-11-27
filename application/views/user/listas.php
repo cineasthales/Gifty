@@ -33,7 +33,7 @@ if ($this->session->has_userdata('mensagem')) {
                 <button id="btCriarLista"><a href="<?= base_url('usuario/criar') ?>"><i class="fas fa-th-list"></i> Criar Lista de Presentes</a></button>
             </div>
             <div class="col-12">
-                <h2>Suas Listas</h2><br>            
+                <br><h2>Suas Listas</h2><br>            
             </div>            
             <?php if (count($eventos) > 0) { ?> 
                 <div class="col-12">
@@ -85,7 +85,7 @@ if ($this->session->has_userdata('mensagem')) {
                             <br>
                         </div>
                         <div class="col-2">
-                            <img style="width: 100%; max-height: 8em" src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>"><br>
+                            <img src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>"><br>
                         </div>
                         <div class="col-6">
                             <h3>

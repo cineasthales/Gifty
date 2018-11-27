@@ -33,8 +33,8 @@ if ($this->session->has_userdata('mensagem')) {
                 <br><h2>Seus Dados</h2>
             </div>
             <div class="col-4">
-                <img style="width: 100%;" src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
-                     alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
+                <img src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
+                     alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>"><br>
             </div>
             <div class="col-8">
                 <h2><?= $usuario->nome ?> <?= $usuario->sobrenome ?> (<?= $usuario->nomeUsuario ?>)</h2><br>

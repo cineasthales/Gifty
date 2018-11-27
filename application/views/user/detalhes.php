@@ -78,8 +78,8 @@
             <?php if (count($convidados) > 0) { ?> 
                 <?php foreach ($convidados as $convidado) { ?>
                     <div class="col-3">
-                        <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>">
-                        <p><br><strong><?= $convidado->nome ?> <?= $convidado->snome ?></strong><br></p>
+                        <img src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>">
+                        <p><br><strong><?= $convidado->nome ?> <?= $convidado->snome ?></strong><br></p><br><br>
                     </div>
                 <?php } ?>
             <?php } else { ?>

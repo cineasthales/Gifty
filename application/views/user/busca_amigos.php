@@ -24,14 +24,14 @@
                     <?php } ?>
                     <?php foreach ($usuarios as $usuario) { ?>
                         <div class="col-3">                    
-                            <img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $usuario->imagem ?>">
+                            <img src="<?= base_url('assets/img/profiles/') . $usuario->imagem ?>">
                             <p><br><strong><?= $usuario->nome ?> <?= $usuario->sobrenome ?></strong></p>
                             <p><?= $usuario->genero ?></p>
                             <p><?= floor(date('Y') - date_format(date_create($usuario->dataNasc), 'Y')) ?> anos</p>
                             <p><?= $usuario->cidade ?> / <?= $usuario->estado ?></p>
                             <br><button class="btListas"><a onclick="return confirm('Adicionar <?= $usuario->nome ?> <?= $usuario->sobrenome ?>?')"
                                                             href="<?= base_url('usuario/amigos/adicionar/') . $usuario->id ?>">
-                                    <i class="fas fa-user-plus"></i> Solicitar Amizade</a></button>
+                                    <i class="fas fa-user-plus"></i> Solicitar Amizade</a></button><br><br>
                         </div>
                     <?php } ?>
                 <?php } else { ?>

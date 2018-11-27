@@ -40,9 +40,9 @@ if ($this->session->has_userdata('mensagem')) {
                 <?php foreach ($convidados as $convidado) { ?>
                     <div class="col-2">
                         <img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $convidado->imagem ?>"><br>
-                        <p><?= $convidado->nome ?> <?= $convidado->snome ?></p>
+                        <p><?= $convidado->nome ?><br><?= $convidado->snome ?></p>
                         <br><button class="btListas"><a href="<?= base_url('usuario/atualizar/desfazer_convite/') . $idEvento . '/' . $convidado->idUsuario ?>" onclick="return confirm('Tem certeza que deseja desfazer o convite de <?= $convidado->nome ?> <?= $convidado->snome ?>?')">
-                                <i class="fas fa-user-times"></i> Desfazer Convite</a></button>
+                                <i class="fas fa-user-times"></i> Desfazer Convite</a></button><br><br>
                     </div>
                 <?php } ?>
             <?php } else { ?>
@@ -72,16 +72,16 @@ if ($this->session->has_userdata('mensagem')) {
                                 ?>
                                 <div class="col-2">
                                     <img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->imagem2 ?>"><br>
-                                    <p><?= $amizade->nome2 ?> <?= $amizade->snome2 ?></p>
+                                    <p><?= $amizade->nome2 ?><br><?= $amizade->snome2 ?></p>
                                     <br><button class="btListas"><a onclick="return confirm('Convidar <?= $amizade->nome2 ?> <?= $amizade->snome2 ?>?')" href="<?= base_url('usuario/atualizar/convidar/') . $idEvento . '/' . $amizade->idUsuario2 ?>">
-                                            <i class="fas fa-user-plus"></i> Convidar</a></button>
+                                            <i class="fas fa-user-plus"></i> Convidar</a></button><br><br>
                                 </div>
                             <?php } else { ?>
                                 <div class="col-2">
                                     <img style="width: 100%; height: 9em" src="<?= base_url('assets/img/profiles/') . $amizade->imagem1 ?>"><br>
-                                    <p><?= $amizade->nome1 ?> <?= $amizade->snome1 ?></p>
+                                    <p><?= $amizade->nome1 ?><br><?= $amizade->snome1 ?></p>
                                     <br><button class="btListas"><a onclick="return confirm('Convidar <?= $amizade->nome1 ?> <?= $amizade->snome1 ?>?')" href="<?= base_url('usuario/atualizar/convidar/') . $idEvento . '/' . $amizade->idUsuario1 ?>">
-                                            <i class="fas fa-user-plus"></i> Convidar</a></button>
+                                            <i class="fas fa-user-plus"></i> Convidar</a></button><br><br>
                                 </div>
                                 <?php
                             }
