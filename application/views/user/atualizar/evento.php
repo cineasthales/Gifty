@@ -14,7 +14,7 @@
                 </div>                
                 <div class="col-3">
                     <label for="data">Data</label><br>
-                    <input type="date" id="data" name="data" required min="<?= $hoje ?>" value="<?= $evento->data ?>" onblur="maximoDataLimite()"><br><br>
+                    <input type="date" id="data" name="data" required min="<?= $hoje ?>" value="<?= $evento->data ?>" onblur="mudaDataLimite()"><br><br>
                 </div>
                 <div class="col-2">
                     <label for="hora">Hora</label><br>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-3">
                     <label for="dataLimite">Data Limite de Confirmação</label><br>
-                    <input type="date" id="dataLimite" name="dataLimite" required min="<?= $hoje ?>" value="<?= $evento->dataLimite ?>"><br><br>
+                    <input type="date" id="dataLimite" name="dataLimite" required min="<?= $hoje ?>" value="<?= $evento->dataLimite ?>" onblur="maximoDataLimite()"><br><br>
                 </div>
                 <div class="col-12">
                     <label for="descricao">Descrição</label><br>

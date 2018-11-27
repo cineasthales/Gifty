@@ -454,53 +454,62 @@ VALUES
 ('RN Comércio Varejista S/A', 'Ricardo Eletro', '13481309010155', 'email@ricardoeletro.com.br', '12.jpg', 'http://www.ricardoeletro.com.br', 0);
 
 INSERT INTO enderecos
-(cep, logradouro, numero, complemento, bairro, cidade, estado)
+(id, cep, logradouro, numero, complemento, bairro, cidade, estado)
 VALUES
-('96077010', 'Rua Alberto Pimentel', 100, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 200, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 300, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 400, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 500, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 600, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 700, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 800, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 900, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1000, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1100, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1200, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1300, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1400, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1500, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1600, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1700, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1800, '', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 1900, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-('96077010', 'Rua Alberto Pimentel', 2000, '', 'Areal', 'Pelotas', 'RS');
+(1, '96077010', 'Rua Alberto Pimentel', 100, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+(2, '96077010', 'Rua Alberto Pimentel', 200, '', 'Areal', 'Pelotas', 'PR'),
+(3, '96077010', 'Rua Alberto Pimentel', 300, 'Apto 100', 'Areal', 'Pelotas', 'SC'),
+(4, '96077010', 'Rua Alberto Pimentel', 400, '', 'Areal', 'Pelotas', 'RS'),
+(5, '96077010', 'Rua Alberto Pimentel', 500, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+(6, '96077010', 'Rua Alberto Pimentel', 600, '', 'Areal', 'Pelotas', 'SC'),
+(7, '96077010', 'Rua Alberto Pimentel', 700, 'Apto 100', 'Areal', 'Pelotas', 'SP'),
+(8, '96077010', 'Rua Alberto Pimentel', 800, '', 'Areal', 'Pelotas', 'SP'),
+(9, '96077010', 'Rua Alberto Pimentel', 900, 'Apto 100', 'Areal', 'Pelotas', 'RJ'),
+(10, '96077010', 'Rua Alberto Pimentel', 1000, '', 'Areal', 'Pelotas', 'SP'),
+(11, '96077010', 'Rua Alberto Pimentel', 1100, 'Apto 100', 'Areal', 'Pelotas', 'BA'),
+(12, '96077010', 'Rua Alberto Pimentel', 1200, '', 'Areal', 'Pelotas', 'PA'),
+(13, '96077010', 'Rua Alberto Pimentel', 1300, 'Apto 100', 'Areal', 'Pelotas', 'PA'),
+(14, '96077010', 'Rua Alberto Pimentel', 1400, '', 'Areal', 'Pelotas', 'AM'),
+(15, '96077010', 'Rua Alberto Pimentel', 1500, 'Apto 100', 'Areal', 'Pelotas', 'AL'),
+(16, '96077010', 'Rua Alberto Pimentel', 1600, '', 'Areal', 'Pelotas', 'SP'),
+(17, '96077010', 'Rua Alberto Pimentel', 1700, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+(18, '96077010', 'Rua Alberto Pimentel', 1800, '', 'Areal', 'Pelotas', 'SC'),
+(19, '96077010', 'Rua Alberto Pimentel', 1900, 'Apto 100', 'Areal', 'Pelotas', 'PR'),
+(20, '96077010', 'Rua Alberto Pimentel', 2000, '', 'Areal', 'Pelotas', 'SP'),
+(21, '96077020', 'Rua Antônio Joaquim Dias', 100, '', 'Areal', 'Pelotas', 'SP'),
+(22, '96077030', 'Rua Arthur Hameister Júnior', 1112, '', 'Areal', 'Pelotas', 'SC'),
+(23, '96077040', 'Rua Casemiro de Abreu', 44, 'Apto 120', 'Areal', 'Pelotas', 'SP'),
+(24, '96040000', 'Avenida Presidente João Goulart', 125, '', 'Fragata', 'Pelotas', 'SP'),
+(25, '96077010', 'Rua Alberto Pimentel', 1124, '', 'Areal', 'Pelotas', 'SP'),
+(26, '96077050', 'Rua César Campos', 50, '126', 'Areal', 'Pelotas', 'SC'),
+(27, '96077010', 'Rua Alberto Pimentel', 111, '', 'Areal', 'Pelotas', 'SP'),
+(28, '96077010', 'Rua Alberto Pimentel', 13, '', 'Areal', 'Pelotas', 'RS'),
+(29, '96077010', 'Rua Alberto Pimentel', 2, '', 'Areal', 'Pelotas', 'RS');
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
    cpf, dataNasc, genero, imagem, nivel, ativo, tentaLogin, idEndereco)
 VALUES
-('cineasthales', '8c6cd3b74652e166638f9a672ca12171', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-01-01', 'Masculino', '47a3061adc82e0bae5b3beae9ec0515e.jpg', 1, 1, 0, 1),
-('alicem', '8c6cd3b74652e166638f9a672ca12171', 'Alice', 'Moreira', 'tccastro@inf.ufpel.edu.br', 1, '99999999999', '1991-01-01', 'Feminino', '608255509c8c6bd0d65c5e0c0f47ba91.jpg', 0, 1, 0, 2),
-('joaos', '8c6cd3b74652e166638f9a672ca12171', 'João', 'Santos', 'petcomputacaoufpel@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', '1a43a0a6e5de487dcfc45a7f0c629890.jpg', 0, 1, 0, 3),
-('marias', '8c6cd3b74652e166638f9a672ca12171', 'Maria', 'Silva', 'marias@gmail.com', 0, '88888888888', '1992-01-01', 'Feminino', '2c175141d8ddef0471451234fb25f19b.jpg', 0, 1, 0, 4),
-('pedrof', '8c6cd3b74652e166638f9a672ca12171', 'Pedro', 'Francisco', 'pedrof@gmail.com', 0, '66666666666', '1994-01-01', 'Masculino', 'f0f8b7ac703d7255be45c89b0edf8ab2.jpg', 0, 0, 0, 5),
-('guilhermes', '8c6cd3b74652e166638f9a672ca12171', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 0, '55555555555', '1995-01-01', 'Masculino', '1e6aed455f586675511b3812e31b09c5.jpg', 0, 1, 0, 6),
-('juang', '8c6cd3b74652e166638f9a672ca12171', 'Juan', 'Gonzales', 'juang@gmail.com', 0, '44444444444', '1996-01-01', 'Masculino', '7d68546cb3a899bddf494fdfdfd13232.jpg', 0, 1, 0, 7),
-('nataliaa', '8c6cd3b74652e166638f9a672ca12171', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 0, '33333333333', '1997-01-01', 'Feminino', '0a07174d6384f701271497bece575c7f.jpg', 0, 1, 0, 8),
-('barbaral', '8c6cd3b74652e166638f9a672ca12171', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 0, '22222222222', '1998-01-01', 'Feminino', 'fb8638f246d111bda7480b0dcca4296e.jpg', 0, 1, 0, 9),
-('patriciag', '8c6cd3b74652e166638f9a672ca12171', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 0, '11111111111', '1999-01-01', 'Feminino', '340a5ec5d48b25fad384ee349be416f3.jpg', 0, 1, 0, 10),
-('remonas', '8c6cd3b74652e166638f9a672ca12171', 'Remona', 'Scott', 'remonas@gmail.com', 0, '00000000000', '1988-01-01', 'Feminino', '37f324b4ed00b90c02f49afafd59ccf8.jpg', 0, 1, 0, 11),
-('sandrag', '8c6cd3b74652e166638f9a672ca12171', 'Sandra', 'Guerra', 'sandrag@gmail.com', 0, '11111111112', '1987-01-01', 'Feminino', 'd8d8f13416fb9827a76eec1043b4e956.jpg', 0, 1, 0, 12),
-('irmaw', '8c6cd3b74652e166638f9a672ca12171', 'Irma', 'Weeks', 'irmaw@gmail.com', 0, '11111111113', '1986-01-01', 'Feminino', 'dd9654bfdb84456a591deba17bef91fc.jpg', 0, 1, 0, 13),
-('erikac', '8c6cd3b74652e166638f9a672ca12171', 'Erika', 'Clarcs', 'erikac@gmail.com', 0, '11111111114', '1985-01-01', 'Feminino', '29bc5533c994296861fdeefd06bacfaa.jpg', 0, 1, 0, 14),
-('paulj', '8c6cd3b74652e166638f9a672ca12171', 'Paul', 'James', 'paulj@gmail.com', 0, '11111111115', '1984-01-01', 'Masculino', '19f32ef64de3f48833254032bd3caa03.jpg', 0, 1, 0, 15),
-('larrya', '8c6cd3b74652e166638f9a672ca12171', 'Larry', 'Adams', 'larrya@gmail.com', 0, '11111111116', '1983-01-01', 'Masculino', 'c2a1691e6edc8e7a76fe7b55403491c0.jpg', 0, 1, 0, 16),
-('maryw', '8c6cd3b74652e166638f9a672ca12171', 'Mary', 'White', 'maryw@gmail.com', 0, '11111111117', '1982-01-01', 'Travesti', '35954157d7f7f81fd24ec98fa575db39.jpg', 0, 1, 0, 17),
-('cristinar', '8c6cd3b74652e166638f9a672ca12171', 'Cristina', 'Rivera', 'cristinar@gmail.com', 0, '11111111118', '1981-01-01', 'Não-Binário', '88d8f697438d9dbf7f84eb6a4a71dcd5.jpg', 0, 1, 0, 18),
-('francesl', '8c6cd3b74652e166638f9a672ca12171', 'Frances', 'Lough', 'francesl@gmail.com', 0, '11111111119', '1980-01-01', 'Travesti', '20f45a2bc7cfe25d43e62d8e3c5dd876.jpg', 0, 1, 0, 19),
-('jenniferl', '8c6cd3b74652e166638f9a672ca12171', 'Jennifer', 'Lim', 'jenniferl@gmail.com', 0, '11111111110', '1990-01-01', 'Transexual', '05ec04013d4f3e58a90d37ff9c7d73d0.jpg', 0, 1, 0, 20);
+('cineasthales', '10a9c136d796bab18d3e144092a4f20a', 'Thales', 'Castro', 'thalesccastro@gmail.com', 0, '80606784004', '1989-01-01', 'Masculino', '47a3061adc82e0bae5b3beae9ec0515e.jpg', 1, 1, 0, 1),
+('alicem', '10a9c136d796bab18d3e144092a4f20a', 'Alice', 'Moreira', 'tccastro@inf.ufpel.edu.br', 1, '99999999999', '1991-01-01', 'Feminino', '608255509c8c6bd0d65c5e0c0f47ba91.jpg', 0, 1, 0, 2),
+('joaos', '10a9c136d796bab18d3e144092a4f20a', 'João', 'Santos', 'petcomputacaoufpel@gmail.com', 1, '77777777777', '1993-01-01', 'Masculino', '1a43a0a6e5de487dcfc45a7f0c629890.jpg', 0, 1, 0, 3),
+('marias', '10a9c136d796bab18d3e144092a4f20a', 'Maria', 'Silva', 'marias@gmail.com', 0, '88888888888', '1992-01-01', 'Feminino', '2c175141d8ddef0471451234fb25f19b.jpg', 0, 1, 0, 4),
+('pedrof', '10a9c136d796bab18d3e144092a4f20a', 'Pedro', 'Francisco', 'pedrof@gmail.com', 0, '66666666666', '1994-01-01', 'Masculino', 'f0f8b7ac703d7255be45c89b0edf8ab2.jpg', 0, 0, 0, 5),
+('guilhermes', '10a9c136d796bab18d3e144092a4f20a', 'Guilherme', 'Souza', 'guilhermes@gmail.com', 0, '55555555555', '1995-01-01', 'Masculino', '1e6aed455f586675511b3812e31b09c5.jpg', 0, 1, 0, 6),
+('juang', '10a9c136d796bab18d3e144092a4f20a', 'Juan', 'Gonzales', 'juang@gmail.com', 0, '44444444444', '1996-01-01', 'Masculino', '7d68546cb3a899bddf494fdfdfd13232.jpg', 0, 1, 0, 7),
+('nataliaa', '10a9c136d796bab18d3e144092a4f20a', 'Natalia', 'Albuquerque', 'nataliaag@gmail.com', 0, '33333333333', '1997-01-01', 'Feminino', '0a07174d6384f701271497bece575c7f.jpg', 0, 1, 0, 8),
+('barbaral', '10a9c136d796bab18d3e144092a4f20a', 'Barbara', 'Lacerda', 'barbaral@gmail.com', 0, '22222222222', '1998-01-01', 'Feminino', 'fb8638f246d111bda7480b0dcca4296e.jpg', 0, 1, 0, 9),
+('patriciag', '10a9c136d796bab18d3e144092a4f20a', 'Patricia', 'Guimarães', 'patriciag@gmail.com', 0, '11111111111', '1999-01-01', 'Feminino', '340a5ec5d48b25fad384ee349be416f3.jpg', 0, 1, 0, 10),
+('remonas', '10a9c136d796bab18d3e144092a4f20a', 'Remona', 'Scott', 'remonas@gmail.com', 0, '00000000000', '1988-01-01', 'Feminino', '37f324b4ed00b90c02f49afafd59ccf8.jpg', 0, 1, 0, 11),
+('sandrag', '10a9c136d796bab18d3e144092a4f20a', 'Sandra', 'Guerra', 'sandrag@gmail.com', 0, '11111111112', '1987-01-01', 'Feminino', 'd8d8f13416fb9827a76eec1043b4e956.jpg', 0, 1, 0, 12),
+('irmaw', '10a9c136d796bab18d3e144092a4f20a', 'Irma', 'Weeks', 'irmaw@gmail.com', 0, '11111111113', '1986-01-01', 'Feminino', 'dd9654bfdb84456a591deba17bef91fc.jpg', 0, 1, 0, 13),
+('erikac', '10a9c136d796bab18d3e144092a4f20a', 'Erika', 'Clarcs', 'erikac@gmail.com', 0, '11111111114', '1985-01-01', 'Feminino', '29bc5533c994296861fdeefd06bacfaa.jpg', 0, 1, 0, 14),
+('paulj', '10a9c136d796bab18d3e144092a4f20a', 'Paul', 'James', 'paulj@gmail.com', 0, '11111111115', '1984-01-01', 'Masculino', '19f32ef64de3f48833254032bd3caa03.jpg', 0, 1, 0, 15),
+('larrya', '10a9c136d796bab18d3e144092a4f20a', 'Larry', 'Adams', 'larrya@gmail.com', 0, '11111111116', '1983-01-01', 'Masculino', 'c2a1691e6edc8e7a76fe7b55403491c0.jpg', 0, 1, 0, 16),
+('maryw', '10a9c136d796bab18d3e144092a4f20a', 'Mary', 'White', 'maryw@gmail.com', 0, '11111111117', '1982-01-01', 'Travesti', '35954157d7f7f81fd24ec98fa575db39.jpg', 0, 1, 0, 17),
+('cristinar', '10a9c136d796bab18d3e144092a4f20a', 'Cristina', 'Rivera', 'cristinar@gmail.com', 0, '11111111118', '1981-01-01', 'Não-Binário', '88d8f697438d9dbf7f84eb6a4a71dcd5.jpg', 0, 1, 0, 18),
+('francesl', '10a9c136d796bab18d3e144092a4f20a', 'Frances', 'Lough', 'francesl@gmail.com', 0, '11111111119', '1980-01-01', 'Travesti', '20f45a2bc7cfe25d43e62d8e3c5dd876.jpg', 0, 1, 0, 19),
+('jenniferl', '10a9c136d796bab18d3e144092a4f20a', 'Jennifer', 'Lim', 'jenniferl@gmail.com', 0, '11111111110', '1990-01-01', 'Transexual', '05ec04013d4f3e58a90d37ff9c7d73d0.jpg', 0, 1, 0, 20);
 
 INSERT INTO telefones
 (ddd, numero, idUsuario)
@@ -538,20 +547,6 @@ VALUES
 (4, 18, 1, 0, 0, '2017-06-05'),
 (4, 20, 1, 0, 0, '2017-07-05');
 
-INSERT INTO interesses
-(idUsuario, idCategoria, peso, data)
-VALUES
-(2, 150, 0, '2018-09-26'),
-(2, 27, 0, '2018-09-26'),
-(2, 254, 0, '2018-09-26'),
-(2, 300, 0, '2018-09-26'),
-(2, 190, 0, '2018-09-26'),
-(3, 125, 0, '2018-09-26'),
-(3, 212, 0, '2018-09-26'),
-(3, 298, 0, '2018-09-26'),
-(3, 264, 0, '2018-09-26'),
-(3, 127, 0, '2018-09-26');
-
 INSERT INTO anuncios
 (imagem, url, ativo, idEmpresa, idCategoria)
 VALUES
@@ -572,20 +567,82 @@ VALUES
 ('2018-07-01', '01:00:00', 1, 1),
 ('2018-07-02', '02:00:00', 2, 2),
 ('2018-07-03', '03:00:00', 3, 3),
-('2018-07-04', '04:00:00', 4, 4),
+('2018-07-04', '04:00:00', 3, 4),
 ('2018-07-05', '05:00:00', 5, 5),
-('2018-07-06', '06:00:00', 6, 6),
+('2018-07-06', '06:00:00', 1, 6),
 ('2018-07-07', '07:00:00', 7, 7),
-('2018-07-08', '08:00:00', 8, 8),
-('2018-07-09', '09:00:00', 9, 9),
-('2018-07-10', '10:00:00', 10, 10),
-('2018-07-11', '11:00:00', 1, 11),
+('2018-07-08', '08:00:00', 5, 8),
+('2018-07-09', '09:00:00', 1, 9),
+('2018-07-10', '10:00:00', 2, 10),
+('2018-07-11', '11:00:00', 2, 11),
 ('2018-07-12', '12:00:00', 2, 12),
-('2018-07-13', '13:00:00', 3, 13),
-('2018-07-14', '14:00:00', 4, 14),
-('2018-07-15', '15:00:00', 5, 15),
-('2018-07-16', '16:00:00', 6, 16),
-('2018-07-17', '17:00:00', 7, 17),
-('2018-07-18', '18:00:00', 8, 18),
-('2018-07-19', '19:00:00', 9, 19),
+('2018-07-13', '13:00:00', 4, 13),
+('2018-07-14', '14:00:00', 1, 14),
+('2018-07-15', '15:00:00', 7, 15),
+('2018-07-16', '16:00:00', 10, 16),
+('2018-07-17', '17:00:00', 9, 17),
+('2018-07-18', '18:00:00', 1, 18),
+('2018-07-19', '19:00:00', 2, 19),
 ('2018-07-20', '20:00:00', 10, 20);
+
+INSERT INTO itens
+(id, nome, descricao, preco, url, imagem, idCategoria)
+VALUES
+(1, 'Teclado Semi Mecânico Gamer Led Rgb Usb Abnt2 Iluminado', '-', 49.9, 'https://produto.mercadolivre.com.br/MLB-1020296379-teclado-semi-mecnico-gamer-led-rgb-usb-abnt2-iluminado-_JM', 'http://mlb-s2-p.mlstatic.com/836581-MLB27264911076_042018-I.jpg', 300),
+(2, 'Armação De Grau Feminino Estilo Gatinho Acetato Com Brinde', '-', 100, 'https://produto.mercadolivre.com.br/MLB-798398043-armaco-de-grau-feminino-estilo-gatinho-acetato-com-brinde-_JM', 'http://mlb-s2-p.mlstatic.com/801325-MLB25418850090_032017-I.jpg', 150),
+(3, 'Estante Para Livros Com 10 Nichos Artely Branco Jj', '-', 156.48, 'https://produto.mercadolivre.com.br/MLB-848573655-estante-para-livros-com-10-nichos-artely-branco-jj-_JM', 'http://mlb-s2-p.mlstatic.com/980970-MLB27205868923_042018-I.jpg', 185),
+(4, 'Controle Pc Sem Fio Wireless Recarregável Joystick Ps3 Ps2', '-', 56.99, 'https://produto.mercadolivre.com.br/MLB-902731210-controle-pc-sem-fio-wireless-recarregavel-joystick-ps3-ps2-_JM', 'http://mlb-s1-p.mlstatic.com/863236-MLB28797476706_112018-I.jpg', 300),
+(5, 'Calcinha Biquíni Cintura Alta Franzido Panicat  25538 A', '-', 35, 'https://produto.mercadolivre.com.br/MLB-1083810980-calcinha-biquini-cintura-alta-franzido-panicat-25538-a-_JM', 'http://mlb-s1-p.mlstatic.com/678370-MLB25889637847_082017-I.jpg', 149),
+(6, 'Saída De Praia Manga Flare Lançamento Verão 2019 Cód.069', '-', 49.99, 'https://produto.mercadolivre.com.br/MLB-1097497101-saida-de-praia-manga-flare-lancamento-vero-2019-cod069-_JM', 'http://mlb-s2-p.mlstatic.com/773242-MLB28101598228_092018-I.jpg', 149),
+(7, 'Vodka Absolut Original 1l + Copo', '-', 69.9, 'https://produto.mercadolivre.com.br/MLB-1140595522-vodka-absolut-original-1l-copo-_JM', 'http://mlb-s1-p.mlstatic.com/780009-MLB28722959419_112018-I.jpg', 380),
+(8, 'Refrigerador Consul Crm35 Frost Free 2 Portas Evox 275l 220v', '-', 1801.47, 'https://produto.mercadolivre.com.br/MLB-903286162-refrigerador-consul-crm35-frost-free-2-portas-evox-275l-220v-_JM', 'http://mlb-s1-p.mlstatic.com/607251-MLB28311179917_102018-I.jpg', 224),
+(9, 'Fogão 4 Bocas Bali, Puxador De Aço, Vidro Temperado Esmaltec', '-', 359, 'https://produto.mercadolivre.com.br/MLB-830696922-fogo-4-bocas-bali-puxador-de-aco-vidro-temperado-esmaltec-_JM', 'http://mlb-s1-p.mlstatic.com/208615-MLB25289567166_012017-I.jpg', 223),
+(10, 'Smartv 55  Preta, 55x705f  Uhd 4k, X-reality Pro, Wifi,hdmi,', '-', 3637.9, 'https://produto.mercadolivre.com.br/MLB-1115173522-smartv-55-preta-55x705f-uhd-4k-x-reality-pro-wifihdmi-_JM', 'http://mlb-s1-p.mlstatic.com/662795-MLB28329393074_102018-I.jpg', 250),
+(11, 'Jogo De Cartas Card Game Munchkin Português Galápagos', '-', 120, 'https://produto.mercadolivre.com.br/MLB-1070325897-jogo-de-cartas-card-game-munchkin-portugus-galapagos-_JM', 'http://mlb-s2-p.mlstatic.com/894572-MLB27804671789_072018-I.jpg', 127),
+(12, 'Controle Xbox 360 Sem Fio Wireless Usb Slim  Joystick', '-', 95.9, 'https://produto.mercadolivre.com.br/MLB-828091691-controle-xbox-360-sem-fio-wireless-usb-slim-joystick-_JM', 'http://mlb-s2-p.mlstatic.com/837225-MLB25405552009_032017-I.jpg', 298),
+(13, 'Kit Vodkas Do Mundo', '-', 112.9, 'https://produto.mercadolivre.com.br/MLB-1139283187-kit-vodkas-do-mundo-_JM', 'http://mlb-s2-p.mlstatic.com/853267-MLB28702301934_112018-I.jpg', 380);
+
+INSERT INTO eventos
+(id, titulo, descricao, data, hora, local, ativo, maxItens, dataLimite, idUsuario, idEndereco, idTipoEvento)
+VALUES
+(1, 'Meu aniversário!', 'Vai ser uma festa muito divertida!', '2018-11-30', '20:00:00', 'Minha Casa', 1, 2, '2018-11-30', 2, 21, 1),
+(2, 'A Noite das Meninas!', 'Uhul! Vamos arrasar!', '2019-01-15', '23:00:00', 'Bar das Gordas', 1, 2, '2019-01-11', 2, 22, 13),
+(3, 'Casa nova, vida nova!', 'Vou me mudar e espero a presença de todos!', '2018-12-14', '12:00:00', 'Casa nova', 1, 3, '2018-12-12', 4, 23, 12),
+(4, 'Natal é na minha casa!', 'Venham passar o natal na minha casa, vamos curtir muito!', '2018-12-24', '21:00:00', 'Meu cafofo', 1, 2, '2018-12-23', 3, 24, 5);
+
+INSERT INTO listas
+(idEvento, idItem, prioridade, dataAdicao, idComprador)
+VALUES
+(1, 1, 1, '2018-11-27', NULL),
+(1, 3, 3, '2018-11-27', NULL),
+(1, 4, 2, '2018-11-27', NULL),
+(2, 5, 1, '2018-11-27', NULL),
+(2, 6, 2, '2018-11-27', NULL),
+(2, 7, 3, '2018-11-27', NULL),
+(3, 8, 1, '2018-11-27', NULL),
+(3, 9, 2, '2018-11-27', NULL),
+(3, 10, 3, '2018-11-27', NULL),
+(4, 11, 1, '2018-11-27', NULL),
+(4, 12, 3, '2018-11-27', NULL),
+(4, 13, 2, '2018-11-27', NULL);
+
+INSERT INTO interesses
+(idUsuario, idCategoria, peso, data)
+VALUES
+(2, 27, 0, '2018-09-26'),
+(2, 149, 2, '2018-11-27'),
+(2, 150, 1, '2018-11-27'),
+(2, 185, 1, '2018-11-27'),
+(2, 190, 0, '2018-09-26'),
+(2, 254, 0, '2018-09-26'),
+(2, 300, 2, '2018-11-27'),
+(2, 380, 1, '2018-11-27'),
+(3, 125, 0, '2018-09-26'),
+(3, 127, 1, '2018-11-27'),
+(3, 212, 0, '2018-09-26'),
+(3, 264, 0, '2018-09-26'),
+(3, 298, 1, '2018-11-27'),
+(3, 380, 1, '2018-11-27'),
+(4, 223, 1, '2018-11-27'),
+(4, 224, 1, '2018-11-27'),
+(4, 250, 1, '2018-11-27');
