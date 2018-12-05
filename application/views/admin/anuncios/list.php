@@ -82,7 +82,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <br>
                 </div>
                 <div class="col-4">
-                    <img class="bdImg" src="<?= base_url('assets/img/misc/generic-profile.jpg') ?>"  
+                    <img class="bdImg" style="width:50%;" src="<?= base_url('assets/img/misc/generic-profile.jpg') ?>"  
                          alt="Anúncio de <?= $anuncio->empresa ?>">
                 </div>
                 <div class="col-2">

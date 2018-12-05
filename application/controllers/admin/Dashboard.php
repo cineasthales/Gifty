@@ -141,7 +141,7 @@ class Dashboard extends CI_Controller {
             $this->pdf->Cell(30, 8, date_format(date_create($linha->data), 'd/m/Y'));
             $this->pdf->Cell(20, 8, substr($linha->hora, 0, 5));
             $this->pdf->Cell(20, 8, $idade);
-            $this->pdf->Cell(30, 8, $linha->genero, 0, 1);
+            $this->pdf->Cell(30, 8, utf8_decode($linha->genero), 0, 1);
         }
         $this->pdf->Output();
     }

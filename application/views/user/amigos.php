@@ -58,7 +58,7 @@ if ($this->session->has_userdata('mensagem')) {
                                         <i class="fas fa-user-times"></i> Desfazer Amizade</a></button>
                                 <br><br>
                             <?php } else { ?>
-                                <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario1 ?>"><img style="width: 100%; height: 13em" src="<?= base_url('assets/img/profiles/') . $amizade->imagem1 ?>"><br>
+                                <a href="<?= base_url('usuario/amigos/perfil/') . $amizade->idUsuario1 ?>"><img src="<?= base_url('assets/img/profiles/') . $amizade->imagem1 ?>"><br>
                                     <p style="font-size: 1.2em; font-weight: bold"><?= $amizade->nome1 ?><br><?= $amizade->snome1 ?></p></a>
                                 <?php if ($amizade->bloqueado1) { ?>
                                     <br><button class="btListas"><a href="<?= base_url('usuario/amigos/desbloquear/') . $amizade->idUsuario1 ?>" onclick="return confirm('Desbloquear <?= $amizade->nome1 ?> <?= $amizade->snome1 ?>?')">

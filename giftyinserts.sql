@@ -454,37 +454,28 @@ VALUES
 ('RN Comércio Varejista S/A', 'Ricardo Eletro', '13481309010155', 'email@ricardoeletro.com.br', '12.jpg', 'http://www.ricardoeletro.com.br', 0);
 
 INSERT INTO enderecos
-(id, cep, logradouro, numero, complemento, bairro, cidade, estado)
+(cep, logradouro, numero, complemento, bairro, cidade, estado)
 VALUES
-(1, '96077010', 'Rua Alberto Pimentel', 100, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-(2, '96077010', 'Rua Alberto Pimentel', 200, '', 'Areal', 'Pelotas', 'PR'),
-(3, '96077010', 'Rua Alberto Pimentel', 300, 'Apto 100', 'Areal', 'Pelotas', 'SC'),
-(4, '96077010', 'Rua Alberto Pimentel', 400, '', 'Areal', 'Pelotas', 'RS'),
-(5, '96077010', 'Rua Alberto Pimentel', 500, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-(6, '96077010', 'Rua Alberto Pimentel', 600, '', 'Areal', 'Pelotas', 'SC'),
-(7, '96077010', 'Rua Alberto Pimentel', 700, 'Apto 100', 'Areal', 'Pelotas', 'SP'),
-(8, '96077010', 'Rua Alberto Pimentel', 800, '', 'Areal', 'Pelotas', 'SP'),
-(9, '96077010', 'Rua Alberto Pimentel', 900, 'Apto 100', 'Areal', 'Pelotas', 'RJ'),
-(10, '96077010', 'Rua Alberto Pimentel', 1000, '', 'Areal', 'Pelotas', 'SP'),
-(11, '96077010', 'Rua Alberto Pimentel', 1100, 'Apto 100', 'Areal', 'Pelotas', 'BA'),
-(12, '96077010', 'Rua Alberto Pimentel', 1200, '', 'Areal', 'Pelotas', 'PA'),
-(13, '96077010', 'Rua Alberto Pimentel', 1300, 'Apto 100', 'Areal', 'Pelotas', 'PA'),
-(14, '96077010', 'Rua Alberto Pimentel', 1400, '', 'Areal', 'Pelotas', 'AM'),
-(15, '96077010', 'Rua Alberto Pimentel', 1500, 'Apto 100', 'Areal', 'Pelotas', 'AL'),
-(16, '96077010', 'Rua Alberto Pimentel', 1600, '', 'Areal', 'Pelotas', 'SP'),
-(17, '96077010', 'Rua Alberto Pimentel', 1700, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
-(18, '96077010', 'Rua Alberto Pimentel', 1800, '', 'Areal', 'Pelotas', 'SC'),
-(19, '96077010', 'Rua Alberto Pimentel', 1900, 'Apto 100', 'Areal', 'Pelotas', 'PR'),
-(20, '96077010', 'Rua Alberto Pimentel', 2000, '', 'Areal', 'Pelotas', 'SP'),
-(21, '96077020', 'Rua Antônio Joaquim Dias', 100, '', 'Areal', 'Pelotas', 'SP'),
-(22, '96077030', 'Rua Arthur Hameister Júnior', 1112, '', 'Areal', 'Pelotas', 'SC'),
-(23, '96077040', 'Rua Casemiro de Abreu', 44, 'Apto 120', 'Areal', 'Pelotas', 'SP'),
-(24, '96040000', 'Avenida Presidente João Goulart', 125, '', 'Fragata', 'Pelotas', 'SP'),
-(25, '96077010', 'Rua Alberto Pimentel', 1124, '', 'Areal', 'Pelotas', 'SP'),
-(26, '96077050', 'Rua César Campos', 50, '126', 'Areal', 'Pelotas', 'SC'),
-(27, '96077010', 'Rua Alberto Pimentel', 111, '', 'Areal', 'Pelotas', 'SP'),
-(28, '96077010', 'Rua Alberto Pimentel', 13, '', 'Areal', 'Pelotas', 'RS'),
-(29, '96077010', 'Rua Alberto Pimentel', 2, '', 'Areal', 'Pelotas', 'RS');
+('96077010', 'Rua Alberto Pimentel', 100, 'Apto 100', 'Areal', 'Pelotas', 'RS'),
+('88512375', 'Rua Antônio Marini Neto', 200, '', 'Bela Vista', 'Lages', 'SC'),
+('87047429', 'Rua Pioneiro Geraldo Portela', 300, 'Apto 100', 'Conjunto Habitacional Requião', 'Maringá', 'PR'),
+('18116713', 'Rua Projetada', 400, '', 'Jardim Clarice I', 'Votorantim', 'SP'),
+('25965013', 'Rua Haroldo Guilherme Rebelo', 500, 'Apto 100', 'Barra do Imbuí', 'Teresópolis', 'RJ'),
+('97545020', 'Rua Agapito Lara Rodrigues', 600, '', 'Lara', 'Alegrete', 'RS'),
+('66843171', 'Alameda Atlântica', 700, 'Apto 100', 'Água Boa (Outeiro)', 'Belém', 'PA'),
+('59157210', 'Rua Rosa Massud Costa', 800, '', 'Cajupiranga', 'Parnamirim', 'RN'),
+('91140130', 'Rua da Cidadania', 900, 'Apto 100', 'Sarandi', 'Porto Alegre', 'RS'),
+('88804190', 'Rua Afrânio Peixoto', 1000, '', 'Santa Bárbara', 'Criciúma', 'SC'),
+('81930610', 'Rua Pedro Picussa', 1100, 'Apto 100', 'Umbará', 'Curitiba', 'PR'),
+('13056489', 'Rua Cairu', 1200, '', 'Parque Universitário de Viracopo', 'Campinas', 'SP'),
+('13506842', 'Rua P 1A', 1300, 'Apto 100', 'Vila Paulista', 'Rio Claro', 'SP'),
+('95090400', 'Estrada Municipal Ezidoro Comerlato', 1400, '', 'Galópolis', 'Caxias do Sul', 'RS'),
+('54350341', '1ª Travessa da Rua Um', 1500, 'Apto 100', 'Muribeca', 'Jaboatão dos Guararapes', 'PE'),
+('72316089', 'Quadra QR 204 Conjunto 9', 1600, '', 'Samambaia Norte (Samambaia)', 'Brasília', 'DF'),
+('91340060', 'Rua Ivescio Pacheco', 1700, 'Apto 100', 'Passo D Areia', 'Porto Alegre', 'RS'),
+('88104559', 'Rua Manoel José dos Santos', 1800, '', 'Fazenda Santo Antônio', 'São José', 'SC'),
+('68905300', 'Rua Sétima da Baixada do Japonês', 1900, 'Apto 100', 'Cidade Nova', 'Macapá', 'AM'),
+('67133480', 'Passagem São Roque', 2000, '', 'Cidade Nova', 'Ananindeua', 'PA');
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
@@ -585,6 +576,28 @@ VALUES
 ('2018-07-19', '19:00:00', 2, 19),
 ('2018-07-20', '20:00:00', 10, 20);
 
+INSERT INTO interesses
+(idUsuario, idCategoria, peso, data)
+VALUES
+(2, 27, 0, '2018-09-26'),
+(2, 149, 0, '2018-11-27'),
+(2, 150, 0, '2018-11-27'),
+(2, 185, 0, '2018-11-27'),
+(2, 190, 0, '2018-09-26'),
+(2, 254, 0, '2018-09-26'),
+(2, 300, 0, '2018-11-27'),
+(2, 380, 0, '2018-11-27'),
+(3, 125, 0, '2018-09-26'),
+(3, 127, 0, '2018-11-27'),
+(3, 212, 0, '2018-09-26'),
+(3, 264, 0, '2018-09-26'),
+(3, 298, 0, '2018-11-27'),
+(3, 380, 0, '2018-11-27'),
+(4, 223, 0, '2018-11-27'),
+(4, 224, 0, '2018-11-27'),
+(4, 250, 0, '2018-11-27');
+
+/*
 INSERT INTO itens
 (id, nome, descricao, preco, url, imagem, idCategoria)
 VALUES
@@ -625,24 +638,4 @@ VALUES
 (4, 11, 1, '2018-11-27', NULL),
 (4, 12, 3, '2018-11-27', NULL),
 (4, 13, 2, '2018-11-27', NULL);
-
-INSERT INTO interesses
-(idUsuario, idCategoria, peso, data)
-VALUES
-(2, 27, 0, '2018-09-26'),
-(2, 149, 2, '2018-11-27'),
-(2, 150, 1, '2018-11-27'),
-(2, 185, 1, '2018-11-27'),
-(2, 190, 0, '2018-09-26'),
-(2, 254, 0, '2018-09-26'),
-(2, 300, 2, '2018-11-27'),
-(2, 380, 1, '2018-11-27'),
-(3, 125, 0, '2018-09-26'),
-(3, 127, 1, '2018-11-27'),
-(3, 212, 0, '2018-09-26'),
-(3, 264, 0, '2018-09-26'),
-(3, 298, 1, '2018-11-27'),
-(3, 380, 1, '2018-11-27'),
-(4, 223, 1, '2018-11-27'),
-(4, 224, 1, '2018-11-27'),
-(4, 250, 1, '2018-11-27');
+*/

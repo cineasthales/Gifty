@@ -10,7 +10,7 @@
             </div>
             <div class="col-12">
                 <?php if (count($itens) > 0) { ?>
-                    <br><br><table>
+                    <br><br><div style="overflow-x: auto"><table>
                         <tr>
                             <th>Posição</th>
                             <th>Item</th>
@@ -35,7 +35,7 @@
                                 </td>
                             </tr>
                         <?php } ?>
-                    </table><br><br>
+                        </table></div><br><br>
                 <?php } else { ?>
                     <br><br><p class="icon-big"><i class="fas fa-gift"></i></p><p>Sua lista ainda está vazia.<br>Você pode buscar itens ou adicionar nossas recomendações.</p><br>
                     <br><br>
@@ -56,9 +56,9 @@
             <?php if (isset($json)) { ?>                
                 <?php foreach ($json as $item) { ?>
                     <form method="post" action="<?= base_url('usuario/atualizar/adicionar/' . $idEvento) ?>">
-                        <div class="col-3" style="height: 20em;">
+                        <div class="col-3" style="height: 22em;">
                             <a href="<?= $item->permalink ?>" target='_blank'>
-                                <img style="display: block; margin: 0 auto" src="<?= $item->thumbnail ?>"><br>
+                                <img style="width: 40%; display: block; margin: 0 auto" src="<?= $item->thumbnail ?>"><br>
                                 <p><?= $item->title ?></p><br>
                             </a>
                             <p>R$ <?= number_format($item->price, 2, ',', '.') ?></p><br>             
@@ -68,7 +68,7 @@
                             <input hidden type="text" id="idCategoria" name="idCategoria" value="<?= $item->category_id ?>">
                             <input hidden type="text" id="preco" name="preco" value="<?= $item->price ?>">
                             <input hidden type="text" id="imagem" name="imagem" value="<?= $item->thumbnail ?>">
-                            <input type="submit" value="Adicionar"><br><br>
+                            <input type="submit" value="Adicionar"><br><br><br><br><br>
                         </div>
                     </form>
                 <?php } ?>

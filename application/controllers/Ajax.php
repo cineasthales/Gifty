@@ -16,7 +16,7 @@ class Ajax extends CI_Controller {
         $nomeUsuario = htmlspecialchars(trim($_GET["nomeUsuario"]));
         $this->load->model('Usuarios_model', 'usuarios');
         if ($this->usuarios->findNomeUsuario($nomeUsuario)) {
-            echo '(nome de usuário já cadastrado)';
+            echo '(já cadastrado)';
         }
     }
 

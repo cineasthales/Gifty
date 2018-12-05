@@ -68,7 +68,7 @@ if ($this->session->has_userdata('mensagem')) {
             <?php if ($convidado->comparecera == 1) { ?>
                 <div class="col-12">
                     <?php if (count($listas) > 0) { ?>                        
-                        <table>
+                        <div style="overflow-x: auto"><table>
                             <?php foreach ($listas as $lista) { ?>
                                 <tr>
                                     <td>
@@ -97,7 +97,7 @@ if ($this->session->has_userdata('mensagem')) {
                                     </td>
                                 </tr>
                             <?php } ?>
-                        </table>
+                            </table></div>
                     <?php } else { ?>
                         <br><br><p class="icon-big"><i class="fas fa-gift"></i></p><p>Esta lista ainda está vazia. Volte novamente mais tarde. :)<br></p><br>
                         <br><br>

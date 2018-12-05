@@ -43,7 +43,7 @@
             </div>
             <div class="col-12">
                 <?php if (count($listas) > 0) { ?>                
-                    <table>
+                    <div style="overflow-x: auto"><table>
                         <?php foreach ($listas as $lista) { ?>
                             <tr>
                                 <td>
@@ -63,7 +63,7 @@
                                 </td>
                             </tr>
                         <?php } ?>
-                    </table>                 
+                        </table></div>        
                 <?php } else { ?>
                     <br><br><p class="icon-big"><i class="fas fa-gift"></i></p><p>Sua lista ainda está vazia.<br></p><br>
                     <br><br>

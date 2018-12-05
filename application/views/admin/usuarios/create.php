@@ -77,26 +77,28 @@ if ($this->session->has_userdata('mensagem')) {
                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}" maxlength="32"><br><br>
                 </div>
                 <span style='text-align: center'>
-                    <div class="col-2"><br>
+                    <div class="col-4"><br>
                         <label for="ativo">
                             <input type="checkbox" id="ativo" name="ativo"> Ativo
                         </label><br><br>
                     </div>
-                    <div class="col-2"><br>
+                    <div class="col-4"><br>
                         <label for="notificaEmail">
                             <input type="checkbox" id="notificaEmail" name="notificaEmail"> Notificações
                         </label><br><br>
                     </div>
-                    <div class="col-2"><br>
+                    <div class="col-4"><br>
                         <label for="nivel">
                             <input type="checkbox" id="nivel" name="nivel"> Admin
                         </label><br><br>
                     </div>
                 </span>
+                <!--
                 <div class="col-6">
                     <label for="imagem">Foto de Perfil</label><br>
                     <input type="file" id="imagem" name="imagem" accept=".gif, .jpg, .jpeg, .png"><br><br>
                 </div>
+                -->
                 <div class="col-12">
                     <label for="idEndereco">Endereço</label><br>
                     <select id="idEndereco" name="idEndereco" size="5">
