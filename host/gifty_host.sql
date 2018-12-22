@@ -1,4 +1,414 @@
-USE gifty;
+USE u877047164_gifty;
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`enderecos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`enderecos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cep` VARCHAR(20) NOT NULL,
+  `logradouro` VARCHAR(100) NOT NULL,
+  `numero` INT NOT NULL,
+  `complemento` VARCHAR(100) NULL,
+  `bairro` VARCHAR(100) NOT NULL,
+  `cidade` VARCHAR(100) NOT NULL,
+  `estado` VARCHAR(2) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nomeUsuario` VARCHAR(20) NOT NULL,
+  `senha` VARCHAR(32) NOT NULL,
+  `nome` VARCHAR(50) NOT NULL,
+  `sobrenome` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `notificaEmail` TINYINT NOT NULL,
+  `cpf` VARCHAR(11) NOT NULL,
+  `dataNasc` DATE NOT NULL,
+  `genero` VARCHAR(30) NOT NULL,
+  `imagem` VARCHAR(100) NOT NULL,
+  `nivel` INT(1) NOT NULL,
+  `ativo` TINYINT NOT NULL,
+  `tentaLogin` INT(1) NOT NULL,
+  `idEndereco` INT NOT NULL,
+  PRIMARY KEY (`id`, `idEndereco`),
+  INDEX `fk_usuarios_enderecos1_idx` (`idEndereco` ASC),
+  CONSTRAINT `fk_usuarios_enderecos1`
+    FOREIGN KEY (`idEndereco`)
+    REFERENCES `u877047164_gifty`.`enderecos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`telefones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`telefones` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ddd` VARCHAR(3) NOT NULL,
+  `numero` VARCHAR(20) NOT NULL,
+  `idUsuario` INT NOT NULL,
+  PRIMARY KEY (`id`, `idUsuario`),
+  INDEX `fk_telefones_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_telefones_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`tiposEventos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`tiposEventos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`eventos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`eventos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(100) NOT NULL,
+  `descricao` MEDIUMTEXT NOT NULL,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  `local` VARCHAR(100) NOT NULL,
+  `ativo` TINYINT NOT NULL,
+  `maxItens` INT(2) NOT NULL,
+  `dataLimite` DATE NOT NULL,
+  `idUsuario` INT NOT NULL,
+  `idEndereco` INT NOT NULL,
+  `idTipoEvento` INT NOT NULL,
+  PRIMARY KEY (`id`, `idUsuario`, `idEndereco`, `idTipoEvento`),
+  INDEX `fk_eventos_usuarios1_idx` (`idUsuario` ASC),
+  INDEX `fk_eventos_enderecos1_idx` (`idEndereco` ASC),
+  INDEX `fk_eventos_tiposEventos1_idx` (`idTipoEvento` ASC),
+  CONSTRAINT `fk_eventos_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_eventos_enderecos1`
+    FOREIGN KEY (`idEndereco`)
+    REFERENCES `u877047164_gifty`.`enderecos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_eventos_tiposEventos1`
+    FOREIGN KEY (`idTipoEvento`)
+    REFERENCES `u877047164_gifty`.`tiposEventos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`categorias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`categorias` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(255) NOT NULL,
+  `idML` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`itens`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`itens` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(240) NOT NULL,
+  `descricao` MEDIUMTEXT NOT NULL,
+  `preco` DOUBLE NOT NULL,
+  `url` VARCHAR(240) NOT NULL,
+  `imagem` VARCHAR(4094) NOT NULL,
+  `idCategoria` INT NOT NULL,
+  PRIMARY KEY (`id`, `idCategoria`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `fk_itens_categorias1_idx` (`idCategoria` ASC),
+  CONSTRAINT `fk_itens_categorias1`
+    FOREIGN KEY (`idCategoria`)
+    REFERENCES `u877047164_gifty`.`categorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`amizades`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`amizades` (
+  `idUsuario1` INT NOT NULL,
+  `idUsuario2` INT NOT NULL,
+  `ativa` TINYINT NOT NULL,
+  `bloqueado1` TINYINT NOT NULL,
+  `bloqueado2` TINYINT NOT NULL,
+  `data` DATE NOT NULL,
+  PRIMARY KEY (`idUsuario1`, `idUsuario2`),
+  INDEX `fk_usuarios_has_usuarios_usuarios1_idx` (`idUsuario1` ASC),
+  INDEX `fk_usuarios_has_usuarios_usuarios_idx` (`idUsuario2` ASC),
+  CONSTRAINT `fk_usuarios_has_usuarios_usuarios`
+    FOREIGN KEY (`idUsuario2`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_has_usuarios_usuarios1`
+    FOREIGN KEY (`idUsuario1`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`convidados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`convidados` (
+  `idUsuario` INT NOT NULL,
+  `idEvento` INT NOT NULL,
+  `comparecera` TINYINT NOT NULL,
+  `compareceu` TINYINT NOT NULL,
+  `bloqueado` TINYINT NOT NULL,
+  PRIMARY KEY (`idUsuario`, `idEvento`),
+  INDEX `fk_usuarios_has_eventos_eventos1_idx` (`idEvento` ASC),
+  INDEX `fk_usuarios_has_eventos_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_usuarios_has_eventos_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_has_eventos_eventos1`
+    FOREIGN KEY (`idEvento`)
+    REFERENCES `u877047164_gifty`.`eventos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`listas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`listas` (
+  `idEvento` INT NOT NULL,
+  `idItem` INT NOT NULL,
+  `prioridade` INT(3) NOT NULL,
+  `dataAdicao` DATE NOT NULL,
+  `idComprador` INT NULL,
+  PRIMARY KEY (`idEvento`, `idItem`),
+  INDEX `fk_eventos_has_itens_itens1_idx` (`idItem` ASC),
+  INDEX `fk_eventos_has_itens_eventos1_idx` (`idEvento` ASC),
+  CONSTRAINT `fk_eventos_has_itens_eventos1`
+    FOREIGN KEY (`idEvento`)
+    REFERENCES `u877047164_gifty`.`eventos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_eventos_has_itens_itens1`
+    FOREIGN KEY (`idItem`)
+    REFERENCES `u877047164_gifty`.`itens` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`empresas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`empresas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `razaoSocial` VARCHAR(100) NOT NULL,
+  `nomeFantasia` VARCHAR(50) NOT NULL,
+  `cnpj` VARCHAR(30) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `logomarca` VARCHAR(100) NOT NULL,
+  `site` VARCHAR(100) NOT NULL,
+  `ativa` TINYINT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`anuncios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`anuncios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `imagem` VARCHAR(100) NOT NULL,
+  `url` VARCHAR(100) NOT NULL,
+  `ativo` TINYINT NOT NULL,
+  `idEmpresa` INT NOT NULL,
+  `idCategoria` INT NOT NULL,
+  PRIMARY KEY (`id`, `idEmpresa`, `idCategoria`),
+  INDEX `fk_banners_empresas1_idx` (`idEmpresa` ASC),
+  INDEX `fk_anuncios_categorias1_idx` (`idCategoria` ASC),
+  CONSTRAINT `fk_banners_empresas1`
+    FOREIGN KEY (`idEmpresa`)
+    REFERENCES `u877047164_gifty`.`empresas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_anuncios_categorias1`
+    FOREIGN KEY (`idCategoria`)
+    REFERENCES `u877047164_gifty`.`categorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`interesses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`interesses` (
+  `idUsuario` INT NOT NULL,
+  `idCategoria` INT NOT NULL,
+  `peso` INT NOT NULL,
+  `data` DATE NOT NULL,
+  PRIMARY KEY (`idUsuario`, `idCategoria`),
+  INDEX `fk_usuarios_has_interesses_interesses1_idx` (`idCategoria` ASC),
+  INDEX `fk_usuarios_has_interesses_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_usuarios_has_interesses_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_has_interesses_interesses1`
+    FOREIGN KEY (`idCategoria`)
+    REFERENCES `u877047164_gifty`.`categorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`cliquesAnuncios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`cliquesAnuncios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  `idAnuncio` INT NOT NULL,
+  `idUsuario` INT NOT NULL,
+  PRIMARY KEY (`id`, `idAnuncio`, `idUsuario`),
+  INDEX `fk_logCliques_banners1_idx` (`idAnuncio` ASC),
+  INDEX `fk_cliquesAnuncios_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_logCliques_banners1`
+    FOREIGN KEY (`idAnuncio`)
+    REFERENCES `u877047164_gifty`.`anuncios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cliquesAnuncios_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`cliquesEmpresas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`cliquesEmpresas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  `idEmpresa` INT NOT NULL,
+  `idUsuario` INT NOT NULL,
+  PRIMARY KEY (`id`, `idEmpresa`, `idUsuario`),
+  INDEX `fk_cliquesEmpresas_empresas1_idx` (`idEmpresa` ASC),
+  INDEX `fk_cliquesItens_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_cliquesEmpresas_empresas1`
+    FOREIGN KEY (`idEmpresa`)
+    REFERENCES `u877047164_gifty`.`empresas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cliquesItens_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`acoesUsuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`acoesUsuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`logUsuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`logUsuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `idUsuario` INT NOT NULL,
+  `idAcaoUsuario` INT NOT NULL,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  PRIMARY KEY (`id`, `idUsuario`, `idAcaoUsuario`),
+  INDEX `fk_usuarios_has_acoes_acoes1_idx` (`idAcaoUsuario` ASC),
+  INDEX `fk_usuarios_has_acoes_usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_usuarios_has_acoes_usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `u877047164_gifty`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuarios_has_acoes_acoes1`
+    FOREIGN KEY (`idAcaoUsuario`)
+    REFERENCES `u877047164_gifty`.`acoesUsuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`acoesEventos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`acoesEventos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `descricao` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `u877047164_gifty`.`logEventos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u877047164_gifty`.`logEventos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `idEvento` INT NOT NULL,
+  `idAcaoEvento` INT NOT NULL,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  PRIMARY KEY (`id`, `idEvento`, `idAcaoEvento`),
+  INDEX `fk_eventos_has_acoesEventos_acoesEventos1_idx` (`idAcaoEvento` ASC),
+  INDEX `fk_eventos_has_acoesEventos_eventos1_idx` (`idEvento` ASC),
+  CONSTRAINT `fk_eventos_has_acoesEventos_eventos1`
+    FOREIGN KEY (`idEvento`)
+    REFERENCES `u877047164_gifty`.`eventos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_eventos_has_acoesEventos_acoesEventos1`
+    FOREIGN KEY (`idAcaoEvento`)
+    REFERENCES `u877047164_gifty`.`acoesEventos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- SET SQL_MODE=@OLD_SQL_MODE;
+-- SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+-- SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO tiposEventos
 (descricao)
@@ -475,12 +885,7 @@ VALUES
 ('91340060', 'Rua Ivescio Pacheco', 1700, 'Apto 100', 'Passo D Areia', 'Porto Alegre', 'RS'),
 ('88104559', 'Rua Manoel José dos Santos', 1800, '', 'Fazenda Santo Antônio', 'São José', 'SC'),
 ('68905300', 'Rua Sétima da Baixada do Japonês', 1900, 'Apto 100', 'Cidade Nova', 'Macapá', 'AM'),
-('67133480', 'Passagem São Roque', 2000, '', 'Cidade Nova', 'Ananindeua', 'PA'),
-('53300300', 'Rua Mataripe', 200, '', 'Jardim Brasil', 'Olinda', 'PE'),
-('89040465', 'Rua Guabiruba - de 803 a 9999 - lado ímpar', 801, '', 'Velha Central ', 'Blumenau', 'SC'),
-('97030590', 'Rua São Sebastião', 1000, 'Apto 200', 'Juscelino Kubitschek', 'Santa Maria', 'RS'),
-('96010610', 'Rua Gomes Carneiro', 700, '', 'Centro', 'Pelotas', 'RS'),
-('03922040', 'Rua José de Queiroz Matos', 123, '', 'Jardim Grimaldi', 'São Paulo', 'SP');
+('67133480', 'Passagem São Roque', 2000, '', 'Cidade Nova', 'Ananindeua', 'PA');
 
 INSERT INTO usuarios
 (nomeUsuario, senha, nome, sobrenome, email, notificaEmail,
@@ -585,114 +990,19 @@ INSERT INTO interesses
 (idUsuario, idCategoria, peso, data)
 VALUES
 (2, 27, 0, '2018-09-26'),
-(2, 135, 5, '2018-12-05'),
 (2, 149, 0, '2018-11-27'),
-(2, 150, 1, '2018-12-05'),
-(2, 181, 1, '2018-12-05'),
+(2, 150, 0, '2018-11-27'),
 (2, 185, 0, '2018-11-27'),
-(2, 187, 1, '2018-12-05'),
 (2, 190, 0, '2018-09-26'),
 (2, 254, 0, '2018-09-26'),
-(2, 283, 1, '2018-12-05'),
 (2, 300, 0, '2018-11-27'),
-(2, 380, 2, '2018-12-05'),
+(2, 380, 0, '2018-11-27'),
 (3, 125, 0, '2018-09-26'),
 (3, 127, 0, '2018-11-27'),
 (3, 212, 0, '2018-09-26'),
-(3, 223, 1, '2018-12-05'),
-(3, 224, 2, '2018-12-05'),
-(3, 226, 1, '2018-12-05'),
 (3, 264, 0, '2018-09-26'),
-(3, 297, 1, '2018-12-05'),
-(3, 298, 1, '2018-12-05'),
-(3, 350, 1, '2018-12-05'),
+(3, 298, 0, '2018-11-27'),
 (3, 380, 0, '2018-11-27'),
 (4, 223, 0, '2018-11-27'),
 (4, 224, 0, '2018-11-27'),
 (4, 250, 0, '2018-11-27');
-
-INSERT INTO eventos
-(titulo, descricao, data, hora, local, ativo, maxItens, dataLimite, idUsuario, idEndereco, idTipoEvento)
-VALUES
-('Aniversário Feliz', 'Vai ser uma festa muito legal! Tragam a sobra das bebidas de ano novo!', '2019-01-01', '21:00:00', 'Salão Condomínio Matinet', 1, 1, '2019-01-01', 2, 21, 1),
-('Minha independência!', 'Vou me mudar em fevereiro e quero comemorar com vocês! :)', '2019-02-25', '12:00:00', 'Salão Galáxia', 1, 1, '2019-02-25', 2, 22, 12),
-('UHUL GURIAS', 'Vamos zoar a noite toda! Beber muito! E jogar uns games, porque isso não é coisa só de homem!', '2019-04-26', '22:00:00', 'Salão Ávila', 1, 1, '2019-04-19', 2, 23, 13),
-('Eu e a Lucia para sempre!', 'Vamos celebrar a união entre eu e a minha Lucia!', '2019-09-27', '18:00:00', 'Igreja do Porto', 1, 2, '2019-09-06', 3, 24, 3),
-('Aniversário descolado', 'E vai rolar a festa, vai rolar, o povo do gueto mandou avisar.', '2019-03-15', '21:00:00', 'Salão Boa Vista', 1, 1, '2019-03-11', 3, 25, 1);
-
-INSERT INTO convidados
-(idUsuario, idEvento, comparecera, compareceu, bloqueado)
-VALUES
-(2, 4, 0, 0, 0),
-(2, 5, 0, 0, 0),
-(3, 1, 0, 0, 0),
-(3, 2, 0, 0, 0),
-(3, 3, 0, 0, 0),
-(4, 1, 0, 0, 0),
-(4, 3, 0, 0, 0),
-(4, 4, 0, 0, 0),
-(4, 5, 0, 0, 0),
-(5, 4, 0, 0, 0),
-(6, 1, 0, 0, 0),
-(7, 1, 0, 0, 0),
-(9, 2, 0, 0, 0),
-(9, 3, 0, 0, 0),
-(10, 4, 0, 0, 0),
-(10, 5, 0, 0, 0),
-(11, 4, 0, 0, 0),
-(11, 5, 0, 0, 0),
-(13, 2, 0, 0, 0),
-(13, 3, 0, 0, 0),
-(17, 4, 0, 0, 0),
-(19, 4, 0, 0, 0);
-
-INSERT INTO itens (nome, descricao, preco, url, imagem, idCategoria)
-VALUES
-('Óculos Sol Redondo Circular Steampunk Vintage Retrô Uv400', '-', 70.19, 'https://produto.mercadolivre.com.br/MLB-793321668-oculos-sol-redondo-circular-steampunk-vintage-retr-uv400-_JM', 'http://mlb-s1-p.mlstatic.com/701582-MLB28013938481_082018-I.jpg', 150),
-('Adesivo Decorativo Para Parede Nichos E Vasos', '-', 42.9, 'https://produto.mercadolivre.com.br/MLB-913658119-adesivo-decorativo-para-parede-nichos-e-vasos-_JM', 'http://mlb-s2-p.mlstatic.com/813143-MLB26019036968_092017-I.jpg', 283),
-('2 Boina Gorro Touca Feminina Toca Varias Cores Grossa Quente', '-', 39.99, 'https://produto.mercadolivre.com.br/MLB-953989578-2-boina-gorro-touca-feminina-toca-varias-cores-grossa-quente-_JM', 'http://mlb-s1-p.mlstatic.com/612119-MLB26565055904_122017-I.jpg', 135),
-('Lustre Pendente De Cristal Acrílico Manucrillic Magnifico!', '-', 149.99, 'https://produto.mercadolivre.com.br/MLB-1111724318-lustre-pendente-de-cristal-acrilico-manucrillic-magnifico-_JM', 'http://mlb-s1-p.mlstatic.com/888661-MLB28287159789_102018-I.jpg', 181),
-('Cabide Adulto Kit 100 Unidades Atacado Pronta Entrega', '-', 31.89, 'https://produto.mercadolivre.com.br/MLB-781514827-cabide-adulto-kit-100-unidades-atacado-pronta-entrega-_JM', 'http://mlb-s2-p.mlstatic.com/927615-MLB25268949471_012017-I.jpg', 135),
-('Cabide Adulto Kit 100 Unidades Atacado Pronta Entrega', '-', 31.89, 'https://produto.mercadolivre.com.br/MLB-781514827-cabide-adulto-kit-100-unidades-atacado-pronta-entrega-_JM', 'http://mlb-s2-p.mlstatic.com/927615-MLB25268949471_012017-I.jpg', 135),
-('Chapéu De Palha Quiksilver Pierside Importado', '-', 149, 'https://produto.mercadolivre.com.br/MLB-886348745-chapeu-de-palha-quiksilver-pierside-importado-_JM', 'http://mlb-s2-p.mlstatic.com/830053-MLB26900137445_022018-I.jpg', 135),
-('Kit Suspensório + Gravata Borboleta Bordô ( Marsala, Vinho)', '-', 19.9, 'https://produto.mercadolivre.com.br/MLB-746125863-kit-suspensorio-gravata-borboleta-bord-marsala-vinho-_JM', 'http://mlb-s2-p.mlstatic.com/908858-MLB26699106715_012018-I.jpg', 135),
-('Estante Para Livros Rack Book 3 Prateleiras Rústico Artely', '-', 167.9, 'https://produto.mercadolivre.com.br/MLB-982075187-estante-para-livros-rack-book-3-prateleiras-rustico-artely-_JM', 'http://mlb-s2-p.mlstatic.com/895220-MLB28040018681_082018-I.jpg', 187),
-('Vodka Absolut Original 1,5l + 2 Taças De Vidro', '-', 219.9, 'https://produto.mercadolivre.com.br/MLB-1141188695-vodka-absolut-original-15l-2-tacas-de-vidro-_JM', 'http://mlb-s2-p.mlstatic.com/612155-MLB28732969227_112018-I.jpg', 380),
-('Espumante Freixenet Cordon Negro 12 Unidades', '-', 559.9, 'https://produto.mercadolivre.com.br/MLB-912784805-espumante-freixenet-cordon-negro-12-unidades-_JM', 'http://mlb-s2-p.mlstatic.com/627838-MLB26008081523_092017-I.jpg', 380),
-('Geladeira Bottom Freezer Electrolux 2 Portas 454l Inox Db53x', '-', 2956.49, 'https://produto.mercadolivre.com.br/MLB-938963092-geladeira-bottom-freezer-electrolux-2-portas-454l-inox-db53x-_JM', 'http://mlb-s1-p.mlstatic.com/686109-MLB28524558985_102018-I.jpg', 224),
-('Fogão Portátil Mueller Facile Stile 4 Bocas ', '-', 223.9, 'https://produto.mercadolivre.com.br/MLB-1069166282-fogo-portatil-mueller-facile-stile-4-bocas-_JM', 'http://mlb-s1-p.mlstatic.com/608900-MLB27917483680_082018-I.jpg', 223),
-('Lavadora De Roupas Consul 8 Kg Cwc08ab Branca', '-', 999, 'https://produto.mercadolivre.com.br/MLB-903510834-lavadora-de-roupas-consul-8-kg-cwc08ab-branca-_JM', 'http://mlb-s1-p.mlstatic.com/776765-MLB28769637209_112018-I.jpg', 226),
-('Adega De Vinhos Brastemp Para 12 Garrafas - Bzc12be', '-', 626.65, 'https://produto.mercadolivre.com.br/MLB-1027940057-adega-de-vinhos-brastemp-para-12-garrafas-bzc12be-_JM', 'http://mlb-s2-p.mlstatic.com/885192-MLB28028395758_082018-I.jpg', 224),
-('Controle Xbox 360 Sem Fio Wireless Usb Slim  Joystick', '-', 87.9, 'https://produto.mercadolivre.com.br/MLB-828091691-controle-xbox-360-sem-fio-wireless-usb-slim-joystick-_JM', 'http://mlb-s2-p.mlstatic.com/837225-MLB25405552009_032017-I.jpg', 298),
-('Shadow Of The Colossus Ps4 1 Promoção Digital', '-', 59.9, 'https://produto.mercadolivre.com.br/MLB-1075771725-shadow-of-the-colossus-ps4-1-promoco-digital-_JM', 'http://mlb-s2-p.mlstatic.com/796420-MLB27872259025_072018-I.jpg', 297),
-('A Menina Que Roubava Livros 563', '-', 12.9, 'https://produto.mercadolivre.com.br/MLB-1141137444-a-menina-que-roubava-livros-563-_JM', 'http://mlb-s1-p.mlstatic.com/845288-MLB28732570582_112018-I.jpg', 350);
-
-INSERT INTO listas
-(idEvento, idItem, prioridade, dataAdicao, idComprador)
-VALUES
-(1, 1, 2, '2018-12-05', NULL),
-(1, 3, 3, '2018-12-05', NULL),
-(1, 4, 1, '2018-12-05', NULL),
-(1, 5, 4, '2018-12-05', NULL),
-(2, 6, 1, '2018-12-05', NULL),
-(2, 7, 2, '2018-12-05', NULL),
-(2, 8, 3, '2018-12-05', NULL),
-(3, 9, 2, '2018-12-05', NULL),
-(3, 10, 3, '2018-12-05', NULL),
-(3, 11, 1, '2018-12-05', NULL),
-(4, 12, 1, '2018-12-05', NULL),
-(4, 13, 2, '2018-12-05', NULL),
-(4, 14, 3, '2018-12-05', NULL),
-(4, 15, 4, '2018-12-05', NULL),
-(5, 16, 1, '2018-12-05', NULL),
-(5, 17, 2, '2018-12-05', NULL),
-(5, 18, 3, '2018-12-05', NULL);
-
-INSERT INTO logEventos
-(idEvento, idAcaoEvento, data, hora)
-VALUES
-(1, 1, '2018-12-05', '06:46:50'),
-(2, 1, '2018-12-05', '06:55:39'),
-(3, 1, '2018-12-05', '06:58:42'),
-(4, 1, '2018-12-05', '07:03:21'),
-(5, 1, '2018-12-05', '07:07:14');

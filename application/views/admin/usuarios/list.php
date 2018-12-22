@@ -83,7 +83,7 @@ if ($this->session->has_userdata('mensagem')) {
                     <br>
                 </div>
                 <div class="col-4">
-                    <img style="width: 50%;" class="bdImg" src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
+                    <img style="width:60%;" class="bdImg" src="<?= base_url('assets/img/profiles/' . $usuario->imagem) ?>"   
                          alt="Foto de perfil de <?= $usuario->nome ?> <?= $usuario->sobrenome ?>">
                 </div>
                 <div class="col-2">
